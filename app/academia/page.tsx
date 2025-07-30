@@ -157,9 +157,11 @@ export default function AcademiaPage() {
                   <div className="flex flex-col sm:flex-row gap-3">
                     {nivel.disponible ? (
                       <>
-                        <Button size="lg">
-                          COMENZAR NIVEL {nivel.nivel}
-                        </Button>
+                        <Link href={nivel.nivel === 1 ? '/academia/nivel-1' : '#'}>
+                          <Button size="lg" disabled={nivel.nivel !== 1}>
+                            COMENZAR NIVEL {nivel.nivel}
+                          </Button>
+                        </Link>
                         <Button variant="secondary" size="lg">
                           VER TEMARIO COMPLETO
                         </Button>
@@ -223,9 +225,11 @@ export default function AcademiaPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
-                COMENZAR NIVEL 1 GRATIS
-              </Button>
+              <Link href="/academia/nivel-1">
+                <Button size="lg">
+                  COMENZAR NIVEL 1 GRATIS
+                </Button>
+              </Link>
               <Button variant="secondary" size="lg">
                 CONOCER MÁS
               </Button>

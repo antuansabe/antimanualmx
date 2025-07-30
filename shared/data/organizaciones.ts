@@ -396,5 +396,215 @@ export const organizaciones: Organizacion[] = [
       'Colaboraciones internacionales'
     ],
     colaboraciones: ['ICIJ', 'PODER', 'Mexicanos Contra la Corrupción']
+  },
+  {
+    id: 'indela',
+    nombre: 'Instituto de Liderazgo Simone de Beauvoir',
+    nombreCorto: 'INDELA',
+    descripcion: 'Organización feminista que trabaja por la igualdad de género y los derechos de las mujeres, incluyendo seguridad digital con perspectiva de género.',
+    mision: 'Promover el liderazgo de las mujeres y la igualdad de género',
+    especialidades: ['Liderazgo femenino', 'Seguridad digital feminista', 'Violencia de género digital'],
+    tipo: 'ong',
+    ubicacion: {
+      estado: 'Ciudad de México',
+      ciudad: 'Ciudad de México',
+      coordenadas: { lat: 19.4342, lng: -99.1472 }
+    },
+    contacto: {
+      sitioWeb: 'https://www.debeauvoir.org.mx',
+      email: 'contacto@debeauvoir.org.mx',
+      twitter: '@INDELA_AC'
+    },
+    servicios: ['Capacitación en liderazgo', 'Autodefensa digital feminista', 'Investigación de género'],
+    alcance: 'nacional',
+    fechaFundacion: 2000,
+    estado: 'activa',
+    verificada: true,
+    logros: [
+      'Formación de líderes feministas',
+      'Investigación sobre violencia digital',
+      'Red nacional de mujeres'
+    ],
+    colaboraciones: ['Luchadoras MX', 'ONU Mujeres', 'Red Nacional de Refugios']
+  },
+  {
+    id: 'comunicacion-comunitaria',
+    nombre: 'Red de Comunicación Comunitaria',
+    nombreCorto: 'RCC',
+    descripcion: 'Red de medios comunitarios y alternativos que promueve el derecho a la comunicación desde las bases.',
+    mision: 'Democratizar la comunicación y fortalecer medios comunitarios',
+    especialidades: ['Medios comunitarios', 'Comunicación popular', 'Radios libres'],
+    tipo: 'colectivo',
+    ubicacion: {
+      estado: 'Nacional',
+      ciudad: 'Red Nacional',
+      coordenadas: { lat: 19.4326, lng: -99.1332 }
+    },
+    contacto: {
+      sitioWeb: 'https://redcomunicacioncomunitaria.org',
+      email: 'info@redcomunicacioncomunitaria.org',
+      twitter: '@RedComunitaria'
+    },
+    servicios: ['Capacitación en medios', 'Defensa del espectro radioeléctrico', 'Comunicación alternativa'],
+    alcance: 'nacional',
+    fechaFundacion: 2008,
+    estado: 'activa',
+    verificada: true,
+    logros: [
+      'Red de 150+ medios comunitarios',
+      'Defensa legal del espectro',
+      'Formación de comunicadores populares'
+    ],
+    colaboraciones: ['AMARC', 'CENCOS', 'Redes AC']
+  },
+  {
+    id: 'data-civica',
+    nombre: 'Data Cívica',
+    nombreCorto: 'Data Cívica',
+    descripcion: 'Organización que utiliza datos abiertos y tecnología para resolver problemas sociales y promover la transparencia.',
+    mision: 'Usar datos y tecnología para generar impacto social positivo',
+    especialidades: ['Datos abiertos', 'Tecnología cívica', 'Análisis de datos', 'Transparencia algorítmica'],
+    tipo: 'ong',
+    ubicacion: {
+      estado: 'Ciudad de México',
+      ciudad: 'Ciudad de México',
+      coordenadas: { lat: 19.4124, lng: -99.1625 }
+    },
+    contacto: {
+      sitioWeb: 'https://datacivica.org',
+      email: 'hola@datacivica.org',
+      twitter: '@DataCivica'
+    },
+    servicios: ['Análisis de datos', 'Desarrollo de herramientas', 'Capacitación técnica', 'Consultoría'],
+    alcance: 'nacional',
+    fechaFundacion: 2016,
+    estado: 'activa',
+    verificada: true,
+    logros: [
+      'Plataformas de transparencia',
+      'Análisis de gasto público',
+      'Herramientas de participación ciudadana'
+    ],
+    colaboraciones: ['Fundar', 'México Evalúa', 'Open Knowledge México']
+  },
+  {
+    id: 'conectas',
+    nombre: 'Conectas Derechos Humanos',
+    nombreCorto: 'Conectas',
+    descripcion: 'Organización internacional de derechos humanos con trabajo en América Latina, incluyendo México.',
+    mision: 'Promover el respeto a los derechos humanos y la justicia social',
+    especialidades: ['Derechos humanos', 'Incidencia internacional', 'Seguridad para defensores'],
+    tipo: 'ong',
+    ubicacion: {
+      estado: 'Regional',
+      ciudad: 'São Paulo/México',
+      coordenadas: { lat: 19.4326, lng: -99.1332 }
+    },
+    contacto: {
+      sitioWeb: 'https://conectas.org',
+      email: 'conectas@conectas.org',
+      twitter: '@conectas'
+    },
+    servicios: ['Protección a defensores', 'Incidencia internacional', 'Litigio estratégico'],
+    alcance: 'regional',
+    fechaFundacion: 1999,
+    estado: 'activa',
+    verificada: true,
+    logros: [
+      'Casos ante sistema interamericano',
+      'Protección de defensores en riesgo',
+      'Incidencia en ONU'
+    ],
+    colaboraciones: ['FIDH', 'OMCT', 'Red Nacional de Organismos Civiles']
+  },
+  {
+    id: 'equis',
+    nombre: 'Équis Justicia para las Mujeres',
+    nombreCorto: 'ÉQUIS',
+    descripcion: 'Organización feminista que trabaja por el acceso de las mujeres a la justicia, incluyendo casos de violencia digital.',
+    mision: 'Transformar las instituciones de justicia con perspectiva de género',
+    especialidades: ['Justicia con perspectiva de género', 'Violencia contra las mujeres', 'Acceso a la justicia'],
+    tipo: 'ong',
+    ubicacion: {
+      estado: 'Ciudad de México',
+      ciudad: 'Ciudad de México',
+      coordenadas: { lat: 19.3910, lng: -99.1725 }
+    },
+    contacto: {
+      sitioWeb: 'https://equis.org.mx',
+      email: 'contacto@equis.org.mx',
+      twitter: '@EquisJusticia'
+    },
+    servicios: ['Litigio estratégico', 'Capacitación judicial', 'Investigación aplicada'],
+    alcance: 'nacional',
+    fechaFundacion: 2013,
+    estado: 'activa',
+    verificada: true,
+    logros: [
+      'Casos emblemáticos de violencia de género',
+      'Capacitación a operadores de justicia',
+      'Investigaciones sobre feminicidio'
+    ],
+    colaboraciones: ['ONU Mujeres', 'INMUJERES', 'Red Nacional de Refugios']
+  },
+  {
+    id: 'rdc',
+    nombre: 'Red de Defensoras de Derechos Humanos en México',
+    nombreCorto: 'RDC',
+    descripcion: 'Red nacional que articula defensoras de derechos humanos para su protección y fortalecimiento.',
+    mision: 'Fortalecer la protección y el trabajo de las defensoras de derechos humanos',
+    especialidades: ['Protección a defensoras', 'Seguridad integral', 'Articulación feminista'],
+    tipo: 'colectivo',
+    ubicacion: {
+      estado: 'Nacional',
+      ciudad: 'Red Nacional',
+      coordenadas: { lat: 19.4326, lng: -99.1332 }
+    },
+    contacto: {
+      sitioWeb: 'https://reddefensorasmx.org',
+      email: 'info@reddefensorasmx.org',
+      twitter: '@RedDefensorasMx'
+    },
+    servicios: ['Protección integral', 'Acompañamiento legal', 'Formación en seguridad'],
+    alcance: 'nacional',
+    fechaFundacion: 2010,
+    estado: 'activa',
+    verificada: true,
+    logros: [
+      'Red de 300+ defensoras',
+      'Protocolos de seguridad integral',
+      'Incidencia en mecanismo de protección'
+    ],
+    colaboraciones: ['Consorcio Oaxaca', 'IM-Defensoras', 'JASS']
+  },
+  {
+    id: 'asilegal',
+    nombre: 'Asistencia Legal por los Derechos Humanos',
+    nombreCorto: 'AsiLegal',
+    descripcion: 'Organización que brinda asistencia legal gratuita a víctimas de violaciones de derechos humanos.',
+    mision: 'Garantizar el acceso a la justicia a víctimas de violaciones de derechos humanos',
+    especialidades: ['Asistencia legal gratuita', 'Litigio de interés público', 'Derechos de víctimas'],
+    tipo: 'legal',
+    ubicacion: {
+      estado: 'Ciudad de México',
+      ciudad: 'Ciudad de México',
+      coordenadas: { lat: 19.4285, lng: -99.1597 }
+    },
+    contacto: {
+      sitioWeb: 'https://asilegal.org.mx',
+      email: 'contacto@asilegal.org.mx',
+      twitter: '@AsiLegalMx'
+    },
+    servicios: ['Asesoría jurídica gratuita', 'Representación legal', 'Litigio estratégico'],
+    alcance: 'nacional',
+    fechaFundacion: 2005,
+    estado: 'activa',
+    verificada: true,
+    logros: [
+      'Miles de casos atendidos',
+      'Precedentes judiciales importantes',
+      'Red de abogados voluntarios'
+    ],
+    colaboraciones: ['CMDPDH', 'Centro Prodh', 'Idheas']
   }
 ];
