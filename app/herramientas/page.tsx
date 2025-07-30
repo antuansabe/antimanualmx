@@ -25,6 +25,14 @@ const herramientas = [
     icono: '🔐',
     urgencia: 'MEDIA',
     tiempo: '10-15 min'
+  },
+  {
+    id: 'phishing-detector',
+    nombre: 'Detector de Phishing',
+    descripcion: 'Simulador interactivo para identificar correos maliciosos',
+    icono: '🎣',
+    urgencia: 'MEDIA',
+    tiempo: '5-10 min'
   }
 ];
 
