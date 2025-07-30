@@ -151,7 +151,7 @@ export default function BorradoSeguroPage() {
                 onClick={() => setModoPanico(!modoPanico)}
                 variant={modoPanico ? 'primary' : 'secondary'}
                 size="sm"
-                className={modoPanico ? 'bg-red-600 hover:bg-red-700' : ''}
+                className={modoPanico ? 'sello-peligro hover:sello-peligro' : ''}
               >
                 🚨 MODO PÁNICO {modoPanico ? 'ON' : 'OFF'}
               </Button>
@@ -240,7 +240,7 @@ export default function BorradoSeguroPage() {
                               <div className="flex items-center gap-2 mb-1">
                                 <h4 className="font-bold">{elemento.nombre}</h4>
                                 <Stamp className={`text-xs ${
-                                  elemento.prioridad === 'alta' ? 'bg-red-600' :
+                                  elemento.prioridad === 'alta' ? 'sello-peligro' :
                                   elemento.prioridad === 'media' ? 'bg-orange-500' :
                                   'bg-gray-500'
                                 }`}>

@@ -1,71 +1,113 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
-/* Variables de documento oficial subversivo */
+/* Sistema de Diseño Antimanual - Estética Gubernamental Mexicana Subvertida */
 :root {
-  /* Colores base - papel oficial */
-  --color-paper: #f9f6f0;
-  --color-paper-aged: #f4ede0;
-  --color-ink: #1a1a1a;
-  --color-ink-faded: #3a3a3a;
+  /* Colores base - Papel oficial */
+  --papel-base: #FAF8F3;
+  --papel-sombra: #E8E3D8;
+  --papel-oscuro: #F5F2E8;
+  --papel-border: #D6D1C6;
   
-  /* Colores de resistencia */
-  --color-red-stamp: #c41e3a;
-  --color-red-warning: #dc2626;
-  --color-green-verified: #059669;
-  --color-blue-link: #1e40af;
+  /* Tintas oficiales */
+  --tinta-oficial: #1A1A1A;
+  --tinta-suave: #4A4A4A;
+  --tinta-clara: #6B7280;
+  --tinta-muy-clara: #9CA3AF;
   
-  /* Efectos de documento */
-  --color-highlight: #fef3c7;
-  --color-strikethrough: #374151;
-  --color-margin-notes: #6b7280;
+  /* Sellos y stamps */
+  --sello-rojo: #B91C1C;
+  --sello-activo: #DC2626;
+  --sello-hover: #EF4444;
+  --sello-urgent: #991B1B;
   
-  /* Sombras y bordes */
-  --shadow-paper: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  --shadow-stamp: 0 3px 6px rgba(196, 30, 58, 0.3);
+  /* Elementos metálicos */
+  --dorado-metal: #A16207;
+  --dorado-claro: #D97706;
+  --plata-metal: #6B7280;
+  --clip-metal: #4B5563;
+  
+  /* Estados */
+  --verde-aprobado: #059669;
+  --verde-claro: #10B981;
+  --naranja-pendiente: #D97706;
+  --azul-info: #2563EB;
+  
+  /* Efectos */
+  --marca-agua: rgba(26, 26, 26, 0.03);
+  --sombra-papel: rgba(0, 0, 0, 0.1);
+  --sombra-elevada: rgba(0, 0, 0, 0.15);
   
   /* Tipografía */
-  --font-typewriter: 'Courier New', Courier, monospace;
-  --font-handwritten: 'Segoe Script', cursive;
-  --font-official: Georgia, 'Times New Roman', serif;
+  --font-oficial-base: var(--font-oficial), 'Courier Prime', monospace;
+  --font-texto: Georgia, serif;
+  --font-sistema: system-ui, sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--color-paper);
-  --color-foreground: var(--color-ink);
-  --font-sans: var(--font-official);
-  --font-mono: var(--font-typewriter);
+  --color-background: var(--papel-base);
+  --color-foreground: var(--tinta-oficial);
+  --font-sans: var(--font-texto);
+  --font-mono: var(--font-oficial-base);
 }
 
-/* Fondo con textura de papel */
-body {
-  background-color: var(--color-paper);
+/* Base styles - Fondo papel envejecido */
+html {
+  background-color: var(--papel-base);
   background-image: 
+    radial-gradient(circle at 20% 50%, var(--marca-agua) 1px, transparent 1px),
+    radial-gradient(circle at 80% 50%, var(--marca-agua) 1px, transparent 1px),
+    linear-gradient(0deg, transparent 24%, var(--marca-agua) 25%, var(--marca-agua) 26%, transparent 27%, transparent 74%, var(--marca-agua) 75%, var(--marca-agua) 76%, transparent 77%, transparent),
     repeating-linear-gradient(
       90deg,
       transparent,
       transparent 20px,
-      rgba(196, 30, 58, 0.03) 20px,
-      rgba(196, 30, 58, 0.03) 21px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 20px,
-      rgba(196, 30, 58, 0.03) 20px,
-      rgba(196, 30, 58, 0.03) 21px
+      rgba(185, 28, 28, 0.02) 20px,
+      rgba(185, 28, 28, 0.02) 21px
     );
-  color: var(--color-ink);
-  font-family: var(--font-official);
-  line-height: 1.6;
+  background-size: 120px 120px, 120px 120px, 30px 30px, 100% 20px;
   min-height: 100vh;
 }
 
-/* Contenedor principal con efecto de papel */
+body {
+  font-family: var(--font-texto);
+  color: var(--tinta-oficial);
+  line-height: 1.6;
+  background: transparent;
+}
+
+/* Tipografía sistema oficial */
+.typewriter {
+  font-family: var(--font-oficial-base);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.typewriter-bold {
+  font-family: var(--font-oficial-base);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.texto-oficial {
+  font-family: var(--font-texto);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--tinta-oficial);
+}
+
+.texto-suave {
+  color: var(--tinta-suave);
+}
+
+/* Contenedores de papel mejorados */
 .paper-container {
-  background: var(--color-paper-aged);
-  box-shadow: var(--shadow-paper);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--papel-oscuro);
+  border: 2px solid var(--papel-border);
   position: relative;
   overflow: hidden;
 }
@@ -73,42 +115,224 @@ body {
 .paper-container::before {
   content: '';
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(139, 69, 19, 0.02) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(139, 69, 19, 0.02) 1px, transparent 1px),
+    linear-gradient(45deg, transparent 48%, rgba(139, 69, 19, 0.01) 49%, rgba(139, 69, 19, 0.01) 51%, transparent 52%);
+  background-size: 80px 80px, 60px 60px, 20px 20px;
+  pointer-events: none;
+}
+
+.paper-aged {
+  background: var(--papel-oscuro);
+  position: relative;
+}
+
+.paper-aged::after {
+  content: '';
+  position: absolute;
   top: -2px;
   left: -2px;
   right: -2px;
   bottom: -2px;
   background: 
-    linear-gradient(45deg, transparent 30%, rgba(196, 30, 58, 0.1) 50%, transparent 70%),
-    linear-gradient(-45deg, transparent 30%, rgba(196, 30, 58, 0.05) 50%, transparent 70%);
+    linear-gradient(45deg, transparent 30%, rgba(185, 28, 28, 0.08) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(185, 28, 28, 0.04) 50%, transparent 70%);
   z-index: -1;
+  border-radius: inherit;
 }
 
-/* Sello oficial subversivo */
+/* Sombras realistas de papel */
+.sombra-papel {
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.sombra-elevada {
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.sombra-flotante {
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Sellos oficiales rediseñados */
 .stamp {
   display: inline-block;
   padding: 8px 16px;
-  background: var(--color-red-stamp);
+  background: var(--sello-rojo);
   color: white;
-  font-family: var(--font-typewriter);
-  font-weight: bold;
+  font-family: var(--font-oficial-base);
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
   transform: rotate(-5deg);
-  box-shadow: var(--shadow-stamp);
   border: 3px double white;
+  border-radius: 2px;
+  box-shadow: 
+    0 3px 6px rgba(185, 28, 28, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
   position: relative;
+  transition: all 0.2s ease;
 }
 
 .stamp::after {
   content: '';
   position: absolute;
-  inset: -1px;
-  border: 1px solid var(--color-red-stamp);
+  inset: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1px;
 }
 
-/* Texto tachado estilo clasificado */
+.stamp:hover {
+  transform: rotate(-3deg) scale(1.05);
+  box-shadow: 
+    0 5px 10px rgba(185, 28, 28, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Bordes oficiales */
+.border-oficial {
+  border: 2px solid var(--papel-border);
+  border-style: solid;
+}
+
+.border-doble {
+  border: 3px double var(--papel-border);
+}
+
+.border-punteado {
+  border: 1px dashed var(--tinta-clara);
+}
+
+/* Efectos de hover - papel levantándose */
+.hover-papel {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+
+.hover-papel:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.15),
+    0 4px 6px -2px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Clips y elementos metálicos */
+.clip-metal {
+  position: relative;
+}
+
+.clip-metal::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: 15px;
+  width: 18px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--clip-metal) 0%, var(--plata-metal) 50%, var(--clip-metal) 100%);
+  clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 80% 100%, 20% 100%, 0% 70%);
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Perforaciones de archivo */
+.perforaciones {
+  position: relative;
+  padding-left: 28px;
+}
+
+.perforaciones::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-image: 
+    radial-gradient(circle, var(--papel-base) 35%, var(--papel-border) 36%, var(--papel-border) 65%, var(--papel-base) 66%);
+  background-size: 12px 24px;
+  background-repeat: repeat-y;
+}
+
+/* Estados de formulario estilo oficial */
+.input-oficial {
+  background-color: var(--papel-base);
+  border: 2px solid var(--papel-border);
+  border-radius: 3px;
+  padding: 12px 16px;
+  font-family: var(--font-oficial-base);
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.input-oficial:focus {
+  outline: none;
+  border-color: var(--dorado-metal);
+  box-shadow: 
+    0 0 0 3px rgba(161, 98, 7, 0.1),
+    inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Botones estilo sello mejorados */
+.btn-stamp {
+  background: var(--sello-rojo);
+  color: white;
+  border: 3px double white;
+  padding: 12px 24px;
+  font-family: var(--font-oficial-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 3px;
+  box-shadow: 
+    0 3px 6px rgba(185, 28, 28, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-stamp::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1px;
+}
+
+.btn-stamp:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 5px 10px rgba(185, 28, 28, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn-stamp:active {
+  transform: scale(0.98);
+  animation: stamp-press 0.3s ease-in-out;
+}
+
+/* Texto tachado estilo clasificado mejorado */
 .classified {
   position: relative;
   display: inline-block;
+  color: var(--tinta-suave);
 }
 
 .classified::after {
@@ -117,141 +341,283 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(-15deg);
-  color: var(--color-red-stamp);
-  font-weight: bold;
+  color: var(--sello-rojo);
+  font-weight: 700;
   font-size: 1.2em;
-  font-family: var(--font-typewriter);
+  font-family: var(--font-oficial-base);
+  text-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
 }
 
 .classified::before {
   content: '';
   position: absolute;
   top: 50%;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--color-strikethrough);
+  left: -5px;
+  right: -5px;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--tinta-oficial) 0px,
+    var(--tinta-oficial) 8px,
+    transparent 8px,
+    transparent 12px
+  );
   transform: rotate(-2deg);
 }
 
-/* Notas al margen */
+/* Notas al margen mejoradas */
 .margin-note {
-  font-family: var(--font-handwritten);
-  color: var(--color-margin-notes);
+  font-family: var(--font-texto);
+  font-style: italic;
+  color: var(--tinta-clara);
   font-size: 0.875rem;
   transform: rotate(-1deg);
   margin-left: 1rem;
+  position: relative;
+}
+
+.margin-note::before {
+  content: '↳';
+  position: absolute;
+  left: -15px;
+  top: 0;
+  color: var(--dorado-metal);
 }
 
 /* Resaltado de texto importante */
 .highlight {
-  background-color: var(--color-highlight);
-  padding: 2px 4px;
+  background: linear-gradient(105deg, 
+    rgba(251, 191, 36, 0.3) 0%, 
+    rgba(251, 191, 36, 0.5) 50%, 
+    rgba(251, 191, 36, 0.3) 100%
+  );
+  padding: 2px 6px;
   border-radius: 2px;
   box-decoration-break: clone;
-}
-
-/* Botones estilo sello */
-.btn-stamp {
-  @apply px-6 py-3 font-bold uppercase tracking-wider transition-all duration-200;
-  background: var(--color-red-stamp);
-  color: white;
-  border: 3px double white;
-  box-shadow: var(--shadow-stamp);
-  font-family: var(--font-typewriter);
   position: relative;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--dorado-metal);
+  opacity: 0.5;
+}
+
+/* Animaciones tipo máquina de escribir */
+@keyframes typewriter {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  from, to { border-color: transparent }
+  50% { border-color: var(--tinta-oficial) }
+}
+
+.typing-animation {
   overflow: hidden;
+  border-right: 2px solid var(--tinta-oficial);
+  white-space: nowrap;
+  animation: 
+    typewriter 3s steps(30, end),
+    blink 0.75s step-end infinite;
 }
 
-.btn-stamp:hover {
-  transform: rotate(-2deg) scale(1.05);
-  box-shadow: 0 5px 10px rgba(196, 30, 58, 0.4);
-}
-
-.btn-stamp:active {
-  transform: rotate(-2deg) scale(0.98);
-}
-
-/* Enlaces estilo documento */
-a {
-  color: var(--color-blue-link);
-  text-decoration: underline;
-  text-decoration-style: wavy;
-  text-underline-offset: 3px;
-  transition: all 0.2s;
-}
-
-a:hover {
-  color: var(--color-red-stamp);
-  text-decoration-thickness: 2px;
-}
-
-/* Tipografía de máquina de escribir */
-.typewriter {
-  font-family: var(--font-typewriter);
-  letter-spacing: 0.05em;
-}
-
-/* Efecto de papel envejecido en cards */
-.aged-paper {
-  background: 
-    linear-gradient(105deg, transparent 40%, rgba(196, 30, 58, 0.05) 45%, transparent 50%),
-    linear-gradient(135deg, var(--color-paper-aged) 0%, var(--color-paper) 100%);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: var(--shadow-paper);
-}
-
-/* Animaciones */
+/* Efectos de sello */
 @keyframes stamp-press {
-  0% { transform: scale(1) rotate(-5deg); }
-  50% { transform: scale(0.95) rotate(-5deg); }
-  100% { transform: scale(1) rotate(-5deg); }
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
 }
 
-.stamp-animate {
+.stamp-effect {
   animation: stamp-press 0.3s ease-in-out;
 }
 
-/* Responsive */
+/* Enlaces estilo documento oficial */
+a {
+  color: var(--azul-info);
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--sello-rojo);
+  text-decoration-thickness: 2px;
+  text-decoration-style: wavy;
+}
+
+/* Utilidades responsive móvil-first */
 @media (max-width: 768px) {
+  html {
+    background-size: 80px 80px, 80px 80px, 20px 20px, 100% 15px;
+  }
+  
+  .typewriter {
+    font-size: 14px;
+    letter-spacing: 0.03em;
+  }
+  
+  .texto-oficial {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  
   .stamp {
     transform: rotate(-3deg);
     font-size: 0.875rem;
+    padding: 6px 12px;
   }
   
   .margin-note {
     margin-left: 0.5rem;
     font-size: 0.75rem;
   }
+  
+  .clip-metal::before {
+    width: 14px;
+    height: 18px;
+    top: -8px;
+    right: 10px;
+  }
 }
 
-/* Dark mode - modo secreto/nocturno */
+/* Modo alto contraste */
+@media (prefers-contrast: high) {
+  :root {
+    --papel-base: #FFFFFF;
+    --tinta-oficial: #000000;
+    --tinta-suave: #333333;
+    --sello-rojo: #CC0000;
+    --papel-border: #666666;
+  }
+}
+
+/* Preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .typing-animation,
+  .stamp-effect,
+  .hover-papel,
+  .btn-stamp {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Forzar siempre el tema de papel oficial - sin modo oscuro */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-paper: #1a1410;
-    --color-paper-aged: #231b14;
-    --color-ink: #e8e2d5;
-    --color-ink-faded: #c4beb1;
-    --color-red-stamp: #dc2626;
-    --color-highlight: #7c2d12;
-    --shadow-paper: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.8);
+    /* Mantener siempre colores de papel oficial */
+    --papel-base: #FAF8F3;
+    --papel-sombra: #E8E3D8;
+    --papel-oscuro: #F5F2E8;
+    --papel-border: #D6D1C6;
+    
+    --tinta-oficial: #1A1A1A;
+    --tinta-suave: #4A4A4A;
+    --tinta-clara: #6B7280;
+    --sello-rojo: #B91C1C;
+    --marca-agua: rgba(26, 26, 26, 0.03);
+  }
+}
+
+/* Clases específicas para componentes de sellos oficiales */
+.sello-oficial {
+  background: var(--sello-rojo);
+  color: var(--papel-base);
+  border: 3px double var(--papel-base);
+  box-shadow: 
+    0 3px 6px rgba(185, 28, 28, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.sello-peligro {
+  background: var(--sello-urgent);
+  color: var(--papel-base);
+  border: 2px solid var(--sello-rojo);
+  box-shadow: 
+    0 2px 4px rgba(153, 27, 27, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.sello-peligro:hover {
+  background: var(--sello-rojo);
+  box-shadow: 
+    0 4px 8px rgba(153, 27, 27, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.sello-oficial:hover {
+  background: var(--sello-activo);
+  box-shadow: 
+    0 5px 10px rgba(185, 28, 28, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.sello-secundario {
+  background: var(--papel-sombra);
+  color: var(--tinta-oficial);
+  border-color: var(--papel-border);
+}
+
+.sello-secundario:hover {
+  background: var(--papel-base);
+  border-color: var(--dorado-metal);
+}
+
+.sello-urgente {
+  background: var(--sello-urgent);
+  color: var(--papel-base);
+  border: 3px double var(--papel-base);
+  box-shadow: 
+    0 4px 8px rgba(153, 27, 27, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.sello-urgente:hover {
+  background: var(--sello-rojo);
+}
+
+.sello-aprobado {
+  background: var(--verde-aprobado);
+  color: var(--papel-base);
+  border: 3px double var(--papel-base);
+  box-shadow: 
+    0 3px 6px rgba(5, 150, 105, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.sello-aprobado:hover {
+  background: var(--verde-claro);
+  box-shadow: 
+    0 5px 10px rgba(5, 150, 105, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Print styles - documento oficial para imprimir */
+@media print {
+  html {
+    background: white;
   }
   
-  body {
-    background-image: 
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 20px,
-        rgba(220, 38, 38, 0.05) 20px,
-        rgba(220, 38, 38, 0.05) 21px
-      ),
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 20px,
-        rgba(220, 38, 38, 0.05) 20px,
-        rgba(220, 38, 38, 0.05) 21px
-      );
+  .no-print {
+    display: none;
+  }
+  
+  .paper-container {
+    border: 2px solid #000;
+    box-shadow: none;
+  }
+  
+  .stamp {
+    transform: rotate(-5deg);
+    filter: grayscale(100%);
   }
 }

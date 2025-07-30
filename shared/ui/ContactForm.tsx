@@ -331,7 +331,7 @@ export default function ContactForm({ organizationId, organizationName, type, on
           type="submit"
           size="lg"
           disabled={isSubmitting}
-          className={formData.urgency === 'critical' ? 'bg-red-600 hover:bg-red-700' : ''}
+          className={formData.urgency === 'critical' ? 'sello-urgente' : ''}
         >
           {isSubmitting ? 'ENVIANDO...' : 
            formData.urgency === 'critical' ? '🚨 ENVIAR EMERGENCIA' : 'ENVIAR MENSAJE'}

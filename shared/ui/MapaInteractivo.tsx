@@ -79,16 +79,16 @@ export default function MapaInteractivo({
           >
             <Popup>
               <div className="p-2 min-w-[200px]">
-                <h3 className="font-bold text-red-700 mb-2 typewriter">
+                <h3 className="font-bold mb-2 typewriter" style={{ color: 'var(--sello-rojo)' }}>
                   {org.nombreCorto}
                 </h3>
-                <p className="text-sm text-gray-700 mb-2">
+                <p className="text-sm texto-oficial mb-2">
                   {org.descripcion.substring(0, 100)}...
                 </p>
-                <div className="text-xs text-gray-600 mb-2">
+                <div className="text-xs texto-suave mb-2">
                   📍 {org.ubicacion.ciudad}, {org.ubicacion.estado}
                 </div>
-                <div className="text-xs text-gray-600 mb-3">
+                <div className="text-xs texto-suave mb-3">
                   🏷️ {org.especialidades.slice(0, 2).join(', ')}
                 </div>
                 <div className="flex gap-2">
@@ -96,13 +96,13 @@ export default function MapaInteractivo({
                     href={org.contacto.sitioWeb}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-red-600 text-white px-2 py-1 rounded text-xs hover:bg-red-700 transition-colors"
+                    className="sello-oficial px-2 py-1 rounded text-xs transition-colors"
                   >
                     Visitar
                   </a>
                   <button 
                     onClick={() => onOrganizacionSelect?.(org)}
-                    className="bg-gray-600 text-white px-2 py-1 rounded text-xs hover:bg-gray-700 transition-colors"
+                    className="sello-secundario px-2 py-1 rounded text-xs transition-colors"
                   >
                     Ver más
                   </button>

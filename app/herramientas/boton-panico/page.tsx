@@ -79,7 +79,7 @@ export default function BotonPanicoPage() {
                 <p className="text-xl mb-6">
                   Protocolo de emergencia para borrar rastros digitales en 60 segundos
                 </p>
-                <Stamp className="bg-red-600">EMERGENCIAS SOLAMENTE</Stamp>
+                <Stamp className="sello-peligro">EMERGENCIAS SOLAMENTE</Stamp>
               </div>
 
               <div className="bg-red-50 border-l-4 border-red-500 p-6 mb-8">
@@ -124,7 +124,7 @@ export default function BotonPanicoPage() {
                 <Button 
                   onClick={iniciarProtocolo}
                   size="lg"
-                  className="bg-red-600 hover:bg-red-700"
+                  className="sello-peligro hover:sello-peligro"
                 >
                   🚨 INICIAR PROTOCOLO DE EMERGENCIA
                 </Button>
@@ -148,7 +148,7 @@ export default function BotonPanicoPage() {
               <div className="mb-8">
                 <div className="w-full bg-gray-200 rounded-full h-4 mb-6">
                   <div 
-                    className="bg-red-600 h-4 rounded-full transition-all duration-300"
+                    className="sello-peligro h-4 rounded-full transition-all duration-300"
                     style={{ width: `${((pasoActual + 1) / pasos.length) * 100}%` }}
                   ></div>
                 </div>

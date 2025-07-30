@@ -132,8 +132,10 @@ export default function Nivel1Page() {
             {contenido.titulo && (
               <h3 className="text-xl font-bold mb-4 typewriter">{contenido.titulo}</h3>
             )}
-            <div className="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm overflow-x-auto">
-              <pre className="whitespace-pre-wrap">{contenido.contenido}</pre>
+            <div className="paper-container p-4 font-mono text-sm overflow-x-auto border-doble">
+              <div className="text-tinta-oficial">
+                <pre className="whitespace-pre-wrap typewriter">{contenido.contenido}</pre>
+              </div>
             </div>
           </div>
         );

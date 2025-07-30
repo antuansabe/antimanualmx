@@ -202,7 +202,7 @@ export default function PhishingDetectorPage() {
             
             <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
               <div 
-                className="bg-red-600 h-2 rounded-full transition-all duration-300"
+                className="sello-peligro h-2 rounded-full transition-all duration-300"
                 style={{ width: `${((correoActual + 1) / correosPrueba.length) * 100}%` }}
               ></div>
             </div>
@@ -255,7 +255,7 @@ export default function PhishingDetectorPage() {
                   <Button 
                     onClick={() => responder('phishing')}
                     size="lg"
-                    className="bg-red-600 hover:bg-red-700"
+                    className="sello-peligro hover:sello-peligro"
                   >
                     🚨 PHISHING
                   </Button>

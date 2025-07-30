@@ -220,7 +220,7 @@ export default function ComunicacionCifradaPage() {
                         <td className="text-center p-2">
                           <Stamp className={`text-xs ${
                             app.facilidad === 'FÁCIL' ? 'bg-green-600' : 
-                            app.facilidad === 'MEDIA' ? 'bg-orange-500' : 'bg-red-600'
+                            app.facilidad === 'MEDIA' ? 'bg-orange-500' : 'sello-peligro'
                           }`}>
                             {app.facilidad}
                           </Stamp>
@@ -270,7 +270,7 @@ export default function ComunicacionCifradaPage() {
                       </Stamp>
                       <Stamp className={`text-xs ${
                         app.facilidad === 'FÁCIL' ? 'bg-green-600' : 
-                        app.facilidad === 'MEDIA' ? 'bg-orange-500' : 'bg-red-600'
+                        app.facilidad === 'MEDIA' ? 'bg-orange-500' : 'sello-peligro'
                       }`}>
                         {app.facilidad}
                       </Stamp>
@@ -409,7 +409,7 @@ export default function ComunicacionCifradaPage() {
                   <div className="flex items-center gap-2 mb-2">
                     <h4 className="font-bold">{protocolo.nombre}</h4>
                     <Stamp className={`text-xs ${
-                      protocolo.importancia === 'CRÍTICA' ? 'bg-red-600' :
+                      protocolo.importancia === 'CRÍTICA' ? 'sello-peligro' :
                       protocolo.importancia === 'ALTA' ? 'bg-orange-500' : 'bg-gray-500'
                     }`}>
                       {protocolo.importancia}
