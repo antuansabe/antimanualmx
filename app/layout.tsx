@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Courier_Prime } from "next/font/google";
-import { ExpedienteNav, Stamp } from "@/shared/ui";
+import { ExpedienteNav, Stamp, BottomNav, SwipeNavigationWrapper } from "@/shared/ui";
+import { FooterGlobal } from "@/shared/ui/FooterGlobal";
 import "./globals.css";
 
 const courierPrime = Courier_Prime({
@@ -20,6 +21,7 @@ const navItems = [
   { href: '/herramientas', label: 'HERRAMIENTAS', stamped: true },
   { href: '/red', label: 'RED DE APOYO' },
   { href: '/academia', label: 'ACADEMIA' },
+  { href: '/observatorio', label: 'OBSERVATORIO' },
   { href: '/contacto', label: 'CONTACTO', classified: true }
 ];
 
@@ -37,9 +39,13 @@ export default function RootLayout({
           items={navItems}
           logo={<Stamp size="sm">ANTIMANUAL</Stamp>}
         />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <SwipeNavigationWrapper>
+          <main className="min-h-screen pt-14 md:pt-16">
+            {children}
+          </main>
+        </SwipeNavigationWrapper>
+        <FooterGlobal />
+        <BottomNav />
       </body>
     </html>
   );

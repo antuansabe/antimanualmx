@@ -621,3 +621,250 @@ a:hover {
     filter: grayscale(100%);
   }
 }
+
+/* Optimizaciones móviles mejoradas - Phase 3 */
+@media (max-width: 640px) {
+  /* Espaciado optimizado para móvil */
+  .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Botones optimizados para touch */
+  .btn-stamp {
+    min-height: 44px;
+    min-width: 44px;
+    font-size: 0.875rem;
+    padding: 8px 16px;
+  }
+  
+  /* ExpedienteCard más compacto en móvil */
+  .paper-container {
+    margin-bottom: 1rem;
+    border-width: 1px;
+  }
+  
+  /* Formularios optimizados para móvil */
+  .input-oficial {
+    min-height: 44px;
+    font-size: 16px; /* Previene zoom en iOS */
+    padding: 12px;
+  }
+  
+  /* Stamps más pequeños pero legibles */
+  .stamp {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    min-height: 24px;
+  }
+  
+  /* Texto más legible en pantallas pequeñas */
+  .texto-oficial {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .typewriter {
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  
+  .typewriter-bold {
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+  
+  /* Optimización de texto pequeño */
+  .texto-pequeno {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  
+  /* Espaciado vertical optimizado */
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 1.5rem;
+  }
+  
+  /* Perforaciones más pequeñas en móvil */
+  .perforaciones {
+    padding-left: 20px;
+  }
+  
+  .perforaciones::before {
+    left: 6px;
+    width: 4px;
+    background-size: 8px 16px;
+  }
+  
+  /* Clip metálico más pequeño */
+  .clip-metal::before {
+    width: 12px;
+    height: 16px;
+    top: -6px;
+    right: 8px;
+  }
+}
+
+/* Optimizaciones para pantallas muy pequeñas */
+@media (max-width: 375px) {
+  .typewriter {
+    font-size: 12px;
+  }
+  
+  .texto-oficial {
+    font-size: 13px;
+  }
+  
+  .btn-stamp {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+  
+  .stamp {
+    font-size: 0.6875rem;
+    padding: 3px 6px;
+  }
+  
+  /* Márgenes más compactos */
+  .px-4 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .py-8 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+/* Optimizaciones táctiles */
+@media (hover: none) and (pointer: coarse) {
+  /* Botones más grandes para touch */
+  .btn-stamp,
+  button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  /* Links más grandes */
+  a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  /* Eliminar efectos hover en touch */
+  .hover-papel:hover {
+    transform: translateY(0);
+    box-shadow: 
+      0 1px 3px rgba(0, 0, 0, 0.1),
+      0 1px 2px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Estados de focus más prominentes para touch */
+  .btn-stamp:focus,
+  .input-oficial:focus {
+    outline: 3px solid var(--dorado-metal);
+    outline-offset: 2px;
+  }
+}
+
+/* Landscape móvil optimizado */
+@media (max-width: 896px) and (orientation: landscape) {
+  /* Reducir altura de navegación en landscape */
+  .fixed.top-0 {
+    height: 48px;
+  }
+  
+  .pt-14 {
+    padding-top: 48px;
+  }
+  
+  /* Reducir espaciado vertical en landscape */
+  .py-8 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .mb-8 {
+    margin-bottom: 1rem;
+  }
+  
+  .mb-12 {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Animaciones para navegación por swipe */
+.swipe-transition {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.swipe-indicator {
+  animation: swipe-hint 3s ease-in-out infinite;
+}
+
+@keyframes swipe-hint {
+  0%, 100% { opacity: 0.7; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(3px); }
+}
+
+/* Optimizaciones para swipe en touch devices */
+@media (hover: none) and (pointer: coarse) {
+  /* Prevenir selección de texto durante swipe */
+  main {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  
+  /* Permitir selección en elementos específicos */
+  input, textarea, [contenteditable] {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+  
+  /* Optimizar scroll durante swipe */
+  body {
+    touch-action: pan-y pinch-zoom;
+  }
+}
+
+/* Indicador visual para páginas navegables */
+.page-swipeable {
+  position: relative;
+}
+
+.page-swipeable::before,
+.page-swipeable::after {
+  content: '';
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--papel-border), transparent);
+  opacity: 0.3;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.page-swipeable::before {
+  left: 4px;
+}
+
+.page-swipeable::after {
+  right: 4px;
+}
+
+@media (min-width: 768px) {
+  .page-swipeable::before,
+  .page-swipeable::after {
+    display: none;
+  }
+}

@@ -1,236 +1,387 @@
 import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
 
-const niveles = [
+const modulos = [
   {
+    codigo: 'CAP-001',
     nivel: 1,
-    titulo: 'Activista Digital Básico',
-    descripcion: 'Fundamentos de seguridad digital y primeros pasos en el activismo',
-    duracion: '2-3 horas',
-    modulos: 4,
-    temas: [
-      'Historia de la resistencia digital',
-      'Derechos digitales en México',
-      'Primeros pasos seguros',
-      'Casos de éxito locales'
+    titulo: 'ACTIVISTA DIGITAL BÁSICO',
+    subtitulo: 'Manual de Formación Técnica - Nivel Inicial',
+    descripcion: 'Capacitación fundamental en principios de seguridad digital y metodologías de activismo tecnológico',
+    duracion: '2-3 horas académicas',
+    unidades: 4,
+    competencias: [
+      'Análisis histórico de la resistencia digital mexicana',
+      'Marco jurídico de derechos digitales constitucionales',
+      'Implementación de protocolos básicos de seguridad',
+      'Estudio de casos de activismo digital exitoso'
     ],
-    prerequisitos: 'Ninguno',
-    disponible: true
+    requisitos: 'Ninguno - Curso de acceso libre',
+    habilitado: true,
+    revision: '2024.1'
   },
   {
+    codigo: 'CAP-002',
     nivel: 2,
-    titulo: 'Defensor Comunitario',
-    descripcion: 'Organización segura y construcción de redes de apoyo resilientes',
-    duracion: '4-5 horas',
-    modulos: 6,
-    temas: [
-      'Organización segura para colectivos',
-      'Contravigilancia básica',
-      'Documentación de violaciones',
-      'Construcción de redes de apoyo'
+    titulo: 'DEFENSOR COMUNITARIO',
+    subtitulo: 'Manual de Organización y Contravigilancia',
+    descripcion: 'Especialización en metodologías de organización colectiva segura y construcción de redes resilientes',
+    duracion: '4-5 horas académicas',
+    unidades: 6,
+    competencias: [
+      'Técnicas avanzadas de organización digital segura',
+      'Protocolos de contravigilancia y detección de amenazas',
+      'Metodologías de documentación legal de violaciones',
+      'Arquitectura y sostenibilidad de redes de apoyo'
     ],
-    prerequisitos: 'Nivel 1 completado',
-    disponible: false
+    requisitos: 'Certificación CAP-001 + Evaluación técnica',
+    habilitado: false,
+    revision: '2024.2'
   },
   {
+    codigo: 'CAP-003',
     nivel: 3,
-    titulo: 'Facilitador de Seguridad',
-    descripcion: 'Capacitación avanzada para formar y apoyar a otros activistas',
-    duracion: '6-8 horas',
-    modulos: 8,
-    temas: [
-      'Metodologías de enseñanza',
-      'Diagnósticos comunitarios',
-      'Respuesta a incidentes',
-      'Sostenibilidad de proyectos'
+    titulo: 'FACILITADOR DE SEGURIDAD',
+    subtitulo: 'Manual de Formación de Formadores',
+    descripcion: 'Capacitación avanzada para la formación y acompañamiento técnico de nuevos activistas digitales',
+    duracion: '6-8 horas académicas',
+    unidades: 8,
+    competencias: [
+      'Metodologías pedagógicas en educación digital crítica',
+      'Técnicas de diagnóstico comunitario de vulnerabilidades',
+      'Protocolos de respuesta inmediata a incidentes críticos',
+      'Planificación estratégica de proyectos de resistencia digital'
     ],
-    prerequisitos: 'Nivel 2 completado + experiencia práctica',
-    disponible: false
+    requisitos: 'Certificación CAP-002 + 6 meses experiencia práctica',
+    habilitado: false,
+    revision: '2024.3'
   }
 ];
 
-const estadisticas = {
+const metricas = {
   estudiantes: 247,
-  certificados: 89,
+  certificaciones: 89,
   organizaciones: 12,
-  satisfaccion: 94
+  efectividad: 94
 };
 
 export default function AcademiaPage() {
-  return (
-    <div className="min-h-screen p-4 md:p-8">
+  const currentDate = new Date().toLocaleDateString('es-MX', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
 
-      <main className="max-w-6xl mx-auto">
+  return (
+    <div className="min-h-screen">
+      <main className="max-w-7xl mx-auto px-4 py-8 md:px-8 md:py-12">
+        {/* Portada del manual técnico */}
         <section className="mb-12">
-          <ExpedienteCard variant="default">
-            <div className="text-center">
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
+          <ExpedienteCard variant="approved" className="max-w-5xl mx-auto" perforated>
+            {/* Encabezado institucional */}
+            <div className="border-b-2 border-doble border-verde-aprobado pb-6 mb-8">
+              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                  <p className="texto-pequeno mb-1 text-verde-aprobado">REPÚBLICA DIGITAL DE MÉXICO</p>
+                  <p className="texto-pequeno text-verde-aprobado">INSTITUTO NACIONAL DE CAPACITACIÓN DIGITAL</p>
+                </div>
+                <div className="text-right">
+                  <Stamp className="text-xs bg-verde-aprobado text-white transform -rotate-2 mb-2">CERTIFICADO</Stamp>
+                  <p className="texto-pequeno">Manual: INCD-{new Date().getFullYear()}-CAP-001</p>
+                  <p className="texto-pequeno">Revisión: {currentDate}</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center mb-8">
+              <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter text-verde-aprobado">
                 ACADEMIA ACTIVISTA
               </h1>
-              <p className="text-xl text-red-700 font-bold mb-6">
-                DE USUARIO VULNERABLE A DEFENSOR DIGITAL
+              <div className="inline-block border-4 border-double border-verde-aprobado px-6 py-2 mb-4 bg-verde-aprobado/10">
+                <p className="text-lg md:text-xl text-verde-aprobado font-bold tracking-widest typewriter">
+                  MANUAL DE CAPACITACIÓN TÉCNICA
+                </p>
+              </div>
+              <p className="texto-pequeno mt-4">
+                PROGRAMA DE FORMACIÓN EN ACTIVISMO DIGITAL • VERSIÓN 2024.1
               </p>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm mb-8">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-red-700">{estadisticas.estudiantes}</div>
-                  <div className="text-xs text-gray-600">Estudiantes</div>
+            </div>
+
+            {/* Objetivos del manual */}
+            <div className="space-y-6 texto-oficial leading-relaxed mb-8">
+              <div className="pl-8 border-l-4 border-verde-aprobado">
+                <p className="mb-4">
+                  <span className="typewriter-bold text-sm">OBJETIVO GENERAL:</span> Formar activistas digitales capacitados en metodologías de seguridad, organización comunitaria y liderazgo tecnológico para la defensa de derechos humanos.
+                </p>
+                <p className="mb-4">
+                  <span className="typewriter-bold text-sm">POBLACIÓN OBJETIVO:</span> Defensores de derechos humanos, periodistas, organizaciones de la sociedad civil y ciudadanía comprometida con la transformación digital.
+                </p>
+                <p className="mb-4">
+                  <span className="typewriter-bold text-sm">MODALIDAD:</span> Educación digital auto-dirigida con acompañamiento técnico especializado y certificación verificable.
+                </p>
+              </div>
+            </div>
+
+            {/* Métricas del programa */}
+            <div className="bg-verde-aprobado/5 border border-verde-aprobado p-6 mb-8">
+              <div className="text-center mb-4">
+                <p className="typewriter-bold text-verde-aprobado text-sm">INDICADORES DE IMPACTO DEL PROGRAMA</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-verde-aprobado typewriter">{metricas.estudiantes}</div>
+                  <div className="texto-pequeno">Estudiantes activos</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-red-700">{estadisticas.certificados}</div>
-                  <div className="text-xs text-gray-600">Certificados</div>
+                <div>
+                  <div className="text-2xl font-bold text-verde-aprobado typewriter">{metricas.certificaciones}</div>
+                  <div className="texto-pequeno">Certificaciones emitidas</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-red-700">{estadisticas.organizaciones}</div>
-                  <div className="text-xs text-gray-600">Organizaciones</div>
+                <div>
+                  <div className="text-2xl font-bold text-verde-aprobado typewriter">{metricas.organizaciones}</div>
+                  <div className="texto-pequeno">Organizaciones beneficiadas</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-red-700">{estadisticas.satisfaccion}%</div>
-                  <div className="text-xs text-gray-600">Satisfacción</div>
+                <div>
+                  <div className="text-2xl font-bold text-verde-aprobado typewriter">{metricas.efectividad}%</div>
+                  <div className="texto-pequeno">Efectividad formativa</div>
                 </div>
               </div>
+            </div>
 
-              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-                Formación progresiva y práctica en seguridad digital, organización comunitaria 
-                y liderazgo activista. Cada nivel te prepara para enfrentar desafíos más complejos 
-                y apoyar a otros en su proceso de empoderamiento digital.
+            {/* Declaración de principios */}
+            <div className="text-center pt-6 border-t border-verde-aprobado">
+              <p className="texto-oficial leading-relaxed max-w-4xl mx-auto">
+                Este programa de capacitación está fundamentado en los principios de 
+                <span className="highlight font-bold"> educación popular</span>, 
+                <span className="highlight font-bold"> tecnología libre</span> y 
+                <span className="highlight font-bold"> resistencia colectiva</span>. 
+                Cada módulo busca transformar vulnerabilidades individuales en fortalezas comunitarias.
               </p>
             </div>
           </ExpedienteCard>
         </section>
 
-        <section className="grid gap-8 mb-16">
-          {niveles.map((nivel) => (
-            <ExpedienteCard key={nivel.nivel} className={!nivel.disponible ? 'opacity-60' : ''}>
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="md:w-1/4 text-center">
-                  <div className="text-6xl font-bold text-red-700 mb-2">
-                    {nivel.nivel}
+        {/* Módulos de capacitación */}
+        <section className="mb-12">
+          <div className="text-center mb-8">
+            <h2 className="typewriter-bold text-2xl mb-2">MÓDULOS DE CAPACITACIÓN DISPONIBLES</h2>
+            <p className="texto-pequeno">INSTITUTO NACIONAL DE CAPACITACIÓN DIGITAL • INCD-CAP</p>
+          </div>
+          
+          <div className="space-y-8">
+            {modulos.map((modulo) => (
+              <ExpedienteCard 
+                key={modulo.codigo} 
+                variant="approved"
+                className={!modulo.habilitado ? 'opacity-60' : ''}
+                perforated
+              >
+                {/* Encabezado del módulo */}
+                <div className="border-b border-verde-aprobado pb-4 mb-6">
+                  <div className="flex flex-col md:flex-row justify-between items-start gap-4">
+                    <div className="flex items-start gap-6">
+                      <div className="text-center">
+                        <div className="w-16 h-16 bg-verde-aprobado/10 border-2 border-verde-aprobado rounded-full flex items-center justify-center mb-2">
+                          <span className="text-2xl font-bold text-verde-aprobado typewriter">{modulo.nivel}</span>
+                        </div>
+                        <Stamp className={`text-xs ${modulo.habilitado ? 'bg-verde-aprobado text-white' : 'bg-gray-500 text-white'}`}>
+                          {modulo.habilitado ? 'HABILITADO' : 'EN DESARROLLO'}
+                        </Stamp>
+                      </div>
+                      <div>
+                        <p className="texto-pequeno mb-1">MÓDULO {modulo.codigo}</p>
+                        <h3 className="text-xl md:text-2xl font-bold typewriter mb-1 text-verde-aprobado">
+                          {modulo.titulo}
+                        </h3>
+                        <p className="texto-pequeno text-verde-aprobado mb-2">{modulo.subtitulo}</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="texto-pequeno">Revisión: {modulo.revision}</p>
+                      <p className="texto-pequeno">Duración: {modulo.duracion}</p>
+                      <p className="texto-pequeno">Unidades: {modulo.unidades}</p>
+                    </div>
                   </div>
-                  <Stamp className={`text-xs ${nivel.disponible ? 'bg-green-600' : 'bg-gray-500'}`}>
-                    {nivel.disponible ? 'DISPONIBLE' : 'PRÓXIMAMENTE'}
-                  </Stamp>
                 </div>
-                
-                <div className="md:w-3/4">
-                  <h3 className="text-2xl font-bold typewriter mb-2">
-                    {nivel.titulo}
-                  </h3>
-                  <p className="text-gray-700 mb-4">
-                    {nivel.descripcion}
+
+                {/* Descripción y especificaciones */}
+                <div className="mb-6">
+                  <p className="texto-oficial leading-relaxed mb-4">
+                    {modulo.descripcion}
                   </p>
                   
-                  <div className="grid md:grid-cols-3 gap-4 mb-6 text-sm">
-                    <div>
-                      <strong>Duración:</strong> {nivel.duracion}
-                    </div>
-                    <div>
-                      <strong>Módulos:</strong> {nivel.modulos}
-                    </div>
-                    <div>
-                      <strong>Prerequisitos:</strong> {nivel.prerequisitos}
-                    </div>
+                  <div className="bg-papel-sombra border-l-4 border-verde-aprobado p-4 mb-4">
+                    <p className="typewriter-bold text-sm mb-2 text-verde-aprobado">REQUISITOS DE INGRESO:</p>
+                    <p className="texto-pequeno">
+                      {modulo.requisitos}
+                    </p>
                   </div>
-                  
-                  <div className="mb-6">
-                    <h4 className="font-bold mb-2">Temas principales:</h4>
-                    <ul className="grid md:grid-cols-2 gap-1 text-sm text-gray-600">
-                      {nivel.temas.map((tema, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <span className="text-red-700 mt-0.5">•</span>
-                          <span>{tema}</span>
-                        </li>
+
+                  {/* Competencias del módulo */}
+                  <div className="mb-4">
+                    <h4 className="typewriter-bold text-sm mb-3 text-verde-aprobado">COMPETENCIAS TÉCNICAS A DESARROLLAR:</h4>
+                    <div className="grid md:grid-cols-2 gap-2">
+                      {modulo.competencias.map((competencia, index) => (
+                        <div key={index} className="flex items-start gap-2 texto-pequeno">
+                          <span className="text-verde-aprobado mt-1 text-xs">▶</span>
+                          <span>{competencia}</span>
+                        </div>
                       ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    {nivel.disponible ? (
-                      <>
-                        <Link href={nivel.nivel === 1 ? '/academia/nivel-1' : '#'}>
-                          <SelloAccion size="lg" disabled={nivel.nivel !== 1}>
-                            COMENZAR NIVEL {nivel.nivel}
-                          </SelloAccion>
-                        </Link>
-                        <SelloAccion variant="secondary" size="lg">
-                          VER TEMARIO COMPLETO
-                        </SelloAccion>
-                      </>
-                    ) : (
-                      <SelloAccion variant="secondary" size="lg" disabled>
-                        PRÓXIMAMENTE
-                      </SelloAccion>
-                    )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ExpedienteCard>
-          ))}
+
+                {/* Acciones disponibles */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  {modulo.habilitado ? (
+                    <>
+                      <Link href={modulo.nivel === 1 ? '/academia/nivel-1' : '#'}>
+                        <SelloAccion 
+                          variant="approved"
+                          size="lg"
+                          disabled={modulo.nivel !== 1}
+                        >
+                          🎓 ACCEDER AL MÓDULO
+                        </SelloAccion>
+                      </Link>
+                      <SelloAccion variant="secondary" size="lg">
+                        📋 PROGRAMA ACADÉMICO
+                      </SelloAccion>
+                    </>
+                  ) : (
+                    <SelloAccion variant="secondary" size="lg" disabled>
+                      🔒 PRÓXIMAMENTE
+                    </SelloAccion>
+                  )}
+                </div>
+
+                {/* Código de expediente */}
+                <div className="absolute bottom-2 right-2 text-xs texto-suave typewriter opacity-30">
+                  {modulo.codigo}-{new Date().getFullYear()}
+                </div>
+              </ExpedienteCard>
+            ))}
+          </div>
         </section>
 
+        {/* Marco metodológico */}
         <section className="mb-16">
-          <ExpedienteCard>
-            <div className="text-center">
-              <h2 className="text-2xl font-bold mb-6 typewriter">
-                🎓 METODOLOGÍA DE APRENDIZAJE
-              </h2>
+          <ExpedienteCard variant="classified" className="max-w-5xl mx-auto" stamped>
+            <div className="border-b-2 border-papel-border pb-4 mb-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="texto-pequeno mb-1">ANEXO TÉCNICO</p>
+                  <h2 className="text-2xl font-bold typewriter">
+                    MARCO METODOLÓGICO DEL PROGRAMA
+                  </h2>
+                </div>
+                <Stamp className="text-xs">PÚBLICO</Stamp>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <div className="bg-azul-info/10 border-l-4 border-azul-info p-4 mb-6">
+                <p className="typewriter-bold text-azul-info mb-2">ENFOQUE PEDAGÓGICO:</p>
+                <p className="texto-oficial">
+                  El programa utiliza metodologías de educación popular adaptadas al contexto digital, 
+                  priorizando el aprendizaje experiencial y la construcción colectiva del conocimiento.
+                </p>
+              </div>
               
               <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="text-4xl mb-3">💻</div>
-                  <h3 className="font-bold mb-2">Práctica Real</h3>
-                  <p className="text-sm text-gray-600">
-                    Ejercicios con casos reales, simuladores interactivos y laboratorios seguros
+                <ExpedienteCard className="h-full text-center">
+                  <div className="inline-block p-4 bg-azul-info/10 rounded-full mb-4">
+                    <span className="text-3xl">💻</span>
+                  </div>
+                  <h3 className="typewriter-bold text-lg mb-3">PRÁCTICA TÉCNICA APLICADA</h3>
+                  <p className="texto-oficial text-sm mb-4">
+                    Laboratorios virtuales seguros, simuladores de amenazas y ejercicios con casos documentados
                   </p>
-                </div>
+                  <div className="pt-3 border-t border-papel-border">
+                    <p className="texto-pequeno font-bold">METODOLOGÍA ACTIVA</p>
+                  </div>
+                </ExpedienteCard>
                 
-                <div className="text-center">
-                  <div className="text-4xl mb-3">👥</div>
-                  <h3 className="font-bold mb-2">Aprendizaje Colectivo</h3>
-                  <p className="text-sm text-gray-600">
-                    Grupos de estudio, mentorías P2P y construcción de redes de apoyo
+                <ExpedienteCard className="h-full text-center">
+                  <div className="inline-block p-4 bg-azul-info/10 rounded-full mb-4">
+                    <span className="text-3xl">👥</span>
+                  </div>
+                  <h3 className="typewriter-bold text-lg mb-3">CONSTRUCCIÓN COLECTIVA</h3>
+                  <p className="texto-oficial text-sm mb-4">
+                    Círculos de estudio, mentorías horizontales y desarrollo de redes de apoyo mutuo
                   </p>
-                </div>
+                  <div className="pt-3 border-t border-papel-border">
+                    <p className="texto-pequeno font-bold">EDUCACIÓN POPULAR</p>
+                  </div>
+                </ExpedienteCard>
                 
-                <div className="text-center">
-                  <div className="text-4xl mb-3">🏆</div>
-                  <h3 className="font-bold mb-2">Certificación Verificable</h3>
-                  <p className="text-sm text-gray-600">
-                    Certificados digitales verificables y reconocidos por la comunidad
+                <ExpedienteCard className="h-full text-center">
+                  <div className="inline-block p-4 bg-verde-aprobado/10 rounded-full mb-4">
+                    <span className="text-3xl">🏆</span>
+                  </div>
+                  <h3 className="typewriter-bold text-lg mb-3">ACREDITACIÓN VERIFICABLE</h3>
+                  <p className="texto-oficial text-sm mb-4">
+                    Certificaciones digitales con blockchain y reconocimiento institucional verificable
                   </p>
-                </div>
+                  <div className="pt-3 border-t border-papel-border">
+                    <Stamp className="text-xs bg-verde-aprobado">CERTIFICADO</Stamp>
+                  </div>
+                </ExpedienteCard>
+              </div>
+
+              <div className="text-center pt-6 border-t border-papel-border">
+                <p className="texto-pequeno">
+                  MARCO PEDAGÓGICO VALIDADO POR: Instituto Nacional de Capacitación Digital • {currentDate}
+                </p>
               </div>
             </div>
           </ExpedienteCard>
         </section>
 
+        {/* Convocatoria */}
         <section className="text-center">
-          <ExpedienteCard>
-            <h2 className="text-2xl font-bold mb-4 typewriter">
-              ¿LISTO PARA TRANSFORMARTE?
-            </h2>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-              El cambio comienza con el primer paso. Únete a nuestra comunidad de aprendizaje 
-              y construyamos juntos un futuro digital más libre y seguro.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/academia/nivel-1">
-                <SelloAccion size="lg">
-                  COMENZAR NIVEL 1 GRATIS
-                </SelloAccion>
-              </Link>
-              <Link href="/academia/perfil">
-                <SelloAccion variant="secondary" size="lg">
-                  VER MI PERFIL
-                </SelloAccion>
-              </Link>
+          <ExpedienteCard variant="approved" className="max-w-4xl mx-auto">
+            <div className="border-b border-verde-aprobado pb-4 mb-6">
+              <h2 className="text-2xl font-bold typewriter text-verde-aprobado">
+                CONVOCATORIA ABIERTA
+              </h2>
+              <p className="texto-pequeno mt-2">PROGRAMA DE FORMACIÓN EN ACTIVISMO DIGITAL</p>
             </div>
-            
-            <div className="mt-6 text-sm text-gray-500">
-              <p className="margin-note">
-                &ldquo;El conocimiento compartido es poder multiplicado&rdquo;
+
+            <div className="space-y-6">
+              <div className="bg-verde-aprobado/10 border border-verde-aprobado p-6">
+                <p className="typewriter-bold text-verde-aprobado mb-2">DIRIGIDO A:</p>
+                <p className="texto-oficial leading-relaxed">
+                  Defensores de derechos humanos, periodistas, organizaciones de la sociedad civil, 
+                  estudiantes y ciudadanía comprometida con la transformación digital de México.
+                </p>
+              </div>
+
+              <p className="texto-oficial leading-relaxed max-w-3xl mx-auto">
+                La resistencia digital comienza con la formación técnica. Únete a nuestra comunidad de 
+                aprendizaje y contribuye a construir un ecosistema digital más libre, seguro y soberano.
               </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link href="/academia/nivel-1">
+                  <SelloAccion variant="approved" size="lg">
+                    🎓 INICIAR CAPACITACIÓN
+                  </SelloAccion>
+                </Link>
+                <Link href="/academia/perfil">
+                  <SelloAccion variant="secondary" size="lg">
+                    👤 ACCEDER A MI PERFIL
+                  </SelloAccion>
+                </Link>
+              </div>
+              
+              <div className="mt-8 pt-6 border-t border-verde-aprobado">
+                <p className="margin-note text-verde-aprobado">
+                  &ldquo;El conocimiento compartido es poder multiplicado&rdquo;
+                </p>
+                <p className="texto-pequeno mt-2">
+                  CONVOCATORIA PERMANENTE • ACCESO LIBRE Y GRATUITO
+                </p>
+              </div>
             </div>
           </ExpedienteCard>
         </section>

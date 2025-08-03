@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ReactNode } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 
 interface NavItem {
   href: string;
@@ -19,6 +19,35 @@ interface ExpedienteNavProps {
 
 const ExpedienteNav = ({ items, logo, className = '' }: ExpedienteNavProps) => {
   const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Only apply scroll behavior on mobile
+      if (window.innerWidth < 768) {
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+          setIsVisible(false);
+        } else if (currentScrollY < lastScrollY) {
+          setIsVisible(true);
+        }
+      } else {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [lastScrollY]);
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -26,33 +55,41 @@ const ExpedienteNav = ({ items, logo, className = '' }: ExpedienteNavProps) => {
   };
 
   return (
-    <nav className={`bg-papel-base border-b-2 border-papel-border sombra-papel relative ${className}`}>
+    <nav 
+      className={`
+        bg-papel-base border-b-2 border-papel-border sombra-papel relative
+        fixed top-0 left-0 right-0 z-40
+        transition-transform duration-300 ease-in-out
+        ${isVisible ? 'translate-y-0' : '-translate-y-full'}
+        ${className}
+      `}
+    >
       {/* Membrete oficial */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sello-rojo via-dorado-metal to-sello-rojo opacity-60"></div>
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-14 md:h-16">
           {/* Logo / Título */}
           <div className="flex items-center">
             {logo && (
-              <div className="mr-8">
+              <div className="mr-4 md:mr-8">
                 {logo}
               </div>
             )}
             
-            {/* Título del documento */}
-            <div className="hidden md:block">
-              <div className="typewriter text-sm text-tinta-suave uppercase tracking-wider">
+            {/* Título del documento - Simplified for mobile */}
+            <div className="hidden sm:block">
+              <div className="typewriter text-xs md:text-sm text-tinta-suave uppercase tracking-wider">
                 Estados Unidos Mexicanos
               </div>
-              <div className="typewriter-bold text-lg text-tinta-oficial">
+              <div className="typewriter-bold text-sm md:text-lg text-tinta-oficial">
                 Archivo Antimanual
               </div>
             </div>
           </div>
 
-          {/* Items de navegación */}
-          <div className="flex items-center space-x-1">
+          {/* Items de navegación - Hidden on mobile, shown on desktop */}
+          <div className="hidden md:flex items-center space-x-1">
             {items.map((item) => {
               const active = isActive(item.href);
               
@@ -61,7 +98,7 @@ const ExpedienteNav = ({ items, logo, className = '' }: ExpedienteNavProps) => {
                   key={item.href}
                   href={item.href}
                   className={`
-                    px-4 py-2 text-sm typewriter relative transition-all duration-200
+                    px-3 lg:px-4 py-2 text-sm typewriter relative transition-all duration-200
                     ${active 
                       ? 'bg-papel-sombra text-tinta-oficial border-b-2 border-sello-rojo' 
                       : 'text-tinta-suave hover:text-tinta-oficial hover:bg-papel-sombra/50'
@@ -85,7 +122,17 @@ const ExpedienteNav = ({ items, logo, className = '' }: ExpedienteNavProps) => {
             })}
           </div>
 
-          {/* Información del expediente */}
+          {/* Mobile-only indicators */}
+          <div className="flex md:hidden items-center space-x-2">
+            <div className="text-xs texto-suave typewriter">
+              {new Date().toLocaleDateString('es-MX', {
+                month: '2-digit',
+                day: '2-digit'
+              })}
+            </div>
+          </div>
+
+          {/* Información del expediente - Desktop only */}
           <div className="hidden lg:block text-right">
             <div className="text-xs texto-suave typewriter">
               {new Date().toLocaleDateString('es-MX', {

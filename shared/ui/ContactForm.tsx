@@ -116,100 +116,114 @@ export default function ContactForm({ organizationId, organizationName, type, on
 
   if (submitted) {
     return (
-      <div className="text-center py-12">
-        <div className="text-6xl mb-4">✅</div>
-        <h3 className="text-2xl font-bold mb-4 typewriter">¡MENSAJE ENVIADO!</h3>
-        <p className="text-gray-600 mb-6">
-          {formData.urgency === 'critical' 
-            ? 'Tu mensaje de emergencia ha sido enviado. Recibirás respuesta en las próximas horas.'
-            : 'Tu mensaje ha sido enviado correctamente. Recibirás respuesta en 1-2 días hábiles.'
-          }
-        </p>
-        <SelloAccion onClick={() => { setSubmitted(false); setFormData({ name: '', email: '', phone: '', organization: '', subject: '', message: '', urgency: 'medium', category: '', anonymous: false }); }}>
-          ENVIAR OTRO MENSAJE
+      <div className="text-center py-12 px-4">
+        <div className="text-6xl mb-6">📜</div>
+        <h3 className="text-xl md:text-2xl typewriter-bold mb-4 text-sello-rojo">¡MENSAJE REGISTRADO OFICIALMENTE!</h3>
+        <div className="bg-papel-sombra border border-papel-border p-6 rounded mb-6 sombra-papel">
+          <p className="typewriter text-sm text-tinta-suave leading-relaxed">
+            {formData.urgency === 'critical' 
+              ? 'TU MENSAJE DE EMERGENCIA HA SIDO REGISTRADO EN EL SISTEMA. RECIBIRÁS RESPUESTA EN LAS PRÓXIMAS HORAS.'
+              : 'TU MENSAJE HA SIDO INGRESADO AL ARCHIVO OFICIAL. RECIBIRÁS RESPUESTA EN 1-2 DÍAS HÁBILES.'
+            }
+          </p>
+          <div className="mt-4 pt-4 border-t border-papel-border">
+            <p className="typewriter text-xs text-tinta-clara">
+              FOLIO: #{Math.random().toString(36).substr(2, 8).toUpperCase()}
+            </p>
+          </div>
+        </div>
+        <SelloAccion 
+          size="lg"
+          className="w-full sm:w-auto touch-manipulation min-h-[48px]"
+          onClick={() => { 
+            setSubmitted(false); 
+            setFormData({ name: '', email: '', phone: '', organization: '', subject: '', message: '', urgency: 'medium', category: '', anonymous: false }); 
+          }}
+        >
+          📄 ENVIAR OTRO MENSAJE
         </SelloAccion>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6 px-1">
       {organizationName && (
-        <div className="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-          <p className="text-blue-800">
-            <strong>Contactando:</strong> {organizationName}
+        <div className="bg-papel-sombra border-l-4 border-dorado-metal p-4 mb-6 sombra-papel">
+          <p className="typewriter text-tinta-oficial">
+            <span className="typewriter-bold">CONTACTANDO A:</span> {organizationName.toUpperCase()}
           </p>
         </div>
       )}
 
       {/* Checkbox para contacto anónimo */}
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3 p-4 bg-papel-sombra border border-papel-border rounded">
         <input
           type="checkbox"
           id="anonymous"
           checked={formData.anonymous}
           onChange={(e) => handleChange('anonymous', e.target.checked)}
-          className="w-4 h-4"
+          className="w-5 h-5 text-sello-rojo bg-papel-base border-papel-border rounded focus:ring-sello-rojo focus:ring-2"
         />
-        <label htmlFor="anonymous" className="text-sm">
-          Enviar mensaje de forma anónima
+        <label htmlFor="anonymous" className="text-sm typewriter cursor-pointer">
+          🔒 ENVIAR MENSAJE DE FORMA ANÓNIMA
         </label>
       </div>
 
       {/* Información personal (solo si no es anónimo) */}
       {!formData.anonymous && (
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-bold mb-2">
-              Nombre completo *
+            <label className="block typewriter-bold text-sm mb-2">
+              NOMBRE COMPLETO *
             </label>
             <input
               type="text"
               value={formData.name}
               onChange={(e) => handleChange('name', e.target.value)}
-              className={`w-full p-3 border rounded-lg ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
-              placeholder="Tu nombre completo"
+              className={`input-oficial w-full ${errors.name ? 'border-sello-rojo' : ''}`}
+              placeholder="Nombre completo del solicitante"
             />
-            {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+            {errors.name && <p className="text-sello-rojo text-xs mt-1 typewriter">⚠ {errors.name}</p>}
           </div>
 
           <div>
-            <label className="block text-sm font-bold mb-2">
-              Email *
+            <label className="block typewriter-bold text-sm mb-2">
+              CORREO ELECTRÓNICO *
             </label>
             <input
               type="email"
               value={formData.email}
               onChange={(e) => handleChange('email', e.target.value)}
-              className={`w-full p-3 border rounded-lg ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-              placeholder="tu@email.com"
+              className={`input-oficial w-full ${errors.email ? 'border-sello-rojo' : ''}`}
+              placeholder="correo@dominio.mx"
             />
-            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+            {errors.email && <p className="text-sello-rojo text-xs mt-1 typewriter">⚠ {errors.email}</p>}
           </div>
 
           <div>
-            <label className="block text-sm font-bold mb-2">
-              Teléfono (opcional)
+            <label className="block typewriter-bold text-sm mb-2">
+              TELÉFONO (OPCIONAL)
             </label>
             <input
               type="tel"
               value={formData.phone}
               onChange={(e) => handleChange('phone', e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg"
+              className="input-oficial w-full"
               placeholder="+52 55 1234 5678"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-bold mb-2">
-              Organización (opcional)
+            <label className="block typewriter-bold text-sm mb-2">
+              ORGANIZACIÓN (OPCIONAL)
             </label>
             <input
               type="text"
               value={formData.organization}
               onChange={(e) => handleChange('organization', e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg"
-              placeholder="Nombre de tu organización"
+              className="input-oficial w-full"
+              placeholder="Nombre de la organización"
             />
           </div>
         </div>
@@ -217,25 +231,30 @@ export default function ContactForm({ organizationId, organizationName, type, on
 
       {/* Nivel de urgencia */}
       <div>
-        <label className="block text-sm font-bold mb-2">
-          Nivel de urgencia *
+        <label className="block typewriter-bold text-sm mb-2">
+          NIVEL DE URGENCIA *
         </label>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
           {Object.entries(urgencyOptions).map(([key, option]) => (
             <button
               key={key}
               type="button"
               onClick={() => handleChange('urgency', key)}
-              className={`p-3 rounded-lg border-2 text-sm transition-colors ${
-                formData.urgency === key
-                  ? 'border-red-500 bg-red-50'
-                  : 'border-gray-300 hover:border-gray-400'
-              }`}
+              className={`
+                p-4 rounded border-2 transition-all duration-200 min-h-[60px] touch-manipulation
+                ${formData.urgency === key
+                  ? 'border-sello-rojo bg-papel-sombra sombra-papel'
+                  : 'border-papel-border bg-papel-base hover:border-dorado-metal hover:bg-papel-sombra'
+                }
+              `}
             >
-              <div className={`text-xs px-2 py-1 rounded mb-1 ${option.color}`}>
-                {option.label}
+              <div className={`
+                text-xs typewriter font-bold px-2 py-1 rounded mb-2
+                ${formData.urgency === key ? 'bg-sello-rojo text-white' : option.color}
+              `}>
+                {option.label.toUpperCase()}
               </div>
-              <div className="text-xs text-gray-600">
+              <div className="text-xs texto-suave typewriter leading-tight">
                 {option.description}
               </div>
             </button>
@@ -245,67 +264,75 @@ export default function ContactForm({ organizationId, organizationName, type, on
 
       {/* Categoría */}
       <div>
-        <label className="block text-sm font-bold mb-2">
-          Categoría *
+        <label className="block typewriter-bold text-sm mb-2">
+          CATEGORÍA DE LA SOLICITUD *
         </label>
         <select
           value={formData.category}
           onChange={(e) => handleChange('category', e.target.value)}
-          className={`w-full p-3 border rounded-lg ${errors.category ? 'border-red-500' : 'border-gray-300'}`}
+          className={`input-oficial w-full ${errors.category ? 'border-sello-rojo' : ''}`}
         >
-          <option value="">Selecciona una categoría</option>
+          <option value="">▼ Seleccionar categoría oficial</option>
           {categoryOptions[type].map((category) => (
             <option key={category} value={category}>
               {category}
             </option>
           ))}
         </select>
-        {errors.category && <p className="text-red-500 text-xs mt-1">{errors.category}</p>}
+        {errors.category && <p className="text-sello-rojo text-xs mt-1 typewriter">⚠ {errors.category}</p>}
       </div>
 
       {/* Asunto */}
       <div>
-        <label className="block text-sm font-bold mb-2">
-          Asunto *
+        <label className="block typewriter-bold text-sm mb-2">
+          ASUNTO DE LA COMUNICACIÓN *
         </label>
         <input
           type="text"
           value={formData.subject}
           onChange={(e) => handleChange('subject', e.target.value)}
-          className={`w-full p-3 border rounded-lg ${errors.subject ? 'border-red-500' : 'border-gray-300'}`}
-          placeholder="Describe brevemente tu consulta"
+          className={`input-oficial w-full ${errors.subject ? 'border-sello-rojo' : ''}`}
+          placeholder="Resumen ejecutivo de la solicitud"
         />
-        {errors.subject && <p className="text-red-500 text-xs mt-1">{errors.subject}</p>}
+        {errors.subject && <p className="text-sello-rojo text-xs mt-1 typewriter">⚠ {errors.subject}</p>}
       </div>
 
       {/* Mensaje */}
       <div>
-        <label className="block text-sm font-bold mb-2">
-          Mensaje *
+        <label className="block typewriter-bold text-sm mb-2">
+          DESCRIPCIÓN DETALLADA DE LA SOLICITUD *
         </label>
         <textarea
           value={formData.message}
           onChange={(e) => handleChange('message', e.target.value)}
           rows={6}
-          className={`w-full p-3 border rounded-lg ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
-          placeholder="Proporciona todos los detalles relevantes sobre tu situación o consulta..."
+          className={`input-oficial w-full resize-none ${errors.message ? 'border-sello-rojo' : ''}`}
+          placeholder="Proporcione todos los detalles relevantes, antecedentes del caso, evidencia disponible y acciones requeridas. Sea específico y conciso en su exposición."
         />
-        {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
-        <p className="text-xs text-gray-500 mt-1">
-          Caracteres: {formData.message.length}/2000
-        </p>
+        {errors.message && <p className="text-sello-rojo text-xs mt-1 typewriter">⚠ {errors.message}</p>}
+        <div className="flex justify-between items-center mt-2">
+          <p className="texto-pequeno">
+            Caracteres utilizados: {formData.message.length}/2000
+          </p>
+          <div className="text-xs bg-papel-sombra px-2 py-1 rounded">
+            <span className="typewriter">
+              {formData.message.length < 1600 ? '📝 SUFICIENTE' : 
+               formData.message.length < 1900 ? '⚠ EXTENSO' : '🚫 LÍMITE'}
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Alertas según urgencia */}
       {formData.urgency === 'critical' && (
-        <div className="bg-red-50 border-l-4 border-red-500 p-4">
-          <div className="flex items-start">
-            <div className="text-2xl mr-3">🚨</div>
+        <div className="bg-papel-base border-l-4 border-sello-rojo p-4 sombra-papel">
+          <div className="flex items-start gap-3">
+            <div className="text-2xl text-sello-rojo">🚨</div>
             <div>
-              <p className="font-bold text-red-800">EMERGENCIA:</p>
-              <p className="text-red-700 text-sm">
-                Si estás en peligro inmediato, considera contactar también: Artículo 19 (911) 
-                o tu organización local de derechos humanos.
+              <p className="typewriter-bold text-sello-rojo mb-2">PROTOCOLO DE EMERGENCIA ACTIVADO:</p>
+              <p className="typewriter text-xs text-tinta-suave leading-relaxed">
+                SI ESTÁS EN PELIGRO INMEDIATO, CONSIDERA CONTACTAR TAMBIÉN: ARTÍCULO 19 (911) 
+                O TU ORGANIZACIÓN LOCAL DE DERECHOS HUMANOS.
               </p>
             </div>
           </div>
@@ -313,37 +340,52 @@ export default function ContactForm({ organizationId, organizationName, type, on
       )}
 
       {/* Información de privacidad */}
-      <div className="bg-gray-50 p-4 rounded-lg text-sm">
-        <h4 className="font-bold mb-2">🔒 Privacidad y seguridad:</h4>
-        <ul className="space-y-1 text-gray-600">
-          <li>• Tu información será tratada de forma confidencial</li>
-          <li>• Los mensajes críticos tienen prioridad de respuesta</li>
-          <li>• Puedes solicitar comunicación por canales cifrados</li>
+      <div className="bg-papel-sombra border border-papel-border p-4 rounded text-sm sombra-papel">
+        <h4 className="typewriter-bold mb-3 text-tinta-oficial">🔒 PRIVACIDAD Y SEGURIDAD:</h4>
+        <ul className="space-y-2 texto-suave">
+          <li className="flex items-start gap-2">
+            <span className="text-dorado-metal">•</span>
+            <span className="typewriter text-xs">TU INFORMACIÓN SERÁ TRATADA DE FORMA CONFIDENCIAL</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-dorado-metal">•</span>
+            <span className="typewriter text-xs">LOS MENSAJES CRÍTICOS TIENEN PRIORIDAD DE RESPUESTA</span>
+          </li>
+          <li className="flex items-start gap-2">
+            <span className="text-dorado-metal">•</span>
+            <span className="typewriter text-xs">PUEDES SOLICITAR COMUNICACIÓN POR CANALES CIFRADOS</span>
+          </li>
           {formData.anonymous && (
-            <li className="text-blue-600">• Tu mensaje será enviado de forma anónima</li>
+            <li className="flex items-start gap-2">
+              <span className="text-sello-rojo">•</span>
+              <span className="typewriter text-xs text-sello-rojo">TU MENSAJE SERÁ ENVIADO DE FORMA ANÓNIMA</span>
+            </li>
           )}
         </ul>
       </div>
 
-      {/* Botones */}
-      <div className="flex flex-col sm:flex-row gap-4">
+      {/* Botones de acción */}
+      <div className="flex flex-col gap-4">
         <SelloAccion
           type="submit"
           size="lg"
           disabled={isSubmitting}
-          className={formData.urgency === 'critical' ? 'sello-urgente' : ''}
+          className={`w-full touch-manipulation min-h-[48px] ${
+            formData.urgency === 'critical' ? 'sello-urgente' : ''
+          }`}
         >
-          {isSubmitting ? 'ENVIANDO...' : 
-           formData.urgency === 'critical' ? '🚨 ENVIAR EMERGENCIA' : 'ENVIAR MENSAJE'}
+          {isSubmitting ? '📄 PROCESANDO SOLICITUD...' : 
+           formData.urgency === 'critical' ? '🚨 ENVIAR EMERGENCIA' : '📤 ENVIAR MENSAJE OFICIAL'}
         </SelloAccion>
         
         <SelloAccion
           type="button"
           variant="secondary"
           size="lg"
+          className="w-full sm:w-auto touch-manipulation min-h-[44px]"
           onClick={() => setFormData({ name: '', email: '', phone: '', organization: '', subject: '', message: '', urgency: 'medium', category: '', anonymous: false })}
         >
-          LIMPIAR FORMULARIO
+          🗚 LIMPIAR FORMULARIO
         </SelloAccion>
       </div>
     </form>
