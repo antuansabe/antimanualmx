@@ -1,8 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
-import Link from 'next/link';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import { alertas } from '@/shared/data/alertas';
 
 const iconosPorCategoria = {
@@ -78,21 +77,11 @@ export default function AlertasPage() {
 
   return (
     <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <div className="flex items-center gap-4">
-          <Link href="/red" className="flex items-center gap-2">
-            <Stamp>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              / RED DE APOYO / ALERTAS COMUNITARIAS
-            </span>
-          </Link>
-        </div>
-      </header>
 
       <main className="max-w-6xl mx-auto">
         {/* Header */}
         <section className="mb-12">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             <div className="text-center">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
                 🚨 ALERTAS COMUNITARIAS
@@ -126,12 +115,12 @@ export default function AlertasPage() {
                 antes de su publicación.
               </p>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Filtros */}
         <section className="mb-8">
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-xl font-bold mb-4 typewriter">🔍 FILTRAR ALERTAS</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -183,7 +172,7 @@ export default function AlertasPage() {
 
             {(filtroSeveridad || filtroCategoria || filtroUbicacion) && (
               <div className="mt-4 text-center">
-                <Button
+                <SelloAccion
                   onClick={() => {
                     setFiltroSeveridad('');
                     setFiltroCategoria('');
@@ -193,25 +182,29 @@ export default function AlertasPage() {
                   size="sm"
                 >
                   LIMPIAR FILTROS
-                </Button>
+                </SelloAccion>
               </div>
             )}
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Lista de Alertas */}
         <section className="space-y-6 mb-16">
           {alertasFiltradas.length === 0 ? (
-            <PaperContainer>
+            <ExpedienteCard>
               <div className="text-center py-12">
                 <div className="text-6xl mb-4">🔍</div>
                 <h3 className="text-xl font-bold mb-2">No se encontraron alertas</h3>
                 <p className="text-gray-600">Intenta ajustar los filtros o vuelve más tarde.</p>
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           ) : (
             alertasFiltradas.map((alerta) => (
-              <PaperContainer key={alerta.id} className={`border-l-4 ${coloresPorSeveridad[alerta.severidad]}`}>
+              <ExpedienteCard 
+              key={alerta.id} 
+              variant={alerta.severidad === 'critica' ? 'urgent' : 'default'}
+              className={`border-l-4 ${coloresPorSeveridad[alerta.severidad]}`}
+            >
                 <div className="flex items-start gap-4">
                   <div className="text-3xl">{iconosPorCategoria[alerta.categoria]}</div>
                   
@@ -292,7 +285,7 @@ export default function AlertasPage() {
                     )}
                     
                     <div className="flex flex-wrap gap-2">
-                      <Button
+                      <SelloAccion
                         onClick={() => setAlertaExpandida(
                           alertaExpandida === alerta.id ? null : alerta.id
                         )}
@@ -300,34 +293,34 @@ export default function AlertasPage() {
                         size="sm"
                       >
                         {alertaExpandida === alerta.id ? 'VER MENOS' : 'VER MÁS'}
-                      </Button>
+                      </SelloAccion>
                       
-                      <Button
+                      <SelloAccion
                         onClick={() => {/* Compartir alerta */}}
                         variant="secondary"
                         size="sm"
                       >
                         📤 COMPARTIR
-                      </Button>
+                      </SelloAccion>
                       
                       {alerta.fuente.contacto && (
                         <a href={`mailto:${alerta.fuente.contacto}?subject=Consulta sobre alerta: ${alerta.titulo}`}>
-                          <Button variant="secondary" size="sm">
+                          <SelloAccion variant="secondary" size="sm">
                             ✉️ CONTACTAR FUENTE
-                          </Button>
+                          </SelloAccion>
                         </a>
                       )}
                     </div>
                   </div>
                 </div>
-              </PaperContainer>
+              </ExpedienteCard>
             ))
           )}
         </section>
 
         {/* Call to Action */}
         <section>
-          <PaperContainer>
+          <ExpedienteCard>
             <div className="text-center">
               <h2 className="text-2xl font-bold mb-4 typewriter">
                 ¿DETECTASTE UNA AMENAZA?
@@ -338,15 +331,15 @@ export default function AlertasPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg">
+                <SelloAccion size="lg">
                   📝 REPORTAR AMENAZA
-                </Button>
-                <Button variant="secondary" size="lg">
+                </SelloAccion>
+                <SelloAccion variant="secondary" size="lg">
                   🔔 SUSCRIBIRSE A ALERTAS
-                </Button>
+                </SelloAccion>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
       </main>
     </div>

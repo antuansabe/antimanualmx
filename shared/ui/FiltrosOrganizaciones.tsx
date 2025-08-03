@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Organizacion } from '@/shared/data/organizaciones';
-import { Button } from './Button';
+import SelloAccion from './SelloAccion';
 
 export interface FiltrosState {
   busqueda: string;
@@ -155,13 +155,13 @@ export default function FiltrosOrganizaciones({
       {/* Botón de reset */}
       {hayFiltrosActivos && (
         <div className="text-center">
-          <Button
+          <SelloAccion
             onClick={resetearFiltros}
             variant="secondary"
             size="sm"
           >
             🗑️ LIMPIAR FILTROS
-          </Button>
+          </SelloAccion>
         </div>
       )}
 

@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -70,7 +70,7 @@ export default function BotonPanicoPage() {
         {!iniciado ? (
           // Vista inicial
           <section>
-            <PaperContainer aged>
+            <ExpedienteCard variant="default">
               <div className="text-center mb-8">
                 <div className="text-8xl mb-4">🚨</div>
                 <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter text-red-700">
@@ -121,20 +121,20 @@ export default function BotonPanicoPage() {
               </div>
 
               <div className="text-center">
-                <Button 
+                <SelloAccion 
                   onClick={iniciarProtocolo}
                   size="lg"
                   className="sello-peligro hover:sello-peligro"
                 >
                   🚨 INICIAR PROTOCOLO DE EMERGENCIA
-                </Button>
+                </SelloAccion>
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           </section>
         ) : !completado ? (
           // Vista del protocolo en ejecución
           <section>
-            <PaperContainer className="border-red-500 border-2">
+            <ExpedienteCard variant="urgent" className="border-red-500 border-2">
               <div className="text-center mb-8">
                 <div className="text-6xl mb-4 animate-pulse">🚨</div>
                 <h2 className="text-2xl font-bold text-red-700 typewriter">
@@ -170,20 +170,20 @@ export default function BotonPanicoPage() {
               </div>
 
               <div className="text-center">
-                <Button 
+                <SelloAccion 
                   onClick={siguientePaso}
                   size="lg"
                   className="bg-green-600 hover:bg-green-700"
                 >
                   ✅ COMPLETADO - SIGUIENTE PASO
-                </Button>
+                </SelloAccion>
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           </section>
         ) : (
           // Vista de protocolo completado
           <section>
-            <PaperContainer className="border-green-500 border-2">
+            <ExpedienteCard variant="approved" className="border-green-500 border-2">
               <div className="text-center">
                 <div className="text-8xl mb-4">✅</div>
                 <h2 className="text-3xl font-bold text-green-700 typewriter mb-4">
@@ -205,18 +205,18 @@ export default function BotonPanicoPage() {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/red">
-                    <Button variant="primary" size="lg">
+                    <SelloAccion variant="primary" size="lg">
                       CONTACTAR RED DE APOYO
-                    </Button>
+                    </SelloAccion>
                   </Link>
                   <Link href="/herramientas">
-                    <Button variant="secondary" size="lg">
+                    <SelloAccion variant="secondary" size="lg">
                       VOLVER A HERRAMIENTAS
-                    </Button>
+                    </SelloAccion>
                   </Link>
                 </div>
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           </section>
         )}
       </main>

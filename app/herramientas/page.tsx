@@ -1,4 +1,4 @@
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
 
 const herramientas = [
@@ -39,20 +39,10 @@ const herramientas = [
 export default function HerramientasPage() {
   return (
     <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-4">
-            <Stamp>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              / KIT DE EMERGENCIA
-            </span>
-          </Link>
-        </div>
-      </header>
 
       <main className="max-w-6xl mx-auto">
         <section className="mb-12">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             <div className="text-center">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
                 KIT DE EMERGENCIA DIGITAL
@@ -86,12 +76,12 @@ export default function HerramientasPage() {
                 </div>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         <section className="grid md:grid-cols-1 gap-8">
           {herramientas.map((herramienta) => (
-            <PaperContainer key={herramienta.id}>
+            <ExpedienteCard key={herramienta.id}>
               <div className="flex flex-col md:flex-row items-start gap-6">
                 <div className="text-6xl">{herramienta.icono}</div>
                 
@@ -116,24 +106,24 @@ export default function HerramientasPage() {
                   
                   <div className="flex flex-col sm:flex-row gap-4">
                     <Link href={`/herramientas/${herramienta.id}`}>
-                      <Button size="lg">
+                      <SelloAccion size="lg">
                         USAR AHORA
-                      </Button>
+                      </SelloAccion>
                     </Link>
                     <Link href={`/herramientas/${herramienta.id}/tutorial`}>
-                      <Button variant="secondary" size="lg">
+                      <SelloAccion variant="secondary" size="lg">
                         VER TUTORIAL
-                      </Button>
+                      </SelloAccion>
                     </Link>
                   </div>
                 </div>
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           ))}
         </section>
 
         <section className="mt-16">
-          <PaperContainer>
+          <ExpedienteCard>
             <div className="text-center">
               <h2 className="text-2xl font-bold mb-4 typewriter">
                 ¿NECESITAS AYUDA INMEDIATA?
@@ -156,7 +146,7 @@ export default function HerramientasPage() {
                 </div>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
       </main>
     </div>

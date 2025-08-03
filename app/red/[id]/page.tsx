@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import MapaInteractivo from '@/shared/ui/MapaInteractivo';
 import Link from 'next/link';
 import { organizaciones } from '@/shared/data/organizaciones';
@@ -50,7 +50,7 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
       <main className="max-w-6xl mx-auto">
         {/* Header de la organización */}
         <section className="mb-12">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             <div className="flex flex-col md:flex-row gap-8">
               <div className="md:w-1/3 text-center">
                 <div className="text-8xl mb-4">{iconosPorTipo[organizacion.tipo]}</div>
@@ -103,12 +103,12 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
                 </div>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Especialidades y Servicios */}
         <section className="grid md:grid-cols-2 gap-8 mb-12">
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-xl font-bold mb-4 typewriter">
               🎯 ESPECIALIDADES
             </h2>
@@ -120,9 +120,9 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
                 </div>
               ))}
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
 
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-xl font-bold mb-4 typewriter">
               🛠️ SERVICIOS
             </h2>
@@ -134,12 +134,12 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
                 </div>
               ))}
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Logros y Colaboraciones */}
         <section className="grid md:grid-cols-2 gap-8 mb-12">
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-xl font-bold mb-4 typewriter">
               🏆 LOGROS PRINCIPALES
             </h2>
@@ -150,9 +150,9 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
                 </div>
               ))}
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
 
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-xl font-bold mb-4 typewriter">
               🤝 COLABORACIONES
             </h2>
@@ -164,12 +164,12 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
                 </div>
               ))}
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Mapa de Ubicación */}
         <section className="mb-12">
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-xl font-bold mb-4 typewriter text-center">
               📍 UBICACIÓN
             </h2>
@@ -182,12 +182,12 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
               organizaciones={[organizacion]}
               altura="300px"
             />
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Contacto */}
         <section className="mb-12">
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-xl font-bold mb-6 typewriter text-center">
               📞 INFORMACIÓN DE CONTACTO
             </h2>
@@ -277,36 +277,36 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
             
             <div className="mt-8 text-center">
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg">
+                <SelloAccion size="lg">
                   🤝 SOLICITAR COLABORACIÓN
-                </Button>
-                <Button variant="secondary" size="lg">
+                </SelloAccion>
+                <SelloAccion variant="secondary" size="lg">
                   📋 REPORTAR INFORMACIÓN
-                </Button>
+                </SelloAccion>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Navegación */}
         <section className="text-center">
-          <PaperContainer>
+          <ExpedienteCard>
             <h3 className="font-bold mb-4 typewriter">
               EXPLORAR MÁS ORGANIZACIONES
             </h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/red">
-                <Button variant="secondary" size="lg">
+                <SelloAccion variant="secondary" size="lg">
                   ← VOLVER AL DIRECTORIO
-                </Button>
+                </SelloAccion>
               </Link>
               <Link href="/red?vista=mapa">
-                <Button variant="secondary" size="lg">
+                <SelloAccion variant="secondary" size="lg">
                   🗺️ VER EN MAPA
-                </Button>
+                </SelloAccion>
               </Link>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
       </main>
     </div>

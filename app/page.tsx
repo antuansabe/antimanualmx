@@ -1,36 +1,13 @@
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      {/* Header con sello */}
-      <header className="max-w-7xl mx-auto mb-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <Stamp animate>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              EXPEDIENTE: #{new Date().getFullYear()}-LIBRE
-            </span>
-          </div>
-          <nav className="flex gap-6">
-            <Link href="/herramientas" className="typewriter hover:text-red-700">
-              HERRAMIENTAS
-            </Link>
-            <Link href="/red" className="typewriter hover:text-red-700">
-              RED DE APOYO
-            </Link>
-            <Link href="/academia" className="typewriter hover:text-red-700">
-              ACADEMIA
-            </Link>
-          </nav>
-        </div>
-      </header>
-
+    <div className="p-4 md:p-8">
       <main className="max-w-7xl mx-auto">
         {/* Hero Section - Manifiesto */}
         <section className="mb-16">
-          <PaperContainer aged className="max-w-4xl mx-auto">
+          <ExpedienteCard variant="default" className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
               <h1 className="text-4xl md:text-6xl font-bold mb-2 typewriter">
                 ANTIMANUAL
@@ -89,81 +66,102 @@ export default function Home() {
 
             <div className="mt-12 flex flex-col md:flex-row gap-4 justify-center">
               <Link href="/herramientas">
-                <Button size="lg">
+                <SelloAccion size="lg">
                   ACCEDER AL KIT DE EMERGENCIA
-                </Button>
+                </SelloAccion>
               </Link>
               <Link href="/red">
-                <Button variant="secondary" size="lg">
+                <SelloAccion variant="secondary" size="lg">
                   UNIRSE A LA RED
-                </Button>
+                </SelloAccion>
               </Link>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Sección de características */}
-        <section className="grid md:grid-cols-3 gap-6 mb-16">
-          <PaperContainer>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🔧</div>
-              <h3 className="text-xl font-bold mb-2 typewriter">HERRAMIENTAS</h3>
-              <p className="text-gray-600">
-                Kit de emergencia digital con protocolos paso a paso para proteger tu identidad.
-              </p>
-              <div className="mt-4">
-                <Stamp className="text-sm">SIEMPRE GRATIS</Stamp>
+        <section className="grid md:grid-cols-4 gap-6 mb-16">
+          <Link href="/herramientas">
+            <ExpedienteCard className="hover:shadow-lg transition-shadow cursor-pointer">
+              <div className="text-center">
+                <div className="text-4xl mb-4">🔧</div>
+                <h3 className="text-xl font-bold mb-2 typewriter">HERRAMIENTAS</h3>
+                <p className="texto-suave">
+                  Kit de emergencia digital con protocolos paso a paso para proteger tu identidad.
+                </p>
+                <div className="mt-4">
+                  <Stamp className="text-sm">SIEMPRE GRATIS</Stamp>
+                </div>
               </div>
-            </div>
-          </PaperContainer>
+            </ExpedienteCard>
+          </Link>
 
-          <PaperContainer>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🤝</div>
-              <h3 className="text-xl font-bold mb-2 typewriter">RED DE APOYO</h3>
-              <p className="text-gray-600">
-                Directorio de organizaciones y activistas unidos por la libertad digital.
-              </p>
-              <div className="mt-4">
-                <Stamp className="text-sm">20+ ALIADOS</Stamp>
+          <Link href="/red">
+            <ExpedienteCard className="hover:shadow-lg transition-shadow cursor-pointer">
+              <div className="text-center">
+                <div className="text-4xl mb-4">🤝</div>
+                <h3 className="text-xl font-bold mb-2 typewriter">RED DE APOYO</h3>
+                <p className="texto-suave">
+                  Directorio de organizaciones y activistas unidos por la libertad digital.
+                </p>
+                <div className="mt-4">
+                  <Stamp className="text-sm">20+ ALIADOS</Stamp>
+                </div>
               </div>
-            </div>
-          </PaperContainer>
+            </ExpedienteCard>
+          </Link>
 
-          <PaperContainer>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🎓</div>
-              <h3 className="text-xl font-bold mb-2 typewriter">ACADEMIA</h3>
-              <p className="text-gray-600">
-                Formación progresiva: de usuario vulnerable a defensor digital capacitado.
-              </p>
-              <div className="mt-4">
-                <Stamp className="text-sm">3 NIVELES</Stamp>
+          <Link href="/academia">
+            <ExpedienteCard className="hover:shadow-lg transition-shadow cursor-pointer">
+              <div className="text-center">
+                <div className="text-4xl mb-4">🎓</div>
+                <h3 className="text-xl font-bold mb-2 typewriter">ACADEMIA</h3>
+                <p className="texto-suave">
+                  Formación progresiva: de usuario vulnerable a defensor digital capacitado.
+                </p>
+                <div className="mt-4">
+                  <Stamp className="text-sm">3 NIVELES</Stamp>
+                </div>
               </div>
-            </div>
-          </PaperContainer>
+            </ExpedienteCard>
+          </Link>
+
+          <Link href="/observatorio">
+            <ExpedienteCard className="hover:shadow-lg transition-shadow cursor-pointer">
+              <div className="text-center">
+                <div className="text-4xl mb-4">📊</div>
+                <h3 className="text-xl font-bold mb-2 typewriter">OBSERVATORIO</h3>
+                <p className="texto-suave">
+                  Métricas en tiempo real sobre el estado de los derechos digitales en México.
+                </p>
+                <div className="mt-4">
+                  <Stamp className="text-sm">TRANSPARENCIA TOTAL</Stamp>
+                </div>
+              </div>
+            </ExpedienteCard>
+          </Link>
         </section>
 
         {/* Call to Action */}
         <section className="text-center mb-16">
-          <PaperContainer className="inline-block">
+          <ExpedienteCard className="inline-block">
             <p className="text-2xl font-bold mb-4 typewriter">
               ÚNETE AL MOVIMIENTO
             </p>
-            <p className="mb-6 text-gray-600">
+            <p className="mb-6 texto-suave">
               Ya somos <span className="highlight font-bold">500+ activistas</span> construyendo 
               el futuro digital que merecemos.
             </p>
-            <Button>
+            <SelloAccion>
               COMENZAR AHORA
-            </Button>
-          </PaperContainer>
+            </SelloAccion>
+          </ExpedienteCard>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="max-w-7xl mx-auto mt-24 pt-8 border-t border-gray-300">
-        <div className="text-center text-sm text-gray-600">
+      <footer className="max-w-7xl mx-auto mt-24 pt-8 border-t border-papel-border">
+        <div className="text-center text-sm texto-suave">
           <p className="mb-2">
             <Stamp className="text-xs">VERIFICADO POR EL PUEBLO</Stamp>
           </p>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import FiltrosOrganizaciones, { FiltrosState } from '@/shared/ui/FiltrosOrganizaciones';
 import MapaInteractivo from '@/shared/ui/MapaInteractivo';
 import Link from 'next/link';
@@ -57,20 +57,10 @@ export default function RedPage() {
 
   return (
     <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-4">
-            <Stamp>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              / RED DE APOYO
-            </span>
-          </Link>
-        </div>
-      </header>
 
       <main className="max-w-7xl mx-auto">
         <section className="mb-12">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             <div className="text-center">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
                 RED DE APOYO COLECTIVO
@@ -100,44 +90,44 @@ export default function RedPage() {
                 trayectoria y compromiso con los derechos digitales.
               </p>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Filtros */}
         <section className="mb-8">
-          <PaperContainer>
+          <ExpedienteCard>
             <FiltrosOrganizaciones
               organizaciones={organizaciones}
               onFiltrosChange={setFiltros}
               onReset={resetearFiltros}
             />
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Toggle Vista */}
         <section className="mb-8">
           <div className="flex justify-center gap-4">
-            <Button
+            <SelloAccion
               onClick={() => setVistaActual('lista')}
               variant={vistaActual === 'lista' ? 'stamp' : 'secondary'}
               size="sm"
             >
               📋 VISTA LISTA
-            </Button>
-            <Button
+            </SelloAccion>
+            <SelloAccion
               onClick={() => setVistaActual('mapa')}
               variant={vistaActual === 'mapa' ? 'stamp' : 'secondary'}
               size="sm"
             >
               🗺️ VISTA MAPA
-            </Button>
+            </SelloAccion>
           </div>
         </section>
 
         {/* Vista Mapa */}
         {vistaActual === 'mapa' && (
           <section className="mb-8">
-            <PaperContainer>
+            <ExpedienteCard>
               <h2 className="text-xl font-bold mb-4 typewriter text-center">
                 🗺️ MAPA INTERACTIVO DE LA RED
               </h2>
@@ -157,14 +147,14 @@ export default function RedPage() {
                   </p>
                   <div className="mt-2">
                     <Link href={`/red/${organizacionSeleccionada.id}`}>
-                      <Button size="sm">
+                      <SelloAccion size="sm">
                         VER PERFIL COMPLETO
-                      </Button>
+                      </SelloAccion>
                     </Link>
                   </div>
                 </div>
               )}
-            </PaperContainer>
+            </ExpedienteCard>
           </section>
         )}
 
@@ -172,7 +162,7 @@ export default function RedPage() {
         {vistaActual === 'lista' && (
           <section className="grid gap-6 mb-16">
             {organizacionesFiltradas.length === 0 ? (
-              <PaperContainer>
+              <ExpedienteCard>
                 <div className="text-center py-12">
                   <div className="text-6xl mb-4">🔍</div>
                   <h3 className="text-xl font-bold mb-2 typewriter">
@@ -181,14 +171,14 @@ export default function RedPage() {
                   <p className="text-gray-600 mb-4">
                     Intenta ajustar los filtros para encontrar organizaciones que coincidan.
                   </p>
-                  <Button onClick={resetearFiltros} variant="secondary">
+                  <SelloAccion onClick={resetearFiltros} variant="secondary">
                     LIMPIAR FILTROS
-                  </Button>
+                  </SelloAccion>
                 </div>
-              </PaperContainer>
+              </ExpedienteCard>
             ) : (
               organizacionesFiltradas.map((org) => (
-                <PaperContainer key={org.id}>
+                <ExpedienteCard key={org.id}>
                   <div className="flex flex-col md:flex-row gap-6">
                     <div className="md:w-1/4">
                       <div className="flex items-center gap-2 mb-2">
@@ -238,26 +228,26 @@ export default function RedPage() {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          <Button size="sm">
+                          <SelloAccion size="sm">
                             🌐 SITIO WEB
-                          </Button>
+                          </SelloAccion>
                         </a>
                         <Link href={`/red/${org.id}`}>
-                          <Button variant="secondary" size="sm">
+                          <SelloAccion variant="secondary" size="sm">
                             📋 VER PERFIL
-                          </Button>
+                          </SelloAccion>
                         </Link>
                         {org.contacto.email && (
                           <a href={`mailto:${org.contacto.email}`}>
-                            <Button variant="secondary" size="sm">
+                            <SelloAccion variant="secondary" size="sm">
                               ✉️ CONTACTAR
-                            </Button>
+                            </SelloAccion>
                           </a>
                         )}
                       </div>
                     </div>
                   </div>
-                </PaperContainer>
+                </ExpedienteCard>
               ))
             )}
           </section>
@@ -265,7 +255,7 @@ export default function RedPage() {
 
         {/* Alertas Comunitarias */}
         <section className="mb-16">
-          <PaperContainer>
+          <ExpedienteCard>
             <div className="text-center">
               <h2 className="text-2xl font-bold mb-6 typewriter">
                 🚨 ALERTAS COMUNITARIAS
@@ -305,18 +295,18 @@ export default function RedPage() {
               
               <div className="mt-6">
                 <Link href="/red/alertas">
-                  <Button variant="secondary">
+                  <SelloAccion variant="secondary">
                     VER TODAS LAS ALERTAS
-                  </Button>
+                  </SelloAccion>
                 </Link>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Call to Action */}
         <section className="text-center">
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-2xl font-bold mb-4 typewriter">
               ¿QUIERES UNIRTE A LA RED?
             </h2>
@@ -326,14 +316,14 @@ export default function RedPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg">
+              <SelloAccion size="lg">
                 📝 REGISTRAR ORGANIZACIÓN
-              </Button>
-              <Button variant="secondary" size="lg">
+              </SelloAccion>
+              <SelloAccion variant="secondary" size="lg">
                 👤 UNIRSE COMO ACTIVISTA
-              </Button>
+              </SelloAccion>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
       </main>
     </div>

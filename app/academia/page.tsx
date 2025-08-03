@@ -1,4 +1,4 @@
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
 
 const niveles = [
@@ -59,20 +59,10 @@ const estadisticas = {
 export default function AcademiaPage() {
   return (
     <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-4">
-            <Stamp>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              / ACADEMIA ACTIVISTA
-            </span>
-          </Link>
-        </div>
-      </header>
 
       <main className="max-w-6xl mx-auto">
         <section className="mb-12">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             <div className="text-center">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
                 ACADEMIA ACTIVISTA
@@ -106,12 +96,12 @@ export default function AcademiaPage() {
                 y apoyar a otros en su proceso de empoderamiento digital.
               </p>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         <section className="grid gap-8 mb-16">
           {niveles.map((nivel) => (
-            <PaperContainer key={nivel.nivel} className={!nivel.disponible ? 'opacity-60' : ''}>
+            <ExpedienteCard key={nivel.nivel} className={!nivel.disponible ? 'opacity-60' : ''}>
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="md:w-1/4 text-center">
                   <div className="text-6xl font-bold text-red-700 mb-2">
@@ -158,28 +148,28 @@ export default function AcademiaPage() {
                     {nivel.disponible ? (
                       <>
                         <Link href={nivel.nivel === 1 ? '/academia/nivel-1' : '#'}>
-                          <Button size="lg" disabled={nivel.nivel !== 1}>
+                          <SelloAccion size="lg" disabled={nivel.nivel !== 1}>
                             COMENZAR NIVEL {nivel.nivel}
-                          </Button>
+                          </SelloAccion>
                         </Link>
-                        <Button variant="secondary" size="lg">
+                        <SelloAccion variant="secondary" size="lg">
                           VER TEMARIO COMPLETO
-                        </Button>
+                        </SelloAccion>
                       </>
                     ) : (
-                      <Button variant="secondary" size="lg" disabled>
+                      <SelloAccion variant="secondary" size="lg" disabled>
                         PRÓXIMAMENTE
-                      </Button>
+                      </SelloAccion>
                     )}
                   </div>
                 </div>
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           ))}
         </section>
 
         <section className="mb-16">
-          <PaperContainer>
+          <ExpedienteCard>
             <div className="text-center">
               <h2 className="text-2xl font-bold mb-6 typewriter">
                 🎓 METODOLOGÍA DE APRENDIZAJE
@@ -211,11 +201,11 @@ export default function AcademiaPage() {
                 </div>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         <section className="text-center">
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-2xl font-bold mb-4 typewriter">
               ¿LISTO PARA TRANSFORMARTE?
             </h2>
@@ -226,13 +216,15 @@ export default function AcademiaPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/academia/nivel-1">
-                <Button size="lg">
+                <SelloAccion size="lg">
                   COMENZAR NIVEL 1 GRATIS
-                </Button>
+                </SelloAccion>
               </Link>
-              <Button variant="secondary" size="lg">
-                CONOCER MÁS
-              </Button>
+              <Link href="/academia/perfil">
+                <SelloAccion variant="secondary" size="lg">
+                  VER MI PERFIL
+                </SelloAccion>
+              </Link>
             </div>
             
             <div className="mt-6 text-sm text-gray-500">
@@ -240,7 +232,7 @@ export default function AcademiaPage() {
                 &ldquo;El conocimiento compartido es poder multiplicado&rdquo;
               </p>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
       </main>
     </div>

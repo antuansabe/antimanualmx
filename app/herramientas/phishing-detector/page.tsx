@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -119,7 +119,7 @@ export default function PhishingDetectorPage() {
         </header>
 
         <main className="max-w-4xl mx-auto">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             <div className="text-center">
               <div className="text-8xl mb-6">
                 {porcentaje >= 80 ? '🏆' : porcentaje >= 60 ? '👍' : '⚠️'}
@@ -156,17 +156,17 @@ export default function PhishingDetectorPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button onClick={() => window.location.reload()} size="lg">
+                <SelloAccion onClick={() => window.location.reload()} size="lg">
                   PRACTICAR DE NUEVO
-                </Button>
+                </SelloAccion>
                 <Link href="/academia">
-                  <Button variant="secondary" size="lg">
+                  <SelloAccion variant="secondary" size="lg">
                     IR A LA ACADEMIA
-                  </Button>
+                  </SelloAccion>
                 </Link>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </main>
       </div>
     );
@@ -185,7 +185,7 @@ export default function PhishingDetectorPage() {
 
       <main className="max-w-4xl mx-auto">
         <section className="mb-8">
-          <PaperContainer>
+          <ExpedienteCard>
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold typewriter">
                 🎯 SIMULADOR DE PHISHING
@@ -210,11 +210,11 @@ export default function PhishingDetectorPage() {
             <p className="text-gray-600 mb-4">
               Analiza el siguiente correo electrónico y determina si es legítimo o phishing:
             </p>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         <section className="mb-8">
-          <PaperContainer aged className="font-mono text-sm">
+          <ExpedienteCard variant="default" className="font-mono text-sm">
             <div className="border-b border-gray-300 pb-4 mb-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -232,40 +232,40 @@ export default function PhishingDetectorPage() {
             <div className="whitespace-pre-line">
               {correo.contenido}
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {!mostrarResultado ? (
           <section>
-            <PaperContainer>
+            <ExpedienteCard>
               <div className="text-center">
                 <h3 className="text-xl font-bold mb-6 typewriter">
                   ¿QUÉ TIPO DE CORREO ES?
                 </h3>
                 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
+                  <SelloAccion 
                     onClick={() => responder('legitimo')}
                     variant="primary" 
                     size="lg"
                     className="bg-green-600 hover:bg-green-700"
                   >
                     ✅ LEGÍTIMO
-                  </Button>
-                  <Button 
+                  </SelloAccion>
+                  <SelloAccion 
                     onClick={() => responder('phishing')}
                     size="lg"
                     className="sello-peligro hover:sello-peligro"
                   >
                     🚨 PHISHING
-                  </Button>
+                  </SelloAccion>
                 </div>
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           </section>
         ) : (
           <section>
-            <PaperContainer className={`border-2 ${
+            <ExpedienteCard className={`border-2 ${
               respuesta === correo.tipo ? 'border-green-500' : 'border-red-500'
             }`}>
               <div className="text-center mb-6">
@@ -293,11 +293,11 @@ export default function PhishingDetectorPage() {
               </div>
 
               <div className="text-center">
-                <Button onClick={siguienteCorreo} size="lg">
+                <SelloAccion onClick={siguienteCorreo} size="lg">
                   {correoActual < correosPrueba.length - 1 ? 'SIGUIENTE CORREO' : 'VER RESULTADOS'}
-                </Button>
+                </SelloAccion>
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           </section>
         )}
       </main>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from '@/shared/ui';
+import { SelloAccion } from '@/shared/ui';
 
 interface ContactFormProps {
   organizationId?: string;
@@ -125,9 +125,9 @@ export default function ContactForm({ organizationId, organizationName, type, on
             : 'Tu mensaje ha sido enviado correctamente. Recibirás respuesta en 1-2 días hábiles.'
           }
         </p>
-        <Button onClick={() => { setSubmitted(false); setFormData({ name: '', email: '', phone: '', organization: '', subject: '', message: '', urgency: 'medium', category: '', anonymous: false }); }}>
+        <SelloAccion onClick={() => { setSubmitted(false); setFormData({ name: '', email: '', phone: '', organization: '', subject: '', message: '', urgency: 'medium', category: '', anonymous: false }); }}>
           ENVIAR OTRO MENSAJE
-        </Button>
+        </SelloAccion>
       </div>
     );
   }
@@ -327,7 +327,7 @@ export default function ContactForm({ organizationId, organizationName, type, on
 
       {/* Botones */}
       <div className="flex flex-col sm:flex-row gap-4">
-        <Button
+        <SelloAccion
           type="submit"
           size="lg"
           disabled={isSubmitting}
@@ -335,16 +335,16 @@ export default function ContactForm({ organizationId, organizationName, type, on
         >
           {isSubmitting ? 'ENVIANDO...' : 
            formData.urgency === 'critical' ? '🚨 ENVIAR EMERGENCIA' : 'ENVIAR MENSAJE'}
-        </Button>
+        </SelloAccion>
         
-        <Button
+        <SelloAccion
           type="button"
           variant="secondary"
           size="lg"
           onClick={() => setFormData({ name: '', email: '', phone: '', organization: '', subject: '', message: '', urgency: 'medium', category: '', anonymous: false })}
         >
           LIMPIAR FORMULARIO
-        </Button>
+        </SelloAccion>
       </div>
     </form>
   );

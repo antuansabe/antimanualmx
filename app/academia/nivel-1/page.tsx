@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
+import { CertificadoGenerator } from '@/shared/ui/CertificadoGenerator';
 import Link from 'next/link';
 import { cursoNivel1 } from '@/shared/data/cursos';
 import { useCourseProgress } from '@/shared/hooks/useLocalStorage';
@@ -13,6 +14,7 @@ export default function Nivel1Page() {
   const [mostrarEjercicios, setMostrarEjercicios] = useState(false);
   const [ejercicioActual, setEjercicioActual] = useState(0);
   const [respuestasUsuario, setRespuestasUsuario] = useState<{[key: string]: string | number}>({});
+  const [mostrarCertificado, setMostrarCertificado] = useState(false);
 
   const curso = cursoNivel1;
   const modulo = curso.modulos[moduloActual];
@@ -242,7 +244,7 @@ export default function Nivel1Page() {
         </header>
 
         <main className="max-w-4xl mx-auto">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             <div className="text-center">
               <div className="text-8xl mb-6">🎓</div>
               <h1 className="text-3xl font-bold typewriter mb-4">
@@ -276,23 +278,33 @@ export default function Nivel1Page() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg">
+                <SelloAccion size="lg" onClick={() => setMostrarCertificado(true)}>
                   📜 DESCARGAR CERTIFICADO
-                </Button>
-                <Link href="/academia">
-                  <Button variant="secondary" size="lg">
-                    📈 CONTINUAR AL NIVEL 2
-                  </Button>
+                </SelloAccion>
+                <Link href="/academia/perfil">
+                  <SelloAccion variant="secondary" size="lg">
+                    👤 VER MI PERFIL
+                  </SelloAccion>
                 </Link>
                 <Link href="/herramientas">
-                  <Button variant="secondary" size="lg">
+                  <SelloAccion variant="secondary" size="lg">
                     🛠️ PRACTICAR HERRAMIENTAS
-                  </Button>
+                  </SelloAccion>
                 </Link>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </main>
+        
+        {mostrarCertificado && (
+          <CertificadoGenerator
+            nombreUsuario={`Activista Digital`}
+            curso={curso.titulo}
+            nivel={curso.nivel}
+            fecha={new Date()}
+            onClose={() => setMostrarCertificado(false)}
+          />
+        )}
       </div>
     );
   }
@@ -311,7 +323,7 @@ export default function Nivel1Page() {
       <main className="max-w-4xl mx-auto">
         {/* Barra de progreso */}
         <section className="mb-8">
-          <PaperContainer>
+          <ExpedienteCard>
             <div className="flex justify-between items-center mb-4">
               <h1 className="text-2xl font-bold typewriter">
                 {curso.titulo}
@@ -335,12 +347,12 @@ export default function Nivel1Page() {
               <span>Progreso: {Math.round(progress.progress)}%</span>
               <span>Tiempo estimado restante: {curso.duracionTotal - progress.timeSpent} min</span>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Contenido del módulo */}
         <section className="mb-8">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             {!mostrarEjercicios ? (
               <div>
                 <div className="flex items-center gap-3 mb-6">
@@ -368,28 +380,28 @@ export default function Nivel1Page() {
                 {renderEjercicio()}
               </div>
             )}
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {/* Navegación */}
         <section>
-          <PaperContainer>
+          <ExpedienteCard>
             <div className="flex justify-between items-center">
-              <Button
+              <SelloAccion
                 onClick={anteriorContenido}
                 variant="secondary"
                 disabled={moduloActual === 0 && contenidoActual === 0 && !mostrarEjercicios}
               >
                 ← Anterior
-              </Button>
+              </SelloAccion>
 
               <div className="flex gap-4">
                 {modulo?.recursos && modulo.recursos.length > 0 && (
                   <details className="relative">
                     <summary className="cursor-pointer">
-                      <Button variant="secondary" size="sm">
+                      <SelloAccion variant="secondary" size="sm">
                         📚 Recursos ({modulo.recursos.length})
-                      </Button>
+                      </SelloAccion>
                     </summary>
                     <div className="absolute right-0 top-full mt-2 w-80 bg-white border rounded-lg shadow-lg p-4 z-10">
                       <h4 className="font-bold mb-3">Recursos adicionales:</h4>
@@ -412,7 +424,7 @@ export default function Nivel1Page() {
                 )}
               </div>
 
-              <Button
+              <SelloAccion
                 onClick={mostrarEjercicios ? siguienteEjercicio : siguienteContenido}
                 disabled={mostrarEjercicios && ejercicio?.tipo === 'quiz' && respuestasUsuario[ejercicio.id] === undefined}
               >
@@ -421,9 +433,9 @@ export default function Nivel1Page() {
                   ? 'Completar Curso'
                   : 'Siguiente →'
                 }
-              </Button>
+              </SelloAccion>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
       </main>
     </div>

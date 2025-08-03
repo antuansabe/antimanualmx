@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -144,7 +144,7 @@ export default function ComunicacionCifradaPage() {
 
       <main className="max-w-6xl mx-auto">
         <section className="mb-8">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             <div className="text-center mb-8">
               <div className="text-8xl mb-4">🔐</div>
               <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
@@ -173,20 +173,20 @@ export default function ComunicacionCifradaPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+              <SelloAccion 
                 onClick={() => setModoComparacion(!modoComparacion)}
                 variant={modoComparacion ? 'primary' : 'secondary'}
                 size="sm"
               >
                 📊 {modoComparacion ? 'OCULTAR' : 'COMPARAR'} APLICACIONES
-              </Button>
+              </SelloAccion>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         {modoComparacion && (
           <section className="mb-8">
-            <PaperContainer>
+            <ExpedienteCard>
               <h2 className="text-2xl font-bold mb-6 typewriter text-center">
                 📊 COMPARACIÓN DE APLICACIONES
               </h2>
@@ -236,13 +236,13 @@ export default function ComunicacionCifradaPage() {
                   </tbody>
                 </table>
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           </section>
         )}
 
         <section className="grid md:grid-cols-4 gap-6 mb-8">
           <div className="md:col-span-1">
-            <PaperContainer>
+            <ExpedienteCard>
               <h3 className="font-bold mb-4 typewriter">SELECCIONAR APP</h3>
               <div className="space-y-2">
                 {aplicaciones.map((app) => (
@@ -278,11 +278,11 @@ export default function ComunicacionCifradaPage() {
                   </button>
                 ))}
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           </div>
 
           <div className="md:col-span-3">
-            <PaperContainer>
+            <ExpedienteCard>
               {aplicacionSeleccionada && (
                 <>
                   <div className="flex items-center gap-3 mb-6">
@@ -384,22 +384,22 @@ export default function ComunicacionCifradaPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Button size="lg">
+                      <SelloAccion size="lg">
                         📱 DESCARGAR {aplicacionSeleccionada.nombre.toUpperCase()}
-                      </Button>
+                      </SelloAccion>
                     </a>
-                    <Button variant="secondary" size="lg">
+                    <SelloAccion variant="secondary" size="lg">
                       📋 GUÍA DETALLADA
-                    </Button>
+                    </SelloAccion>
                   </div>
                 </>
               )}
-            </PaperContainer>
+            </ExpedienteCard>
           </div>
         </section>
 
         <section className="mb-8">
-          <PaperContainer>
+          <ExpedienteCard>
             <h3 className="text-2xl font-bold mb-6 typewriter text-center">
               🧠 CONCEPTOS CLAVE DE SEGURIDAD
             </h3>
@@ -419,11 +419,11 @@ export default function ComunicacionCifradaPage() {
                 </div>
               ))}
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         <section>
-          <PaperContainer>
+          <ExpedienteCard>
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4 typewriter">
                 ⚠️ BUENAS PRÁCTICAS
@@ -455,7 +455,7 @@ export default function ComunicacionCifradaPage() {
                 </div>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
       </main>
     </div>

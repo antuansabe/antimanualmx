@@ -1,7 +1,6 @@
 'use client';
 
-import { PaperContainer, Stamp, ContactForm } from '@/shared/ui';
-import Link from 'next/link';
+import { ExpedienteCard, Stamp, ContactForm } from '@/shared/ui';
 
 export default function ContactoPage() {
   const handleFormSubmit = (data: object) => {
@@ -11,20 +10,10 @@ export default function ContactoPage() {
 
   return (
     <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2">
-            <Stamp>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              / CONTACTO
-            </span>
-          </Link>
-        </div>
-      </header>
 
       <main className="max-w-4xl mx-auto">
         <section className="mb-12">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             <div className="text-center">
               <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
                 📞 CONTACTO
@@ -50,20 +39,20 @@ export default function ContactoPage() {
                 </div>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         <section className="mb-12">
-          <PaperContainer>
+          <ExpedienteCard>
             <ContactForm 
               type="general"
               onSubmit={handleFormSubmit}
             />
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         <section className="mb-12">
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-2xl font-bold mb-6 typewriter text-center">
               🚨 CONTACTOS DE EMERGENCIA
             </h2>
@@ -99,11 +88,11 @@ export default function ContactoPage() {
                 </div>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         <section className="mb-12">
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-2xl font-bold mb-6 typewriter text-center">
               📡 CANALES ALTERNATIVOS
             </h2>
@@ -142,11 +131,11 @@ export default function ContactoPage() {
                 </a>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         <section>
-          <PaperContainer>
+          <ExpedienteCard>
             <h2 className="text-2xl font-bold mb-6 typewriter text-center">
               💡 CONSEJOS DE SEGURIDAD
             </h2>
@@ -196,7 +185,7 @@ export default function ContactoPage() {
                 </ul>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
       </main>
     </div>

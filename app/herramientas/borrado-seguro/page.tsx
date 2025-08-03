@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, PaperContainer, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -99,7 +99,7 @@ export default function BorradoSeguroPage() {
 
       <main className="max-w-6xl mx-auto">
         <section className="mb-8">
-          <PaperContainer aged>
+          <ExpedienteCard variant="default">
             <div className="text-center mb-8">
               <div className="text-8xl mb-4">🗑️</div>
               <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
@@ -140,28 +140,28 @@ export default function BorradoSeguroPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Button 
+              <SelloAccion 
                 onClick={marcarTodosAlta}
                 variant="secondary"
                 size="sm"
               >
                 🎯 MARCAR PRIORIDAD ALTA
-              </Button>
-              <Button 
+              </SelloAccion>
+              <SelloAccion 
                 onClick={() => setModoPanico(!modoPanico)}
                 variant={modoPanico ? 'primary' : 'secondary'}
                 size="sm"
                 className={modoPanico ? 'sello-peligro hover:sello-peligro' : ''}
               >
                 🚨 MODO PÁNICO {modoPanico ? 'ON' : 'OFF'}
-              </Button>
+              </SelloAccion>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
 
         <section className="grid md:grid-cols-4 gap-6">
           <div className="md:col-span-1">
-            <PaperContainer>
+            <ExpedienteCard>
               <h3 className="font-bold mb-4 typewriter">CATEGORÍAS</h3>
               <div className="space-y-2">
                 {categorias.map((categoria) => {
@@ -192,11 +192,11 @@ export default function BorradoSeguroPage() {
                   );
                 })}
               </div>
-            </PaperContainer>
+            </ExpedienteCard>
           </div>
 
           <div className="md:col-span-3">
-            <PaperContainer>
+            <ExpedienteCard>
               {categoriaSeleccionada && (
                 <>
                   <div className="flex items-center gap-3 mb-6">
@@ -258,12 +258,12 @@ export default function BorradoSeguroPage() {
                   </div>
                 </>
               )}
-            </PaperContainer>
+            </ExpedienteCard>
           </div>
         </section>
 
         <section className="mt-12">
-          <PaperContainer>
+          <ExpedienteCard>
             <div className="text-center">
               <h3 className="text-2xl font-bold mb-4 typewriter">
                 HERRAMIENTAS RECOMENDADAS
@@ -303,7 +303,7 @@ export default function BorradoSeguroPage() {
                 </div>
               </div>
             </div>
-          </PaperContainer>
+          </ExpedienteCard>
         </section>
       </main>
     </div>
