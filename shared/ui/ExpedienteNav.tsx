@@ -77,13 +77,10 @@ const ExpedienteNav = ({ items, logo, className = '' }: ExpedienteNavProps) => {
               </div>
             )}
             
-            {/* Título del documento - Simplified for mobile */}
-            <div className="hidden sm:block">
-              <div className="typewriter text-xs md:text-sm text-tinta-suave uppercase tracking-wider">
-                Estados Unidos Mexicanos
-              </div>
-              <div className="typewriter-bold text-sm md:text-lg text-tinta-oficial">
-                Archivo Antimanual
+            {/* Logo/Marca principal - Antimanual */}
+            <div className="flex items-center gap-2">
+              <div className="typewriter-bold text-xl md:text-2xl text-sello-rojo tracking-wider">
+                ANTIMANUAL
               </div>
             </div>
           </div>

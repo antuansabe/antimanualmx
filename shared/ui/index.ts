@@ -12,3 +12,6 @@ export { CertificadoGenerator } from './CertificadoGenerator';
 export { BadgeSystem, badgesIniciales, type Badge } from './BadgeSystem';
 export { default as SwipeIndicator } from './SwipeIndicator';
 export { default as SwipeNavigationWrapper } from './SwipeNavigationWrapper';
+export { SelloHero } from './SelloHero';
+export { FooterMobile } from './FooterMobile';
+export { NavigationAdaptive } from './NavigationAdaptive';

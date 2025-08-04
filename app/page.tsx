@@ -1,4 +1,6 @@
 import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
+import { SelloHero } from '@/shared/ui/SelloHero';
+import { FooterMobile } from '@/shared/ui/FooterMobile';
 import Link from 'next/link';
 
 export default function Home() {
@@ -12,17 +14,20 @@ export default function Home() {
             <div className="border-b-2 border-doble border-papel-border pb-6 mb-8">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
-                  <p className="texto-pequeno mb-1">REPÚBLICA DIGITAL DE MÉXICO</p>
-                  <p className="texto-pequeno">SECRETARÍA DE RESISTENCIA CIUDADANA</p>
+                  <p className="texto-pequeno mb-1">INICIATIVA CIUDADANA</p>
+                  <p className="texto-pequeno">PLATAFORMA DE ACTIVISMO DIGITAL</p>
                 </div>
                 <div className="text-right">
                   <Stamp className="text-xs transform rotate-2">PÚBLICO</Stamp>
-                  <p className="texto-pequeno mt-2">Folio: {new Date().getFullYear()}-RDC-001</p>
+                  <p className="texto-pequeno mt-2">Folio: {new Date().getFullYear()}-AMX-001</p>
                 </div>
               </div>
             </div>
             
             <div className="text-center mb-8">
+              {/* Sello Hero Animado */}
+              <SelloHero />
+              
               <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter tracking-wider">
                 ANTIMANUAL
               </h1>
@@ -33,6 +38,9 @@ export default function Home() {
               </div>
               <p className="texto-pequeno mt-4">
                 MANIFIESTO DE LIBERACIÓN DIGITAL • VERSIÓN 1.0
+              </p>
+              <p className="texto-pequeno text-tinta-suave">
+                INICIATIVA CIUDADANA INDEPENDIENTE
               </p>
             </div>
 
@@ -218,17 +226,8 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="max-w-7xl mx-auto mt-24 pt-8 border-t border-papel-border">
-        <div className="text-center text-sm texto-suave">
-          <p className="mb-2">
-            <Stamp className="text-xs">VERIFICADO POR EL PUEBLO</Stamp>
-          </p>
-          <p className="typewriter">
-            ANTIMANUAL {new Date().getFullYear()} | CÓDIGO ABIERTO | GPL-3.0
-          </p>
-        </div>
-      </footer>
+      {/* Footer móvil mejorado */}
+      <FooterMobile />
     </div>
   );
 }
