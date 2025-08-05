@@ -79,10 +79,6 @@ const ExpedienteCard = ({
         {children}
       </div>
 
-      {/* Número de expediente (decorativo) */}
-      <div className="absolute bottom-2 right-2 text-xs texto-suave typewriter opacity-30">
-        EXP-{Math.random().toString(36).substr(2, 6).toUpperCase()}
-      </div>
     </div>
   );
 };

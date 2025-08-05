@@ -15,3 +15,4 @@ export { default as SwipeNavigationWrapper } from './SwipeNavigationWrapper';
 export { SelloHero } from './SelloHero';
 export { FooterMobile } from './FooterMobile';
 export { NavigationAdaptive } from './NavigationAdaptive';
+export { default as TypewriterTitle } from './TypewriterTitle';

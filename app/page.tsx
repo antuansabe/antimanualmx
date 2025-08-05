@@ -1,4 +1,4 @@
-import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
+import { SelloAccion, ExpedienteCard, Stamp, TypewriterTitle } from '@/shared/ui';
 import { SelloHero } from '@/shared/ui/SelloHero';
 import { FooterMobile } from '@/shared/ui/FooterMobile';
 import Link from 'next/link';
@@ -15,7 +15,7 @@ export default function Home() {
               <SelloHero />
               
               <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter tracking-wider">
-                ANTIMANUAL
+                <TypewriterTitle text="ANTIMANUAL" />
               </h1>
               <div className="inline-block border-4 border-double border-sello-rojo px-6 py-2 mb-4">
                 <p className="text-lg md:text-xl text-sello-rojo font-bold tracking-widest typewriter">
@@ -31,18 +31,18 @@ export default function Home() {
             </div>
 
             {/* Cuerpo del manifiesto con estilo oficial */}
-            <div className="space-y-6 texto-oficial leading-relaxed">
-              <div className="pl-8 border-l-4 border-papel-border">
-                <p className="mb-4">
+            <div className="space-y-4 texto-oficial">
+              <div className="pl-8 border-l-4 border-papel-border space-y-3">
+                <p className="typewriter leading-6">
                   <span className="typewriter-bold text-sm">CONSIDERANDO</span> el estado actual de vulnerabilidad digital de la ciudadanía;
                 </p>
-                <p className="mb-4">
+                <p className="typewriter leading-6">
                   <span className="typewriter-bold text-sm">CONSIDERANDO</span> que el miedo digital paraliza a la ciudadanía mexicana ante amenazas cibernéticas;
                 </p>
-                <p className="mb-4">
+                <p className="typewriter leading-6">
                   <span className="typewriter-bold text-sm">CONSIDERANDO</span> que la vigilancia gubernamental y corporativa viola sistemáticamente nuestros derechos fundamentales;
                 </p>
-                <p className="mb-4">
+                <p className="typewriter leading-6">
                   <span className="typewriter-bold text-sm">CONSIDERANDO</span> que el conocimiento técnico se mantiene deliberadamente inaccesible para las mayorías;
                 </p>
               </div>
@@ -53,28 +53,28 @@ export default function Home() {
                 <div className="flex-grow border-t-2 border-papel-border"></div>
               </div>
 
-              <div className="space-y-6">
-                <p className="text-center typewriter-bold text-xl mb-8">
+              <div className="space-y-4">
+                <p className="text-center typewriter-bold text-xl mb-6">
                   POR LO TANTO, DECLARAMOS:
                 </p>
 
-                <div className="space-y-4 pl-8">
-                  <p>
+                <div className="space-y-3 pl-8">
+                  <p className="typewriter leading-6">
                     <span className="inline-block w-12 typewriter-bold text-sello-rojo">I.</span>
                     Que cada ciudadano tiene derecho irrenunciable a la privacidad digital sin vigilancia ni censura de ningún tipo.
                   </p>
 
-                  <p>
+                  <p className="typewriter leading-6">
                     <span className="inline-block w-12 typewriter-bold text-sello-rojo">II.</span>
                     Que transformaremos el miedo en poder colectivo a través de herramientas prácticas, educación accesible y organización comunitaria.
                   </p>
 
-                  <p>
+                  <p className="typewriter leading-6">
                     <span className="inline-block w-12 typewriter-bold text-sello-rojo">III.</span>
                     Que ningún activista digital navegará solo en esta lucha por las libertades digitales fundamentales.
                   </p>
 
-                  <p>
+                  <p className="typewriter leading-6">
                     <span className="inline-block w-12 typewriter-bold text-sello-rojo">IV.</span>
                     Que este conocimiento será siempre libre, gratuito y accesible para todas las personas.
                   </p>
@@ -96,24 +96,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Acciones principales */}
-            <div className="mt-12 pt-8 border-t-2 border-papel-border">
-              <div className="text-center mb-6">
-                <p className="typewriter-bold text-sm">ACCIONES INMEDIATAS DISPONIBLES</p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/herramientas">
-                  <SelloAccion variant="urgent" size="lg">
-                    🚨 KIT DE EMERGENCIA
-                  </SelloAccion>
-                </Link>
-                <Link href="/red">
-                  <SelloAccion variant="secondary" size="lg">
-                    🤝 UNIRSE A LA RED
-                  </SelloAccion>
-                </Link>
-              </div>
-            </div>
           </ExpedienteCard>
         </section>
 
