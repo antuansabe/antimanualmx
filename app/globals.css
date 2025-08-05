@@ -937,7 +937,7 @@ a:hover {
   background: var(--papel-base);
   border-top: 2px solid var(--tinta-oficial);
   padding: 1.5rem 1rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
   text-align: center;
 }
 
@@ -1000,7 +1000,11 @@ a:hover {
 @media (max-width: 768px) {
   main {
     padding-bottom: 80px; /* Espacio para navegación inferior */
-    margin-bottom: 100px; /* Espacio adicional para footer */
+    margin-bottom: 20px; /* Espacio reducido para footer */
+  }
+  
+  .footer-mobile {
+    margin-top: 1.5rem;
   }
   
   .footer-mobile {

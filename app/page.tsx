@@ -6,10 +6,18 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <main className="max-w-7xl mx-auto px-4 py-8 md:px-8 md:py-12">
+      <main className="max-w-7xl mx-auto px-4 py-6 md:px-8 md:py-12">
         {/* Hero Section - Manifiesto */}
         <section className="mb-16">
-          <ExpedienteCard variant="default" className="max-w-4xl mx-auto" perforated clipped>
+          <ExpedienteCard variant="default" className="max-w-4xl mx-auto relative" clipped>
+            {/* Orificio de perforación decorativo */}
+            <div className="absolute top-3 left-3 w-4 h-4 md:w-5 md:h-5 bg-papel-base rounded-full z-20 shadow-inner" 
+                 style={{
+                   boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.1)',
+                   backgroundColor: 'var(--papel-base)'
+                 }}>
+            </div>
+            
             <div className="text-center mb-8">
               {/* Sello Hero Animado */}
               <SelloHero />
@@ -108,7 +116,14 @@ export default function Home() {
           
           <div className="expedientes-grid">
             <Link href="/herramientas">
-              <div className="expediente-card-simple">
+              <div className="expediente-card-simple relative">
+                {/* Orificio de perforación */}
+                <div className="absolute top-3 left-3 w-4 h-4 md:w-5 md:h-5 bg-papel-base rounded-full z-20 shadow-inner" 
+                     style={{
+                       boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.1)',
+                       backgroundColor: 'var(--papel-base)'
+                     }}>
+                </div>
                 <div className="icono-expediente">🚨</div>
                 <h3 className="titulo-expediente">HERRAMIENTAS DE EMERGENCIA</h3>
                 <p className="descripcion-expediente">
@@ -120,7 +135,14 @@ export default function Home() {
             </Link>
 
             <Link href="/red">
-              <div className="expediente-card-simple">
+              <div className="expediente-card-simple relative">
+                {/* Orificio de perforación */}
+                <div className="absolute top-3 left-3 w-4 h-4 md:w-5 md:h-5 bg-papel-base rounded-full z-20 shadow-inner" 
+                     style={{
+                       boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.1)',
+                       backgroundColor: 'var(--papel-base)'
+                     }}>
+                </div>
                 <div className="icono-expediente">🤝</div>
                 <h3 className="titulo-expediente">RED DE APOYO</h3>
                 <p className="descripcion-expediente">
@@ -136,7 +158,14 @@ export default function Home() {
             </Link>
 
             <Link href="/academia">
-              <div className="expediente-card-simple">
+              <div className="expediente-card-simple relative">
+                {/* Orificio de perforación */}
+                <div className="absolute top-3 left-3 w-4 h-4 md:w-5 md:h-5 bg-papel-base rounded-full z-20 shadow-inner" 
+                     style={{
+                       boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.1)',
+                       backgroundColor: 'var(--papel-base)'
+                     }}>
+                </div>
                 <div className="icono-expediente">🎓</div>
                 <h3 className="titulo-expediente">ACADEMIA ACTIVISTA</h3>
                 <p className="descripcion-expediente">
@@ -148,7 +177,14 @@ export default function Home() {
             </Link>
 
             <Link href="/observatorio">
-              <div className="expediente-card-simple">
+              <div className="expediente-card-simple relative">
+                {/* Orificio de perforación */}
+                <div className="absolute top-3 left-3 w-4 h-4 md:w-5 md:h-5 bg-papel-base rounded-full z-20 shadow-inner" 
+                     style={{
+                       boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.1)',
+                       backgroundColor: 'var(--papel-base)'
+                     }}>
+                </div>
                 <div className="icono-expediente">📊</div>
                 <h3 className="titulo-expediente">OBSERVATORIO</h3>
                 <p className="descripcion-expediente">
@@ -162,7 +198,7 @@ export default function Home() {
         </section>
 
         {/* Call to Action */}
-        <section className="text-center mb-16">
+        <section className="text-center mb-6 md:mb-10">
           <div className="unete-movimiento">
             <h2 className="titulo-seccion">ÚNETE AL MOVIMIENTO</h2>
             <p className="descripcion-movimiento">
