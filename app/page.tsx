@@ -10,20 +10,6 @@ export default function Home() {
         {/* Hero Section - Manifiesto */}
         <section className="mb-16">
           <ExpedienteCard variant="default" className="max-w-4xl mx-auto" perforated clipped>
-            {/* Encabezado oficial */}
-            <div className="border-b-2 border-doble border-papel-border pb-6 mb-8">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                  <p className="texto-pequeno mb-1">INICIATIVA CIUDADANA</p>
-                  <p className="texto-pequeno">PLATAFORMA DE ACTIVISMO DIGITAL</p>
-                </div>
-                <div className="text-right">
-                  <Stamp className="text-xs transform rotate-2">PÚBLICO</Stamp>
-                  <p className="texto-pequeno mt-2">Folio: {new Date().getFullYear()}-AMX-001</p>
-                </div>
-              </div>
-            </div>
-            
             <div className="text-center mb-8">
               {/* Sello Hero Animado */}
               <SelloHero />
@@ -48,7 +34,7 @@ export default function Home() {
             <div className="space-y-6 texto-oficial leading-relaxed">
               <div className="pl-8 border-l-4 border-papel-border">
                 <p className="mb-4">
-                  <span className="typewriter-bold text-sm">VISTO</span> el estado actual de vulnerabilidad digital de la ciudadanía;
+                  <span className="typewriter-bold text-sm">CONSIDERANDO</span> el estado actual de vulnerabilidad digital de la ciudadanía;
                 </p>
                 <p className="mb-4">
                   <span className="typewriter-bold text-sm">CONSIDERANDO</span> que el miedo digital paraliza a la ciudadanía mexicana ante amenazas cibernéticas;
@@ -138,91 +124,74 @@ export default function Home() {
             <p className="texto-pequeno">CLASIFICACIÓN: PÚBLICO • ACCESO LIBRE</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Link href="/herramientas" className="block transform hover:-translate-y-1 transition-transform">
-              <ExpedienteCard variant="urgent" clipped>
-                <div className="text-center">
-                  <div className="inline-block p-4 bg-sello-rojo/10 rounded-full mb-4">
-                    <span className="text-4xl">🛡️</span>
-                  </div>
-                  <h3 className="typewriter-bold text-lg mb-3">HERRAMIENTAS DE EMERGENCIA</h3>
-                  <p className="texto-oficial text-sm mb-4">
-                    Protocolos de respuesta inmediata ante amenazas digitales. Acceso sin registro.
-                  </p>
-                  <div className="pt-4 border-t border-papel-border">
-                    <Stamp className="text-xs">ACCESO 24/7</Stamp>
-                  </div>
-                </div>
-              </ExpedienteCard>
+          <div className="expedientes-grid">
+            <Link href="/herramientas">
+              <div className="expediente-card-simple">
+                <div className="icono-expediente">🚨</div>
+                <h3 className="titulo-expediente">HERRAMIENTAS DE EMERGENCIA</h3>
+                <p className="descripcion-expediente">
+                  Protocolos de respuesta inmediata ante amenazas digitales. Acceso sin registro.
+                </p>
+                <button className="boton-expediente">ACCESO 24/7</button>
+                <span className="codigo-expediente">EXP-51827K</span>
+              </div>
             </Link>
 
-            <Link href="/red" className="block transform hover:-translate-y-1 transition-transform">
-              <ExpedienteCard stamped>
-                <div className="text-center">
-                  <div className="inline-block p-4 bg-dorado-metal/10 rounded-full mb-4">
-                    <span className="text-4xl">🤝</span>
-                  </div>
-                  <h3 className="typewriter-bold text-lg mb-3">RED DE APOYO</h3>
-                  <p className="texto-oficial text-sm mb-4">
-                    Directorio verificado de organizaciones aliadas. Contacto directo disponible.
-                  </p>
-                  <div className="pt-4 border-t border-papel-border">
-                    <p className="texto-pequeno font-bold">23 ORGANIZACIONES</p>
-                  </div>
+            <Link href="/red">
+              <div className="expediente-card-simple">
+                <div className="icono-expediente">🤝</div>
+                <h3 className="titulo-expediente">RED DE APOYO</h3>
+                <p className="descripcion-expediente">
+                  Directorio verificado de organizaciones aliadas. Contacto directo disponible.
+                </p>
+                <div className="contador-simple">
+                  <span className="numero">23</span>
+                  <span className="texto">ORGANIZACIONES</span>
                 </div>
-              </ExpedienteCard>
+                <button className="boton-expediente">VER DIRECTORIO</button>
+                <span className="codigo-expediente">EXP-O85BV3</span>
+              </div>
             </Link>
 
-            <Link href="/academia" className="block transform hover:-translate-y-1 transition-transform">
-              <ExpedienteCard perforated>
-                <div className="text-center">
-                  <div className="inline-block p-4 bg-verde-aprobado/10 rounded-full mb-4">
-                    <span className="text-4xl">🎓</span>
-                  </div>
-                  <h3 className="typewriter-bold text-lg mb-3">ACADEMIA ACTIVISTA</h3>
-                  <p className="texto-oficial text-sm mb-4">
-                    Formación certificada en seguridad digital. Tres niveles progresivos.
-                  </p>
-                  <div className="pt-4 border-t border-papel-border">
-                    <Stamp className="text-xs bg-verde-aprobado">CERTIFICACIÓN</Stamp>
-                  </div>
-                </div>
-              </ExpedienteCard>
+            <Link href="/academia">
+              <div className="expediente-card-simple">
+                <div className="icono-expediente">🎓</div>
+                <h3 className="titulo-expediente">ACADEMIA ACTIVISTA</h3>
+                <p className="descripcion-expediente">
+                  Formación certificada en seguridad digital. Tres niveles progresivos.
+                </p>
+                <button className="boton-expediente">CERTIFICACIÓN</button>
+                <span className="codigo-expediente">EXP-A8X66N</span>
+              </div>
             </Link>
 
-            <Link href="/observatorio" className="block transform hover:-translate-y-1 transition-transform">
-              <ExpedienteCard>
-                <div className="text-center">
-                  <div className="inline-block p-4 bg-azul-info/10 rounded-full mb-4">
-                    <span className="text-4xl">📊</span>
-                  </div>
-                  <h3 className="typewriter-bold text-lg mb-3">OBSERVATORIO</h3>
-                  <p className="texto-oficial text-sm mb-4">
-                    Métricas públicas del estado de libertades digitales en tiempo real.
-                  </p>
-                  <div className="pt-4 border-t border-papel-border">
-                    <p className="texto-pequeno font-bold">DATOS ABIERTOS</p>
-                  </div>
-                </div>
-              </ExpedienteCard>
+            <Link href="/observatorio">
+              <div className="expediente-card-simple">
+                <div className="icono-expediente">📊</div>
+                <h3 className="titulo-expediente">OBSERVATORIO</h3>
+                <p className="descripcion-expediente">
+                  Métricas públicas del estado de libertades digitales en tiempo real.
+                </p>
+                <button className="boton-expediente">DATOS ABIERTOS</button>
+                <span className="codigo-expediente">EXP-3D1G3S</span>
+              </div>
             </Link>
           </div>
         </section>
 
         {/* Call to Action */}
         <section className="text-center mb-16">
-          <ExpedienteCard className="inline-block">
-            <p className="text-2xl font-bold mb-4 typewriter">
-              ÚNETE AL MOVIMIENTO
-            </p>
-            <p className="mb-6 texto-suave">
-              Ya somos <span className="highlight font-bold">500+ activistas</span> construyendo 
+          <div className="unete-movimiento">
+            <h2 className="titulo-seccion">ÚNETE AL MOVIMIENTO</h2>
+            <p className="descripcion-movimiento">
+              Ya somos <span className="contador-activistas">500+ activistas</span> construyendo 
               el futuro digital que merecemos.
             </p>
-            <SelloAccion>
-              COMENZAR AHORA
-            </SelloAccion>
-          </ExpedienteCard>
+            <button className="sello-accion grande">
+              <span>COMENZAR AHORA</span>
+            </button>
+            <div className="codigo-expediente">EXP-TLC9HE</div>
+          </div>
         </section>
       </main>
 

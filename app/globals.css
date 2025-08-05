@@ -1463,3 +1463,373 @@ body {
     padding-bottom: 60px;
   }
 }
+
+/* === EXPEDIENTES DISPONIBLES - DISEÑO LIMPIO Y FUNCIONAL === */
+
+/* Reset y limpieza */
+* {
+  box-sizing: border-box;
+}
+
+/* Grid mejorado y responsivo */
+.expedientes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+/* Para pantallas grandes - Layout específico con OBSERVATORIO debajo de RED DE APOYO */
+@media (min-width: 1024px) {
+  .expedientes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 800px; /* Reducido para 2 columnas */
+    margin: 0 auto;
+  }
+  
+  /* Posicionamiento específico de cada card */
+  .expedientes-grid .expediente-card-simple:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  
+  .expedientes-grid .expediente-card-simple:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  .expedientes-grid .expediente-card-simple:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  
+  /* OBSERVATORIO (4ta card) debajo de RED DE APOYO (2da card) */
+  .expedientes-grid .expediente-card-simple:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+/* Cards mejoradas sin superposiciones */
+.expediente-card-simple {
+  background: #FAF8F3;
+  border: 2px solid #D4C5B0;
+  padding: 2rem 2rem 3rem 2rem; /* Padding bottom extra para código */
+  height: 420px; /* Altura aumentada para evitar superposiciones */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  /* Sombra simple y elegante */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none !important;
+  overflow: hidden; /* Evitar que elementos se salgan */
+}
+
+.expediente-card-simple:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Elementos internos con fuente máquina de escribir */
+.icono-expediente {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.titulo-expediente {
+  font-family: 'Courier New', 'Monaco', 'Consolas', 'Source Code Pro', monospace;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #1A1A1A !important;
+  margin-bottom: 1rem;
+  text-decoration: none !important;
+}
+
+.descripcion-expediente {
+  font-family: 'Courier New', 'Monaco', 'Consolas', 'Source Code Pro', monospace;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #4A4A4A !important;
+  margin-bottom: auto;
+  flex-grow: 1;
+  text-decoration: none !important;
+}
+
+/* Contador mejorado para Red de Apoyo con fuente máquina de escribir */
+.contador-simple {
+  margin: 0.75rem 0;
+  flex-shrink: 0; /* No se comprime */
+}
+
+.contador-simple .numero {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #B91C1C;
+  font-family: 'Courier New', 'Monaco', 'Consolas', 'Source Code Pro', monospace;
+  line-height: 1;
+}
+
+.contador-simple .texto {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #4A4A4A;
+  font-family: 'Courier New', 'Monaco', 'Consolas', 'Source Code Pro', monospace;
+  margin-top: 0.25rem;
+}
+
+/* Botones mejorados sin superposiciones con fuente máquina de escribir */
+.boton-expediente {
+  background: #B91C1C;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Courier New', 'Monaco', 'Consolas', 'Source Code Pro', monospace;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: 0.5rem; /* Separación del código */
+  transition: background 0.3s ease;
+  text-decoration: none !important;
+  flex-shrink: 0; /* No se comprime */
+  width: fit-content;
+  max-width: calc(100% - 2rem); /* No se sale del contenedor */
+}
+
+.boton-expediente:hover {
+  background: #DC2626;
+}
+
+/* Código de expediente mejorado con fuente máquina de escribir */
+.codigo-expediente {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
+  font-family: 'Courier New', 'Monaco', 'Consolas', 'Source Code Pro', monospace;
+  font-size: 0.65rem;
+  color: #999;
+  text-transform: uppercase;
+  z-index: 1; /* Sobre el fondo pero bajo otros elementos */
+  pointer-events: none; /* No interfiere con clics */
+  letter-spacing: 0.05em;
+}
+
+/* Sección ÚNETE AL MOVIMIENTO limpia */
+.unete-movimiento {
+  background: #FAF8F3;
+  border: 2px solid #D4C5B0;
+  padding: 3rem 2rem;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.titulo-seccion {
+  font-family: var(--font-oficial-base);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+  text-decoration: none !important;
+}
+
+.descripcion-movimiento {
+  font-family: var(--font-texto);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4A4A4A;
+  margin-bottom: 2rem;
+  text-decoration: none !important;
+}
+
+.contador-activistas {
+  color: #B91C1C;
+  font-weight: 700;
+  font-family: var(--font-oficial-base);
+  font-size: 1.2rem;
+  text-decoration: none !important;
+}
+
+/* Eliminar TODOS los estilos de links que rompan la estética */
+a, a:hover, a:visited, a:active {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Override específico para links dentro de expedientes */
+.expedientes-grid a,
+.expedientes-grid a:hover,
+.expedientes-grid a:visited,
+.expedientes-grid a:active {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.expedientes-grid a * {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* Media queries mejoradas para diferentes breakpoints */
+
+/* Tablets grandes (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .expedientes-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .expediente-card-simple {
+    height: 380px;
+    padding: 1.75rem 1.75rem 2.5rem 1.75rem;
+  }
+  
+  .titulo-expediente {
+    font-size: 1.05rem;
+  }
+  
+  .contador-simple .numero {
+    font-size: 2rem;
+  }
+}
+
+/* Móviles (max-width: 767px) */
+@media (max-width: 767px) {
+  .expedientes-grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  
+  .expediente-card-simple {
+    height: 380px; /* Altura suficiente para evitar superposiciones */
+    padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+  }
+  
+  .titulo-expediente {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .descripcion-expediente {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .contador-simple {
+    margin: 0.5rem 0;
+  }
+  
+  .contador-simple .numero {
+    font-size: 1.8rem;
+  }
+  
+  .contador-simple .texto {
+    font-size: 0.65rem;
+  }
+  
+  .icono-expediente {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .boton-expediente {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .codigo-expediente {
+    font-size: 0.6rem;
+    bottom: 0.5rem;
+    right: 0.75rem;
+  }
+  
+  .unete-movimiento {
+    padding: 2rem 1.5rem;
+  }
+  
+  .titulo-seccion {
+    font-size: 1.5rem;
+  }
+  
+  .descripcion-movimiento {
+    font-size: 1rem;
+  }
+}
+
+/* Móviles pequeños (max-width: 480px) */
+@media (max-width: 480px) {
+  .expedientes-grid {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+  
+  .expediente-card-simple {
+    height: 360px;
+    padding: 1.25rem 1.25rem 2.25rem 1.25rem;
+  }
+  
+  .titulo-expediente {
+    font-size: 0.95rem;
+  }
+  
+  .descripcion-expediente {
+    font-size: 0.85rem;
+  }
+  
+  .contador-simple .numero {
+    font-size: 1.6rem;
+  }
+  
+  .icono-expediente {
+    font-size: 2.2rem;
+  }
+  
+  .boton-expediente {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* Estados focus para accesibilidad */
+.expediente-card-simple:focus,
+.boton-expediente:focus {
+  outline: 2px solid var(--dorado-metal);
+  outline-offset: 2px;
+}
+
+/* Prevenir selección de texto en elementos interactivos */
+.expediente-card-simple,
+.boton-expediente {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Asegurar que los botones mantengan el cursor pointer */
+.boton-expediente,
+button {
+  cursor: pointer;
+}
