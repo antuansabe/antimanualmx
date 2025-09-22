@@ -1213,6 +1213,225 @@ a:hover {
   }
 }
 
+/* === PÁGINA ACADEMIA - SISTEMA UNIFICADO === */
+
+/* Contenedor principal de la página */
+.academia-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Sistema de cards unificado */
+.academia-card-unified {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto 3rem auto;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(250, 248, 243, 0.95);
+  border: 2px solid var(--papel-border);
+  border-radius: 16px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header consistente para todas las cards */
+.academia-card-header {
+  border-bottom: 2px solid var(--papel-border);
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Contenido principal de las cards */
+.academia-card-content {
+  padding: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Footer consistente */
+.academia-card-footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--papel-border);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  margin-top: auto;
+}
+
+/* Módulos específicos */
+.academia-module-card {
+  min-height: 450px;
+}
+
+.academia-module-header {
+  border-bottom: 1px solid var(--papel-border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  min-height: 140px;
+}
+
+.academia-module-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.academia-module-actions {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--papel-border);
+}
+
+.academia-competencias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+/* Grid de metodología */
+.academia-metodologia-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.academia-metodologia-item {
+  background: var(--papel-base);
+  border: 1px solid var(--papel-border);
+  padding: 2rem;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Títulos unificados */
+.academia-title-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0 2rem;
+}
+
+.academia-title-main {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.academia-title-sub {
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  opacity: 0.8;
+}
+
+/* Responsive design optimizado */
+@media (max-width: 1024px) {
+  .academia-page-container {
+    padding: 0 1rem;
+  }
+
+  .academia-card-unified {
+    margin-bottom: 2rem;
+    min-height: 350px;
+  }
+
+  .academia-card-header,
+  .academia-card-content {
+    padding: 1.5rem;
+  }
+
+  .academia-card-footer {
+    padding: 1rem 1.5rem;
+  }
+
+  .academia-metodologia-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .academia-metodologia-item {
+    min-height: 250px;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .academia-page-container {
+    padding: 0 0.75rem;
+  }
+
+  .academia-card-unified {
+    margin-bottom: 1.5rem;
+    min-height: 300px;
+  }
+
+  .academia-card-header,
+  .academia-card-content {
+    padding: 1rem;
+  }
+
+  .academia-card-footer {
+    padding: 0.75rem 1rem;
+  }
+
+  .academia-module-card {
+    min-height: 400px;
+  }
+
+  .academia-module-header {
+    min-height: 120px;
+  }
+
+  .academia-competencias-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .academia-metodologia-item {
+    min-height: 220px;
+    padding: 1rem;
+  }
+
+  .academia-title-section {
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .academia-module-card {
+    min-height: 380px;
+  }
+
+  .academia-module-header {
+    min-height: 110px;
+  }
+
+  .academia-module-header .flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .academia-module-header .text-right {
+    text-align: left;
+  }
+}
+
 /* === NAVEGACIÓN ADAPTATIVA === */
 
 /* DESKTOP STYLES (>1024px) */
