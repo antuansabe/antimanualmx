@@ -75,9 +75,9 @@ export default function RedPage() {
                   <p className="texto-pequeno">DIRECTORIO NACIONAL DE ORGANIZACIONES ALIADAS</p>
                 </div>
                 <div className="text-right">
-                  <Stamp className="text-xs transform rotate-2 mb-2">OFICIAL</Stamp>
-                  <p className="texto-pequeno">Directorio: DNA-{new Date().getFullYear()}-001</p>
-                  <p className="texto-pequeno">Actualización: {currentDate}</p>
+                  <Stamp className="text-xs bg-sello-rojo text-white transform rotate-2 mb-2">OFICIAL</Stamp>
+                  <p className="texto-pequeno" style={{color: '#1A1A1A'}}>Directorio: DNA-{new Date().getFullYear()}-001</p>
+                  <p className="texto-pequeno" style={{color: '#1A1A1A'}}>Actualización: {currentDate}</p>
                 </div>
               </div>
             </div>
@@ -103,20 +103,20 @@ export default function RedPage() {
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-bold typewriter">{organizaciones.length}</div>
-                  <div className="texto-pequeno">Organizaciones registradas</div>
+                  <div className="text-2xl font-bold typewriter" style={{color: '#1A1A1A'}}>{organizaciones.length}</div>
+                  <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Organizaciones registradas</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold typewriter">32</div>
-                  <div className="texto-pequeno">Entidades federativas</div>
+                  <div className="text-2xl font-bold typewriter" style={{color: '#1A1A1A'}}>32</div>
+                  <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Entidades federativas</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold typewriter">{organizaciones.filter(org => org.verificada).length}</div>
-                  <div className="texto-pequeno">Organizaciones verificadas</div>
+                  <div className="text-2xl font-bold typewriter" style={{color: '#1A1A1A'}}>{organizaciones.filter(org => org.verificada).length}</div>
+                  <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Organizaciones verificadas</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold typewriter">{organizacionesFiltradas.length}</div>
-                  <div className="texto-pequeno">Resultados visibles</div>
+                  <div className="text-2xl font-bold typewriter" style={{color: '#1A1A1A'}}>{organizacionesFiltradas.length}</div>
+                  <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Resultados visibles</div>
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function RedPage() {
                     FILTROS DE BÚSQUEDA AVANZADA
                   </h2>
                 </div>
-                <Stamp className="text-xs">PÚBLICO</Stamp>
+                <Stamp className="text-xs bg-sello-rojo text-white transform rotate-3">PÚBLICO</Stamp>
               </div>
             </div>
             <FiltrosOrganizaciones
@@ -199,8 +199,8 @@ export default function RedPage() {
               {organizacionSeleccionada && (
                 <div className="mt-6">
                   <ExpedienteCard variant="approved">
-                    <div className="border-b border-verde-aprobado pb-3 mb-3">
-                      <h3 className="typewriter-bold text-verde-aprobado">
+                    <div className="border-b border-dorado pb-3 mb-3">
+                      <h3 className="typewriter-bold" style={{color: '#A16207'}}>
                         ORGANIZACIÓN SELECCIONADA:
                       </h3>
                     </div>
@@ -260,22 +260,22 @@ export default function RedPage() {
                         <div className="flex items-start gap-4">
                           <div className="text-center">
                             <div className="text-3xl mb-2">{iconosPorTipo[org.tipo]}</div>
-                            <Stamp className={`text-xs ${org.verificada ? 'bg-verde-aprobado text-white' : 'bg-yellow-600 text-white'}`}>
+                            <Stamp className={`text-xs ${org.verificada ? 'bg-dorado text-white' : 'bg-sello-rojo text-white'}`}>
                               {org.verificada ? 'VERIFICADA' : 'EN PROCESO'}
                             </Stamp>
                           </div>
                           <div>
-                            <p className="texto-pequeno mb-1">EXPEDIENTE ORG-{org.id.toUpperCase()}</p>
-                            <h3 className="text-xl md:text-2xl font-bold typewriter mb-1">
+                            <p className="texto-pequeno mb-1" style={{color: '#1A1A1A'}}>EXPEDIENTE ORG-{org.id.toUpperCase()}</p>
+                            <h3 className="text-xl md:text-2xl font-bold typewriter mb-1" style={{color: '#1A1A1A'}}>
                               {org.nombreCorto}
                             </h3>
-                            <p className="texto-pequeno mb-2">{org.nombre}</p>
+                            <p className="texto-pequeno mb-2" style={{color: '#1A1A1A'}}>{org.nombre}</p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="texto-pequeno">📍 {org.ubicacion.ciudad}</p>
-                          <p className="texto-pequeno">🗓️ Fund. {org.fechaFundacion}</p>
-                          <p className="texto-pequeno">📡 {org.alcance}</p>
+                          <p className="texto-pequeno" style={{color: '#1A1A1A'}}>📍 {org.ubicacion.ciudad}</p>
+                          <p className="texto-pequeno" style={{color: '#1A1A1A'}}>🗓️ Fund. {org.fechaFundacion}</p>
+                          <p className="texto-pequeno" style={{color: '#1A1A1A'}}>📡 {org.alcance}</p>
                         </div>
                       </div>
                     </div>
@@ -286,13 +286,13 @@ export default function RedPage() {
                         {org.descripcion}
                       </p>
                       
-                      <div className="bg-papel-sombra border-l-4 border-azul-info p-4 mb-4">
-                        <p className="typewriter-bold text-sm mb-2 text-azul-info">ÁREAS DE ESPECIALIZACIÓN:</p>
+                      <div className="bg-papel-sombra border-l-4 border-dorado p-4 mb-4">
+                        <p className="typewriter-bold text-sm mb-2" style={{color: '#1A1A1A'}}>ÁREAS DE ESPECIALIZACIÓN:</p>
                         <div className="grid md:grid-cols-3 gap-2">
                           {org.especialidades.map((esp, index) => (
                             <div key={index} className="flex items-center gap-2 texto-pequeno">
-                              <span className="text-azul-info">▶</span>
-                              <span>{esp}</span>
+                              <span style={{color: '#A16207'}}>▶</span>
+                              <span style={{color: '#1A1A1A'}}>{esp}</span>
                             </div>
                           ))}
                         </div>
@@ -325,8 +325,10 @@ export default function RedPage() {
                     </div>
 
                     {/* Código de registro */}
-                    <div className="absolute bottom-2 right-2 text-xs texto-suave typewriter opacity-30">
-                      ORG-{org.id.toUpperCase()}-{new Date().getFullYear()}
+                    <div className="mt-4 pt-3 border-t border-papel-border text-right">
+                      <p className="text-xs typewriter" style={{color: '#1A1A1A', opacity: 0.6}}>
+                        ORG-{org.id.toUpperCase()}-{new Date().getFullYear()}
+                      </p>
                     </div>
                   </ExpedienteCard>
                 ))
@@ -382,7 +384,7 @@ export default function RedPage() {
                 <ExpedienteCard variant="default">
                   <div className="border-b border-papel-border pb-3 mb-3">
                     <div className="flex items-center justify-between">
-                      <Stamp className="text-xs bg-orange-500 text-white">MODERADO</Stamp>
+                      <Stamp className="text-xs bg-dorado text-white">MODERADO</Stamp>
                       <span className="texto-pequeno">Emitida: 1 día</span>
                     </div>
                   </div>
@@ -413,16 +415,16 @@ export default function RedPage() {
         {/* Registro oficial */}
         <section className="text-center">
           <ExpedienteCard variant="approved" className="max-w-4xl mx-auto">
-            <div className="border-b border-verde-aprobado pb-4 mb-6">
-              <h2 className="text-2xl font-bold typewriter text-verde-aprobado">
+            <div className="border-b border-dorado pb-4 mb-6">
+              <h2 className="text-2xl font-bold typewriter" style={{color: '#A16207'}}>
                 REGISTRO EN EL DIRECTORIO NACIONAL
               </h2>
               <p className="texto-pequeno mt-2">INCORPORACIÓN DE NUEVAS ORGANIZACIONES ALIADAS</p>
             </div>
 
             <div className="space-y-6">
-              <div className="bg-verde-aprobado/10 border border-verde-aprobado p-6">
-                <p className="typewriter-bold text-verde-aprobado mb-2">REQUISITOS DE INCORPORACIÓN:</p>
+              <div className="bg-papel-sombra border border-dorado p-6">
+                <p className="typewriter-bold mb-2" style={{color: '#A16207'}}>REQUISITOS DE INCORPORACIÓN:</p>
                 <p className="texto-oficial leading-relaxed">
                   Organizaciones, colectivos y activistas comprometidos con la defensa de derechos 
                   digitales pueden solicitar su incorporación al directorio nacional mediante 
@@ -444,7 +446,7 @@ export default function RedPage() {
                 </SelloAccion>
               </div>
               
-              <div className="mt-8 pt-6 border-t border-verde-aprobado">
+              <div className="mt-8 pt-6 border-t border-dorado">
                 <p className="texto-pequeno">
                   PROCESO DE VERIFICACIÓN: 5-10 días hábiles • REGISTRO GRATUITO • CONFIDENCIALIDAD GARANTIZADA
                 </p>
