@@ -41,13 +41,16 @@ export default function MapaInteractivo({
 
   if (!isMounted) {
     return (
-      <div 
-        className="w-full bg-gray-100 rounded-lg flex items-center justify-center aged-paper"
+      <div
+        className="w-full bg-papel-base border-2 border-papel-border flex items-center justify-center"
         style={{ height: altura }}
       >
-        <div className="text-center">
-          <div className="text-4xl mb-2">🗺️</div>
-          <p className="typewriter text-gray-600">Cargando mapa...</p>
+        <div className="text-center p-8">
+          <div className="text-4xl mb-4">🗺️</div>
+          <p className="typewriter" style={{color: '#1A1A1A'}}>CARGANDO CARTOGRAFÍA NACIONAL...</p>
+          <div className="mt-4 border-t border-papel-border pt-4">
+            <p className="texto-pequeno" style={{color: '#1A1A1A'}}>INSTITUTO CARTOGRÁFICO DIGITAL</p>
+          </div>
         </div>
       </div>
     );
@@ -57,16 +60,17 @@ export default function MapaInteractivo({
   const centroMexico: [number, number] = [23.6345, -102.5528];
 
   return (
-    <div className="w-full rounded-lg overflow-hidden border-2 border-red-200" style={{ height: altura }}>
+    <div className="w-full overflow-hidden border-2 border-papel-border vintage-map" style={{ height: altura }}>
       <MapContainer
         center={centroMexico}
         zoom={5}
         style={{ height: '100%', width: '100%' }}
-        className="z-0"
+        className="z-0 vintage-map-container"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='INSTITUTO CARTOGRÁFICO DIGITAL • REPÚBLICA DE MÉXICO'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          className="vintage-tiles"
         />
         
         {organizaciones.map((org) => (
@@ -78,33 +82,42 @@ export default function MapaInteractivo({
             }}
           >
             <Popup>
-              <div className="p-2 min-w-[200px]">
-                <h3 className="font-bold mb-2 typewriter" style={{ color: 'var(--sello-rojo)' }}>
-                  {org.nombreCorto}
-                </h3>
-                <p className="text-sm texto-oficial mb-2">
-                  {org.descripcion.substring(0, 100)}...
+              <div className="p-4 min-w-[250px] bg-papel-base border border-papel-border">
+                <div className="border-b border-papel-border pb-2 mb-3">
+                  <p className="texto-pequeno mb-1" style={{color: '#1A1A1A'}}>EXPEDIENTE ORG-{org.id.toUpperCase()}</p>
+                  <h3 className="font-bold typewriter" style={{ color: '#B91C1C' }}>
+                    {org.nombreCorto}
+                  </h3>
+                </div>
+                <p className="text-sm mb-3" style={{color: '#1A1A1A', fontFamily: 'Georgia, serif'}}>
+                  {org.descripcion.substring(0, 120)}...
                 </p>
-                <div className="text-xs texto-suave mb-2">
-                  📍 {org.ubicacion.ciudad}, {org.ubicacion.estado}
+                <div className="space-y-1 mb-4">
+                  <div className="text-xs" style={{color: '#1A1A1A'}}>
+                    📍 <strong>Ubicación:</strong> {org.ubicacion.ciudad}, {org.ubicacion.estado}
+                  </div>
+                  <div className="text-xs" style={{color: '#1A1A1A'}}>
+                    🏷️ <strong>Especialidad:</strong> {org.especialidades.slice(0, 2).join(', ')}
+                  </div>
+                  <div className="text-xs" style={{color: '#1A1A1A'}}>
+                    📡 <strong>Alcance:</strong> {org.alcance}
+                  </div>
                 </div>
-                <div className="text-xs texto-suave mb-3">
-                  🏷️ {org.especialidades.slice(0, 2).join(', ')}
-                </div>
-                <div className="flex gap-2">
-                  <a 
+                <div className="flex gap-2 border-t border-papel-border pt-3">
+                  <a
                     href={org.contacto.sitioWeb}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="sello-oficial px-2 py-1 rounded text-xs transition-colors"
+                    className="bg-sello-rojo text-white px-3 py-1 text-xs typewriter transform -rotate-1 hover:rotate-0 transition-all"
                   >
-                    Visitar
+                    SITIO OFICIAL
                   </a>
-                  <button 
+                  <button
                     onClick={() => onOrganizacionSelect?.(org)}
-                    className="sello-secundario px-2 py-1 rounded text-xs transition-colors"
+                    className="bg-papel-sombra border border-papel-border px-3 py-1 text-xs typewriter transform rotate-1 hover:rotate-0 transition-all"
+                    style={{color: '#1A1A1A'}}
                   >
-                    Ver más
+                    EXPEDIENTE
                   </button>
                 </div>
               </div>

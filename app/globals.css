@@ -1026,6 +1026,193 @@ a:hover {
   }
 }
 
+/* === MAPA VINTAGE GUBERNAMENTAL === */
+.vintage-map {
+  position: relative;
+  background: var(--papel-base);
+}
+
+.vintage-map::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    linear-gradient(45deg, transparent 49%, rgba(26, 26, 26, 0.02) 50%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, rgba(26, 26, 26, 0.02) 50%, transparent 51%);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.vintage-map-container .leaflet-control-container {
+  font-family: var(--font-oficial-base);
+  color: var(--tinta-oficial);
+}
+
+.vintage-map-container .leaflet-control-attribution {
+  background: var(--papel-base);
+  color: var(--tinta-oficial);
+  border: 1px solid var(--papel-border);
+  font-family: var(--font-oficial-base);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vintage-map-container .leaflet-control-zoom a {
+  background: var(--papel-base);
+  color: var(--tinta-oficial);
+  border: 1px solid var(--papel-border);
+  font-family: var(--font-oficial-base);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.vintage-map-container .leaflet-control-zoom a:hover {
+  background: var(--sello-rojo);
+  color: white;
+}
+
+.vintage-tiles {
+  filter: sepia(20%) contrast(1.1) brightness(0.95);
+}
+
+.vintage-map-container .leaflet-popup-content-wrapper {
+  background: var(--papel-base);
+  border: 2px solid var(--papel-border);
+  border-radius: 0;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.vintage-map-container .leaflet-popup-tip {
+  background: var(--papel-base);
+  border: 1px solid var(--papel-border);
+}
+
+/* Marcadores personalizados estilo sello */
+.vintage-map-container .leaflet-marker-icon {
+  filter: hue-rotate(340deg) saturate(1.2) brightness(0.9);
+}
+
+/* === CARDS DE ORGANIZACIONES OPTIMIZADAS === */
+.organizacion-card {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.organizacion-card-header {
+  border-bottom: 1px solid var(--papel-border);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.organizacion-card-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.organizacion-card-description {
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+  min-height: 120px;
+}
+
+.organizacion-card-actions {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--papel-border);
+}
+
+.organizacion-card-footer {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--papel-border);
+  text-align: right;
+}
+
+@media (max-width: 1024px) {
+  .organizacion-card {
+    min-height: 380px;
+  }
+
+  .organizacion-card-header {
+    min-height: 110px;
+  }
+
+  .organizacion-card-description {
+    min-height: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .organizacion-card {
+    min-height: 350px;
+  }
+
+  .organizacion-card-header {
+    min-height: 100px;
+  }
+
+  .organizacion-card-description {
+    min-height: 100px;
+  }
+
+  /* Optimizaciones móviles para Red de Apoyo */
+  .expedientes-grid {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .vintage-map {
+    height: 300px !important;
+  }
+
+  .organizacion-card-actions .flex {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .organizacion-card {
+    min-height: 320px;
+  }
+
+  .organizacion-card-header {
+    min-height: 90px;
+  }
+
+  .organizacion-card-description {
+    min-height: 90px;
+  }
+
+  .vintage-map {
+    height: 250px !important;
+  }
+
+  .organizacion-card-header .flex {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .organizacion-card-header .text-right {
+    text-align: left;
+  }
+}
+
 /* === NAVEGACIÓN ADAPTATIVA === */
 
 /* DESKTOP STYLES (>1024px) */
