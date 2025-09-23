@@ -134,8 +134,8 @@ export default function ObservatorioPage() {
   }
 
   return (
-    <div className="min-h-screen bg-amber-50 text-amber-900/80 p-2 md:p-4 lg:p-6"> {/* More compact padding */}
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen">
+      <main className="page-container py-8 md:py-12">
         {/* Breadcrumbs */}
         <nav className="text-sm mb-3">
           <ol className="list-none p-0 inline-flex">
@@ -262,7 +262,7 @@ export default function ObservatorioPage() {
             </ExpedienteCard>
           </motion.section>
         </motion.main>
-      </div>
+      </main>
     </div>
   );
 }

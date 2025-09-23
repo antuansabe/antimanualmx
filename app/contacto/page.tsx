@@ -16,12 +16,12 @@ export default function ContactoPage() {
 
   return (
     <div className="min-h-screen">
-      <main className="max-w-6xl mx-auto px-4 py-8 md:px-8 md:py-12">
+      <main className="page-container py-8 md:py-12">
         {/* Encabezado oficial del formulario */}
         <section className="mb-12">
-          <ExpedienteCard variant="classified" className="max-w-5xl mx-auto" stamped>
+          <div className="liquid-card">
             {/* Header institucional */}
-            <div className="border-b-2 border-doble border-papel-border pb-6 mb-8">
+            <div className="liquid-card-header">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                   <p className="texto-pequeno mb-1">REPÚBLICA DIGITAL DE MÉXICO</p>
@@ -34,63 +34,65 @@ export default function ContactoPage() {
                 </div>
               </div>
             </div>
-            
-            <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
-                📞 CENTRO DE CONTACTO
-              </h1>
-              <div className="inline-block border-4 border-double border-papel-border px-6 py-2 mb-4">
-                <p className="text-lg md:text-xl font-bold tracking-widest typewriter">
-                  CANAL OFICIAL DE COMUNICACIÓN CIUDADANA
-                </p>
-              </div>
-              <p className="texto-pequeno mt-4">
-                COMUNICACIÓN SEGURA • CONFIDENCIAL • RESPUESTA GARANTIZADA
-              </p>
-            </div>
 
-            {/* Objetivos del servicio */}
-            <div className="space-y-6 texto-oficial leading-relaxed mb-8">
-              <div className="pl-8 border-l-4 border-papel-border">
-                <p className="mb-4">
-                  <span className="typewriter-bold text-sm">PROPÓSITO:</span> Canal oficial para solicitudes de asistencia técnica, denuncias de violaciones digitales, propuestas de colaboración y reportes de incidencias de seguridad.
-                </p>
-                <p className="mb-4">
-                  <span className="typewriter-bold text-sm">GARANTÍAS:</span> Todas las comunicaciones son procesadas bajo estrictos protocolos de confidencialidad y seguridad digital. Respuesta garantizada en un plazo máximo de 72 horas.
-                </p>
-                <p className="mb-4">
-                  <span className="typewriter-bold text-sm">COBERTURA:</span> Servicio disponible 24/7 para ciudadanos en territorio nacional que requieran asistencia en materia de derechos digitales.
+            <div className="liquid-card-content">
+              <div className="text-center mb-8">
+                <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
+                  📞 CENTRO DE CONTACTO
+                </h1>
+                <div className="inline-block border-4 border-double border-papel-border px-6 py-2 mb-4 rounded-lg">
+                  <p className="text-lg md:text-xl font-bold tracking-widest typewriter">
+                    CANAL OFICIAL DE COMUNICACIÓN CIUDADANA
+                  </p>
+                </div>
+                <p className="texto-pequeno mt-4">
+                  COMUNICACIÓN SEGURA • CONFIDENCIAL • RESPUESTA GARANTIZADA
                 </p>
               </div>
-            </div>
 
-            {/* Clasificaciones de seguridad */}
-            <div className="bg-papel-sombra border border-papel-border p-6 mb-8">
-              <div className="text-center mb-4">
-                <p className="typewriter-bold text-sm">NIVELES DE SEGURIDAD DISPONIBLES</p>
+              {/* Objetivos del servicio */}
+              <div className="space-y-6 texto-oficial leading-relaxed mb-8">
+                <div className="pl-8 border-l-4 border-papel-border">
+                  <p className="mb-4">
+                    <span className="typewriter-bold text-sm">PROPÓSITO:</span> Canal oficial para solicitudes de asistencia técnica, denuncias de violaciones digitales, propuestas de colaboración y reportes de incidencias de seguridad.
+                  </p>
+                  <p className="mb-4">
+                    <span className="typewriter-bold text-sm">GARANTÍAS:</span> Todas las comunicaciones son procesadas bajo estrictos protocolos de confidencialidad y seguridad digital. Respuesta garantizada en un plazo máximo de 72 horas.
+                  </p>
+                  <p className="mb-4">
+                    <span className="typewriter-bold text-sm">COBERTURA:</span> Servicio disponible 24/7 para ciudadanos en territorio nacional que requieran asistencia en materia de derechos digitales.
+                  </p>
+                </div>
               </div>
-              <div className="grid md:grid-cols-3 gap-4 text-center">
-                <div>
-                  <Stamp className="text-xs mb-2 bg-verde-aprobado text-white">SEGURO</Stamp>
-                  <p className="texto-pequeno">Cifrado de extremo a extremo</p>
+
+              {/* Clasificaciones de seguridad */}
+              <div className="bg-papel-sombra border border-papel-border p-6 rounded-lg">
+                <div className="text-center mb-4">
+                  <p className="typewriter-bold text-sm">NIVELES DE SEGURIDAD DISPONIBLES</p>
                 </div>
-                <div>
-                  <Stamp className="text-xs mb-2 bg-azul-info text-white">CONFIDENCIAL</Stamp>
-                  <p className="texto-pequeno">Identidad protegida</p>
-                </div>
-                <div>
-                  <Stamp className="text-xs mb-2 bg-sello-rojo text-white">URGENTE</Stamp>
-                  <p className="texto-pequeno">Respuesta prioritaria</p>
+                <div className="grid md:grid-cols-3 gap-4 text-center">
+                  <div>
+                    <Stamp className="text-xs mb-2 bg-verde-aprobado text-white">SEGURO</Stamp>
+                    <p className="texto-pequeno">Cifrado de extremo a extremo</p>
+                  </div>
+                  <div>
+                    <Stamp className="text-xs mb-2 bg-azul-info text-white">CONFIDENCIAL</Stamp>
+                    <p className="texto-pequeno">Identidad protegida</p>
+                  </div>
+                  <div>
+                    <Stamp className="text-xs mb-2 bg-sello-rojo text-white">URGENTE</Stamp>
+                    <p className="texto-pequeno">Respuesta prioritaria</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </ExpedienteCard>
+          </div>
         </section>
 
         {/* Formulario oficial */}
         <section className="mb-12">
-          <ExpedienteCard variant="default" className="max-w-4xl mx-auto" perforated>
-            <div className="border-b border-papel-border pb-4 mb-6">
+          <div className="liquid-card max-w-4xl mx-auto">
+            <div className="liquid-card-header">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="texto-pequeno mb-1">FORMULARIO OFICIAL</p>
@@ -101,21 +103,23 @@ export default function ContactoPage() {
                 <Stamp className="text-xs">FORM-001</Stamp>
               </div>
             </div>
-            
-            <div className="bg-azul-info/10 border-l-4 border-azul-info p-4 mb-6">
-              <p className="typewriter-bold text-azul-info mb-2">INSTRUCCIONES DE LLENADO:</p>
-              <p className="texto-oficial text-sm">
-                Complete todos los campos requeridos con información precisa y veraz. 
-                Para solicitudes urgentes, marque la casilla correspondiente. Su información 
-                será tratada con estricta confidencialidad según la Ley de Protección de Datos.
-              </p>
+
+            <div className="liquid-card-content">
+              <div className="bg-azul-info/10 border-l-4 border-azul-info p-4 mb-6 rounded-lg">
+                <p className="typewriter-bold text-azul-info mb-2">INSTRUCCIONES DE LLENADO:</p>
+                <p className="texto-oficial text-sm">
+                  Complete todos los campos requeridos con información precisa y veraz.
+                  Para solicitudes urgentes, marque la casilla correspondiente. Su información
+                  será tratada con estricta confidencialidad según la Ley de Protección de Datos.
+                </p>
+              </div>
+
+              <ContactForm
+                type="general"
+                onSubmit={handleFormSubmit}
+              />
             </div>
-            
-            <ContactForm 
-              type="general"
-              onSubmit={handleFormSubmit}
-            />
-          </ExpedienteCard>
+          </div>
         </section>
 
         {/* Directorio de emergencia */}

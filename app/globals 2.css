@@ -1213,15 +1213,9 @@ a:hover {
   }
 }
 
-/* === SISTEMA DE CARDS LIQUID GLASS UNIFICADO === */
+/* === PÁGINA ACADEMIA - SISTEMA UNIFICADO === */
 
-/* Contenedor principal de páginas */
-.page-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
+/* Contenedor principal de la página */
 .academia-page-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -1229,26 +1223,6 @@ a:hover {
 }
 
 /* Sistema de cards unificado */
-.liquid-card {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto 3rem auto;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  background: rgba(250, 248, 243, 0.95);
-  border: 2px solid var(--papel-border);
-  border-radius: 16px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.12),
-    0 2px 8px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  position: relative;
-  overflow: hidden;
-}
-
 .academia-card-unified {
   width: 100%;
   max-width: 1000px;
@@ -1269,8 +1243,7 @@ a:hover {
   overflow: hidden;
 }
 
-/* Headers consistentes para cards */
-.liquid-card-header,
+/* Header consistente para todas las cards */
 .academia-card-header {
   border-bottom: 2px solid var(--papel-border);
   padding: 2rem;
@@ -1280,7 +1253,6 @@ a:hover {
 }
 
 /* Contenido principal de las cards */
-.liquid-card-content,
 .academia-card-content {
   padding: 2rem;
   flex-grow: 1;
@@ -1290,7 +1262,6 @@ a:hover {
 }
 
 /* Footer consistente */
-.liquid-card-footer,
 .academia-card-footer {
   padding: 1.5rem 2rem;
   border-top: 1px solid var(--papel-border);
@@ -1368,114 +1339,24 @@ a:hover {
   opacity: 0.8;
 }
 
-/* === ESTILOS ESPECÍFICOS PARA EXPEDIENTES LIQUID === */
-
-/* Grupo de expedientes */
-.grupo-expediente {
-  display: block;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.grupo-expediente:hover {
-  transform: translateY(-4px);
-}
-
-/* Cards individuales de expedientes */
-.expediente-liquid-card {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  padding: 2rem;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.expediente-liquid-card:hover {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Botones de expedientes liquid */
-.boton-expediente-liquid {
-  background: var(--sello-rojo);
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-family: var(--font-oficial-base);
-  font-weight: bold;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 1rem;
-}
-
-.boton-expediente-liquid:hover {
-  background: #991B1B;
-  transform: translateY(-1px);
-}
-
-/* Códigos de expediente liquid */
-.codigo-expediente-liquid {
-  display: block;
-  font-family: var(--font-oficial-base);
-  font-size: 0.75rem;
-  color: var(--tinta-suave);
-  opacity: 0.8;
-  letter-spacing: 0.1em;
-}
-
-/* Contador de organizaciones */
-.contador-organizaciones {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.numero-org {
-  display: block;
-}
-
-.texto-org {
-  display: block;
-}
-
 /* Responsive design optimizado */
 @media (max-width: 1024px) {
-  .page-container,
   .academia-page-container {
     padding: 0 1rem;
   }
 
-  .liquid-card,
   .academia-card-unified {
     margin-bottom: 2rem;
     min-height: 350px;
   }
 
-  .liquid-card-header,
-  .liquid-card-content,
   .academia-card-header,
   .academia-card-content {
     padding: 1.5rem;
   }
 
-  .liquid-card-footer,
   .academia-card-footer {
     padding: 1rem 1.5rem;
-  }
-
-  .expediente-liquid-card {
-    padding: 1.5rem;
   }
 
   .academia-metodologia-grid {
@@ -1490,31 +1371,22 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .page-container,
   .academia-page-container {
     padding: 0 0.75rem;
   }
 
-  .liquid-card,
   .academia-card-unified {
     margin-bottom: 1.5rem;
     min-height: 300px;
   }
 
-  .liquid-card-header,
-  .liquid-card-content,
   .academia-card-header,
   .academia-card-content {
     padding: 1rem;
   }
 
-  .liquid-card-footer,
   .academia-card-footer {
     padding: 0.75rem 1rem;
-  }
-
-  .expediente-liquid-card {
-    padding: 1rem;
   }
 
   .academia-module-card {
@@ -1785,15 +1657,11 @@ a:hover {
 }
 
 .label-corto {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
   font-family: var(--font-oficial-base);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 80px;
 }
 
 .indicator-tablet {
@@ -1907,17 +1775,13 @@ a:hover {
 }
 
 .label-mobile {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
   font-family: var(--font-oficial-base);
   text-align: center;
   line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 70px;
 }
 
 .punto-activo {
@@ -1984,18 +1848,18 @@ a:hover {
 
 /* Ajustes del contenido principal para cada breakpoint */
 body {
-  padding-top: 88px; /* Desktop - más espacio */
+  padding-top: 72px; /* Desktop */
 }
 
 @media (max-width: 1024px) {
   body {
-    padding-top: 80px; /* Tablet - más espacio */
+    padding-top: 70px; /* Tablet */
   }
 }
 
 @media (max-width: 768px) {
   body {
-    padding-top: 60px; /* Mobile top bar - más espacio */
+    padding-top: 50px; /* Mobile top bar */
     padding-bottom: 80px; /* Mobile bottom nav */
   }
 }
