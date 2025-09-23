@@ -1449,6 +1449,14 @@ a:hover {
   display: block;
 }
 
+/* Utilidades CSS adicionales */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* Responsive design optimizado */
 @media (max-width: 1024px) {
   .page-container,

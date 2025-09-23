@@ -175,42 +175,81 @@ export default function ObservatorioPage() {
           initial="hidden"
           animate="visible"
         >
-          {/* Top Section: Barómetro prominente con Alertas compactas al lado */}
-          <div className="grid grid-cols-1 xl:grid-cols-4 gap-4">
+          {/* Top Section: Barómetro prominente con Noticias relevantes al lado */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Barómetro de Libertad (Prominente - Ocupa más espacio) */}
-            <motion.section className="xl:col-span-3" variants={itemVariants}>
+            <motion.section className="lg:col-span-2" variants={itemVariants}>
               <Barometro />
             </motion.section>
 
-            {/* Alertas Activas (Compactas - Sidebar) */}
-            <motion.section className="xl:col-span-1" variants={itemVariants}>
+            {/* Noticias Relevantes (Sidebar) */}
+            <motion.section className="lg:col-span-1" variants={itemVariants}>
               <div className="liquid-card h-full">
                 <div className="liquid-card-header">
-                  <h2 className="text-lg md:text-xl typewriter-bold text-center">ALERTAS ACTIVAS</h2>
+                  <h2 className="text-base md:text-lg typewriter-bold text-center">NOTICIAS RELEVANTES</h2>
+                  <p className="texto-pequeno text-center mt-1">De nuestros aliados</p>
                 </div>
-                <div className="liquid-card-content">
-                  <ul className="space-y-2">
-                    <li className="expediente-liquid-card p-3 text-xs md:text-sm">
-                      <span className="text-sello-rojo typewriter-bold">🚨</span> Restricción acceso redes sociales
-                    </li>
-                    <li className="expediente-liquid-card p-3 text-xs md:text-sm">
-                      <span className="text-sello-rojo typewriter-bold">🚨</span> Filtrado contenido aumentado
-                    </li>
-                    <li className="expediente-liquid-card p-3 text-xs md:text-sm">
-                      <span className="text-naranja-pendiente typewriter-bold">⚠️</span> Nuevas regulaciones datos
-                    </li>
-                    <li className="expediente-liquid-card p-3 text-xs md:text-sm">
-                      <span className="text-naranja-pendiente typewriter-bold">⚠️</span> Vigilancia digital incrementada
-                    </li>
-                    <li className="expediente-liquid-card p-3 text-xs md:text-sm">
-                      <span className="text-sello-rojo typewriter-bold">🚨</span> Bloqueos DNS reportados
-                    </li>
-                  </ul>
+                <div className="liquid-card-content flex-1 overflow-hidden">
+                  <div className="space-y-3">
+                    <article className="bg-papel-sombra border border-papel-border rounded-lg p-3 hover:bg-papel-base transition-colors">
+                      <div className="flex items-start gap-2">
+                        <span className="text-sm">📰</span>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-sm font-bold typewriter leading-tight mb-1">
+                            Nueva ley de protección de datos en debate
+                          </h3>
+                          <p className="text-xs text-tinta-clara mb-2 line-clamp-2">
+                            Artículo 19 analiza las implicaciones de la propuesta legislativa...
+                          </p>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-tinta-suave">Artículo 19</span>
+                            <Link href="#" className="text-xs text-sello-rojo hover:underline">Leer más</Link>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+
+                    <article className="bg-papel-sombra border border-papel-border rounded-lg p-3 hover:bg-papel-base transition-colors">
+                      <div className="flex items-start gap-2">
+                        <span className="text-sm">🔒</span>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-sm font-bold typewriter leading-tight mb-1">
+                            Herramientas de cifrado para periodistas
+                          </h3>
+                          <p className="text-xs text-tinta-clara mb-2 line-clamp-2">
+                            R3D presenta guía actualizada para comunicación segura...
+                          </p>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-tinta-suave">R3D</span>
+                            <Link href="#" className="text-xs text-sello-rojo hover:underline">Leer más</Link>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+
+                    <article className="bg-papel-sombra border border-papel-border rounded-lg p-3 hover:bg-papel-base transition-colors">
+                      <div className="flex items-start gap-2">
+                        <span className="text-sm">⚡</span>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="text-sm font-bold typewriter leading-tight mb-1">
+                            Taller de seguridad digital
+                          </h3>
+                          <p className="text-xs text-tinta-clara mb-2 line-clamp-2">
+                            SocialTIC organiza capacitación gratuita para organizaciones...
+                          </p>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-tinta-suave">SocialTIC</span>
+                            <Link href="#" className="text-xs text-sello-rojo hover:underline">Ver evento</Link>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
                 </div>
                 <div className="liquid-card-footer">
-                  <Link href="#">
+                  <Link href="/red">
                     <Button variant="secondary" size="sm" className="w-full text-xs">
-                      Ver todas las alertas
+                      Ver más noticias
                     </Button>
                   </Link>
                 </div>
