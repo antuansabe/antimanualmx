@@ -63,12 +63,12 @@ export default function RedPage() {
 
   return (
     <div className="min-h-screen">
-      <main className="max-w-7xl mx-auto px-4 py-8 md:px-8 md:py-12">
+      <main className="page-container py-8 md:py-12">
         {/* Portada del directorio oficial */}
         <section className="mb-12">
-          <ExpedienteCard variant="default" className="max-w-5xl mx-auto" stamped>
+          <div className="liquid-card">
             {/* Encabezado institucional */}
-            <div className="border-b-2 border-doble border-papel-border pb-6 mb-8">
+            <div className="liquid-card-header">
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                   <p className="texto-pequeno mb-1">REPÚBLICA DIGITAL DE MÉXICO</p>
@@ -81,79 +81,80 @@ export default function RedPage() {
                 </div>
               </div>
             </div>
-            
-            <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
-                RED DE APOYO COLECTIVO
-              </h1>
-              <div className="inline-block border-4 border-double border-papel-border px-6 py-2 mb-4">
-                <p className="text-lg md:text-xl font-bold tracking-widest typewriter">
-                  DIRECTORIO NACIONAL VERIFICADO
-                </p>
-              </div>
-              <p className="texto-pequeno mt-4">
-                NADIE SE DEFIENDE SOLO • REGISTRO PÚBLICO • ACCESO LIBRE
-              </p>
-            </div>
 
-            {/* Estadísticas oficiales */}
-            <div className="bg-papel-sombra border-2 border-papel-border p-6 mb-8">
-              <div className="text-center mb-6">
-                <Stamp className="text-xs bg-dorado text-white mb-3">DATOS VERIFICADOS</Stamp>
-                <p className="typewriter-bold" style={{color: '#1A1A1A'}}>ESTADÍSTICAS DEL DIRECTORIO NACIONAL</p>
-                <p className="texto-pequeno mt-2" style={{color: '#1A1A1A'}}>ACTUALIZACIÓN: {currentDate}</p>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div className="border border-papel-border p-4 bg-papel-base">
-                  <div className="text-3xl font-bold typewriter mb-2" style={{color: '#B91C1C'}}>{organizaciones.length}</div>
-                  <div className="typewriter-bold text-xs mb-1" style={{color: '#1A1A1A'}}>ORGANIZACIONES</div>
-                  <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Registradas y activas</div>
+            <div className="liquid-card-content">
+              <div className="text-center mb-8">
+                <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
+                  RED DE APOYO COLECTIVO
+                </h1>
+                <div className="inline-block border-4 border-double border-papel-border px-6 py-2 mb-4 rounded-lg">
+                  <p className="text-lg md:text-xl font-bold tracking-widest typewriter">
+                    DIRECTORIO NACIONAL VERIFICADO
+                  </p>
                 </div>
-                <div className="border border-papel-border p-4 bg-papel-base">
-                  <div className="text-3xl font-bold typewriter mb-2" style={{color: '#B91C1C'}}>32</div>
-                  <div className="typewriter-bold text-xs mb-1" style={{color: '#1A1A1A'}}>ENTIDADES</div>
-                  <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Federativas con presencia</div>
-                </div>
-                <div className="border border-papel-border p-4 bg-papel-base">
-                  <div className="text-3xl font-bold typewriter mb-2" style={{color: '#A16207'}}>{organizaciones.filter(org => org.verificada).length}</div>
-                  <div className="typewriter-bold text-xs mb-1" style={{color: '#1A1A1A'}}>VERIFICADAS</div>
-                  <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Proceso completado</div>
-                </div>
-                <div className="border border-papel-border p-4 bg-papel-base">
-                  <div className="text-3xl font-bold typewriter mb-2" style={{color: '#A16207'}}>{organizacionesFiltradas.length}</div>
-                  <div className="typewriter-bold text-xs mb-1" style={{color: '#1A1A1A'}}>RESULTADOS</div>
-                  <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Filtros aplicados</div>
-                </div>
-              </div>
-              <div className="mt-6 pt-4 border-t border-papel-border text-center">
-                <p className="texto-pequeno" style={{color: '#1A1A1A'}}>
-                  PRÓXIMA ACTUALIZACIÓN: {new Date(Date.now() + 30*24*60*60*1000).toLocaleDateString('es-MX')} •
-                  COBERTURA: NACIONAL • ESTADO: OPERATIVO
+                <p className="texto-pequeno mt-4">
+                  NADIE SE DEFIENDE SOLO • REGISTRO PÚBLICO • ACCESO LIBRE
                 </p>
               </div>
-            </div>
 
-            {/* Declaración institucional */}
-            <div className="space-y-4 texto-oficial leading-relaxed">
-              <div className="pl-8 border-l-4 border-papel-border">
-                <p className="mb-4">
-                  <span className="typewriter-bold text-sm">PROPÓSITO:</span> Este directorio contiene el registro oficial de organizaciones, colectivos y activistas comprometidos con la defensa de los derechos digitales en territorio mexicano.
-                </p>
-                <p className="mb-4">
-                  <span className="typewriter-bold text-sm">VERIFICACIÓN:</span> Cada entrada ha sido evaluada por su trayectoria, compromiso y coherencia con los principios de la resistencia digital colectiva.
-                </p>
-                <p className="mb-4">
-                  <span className="typewriter-bold text-sm">ACTUALIZACIÓN:</span> El directorio se actualiza mensualmente para garantizar la vigencia y precisión de la información contenida.
-                </p>
+              {/* Estadísticas oficiales */}
+              <div className="bg-papel-sombra border-2 border-papel-border p-6 mb-8 rounded-lg">
+                <div className="text-center mb-6">
+                  <p className="typewriter-bold" style={{color: '#1A1A1A'}}>ESTADÍSTICAS DEL DIRECTORIO NACIONAL</p>
+                  <p className="texto-pequeno mt-2" style={{color: '#1A1A1A'}}>ACTUALIZACIÓN: {currentDate}</p>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                  <div className="border border-papel-border p-4 bg-papel-base rounded">
+                    <div className="text-3xl font-bold typewriter mb-2" style={{color: '#B91C1C'}}>{organizaciones.length}</div>
+                    <div className="typewriter-bold text-xs mb-1" style={{color: '#1A1A1A'}}>ORGANIZACIONES</div>
+                    <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Registradas y activas</div>
+                  </div>
+                  <div className="border border-papel-border p-4 bg-papel-base rounded">
+                    <div className="text-3xl font-bold typewriter mb-2" style={{color: '#B91C1C'}}>32</div>
+                    <div className="typewriter-bold text-xs mb-1" style={{color: '#1A1A1A'}}>ENTIDADES</div>
+                    <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Federativas con presencia</div>
+                  </div>
+                  <div className="border border-papel-border p-4 bg-papel-base rounded">
+                    <div className="text-3xl font-bold typewriter mb-2" style={{color: '#A16207'}}>{organizaciones.filter(org => org.verificada).length}</div>
+                    <div className="typewriter-bold text-xs mb-1" style={{color: '#1A1A1A'}}>VERIFICADAS</div>
+                    <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Proceso completado</div>
+                  </div>
+                  <div className="border border-papel-border p-4 bg-papel-base rounded">
+                    <div className="text-3xl font-bold typewriter mb-2" style={{color: '#A16207'}}>{organizacionesFiltradas.length}</div>
+                    <div className="typewriter-bold text-xs mb-1" style={{color: '#1A1A1A'}}>RESULTADOS</div>
+                    <div className="texto-pequeno" style={{color: '#1A1A1A'}}>Filtros aplicados</div>
+                  </div>
+                </div>
+                <div className="mt-6 pt-4 border-t border-papel-border text-center">
+                  <p className="texto-pequeno" style={{color: '#1A1A1A'}}>
+                    PRÓXIMA ACTUALIZACIÓN: {new Date(Date.now() + 30*24*60*60*1000).toLocaleDateString('es-MX')} •
+                    COBERTURA: NACIONAL • ESTADO: OPERATIVO
+                  </p>
+                </div>
+              </div>
+
+              {/* Declaración institucional */}
+              <div className="space-y-4 texto-oficial leading-relaxed">
+                <div className="pl-8 border-l-4 border-papel-border">
+                  <p className="mb-4">
+                    <span className="typewriter-bold text-sm">PROPÓSITO:</span> Este directorio contiene el registro oficial de organizaciones, colectivos y activistas comprometidos con la defensa de los derechos digitales en territorio mexicano.
+                  </p>
+                  <p className="mb-4">
+                    <span className="typewriter-bold text-sm">VERIFICACIÓN:</span> Cada entrada ha sido evaluada por su trayectoria, compromiso y coherencia con los principios de la resistencia digital colectiva.
+                  </p>
+                  <p className="mb-4">
+                    <span className="typewriter-bold text-sm">ACTUALIZACIÓN:</span> El directorio se actualiza mensualmente para garantizar la vigencia y precisión de la información contenida.
+                  </p>
+                </div>
               </div>
             </div>
-          </ExpedienteCard>
+          </div>
         </section>
 
         {/* Sistema de consulta */}
         <section className="mb-8">
-          <ExpedienteCard variant="classified" stamped>
-            <div className="border-b border-papel-border pb-4 mb-6">
+          <div className="liquid-card">
+            <div className="liquid-card-header">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="texto-pequeno mb-1">SISTEMA DE CONSULTA</p>
@@ -164,12 +165,14 @@ export default function RedPage() {
                 <Stamp className="text-xs bg-sello-rojo text-white transform rotate-3">PÚBLICO</Stamp>
               </div>
             </div>
-            <FiltrosOrganizaciones
-              organizaciones={organizaciones}
-              onFiltrosChange={setFiltros}
-              onReset={resetearFiltros}
-            />
-          </ExpedienteCard>
+            <div className="liquid-card-content">
+              <FiltrosOrganizaciones
+                organizaciones={organizaciones}
+                onFiltrosChange={setFiltros}
+                onReset={resetearFiltros}
+              />
+            </div>
+          </div>
         </section>
 
         {/* Panel de control de vista */}
@@ -195,71 +198,74 @@ export default function RedPage() {
         {/* Vista cartográfica */}
         {vistaActual === 'mapa' && (
           <section className="mb-8">
-            <ExpedienteCard variant="classified" clipped>
-              <div className="border-b border-papel-border pb-4 mb-6">
+            <div className="liquid-card">
+              <div className="liquid-card-header">
                 <h2 className="text-xl font-bold typewriter text-center">
                   🗺️ MAPA CARTOGRÁFICO NACIONAL
                 </h2>
                 <p className="texto-pequeno text-center mt-2">DISTRIBUCIÓN TERRITORIAL DE ORGANIZACIONES ALIADAS</p>
               </div>
-              <MapaInteractivo
-                organizaciones={organizacionesFiltradas}
-                onOrganizacionSelect={setOrganizacionSeleccionada}
-                altura="500px"
-              />
-              
-              {organizacionSeleccionada && (
-                <div className="mt-6">
-                  <ExpedienteCard variant="approved">
-                    <div className="border-b border-dorado pb-3 mb-3">
-                      <h3 className="typewriter-bold" style={{color: '#A16207'}}>
-                        ORGANIZACIÓN SELECCIONADA:
-                      </h3>
+              <div className="liquid-card-content">
+                <MapaInteractivo
+                  organizaciones={organizacionesFiltradas}
+                  onOrganizacionSelect={setOrganizacionSeleccionada}
+                  altura="500px"
+                />
+
+                {organizacionSeleccionada && (
+                  <div className="mt-6">
+                    <div className="expediente-liquid-card">
+                      <div className="border-b border-dorado pb-3 mb-3">
+                        <h3 className="typewriter-bold" style={{color: '#A16207'}}>
+                          ORGANIZACIÓN SELECCIONADA:
+                        </h3>
+                      </div>
+                      <p className="texto-oficial mb-2">
+                        <strong>{organizacionSeleccionada.nombre}</strong>
+                      </p>
+                      <p className="texto-pequeno mb-3">
+                        📍 {organizacionSeleccionada.ubicacion.ciudad}, {organizacionSeleccionada.ubicacion.estado}
+                      </p>
+                      <Link href={`/red/${organizacionSeleccionada.id}`}>
+                        <SelloAccion variant="approved" size="sm">
+                          📋 CONSULTAR EXPEDIENTE
+                        </SelloAccion>
+                      </Link>
                     </div>
-                    <p className="texto-oficial mb-2">
-                      <strong>{organizacionSeleccionada.nombre}</strong>
-                    </p>
-                    <p className="texto-pequeno mb-3">
-                      📍 {organizacionSeleccionada.ubicacion.ciudad}, {organizacionSeleccionada.ubicacion.estado}
-                    </p>
-                    <Link href={`/red/${organizacionSeleccionada.id}`}>
-                      <SelloAccion variant="approved" size="sm">
-                        📋 CONSULTAR EXPEDIENTE
-                      </SelloAccion>
-                    </Link>
-                  </ExpedienteCard>
-                </div>
-              )}
-            </ExpedienteCard>
+                  </div>
+                )}
+              </div>
+            </div>
           </section>
         )}
 
         {/* Vista de expedientes */}
         {vistaActual === 'lista' && (
           <section className="mb-16">
-            <div className="text-center mb-8">
-              <h2 className="typewriter-bold text-2xl mb-2">EXPEDIENTES ORGANIZACIONALES</h2>
-              <p className="texto-pequeno">DIRECTORIO NACIONAL DE ORGANIZACIONES ALIADAS</p>
-            </div>
-            
-            <div className="space-y-6">
-              {organizacionesFiltradas.length === 0 ? (
-                <ExpedienteCard variant="classified">
-                  <div className="text-center py-12">
-                    <div className="text-6xl mb-4">🔍</div>
-                    <h3 className="text-xl font-bold mb-2 typewriter">
-                      NO SE ENCONTRARON RESULTADOS
-                    </h3>
-                    <p className="texto-oficial mb-4">
-                      Los criterios de búsqueda aplicados no coinciden con ningún registro 
-                      en el directorio nacional. Modifique los filtros para ampliar la consulta.
-                    </p>
-                    <SelloAccion onClick={resetearFiltros} variant="secondary">
-                      🔄 RESTABLECER FILTROS
-                    </SelloAccion>
-                  </div>
-                </ExpedienteCard>
-              ) : (
+            <div className="liquid-card">
+              <div className="liquid-card-header text-center">
+                <h2 className="typewriter-bold text-2xl mb-2">EXPEDIENTES ORGANIZACIONALES</h2>
+                <p className="texto-pequeno">DIRECTORIO NACIONAL DE ORGANIZACIONES ALIADAS</p>
+              </div>
+              <div className="liquid-card-content">
+                <div className="space-y-6">
+                  {organizacionesFiltradas.length === 0 ? (
+                    <div className="expediente-liquid-card">
+                      <div className="text-center py-12">
+                        <div className="text-6xl mb-4">🔍</div>
+                        <h3 className="text-xl font-bold mb-2 typewriter">
+                          NO SE ENCONTRARON RESULTADOS
+                        </h3>
+                        <p className="texto-oficial mb-4">
+                          Los criterios de búsqueda aplicados no coinciden con ningún registro
+                          en el directorio nacional. Modifique los filtros para ampliar la consulta.
+                        </p>
+                        <SelloAccion onClick={resetearFiltros} variant="secondary">
+                          🔄 RESTABLECER FILTROS
+                        </SelloAccion>
+                      </div>
+                    </div>
+                  ) : (
                 organizacionesFiltradas.map((org) => (
                   <ExpedienteCard
                     key={org.id}
@@ -350,7 +356,9 @@ export default function RedPage() {
                     </div>
                   </ExpedienteCard>
                 ))
-              )}
+                  )}
+                </div>
+              </div>
             </div>
           </section>
         )}
