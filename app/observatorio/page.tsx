@@ -218,48 +218,68 @@ export default function ObservatorioPage() {
 
           {/* Bottom Section: Reportes Recientes (Ancho completo) */}
           <motion.section className="w-full" variants={itemVariants}>
-            <ExpedienteCard>
-              <h2 className="text-xl md:text-2xl typewriter-bold mb-4 text-center">REPORTES RECIENTES</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3">
-                <div className="p-3 bg-papel-sombra rounded-sm border border-papel-border text-center">
-                  <p className="font-bold typewriter-bold text-sm">Reporte Mensual</p>
-                  <p className="text-xs text-tinta-clara">Nov 2024</p>
-                  <Link href="#" className="text-azul-info hover:text-blue-700 text-xs block py-1 typewriter">Ver PDF</Link>
-                </div>
-                <div className="p-3 bg-papel-sombra rounded-sm border border-papel-border text-center">
-                  <p className="font-bold typewriter-bold text-sm">Análisis Trimestral</p>
-                  <p className="text-xs text-tinta-clara">Q3 2024</p>
-                  <Link href="#" className="text-azul-info hover:text-blue-700 text-xs block py-1 typewriter">Ver PDF</Link>
-                </div>
-                <div className="p-3 bg-papel-sombra rounded-sm border border-papel-border text-center">
-                  <p className="font-bold typewriter-bold text-sm">Estudio Especial</p>
-                  <p className="text-xs text-tinta-clara">Oct 2024</p>
-                  <Link href="#" className="text-azul-info hover:text-blue-700 text-xs block py-1 typewriter">Ver PDF</Link>
-                </div>
-                <div className="p-3 bg-papel-sombra rounded-sm border border-papel-border text-center">
-                  <p className="font-bold typewriter-bold text-sm">Informe Anual</p>
-                  <p className="text-xs text-tinta-clara">2023</p>
-                  <Link href="#" className="text-azul-info hover:text-blue-700 text-xs block py-1 typewriter">Ver PDF</Link>
-                </div>
-                <div className="p-3 bg-papel-sombra rounded-sm border border-papel-border text-center">
-                  <p className="font-bold typewriter-bold text-sm">Metodología</p>
-                  <p className="text-xs text-tinta-clara">2024</p>
-                  <Link href="/metodologia" className="text-azul-info hover:text-blue-700 text-xs block py-1 typewriter">Ver</Link>
-                </div>
-                <div className="p-3 bg-papel-sombra rounded-sm border border-papel-border text-center">
-                  <p className="font-bold typewriter-bold text-sm">Datos Abiertos</p>
-                  <p className="text-xs text-tinta-clara">CSV/JSON</p>
-                  <Link href="#" className="text-azul-info hover:text-blue-700 text-xs block py-1 typewriter">Descargar</Link>
+            <div className="liquid-card">
+              <div className="liquid-card-header">
+                <h2 className="text-xl md:text-2xl typewriter-bold text-center">REPORTES RECIENTES</h2>
+              </div>
+              <div className="liquid-card-content">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="expediente-liquid-card text-center h-full flex flex-col">
+                    <div className="mb-4">
+                      <div className="w-16 h-16 bg-papel-sombra rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span className="text-2xl">📊</span>
+                      </div>
+                      <h3 className="font-bold typewriter-bold text-lg mb-2">Análisis Trimestral</h3>
+                      <p className="text-sm text-tinta-clara mb-4">Q3 2024</p>
+                      <p className="texto-oficial text-sm mb-4 leading-relaxed">
+                        Evaluación comprehensiva del estado de libertades digitales durante el tercer trimestre del año.
+                      </p>
+                    </div>
+                    <div className="mt-auto">
+                      <Link href="#" className="inline-block bg-sello-rojo text-white px-4 py-2 rounded-lg text-sm typewriter hover:bg-red-700 transition-colors">
+                        📄 Ver PDF
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="expediente-liquid-card text-center h-full flex flex-col">
+                    <div className="mb-4">
+                      <div className="w-16 h-16 bg-papel-sombra rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span className="text-2xl">🔬</span>
+                      </div>
+                      <h3 className="font-bold typewriter-bold text-lg mb-2">Estudio Especial</h3>
+                      <p className="text-sm text-tinta-clara mb-4">Oct 2024</p>
+                      <p className="texto-oficial text-sm mb-4 leading-relaxed">
+                        Investigación especializada sobre tendencias emergentes en vigilancia digital y contramedidas.
+                      </p>
+                    </div>
+                    <div className="mt-auto">
+                      <Link href="#" className="inline-block bg-sello-rojo text-white px-4 py-2 rounded-lg text-sm typewriter hover:bg-red-700 transition-colors">
+                        📄 Ver PDF
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="expediente-liquid-card text-center h-full flex flex-col">
+                    <div className="mb-4">
+                      <div className="w-16 h-16 bg-papel-sombra rounded-full flex items-center justify-center mx-auto mb-3">
+                        <span className="text-2xl">⚙️</span>
+                      </div>
+                      <h3 className="font-bold typewriter-bold text-lg mb-2">Metodología</h3>
+                      <p className="text-sm text-tinta-clara mb-4">2024</p>
+                      <p className="texto-oficial text-sm mb-4 leading-relaxed">
+                        Marco metodológico y criterios técnicos utilizados para la evaluación y monitoreo continuo.
+                      </p>
+                    </div>
+                    <div className="mt-auto">
+                      <Link href="/metodologia" className="inline-block bg-sello-rojo text-white px-4 py-2 rounded-lg text-sm typewriter hover:bg-red-700 transition-colors">
+                        📖 Ver Documento
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="text-center mt-4 pt-4 border-t border-papel-border">
-                <Link href="#">
-                  <Button variant="secondary" size="sm" className="px-8">
-                    Ver archivo completo
-                  </Button>
-                </Link>
-              </div>
-            </ExpedienteCard>
+            </div>
           </motion.section>
         </motion.main>
       </main>
