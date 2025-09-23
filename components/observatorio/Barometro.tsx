@@ -39,7 +39,12 @@ const Barometro: React.FC<BarometroProps> = ({
   const statusColor = getBarometroColor(value);
 
   return (
-    <div className="w-full flex flex-col items-center p-6 bg-papel-oscuro border border-papel-border rounded-sm sombra-papel overflow-hidden">
+    <div className="liquid-card w-full">
+      <div className="liquid-card-header text-center">
+        <h2 className="text-lg md:text-xl typewriter-bold">BARÓMETRO DE LIBERTAD DIGITAL</h2>
+        <p className="texto-pequeno mt-2">ÍNDICE NACIONAL DE DERECHOS DIGITALES</p>
+      </div>
+      <div className="liquid-card-content flex flex-col items-center">
       {/* Speedometer Section */}
       <div className="relative w-full max-w-md aspect-[2/1] overflow-hidden">
         <svg
@@ -141,6 +146,7 @@ const Barometro: React.FC<BarometroProps> = ({
             {status}
           </Stamp>
         </div>
+      </div>
       </div>
     </div>
   );

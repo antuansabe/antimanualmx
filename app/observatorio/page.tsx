@@ -184,35 +184,37 @@ export default function ObservatorioPage() {
 
             {/* Alertas Activas (Compactas - Sidebar) */}
             <motion.section className="xl:col-span-1" variants={itemVariants}>
-              <ExpedienteCard className="h-full flex flex-col">
-                <h2 className="text-lg md:text-xl typewriter-bold mb-3 text-center">ALERTAS ACTIVAS</h2>
-                <div className="flex-grow overflow-auto">
-                  <ul className="space-y-1.5">
-                    <li className="p-2 bg-papel-sombra rounded-sm border border-papel-border text-xs md:text-sm">
-                      <span className="text-sello-rojo typewriter-bold">•</span> Restricción acceso redes sociales
+              <div className="liquid-card h-full">
+                <div className="liquid-card-header">
+                  <h2 className="text-lg md:text-xl typewriter-bold text-center">ALERTAS ACTIVAS</h2>
+                </div>
+                <div className="liquid-card-content">
+                  <ul className="space-y-2">
+                    <li className="expediente-liquid-card p-3 text-xs md:text-sm">
+                      <span className="text-sello-rojo typewriter-bold">🚨</span> Restricción acceso redes sociales
                     </li>
-                    <li className="p-2 bg-papel-sombra rounded-sm border border-papel-border text-xs md:text-sm">
-                      <span className="text-sello-rojo typewriter-bold">•</span> Filtrado contenido aumentado
+                    <li className="expediente-liquid-card p-3 text-xs md:text-sm">
+                      <span className="text-sello-rojo typewriter-bold">🚨</span> Filtrado contenido aumentado
                     </li>
-                    <li className="p-2 bg-papel-sombra rounded-sm border border-papel-border text-xs md:text-sm">
-                      <span className="text-naranja-pendiente typewriter-bold">•</span> Nuevas regulaciones datos
+                    <li className="expediente-liquid-card p-3 text-xs md:text-sm">
+                      <span className="text-naranja-pendiente typewriter-bold">⚠️</span> Nuevas regulaciones datos
                     </li>
-                    <li className="p-2 bg-papel-sombra rounded-sm border border-papel-border text-xs md:text-sm">
-                      <span className="text-naranja-pendiente typewriter-bold">•</span> Vigilancia digital incrementada
+                    <li className="expediente-liquid-card p-3 text-xs md:text-sm">
+                      <span className="text-naranja-pendiente typewriter-bold">⚠️</span> Vigilancia digital incrementada
                     </li>
-                    <li className="p-2 bg-papel-sombra rounded-sm border border-papel-border text-xs md:text-sm">
-                      <span className="text-sello-rojo typewriter-bold">•</span> Bloqueos DNS reportados
+                    <li className="expediente-liquid-card p-3 text-xs md:text-sm">
+                      <span className="text-sello-rojo typewriter-bold">🚨</span> Bloqueos DNS reportados
                     </li>
                   </ul>
                 </div>
-                <div className="mt-3 pt-3 border-t border-papel-border">
+                <div className="liquid-card-footer">
                   <Link href="#">
                     <Button variant="secondary" size="sm" className="w-full text-xs">
-                      Ver todas
+                      Ver todas las alertas
                     </Button>
                   </Link>
                 </div>
-              </ExpedienteCard>
+              </div>
             </motion.section>
           </div>
 
