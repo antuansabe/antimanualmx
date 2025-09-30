@@ -8,123 +8,123 @@ import { ExpedienteCard, Button } from '@/shared/ui';
 const noticias = [
   {
     id: 1,
-    titulo: 'Informe sobre vigilancia digital en México 2024',
+    titulo: 'Vigilancia, espionaje y censura: Freedom House evalúa libertades de Internet',
     organizacion: 'R3D',
     fecha: 'Noviembre 2024',
     emoji: '📊',
-    descripcion: 'Análisis exhaustivo sobre las herramientas de vigilancia utilizadas por el gobierno mexicano y su impacto en los derechos digitales.',
-    url: 'https://r3d.mx/2024/11/12/informe-vigilancia-digital-mexico-2024/',
-    tags: ['Vigilancia', 'Privacidad', 'Derechos Digitales']
+    descripcion: 'Freedom House documenta casos de vigilancia, espionaje y censura en México entre 2023 y 2024, destacando la investigación de R3D sobre el "Ejército de bots".',
+    url: 'https://r3d.mx/2024/11/04/vigilancia-espionaje-y-censura-freedom-house-evalua-las-libertades-de-internet-en-mexico-en-2024/',
+    tags: ['Vigilancia', 'Censura', 'Derechos Digitales']
   },
   {
     id: 2,
-    titulo: 'Guía de seguridad digital para periodistas y defensores',
-    organizacion: 'Artículo 19',
-    fecha: 'Octubre 2024',
-    emoji: '🔒',
-    descripcion: 'Manual práctico con herramientas y mejores prácticas para proteger la comunicación de periodistas en situaciones de riesgo.',
-    url: 'https://articulo19.org/guia-seguridad-digital-periodistas-2024/',
-    tags: ['Seguridad', 'Periodismo', 'Protección']
+    titulo: 'Ciberataque a Consejería Jurídica de Presidencia: filtran 200 GB',
+    organizacion: 'R3D',
+    fecha: 'Noviembre 2024',
+    emoji: '🔓',
+    descripcion: 'RansomHub liberó aproximadamente 206 GB de datos de la Consejería Jurídica de la Presidencia, incluyendo contratos y datos personales.',
+    url: 'https://r3d.mx/2024/11/28/consejeria-juridica-de-la-presidencia-sufre-ciberataque-filtran-mas-de-200-gb-de-contratos-y-datos-personales/',
+    tags: ['Ciberseguridad', 'Datos Personales', 'Gobierno']
   },
   {
     id: 3,
-    titulo: 'Censura en línea: casos documentados en México',
+    titulo: 'Barreras informativas: desafíos para la libertad de expresión',
     organizacion: 'Artículo 19',
-    fecha: 'Septiembre 2024',
-    emoji: '🚫',
-    descripcion: 'Reporte de casos de censura digital y bloqueos de contenido en plataformas durante 2024.',
-    url: 'https://articulo19.org/censura-digital-mexico-2024/',
-    tags: ['Censura', 'Libertad de Expresión']
+    fecha: 'Octubre 2024',
+    emoji: '📰',
+    descripcion: 'Informe anual 2024 que documenta 639 agresiones contra periodistas, un incremento del 13.9% respecto al año anterior.',
+    url: 'https://articulo19.org/barrerasinformativas/',
+    tags: ['Periodismo', 'Libertad de Expresión', 'Derechos Humanos']
   },
   {
     id: 4,
-    titulo: 'Datos personales en riesgo: análisis de brechas',
+    titulo: 'R3D denuncia vigilancia del Ejército en audiencia de CIDH',
     organizacion: 'R3D',
     fecha: 'Agosto 2024',
-    emoji: '🔓',
-    descripcion: 'Investigación sobre filtraciones de datos personales de ciudadanos mexicanos en bases de datos gubernamentales.',
-    url: 'https://r3d.mx/2024/08/datos-personales-filtracion-gobierno/',
-    tags: ['Privacidad', 'Datos Personales', 'Seguridad']
+    emoji: '⚠️',
+    descripcion: 'R3D presenta denuncia sobre monitoreo y vigilancia ilegal del Ejército mexicano contra defensores de derechos humanos y periodistas.',
+    url: 'https://r3d.mx/2024/08/01/r3d-denuncia-monitoreo-y-vigilancia-del-ejercito-mexicano-en-audiencia-de-cidh/',
+    tags: ['Vigilancia', 'DDHH', 'Espionaje']
   },
   {
     id: 5,
-    titulo: 'Taller: Ciberseguridad para organizaciones civiles',
+    titulo: 'Comunicaciones seguras: herramientas y mejores prácticas',
     organizacion: 'SocialTIC',
     fecha: 'Julio 2024',
-    emoji: '🎓',
-    descripcion: 'Capacitación especializada en protección digital y prevención de ataques cibernéticos para OSC.',
-    url: 'https://socialtic.org/talleres/ciberseguridad-osc-2024/',
-    tags: ['Capacitación', 'Ciberseguridad', 'OSC']
+    emoji: '🔒',
+    descripcion: 'Guía práctica sobre herramientas para mantener comunicaciones seguras y proteger la privacidad en línea.',
+    url: 'https://socialtic.org/blog/comunicaciones-seguras-facil-y-rapido-que-mas/',
+    tags: ['Seguridad Digital', 'Privacidad', 'Herramientas']
   },
   {
     id: 6,
-    titulo: 'Tecnologías de vigilancia masiva en América Latina',
+    titulo: 'Audiencia CIDH: Inteligencia artificial y derechos humanos',
     organizacion: 'R3D',
-    fecha: 'Junio 2024',
-    emoji: '📡',
-    descripcion: 'Análisis regional sobre la adquisición y uso de tecnologías de espionaje por gobiernos latinoamericanos.',
-    url: 'https://r3d.mx/2024/06/vigilancia-masiva-america-latina/',
-    tags: ['Vigilancia', 'América Latina', 'Tecnología']
+    fecha: 'Marzo 2025',
+    emoji: '🤖',
+    descripcion: 'R3D participa en audiencia regional sobre los desafíos que la inteligencia artificial presenta para los derechos humanos en América Latina.',
+    url: 'https://r3d.mx/2025/03/14/r3d-participa-en-la-audiencia-de-cidh-sobre-inteligencia-artificial-y-derechos-humanos/',
+    tags: ['IA', 'Derechos Humanos', 'CIDH']
   },
   {
     id: 7,
-    titulo: 'Protección de fuentes periodísticas en la era digital',
-    organizacion: 'Artículo 19',
-    fecha: 'Mayo 2024',
-    emoji: '🛡️',
-    descripcion: 'Estudio sobre desafíos y soluciones para proteger la identidad de fuentes en investigaciones periodísticas.',
-    url: 'https://articulo19.org/proteccion-fuentes-digitales-2024/',
-    tags: ['Periodismo', 'Protección', 'Fuentes']
+    titulo: 'Filtración de base de datos de periodistas de Presidencia',
+    organizacion: 'R3D',
+    fecha: 'Enero 2024',
+    emoji: '🗂️',
+    descripcion: 'Más de 300 registros del Sistema de Acreditación de Prensa fueron publicados en foro de filtraciones, exponiendo datos de periodistas.',
+    url: 'https://r3d.mx/2024/01/26/filtran-base-de-datos-de-periodistas-registrados-en-el-sistema-de-acreditacion-de-prensa-de-presidencia/',
+    tags: ['Filtraciones', 'Periodismo', 'Privacidad']
   },
   {
     id: 8,
-    titulo: 'Inteligencia artificial y derechos humanos',
-    organizacion: 'R3D',
-    fecha: 'Marzo 2024',
-    emoji: '🤖',
-    descripcion: 'Reporte sobre el impacto de sistemas de IA en la toma de decisiones gubernamentales y sus implicaciones.',
-    url: 'https://r3d.mx/2024/03/inteligencia-artificial-derechos-humanos/',
-    tags: ['IA', 'Derechos Humanos', 'Tecnología']
+    titulo: 'Cuidados digitales para activistas y periodistas',
+    organizacion: 'SocialTIC',
+    fecha: 'Septiembre 2023',
+    emoji: '🛡️',
+    descripcion: 'Herramientas y estrategias desarrolladas con MPI CDMX para prevenir y enfrentar riesgos digitales para periodistas y defensores.',
+    url: 'https://socialtic.org/blog/cuidados-digitales-periodistas-activistas-derechos-humanos/',
+    tags: ['Protección Digital', 'Activismo', 'Periodismo']
   },
   {
     id: 9,
-    titulo: 'Neutralidad de la red en México: estado actual',
-    organizacion: 'R3D',
-    fecha: 'Febrero 2024',
-    emoji: '🌐',
-    descripcion: 'Análisis del cumplimiento y violaciones a los principios de neutralidad de la red por proveedores de internet.',
-    url: 'https://r3d.mx/2024/02/neutralidad-red-mexico-2024/',
-    tags: ['Internet', 'Neutralidad', 'Regulación']
+    titulo: 'Seguridad integral para periodistas',
+    organizacion: 'Artículo 19',
+    fecha: 'Agosto 2023',
+    emoji: '📚',
+    descripcion: 'Plataforma con herramientas sobre seguridad física, seguridad digital, normatividad y derecho a la información para periodistas.',
+    url: 'https://seguridadintegral.articulo19.org/',
+    tags: ['Seguridad', 'Capacitación', 'Recursos']
   },
   {
     id: 10,
-    titulo: 'Ataques digitales a activistas en México 2023',
-    organizacion: 'Artículo 19',
+    titulo: 'Coalición #MigrarSinVigilancia contra tecnologías invasivas',
+    organizacion: 'R3D',
     fecha: 'Diciembre 2023',
-    emoji: '⚠️',
-    descripcion: 'Documentación de ataques cibernéticos dirigidos contra defensores de derechos humanos y activistas.',
-    url: 'https://articulo19.org/ataques-digitales-activistas-2023/',
-    tags: ['Seguridad', 'Activismo', 'Ataques']
+    emoji: '🌎',
+    descripcion: 'R3D se une a coalición latinoamericana de OSC contra el uso de tecnologías invasivas en control migratorio.',
+    url: 'https://r3d.mx/2023/12/18/r3d-forma-parte-de-la-coalicion-latinoamericana-migrarsinvigilancia-junto-a-decenas-de-organizaciones-de-la-sociedad-civil/',
+    tags: ['Migración', 'Vigilancia', 'América Latina']
   },
   {
     id: 11,
-    titulo: 'Herramientas libres para comunicación segura',
+    titulo: 'Recomendaciones de seguridad para protestas y marchas',
     organizacion: 'SocialTIC',
-    fecha: 'Noviembre 2023',
-    emoji: '🔧',
-    descripcion: 'Compendio de software libre y de código abierto para proteger las comunicaciones de organizaciones.',
-    url: 'https://socialtic.org/herramientas-comunicacion-segura-2023/',
-    tags: ['Software Libre', 'Seguridad', 'Herramientas']
+    fecha: 'Junio 2023',
+    emoji: '📱',
+    descripcion: 'Guía de seguridad digital y física antes, durante y después de participar en manifestaciones y protestas.',
+    url: 'https://socialtic.org/blog/recomendaciones-de-seguridad-para-antes-durante-y-despues-de-una-marcha-o-protesta/',
+    tags: ['Seguridad', 'Protesta', 'Activismo']
   },
   {
     id: 12,
-    titulo: 'Ley de protección de datos: análisis crítico',
+    titulo: '¿Qué es la neutralidad de la red y por qué está en riesgo?',
     organizacion: 'R3D',
-    fecha: 'Octubre 2023',
-    emoji: '⚖️',
-    descripcion: 'Evaluación de la propuesta de reforma a la Ley Federal de Protección de Datos Personales.',
-    url: 'https://r3d.mx/2023/10/ley-proteccion-datos-analisis/',
-    tags: ['Legislación', 'Datos Personales', 'Privacidad']
+    fecha: 'Febrero 2020',
+    emoji: '🌐',
+    descripcion: 'Análisis sobre los principios de neutralidad de la red y los riesgos que enfrenta en México con los nuevos lineamientos del IFT.',
+    url: 'https://r3d.mx/2020/02/05/que-es-la-neutralidad-de-la-red-y-por-que-esta-en-riesgo-en-mexico/',
+    tags: ['Neutralidad', 'Internet', 'Regulación']
   }
 ];
 
