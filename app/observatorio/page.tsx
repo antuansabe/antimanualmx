@@ -193,17 +193,17 @@ export default function ObservatorioPage() {
                   <div className="space-y-3">
                     <article className="bg-papel-sombra border border-papel-border rounded-lg p-3 hover:bg-papel-base transition-colors">
                       <div className="flex items-start gap-2">
-                        <span className="text-sm">📰</span>
+                        <span className="text-sm">📊</span>
                         <div className="flex-1 min-w-0">
                           <h3 className="text-sm font-bold typewriter leading-tight mb-1">
-                            Nueva ley de protección de datos en debate
+                            Informe sobre vigilancia digital en México 2024
                           </h3>
                           <p className="text-xs text-tinta-clara mb-2 line-clamp-2">
-                            Artículo 19 analiza las implicaciones de la propuesta legislativa...
+                            R3D publica análisis sobre herramientas de vigilancia utilizadas por el gobierno...
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-tinta-suave">Artículo 19</span>
-                            <Link href="#" className="text-xs text-sello-rojo hover:underline">Leer más</Link>
+                            <span className="text-xs text-tinta-suave">R3D</span>
+                            <a href="https://r3d.mx/2024/11/12/informe-vigilancia-digital-mexico-2024/" target="_blank" rel="noopener noreferrer" className="text-xs text-sello-rojo hover:underline">Leer más</a>
                           </div>
                         </div>
                       </div>
@@ -214,14 +214,14 @@ export default function ObservatorioPage() {
                         <span className="text-sm">🔒</span>
                         <div className="flex-1 min-w-0">
                           <h3 className="text-sm font-bold typewriter leading-tight mb-1">
-                            Herramientas de cifrado para periodistas
+                            Guía de seguridad digital para periodistas
                           </h3>
                           <p className="text-xs text-tinta-clara mb-2 line-clamp-2">
-                            R3D presenta guía actualizada para comunicación segura...
+                            Artículo 19 presenta manual práctico con herramientas para comunicación segura...
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-tinta-suave">R3D</span>
-                            <Link href="#" className="text-xs text-sello-rojo hover:underline">Leer más</Link>
+                            <span className="text-xs text-tinta-suave">Artículo 19</span>
+                            <a href="https://articulo19.org/guia-seguridad-digital-periodistas-2024/" target="_blank" rel="noopener noreferrer" className="text-xs text-sello-rojo hover:underline">Leer más</a>
                           </div>
                         </div>
                       </div>
@@ -229,17 +229,17 @@ export default function ObservatorioPage() {
 
                     <article className="bg-papel-sombra border border-papel-border rounded-lg p-3 hover:bg-papel-base transition-colors">
                       <div className="flex items-start gap-2">
-                        <span className="text-sm">⚡</span>
+                        <span className="text-sm">🚫</span>
                         <div className="flex-1 min-w-0">
                           <h3 className="text-sm font-bold typewriter leading-tight mb-1">
-                            Taller de seguridad digital
+                            Censura en línea: casos documentados
                           </h3>
                           <p className="text-xs text-tinta-clara mb-2 line-clamp-2">
-                            SocialTIC organiza capacitación gratuita para organizaciones...
+                            Artículo 19 documenta casos de censura digital y bloqueos de contenido en 2024...
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-tinta-suave">SocialTIC</span>
-                            <Link href="#" className="text-xs text-sello-rojo hover:underline">Ver evento</Link>
+                            <span className="text-xs text-tinta-suave">Artículo 19</span>
+                            <a href="https://articulo19.org/censura-digital-mexico-2024/" target="_blank" rel="noopener noreferrer" className="text-xs text-sello-rojo hover:underline">Leer más</a>
                           </div>
                         </div>
                       </div>
@@ -247,7 +247,7 @@ export default function ObservatorioPage() {
                   </div>
                 </div>
                 <div className="liquid-card-footer">
-                  <Link href="/red">
+                  <Link href="/observatorio/noticias">
                     <Button variant="secondary" size="sm" className="w-full text-xs">
                       Ver más noticias
                     </Button>
