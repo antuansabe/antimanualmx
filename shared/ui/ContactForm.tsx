@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { SelloAccion } from '@/shared/ui';
+import SelloAccion from '@/shared/ui/SelloAccion';
 
 interface ContactFormProps {
   organizationId?: string;
