@@ -88,30 +88,43 @@ export default function Nivel1Page() {
   const renderContenido = () => {
     if (!contenido) return null;
 
+    // Función para procesar texto con markdown simple
+    const procesarTexto = (texto: string) => {
+      return texto
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-tinta-oficial font-bold">$1</strong>') // Negritas
+        .replace(/\*(.*?)\*/g, '<em class="text-tinta-suave italic">$1</em>') // Cursivas
+        .split('\n\n') // Separar párrafos
+        .map(parrafo => `<p class="mb-4 leading-relaxed text-tinta-oficial">${parrafo.replace(/\n/g, '<br/>')}</p>`)
+        .join('');
+    };
+
     switch (contenido.tipo) {
       case 'texto':
         return (
           <div className="prose prose-lg max-w-none">
             {contenido.titulo && (
-              <h2 className="text-2xl font-bold mb-4 typewriter text-red-700">
+              <h2 className="text-2xl font-bold mb-6 typewriter text-sello-rojo border-b-2 border-papel-border pb-3">
                 {contenido.titulo}
               </h2>
             )}
-            <div 
-              className="text-gray-700 leading-relaxed whitespace-pre-line"
-              dangerouslySetInnerHTML={{ __html: contenido.contenido.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }}
+            <div
+              className="text-base"
+              dangerouslySetInnerHTML={{ __html: procesarTexto(contenido.contenido) }}
             />
           </div>
         );
 
       case 'alerta':
         return (
-          <div className="bg-red-50 border-l-4 border-red-500 p-6 my-6">
-            <div className="flex items-start">
-              <div className="text-2xl mr-3">⚠️</div>
-              <div>
-                <p className="font-bold text-red-800 mb-2">IMPORTANTE:</p>
-                <p className="text-red-700">{contenido.contenido}</p>
+          <div className="bg-gradient-to-r from-red-50 to-red-100/30 border-l-4 border-sello-rojo p-6 my-6 rounded-r-lg shadow-sm">
+            <div className="flex items-start gap-4">
+              <div className="text-3xl flex-shrink-0">⚠️</div>
+              <div className="flex-1">
+                <p className="font-bold text-sello-rojo mb-3 text-lg typewriter">IMPORTANTE:</p>
+                <div
+                  className="text-tinta-oficial leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: procesarTexto(contenido.contenido) }}
+                />
               </div>
             </div>
           </div>
@@ -121,12 +134,16 @@ export default function Nivel1Page() {
         return (
           <div className="my-6">
             {contenido.titulo && (
-              <h3 className="text-xl font-bold mb-4 typewriter">{contenido.titulo}</h3>
+              <h3 className="text-xl font-bold mb-4 typewriter text-tinta-oficial border-l-4 border-sello-rojo pl-4">{contenido.titulo}</h3>
             )}
-            <div 
-              className="space-y-2 text-gray-700"
-              dangerouslySetInnerHTML={{ __html: contenido.contenido.replace(/•/g, '<div class="flex items-start gap-2"><span class="text-red-600 mt-1">•</span><span>').replace(/\n/g, '</span></div>') + '</span></div>' }}
-            />
+            <ul className="space-y-3">
+              {contenido.contenido.split('\n').filter((item: string) => item.trim()).map((item: string, idx: number) => (
+                <li key={idx} className="flex items-start gap-3 text-tinta-oficial leading-relaxed">
+                  <span className="text-sello-rojo font-bold text-lg mt-0.5 flex-shrink-0">•</span>
+                  <span dangerouslySetInnerHTML={{ __html: procesarTexto(item.replace(/^[•\-]\s*/, '')) }} />
+                </li>
+              ))}
+            </ul>
           </div>
         );
 
@@ -134,12 +151,10 @@ export default function Nivel1Page() {
         return (
           <div className="my-6">
             {contenido.titulo && (
-              <h3 className="text-xl font-bold mb-4 typewriter">{contenido.titulo}</h3>
+              <h3 className="text-xl font-bold mb-4 typewriter text-tinta-oficial border-l-4 border-azul-info pl-4">{contenido.titulo}</h3>
             )}
-            <div className="paper-container p-4 font-mono text-sm overflow-x-auto border-doble">
-              <div className="text-tinta-oficial">
-                <pre className="whitespace-pre-wrap typewriter">{contenido.contenido}</pre>
-              </div>
+            <div className="bg-papel-base border-2 border-papel-border rounded-lg p-5 font-mono text-sm overflow-x-auto shadow-sm">
+              <pre className="whitespace-pre-wrap text-tinta-oficial leading-relaxed">{contenido.contenido}</pre>
             </div>
           </div>
         );
@@ -448,21 +463,21 @@ export default function Nivel1Page() {
           onClick={() => setMostrarRecursos(false)}
         >
           <div
-            className="bg-white max-w-2xl w-full max-h-[85vh] overflow-hidden rounded-xl shadow-2xl border-2 border-dorado"
+            className="bg-papel-base max-w-2xl w-full max-h-[85vh] overflow-hidden rounded-xl shadow-2xl border-4 border-dorado-claro"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header con mejor contraste */}
-            <div className="bg-gradient-to-r from-sello-rojo to-red-600 text-white p-6 shadow-lg">
+            {/* Header con colores del tema */}
+            <div className="bg-sello-rojo text-papel-base p-6 shadow-lg border-b-4 border-sello-urgent">
               <div className="flex justify-between items-start">
                 <div>
                   <h2 className="text-2xl font-bold typewriter flex items-center gap-2">
                     📚 RECURSOS DEL MÓDULO
                   </h2>
-                  <p className="text-sm mt-2 typewriter-bold opacity-90">{modulo.titulo}</p>
+                  <p className="text-sm mt-2 typewriter opacity-90">{modulo.titulo}</p>
                 </div>
                 <button
                   onClick={() => setMostrarRecursos(false)}
-                  className="text-4xl hover:scale-110 transition-transform leading-none bg-white/20 hover:bg-white/30 rounded-full w-10 h-10 flex items-center justify-center"
+                  className="text-4xl hover:scale-110 transition-transform leading-none bg-papel-base/20 hover:bg-papel-base/30 rounded-full w-10 h-10 flex items-center justify-center"
                   aria-label="Cerrar"
                 >
                   ×
@@ -471,26 +486,26 @@ export default function Nivel1Page() {
             </div>
 
             {/* Contenido con scroll */}
-            <div className="p-6 space-y-4 overflow-y-auto max-h-[calc(85vh-180px)] bg-papel-base">
+            <div className="p-6 space-y-4 overflow-y-auto max-h-[calc(85vh-180px)]">
               {modulo.recursos.map((recurso, index) => (
                 <div
                   key={index}
-                  className="bg-white border-2 border-gray-200 rounded-lg p-5 hover:border-azul-info hover:shadow-md transition-all"
+                  className="bg-white border-2 border-papel-border rounded-lg p-5 hover:border-azul-info hover:shadow-md transition-all"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="bg-azul-info/10 p-3 rounded-lg flex-shrink-0">
+                    <div className="bg-azul-info/10 p-3 rounded-lg flex-shrink-0 border-2 border-azul-info/20">
                       <span className="text-3xl">
                         {recurso.tipo === 'herramienta' ? '🛠️' : recurso.tipo === 'descarga' ? '📥' : '🔗'}
                       </span>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-bold typewriter text-lg text-gray-900 mb-2">{recurso.titulo}</h3>
-                      <p className="text-sm text-gray-700 mb-4 leading-relaxed">{recurso.descripcion}</p>
+                      <h3 className="font-bold typewriter text-lg text-tinta-oficial mb-2">{recurso.titulo}</h3>
+                      <p className="text-sm text-tinta-suave mb-4 leading-relaxed">{recurso.descripcion}</p>
                       <a
                         href={recurso.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-azul-info text-white px-5 py-2.5 rounded-lg text-sm typewriter hover:bg-blue-700 hover:shadow-lg transition-all font-medium"
+                        className="inline-flex items-center gap-2 bg-azul-info text-papel-base px-5 py-2.5 rounded-lg text-sm typewriter hover:bg-blue-700 hover:shadow-lg transition-all font-bold border-2 border-blue-700"
                       >
                         {recurso.tipo === 'herramienta' ? 'USAR HERRAMIENTA' : recurso.tipo === 'descarga' ? 'DESCARGAR' : 'VISITAR SITIO'} →
                       </a>
@@ -500,11 +515,11 @@ export default function Nivel1Page() {
               ))}
             </div>
 
-            {/* Footer con mejor contraste */}
-            <div className="bg-gray-50 border-t-2 border-gray-200 p-4 text-center shadow-inner">
+            {/* Footer con colores del tema */}
+            <div className="bg-papel-sombra border-t-2 border-papel-border p-4 text-center">
               <button
                 onClick={() => setMostrarRecursos(false)}
-                className="bg-gray-700 text-white px-8 py-2.5 rounded-lg typewriter hover:bg-gray-800 transition-colors font-medium"
+                className="bg-tinta-oficial text-papel-base px-8 py-2.5 rounded-lg typewriter hover:bg-tinta-suave transition-colors font-bold border-2 border-tinta-oficial"
               >
                 CERRAR
               </button>
@@ -520,11 +535,11 @@ export default function Nivel1Page() {
           onClick={() => setMostrarProgramaAcademico(false)}
         >
           <div
-            className="bg-white max-w-4xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl border-2 border-dorado"
+            className="bg-papel-base max-w-4xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl border-4 border-dorado-claro"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header con gradiente */}
-            <div className="bg-gradient-to-r from-azul-info to-blue-700 text-white p-6 shadow-lg">
+            {/* Header con colores del tema */}
+            <div className="bg-azul-info text-papel-base p-6 shadow-lg border-b-4 border-blue-700">
               <div className="flex justify-between items-start">
                 <div>
                   <h2 className="text-2xl font-bold typewriter">
@@ -534,7 +549,7 @@ export default function Nivel1Page() {
                 </div>
                 <button
                   onClick={() => setMostrarProgramaAcademico(false)}
-                  className="text-4xl hover:scale-110 transition-transform leading-none bg-white/20 hover:bg-white/30 rounded-full w-10 h-10 flex items-center justify-center"
+                  className="text-4xl hover:scale-110 transition-transform leading-none bg-papel-base/20 hover:bg-papel-base/30 rounded-full w-10 h-10 flex items-center justify-center"
                   aria-label="Cerrar"
                 >
                   ×
