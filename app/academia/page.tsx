@@ -238,77 +238,6 @@ export default function AcademiaPage() {
           </div>
         </section>
 
-        {/* Marco metodológico */}
-        <section className="mb-16">
-          <div className="academia-card-unified relative">
-            {/* Sello de clasificación */}
-            <div className="absolute top-4 right-4">
-              <Stamp className="text-xs bg-sello-rojo text-white transform rotate-2">PÚBLICO</Stamp>
-            </div>
-
-            {/* Header */}
-            <div className="academia-card-header">
-              <div className="text-center">
-                <p className="texto-pequeno mb-1">ANEXO TÉCNICO</p>
-                <h2 className="text-xl font-bold typewriter">
-                  MARCO METODOLÓGICO DEL PROGRAMA
-                </h2>
-              </div>
-            </div>
-
-            {/* Contenido */}
-            <div className="academia-card-content">
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-papel-base border border-papel-border p-6 h-full text-center">
-                  <div className="inline-block p-4 bg-papel-sombra rounded-full mb-4">
-                    <span className="text-3xl">💻</span>
-                  </div>
-                  <h3 className="typewriter-bold text-lg mb-3">PRÁCTICA TÉCNICA APLICADA</h3>
-                  <p className="texto-oficial text-sm mb-4">
-                    Laboratorios virtuales seguros, simuladores de amenazas y ejercicios con casos documentados
-                  </p>
-                  <div className="pt-3 border-t border-papel-border">
-                    <p className="texto-pequeno font-bold">METODOLOGÍA ACTIVA</p>
-                  </div>
-                </div>
-
-                <div className="bg-papel-base border border-papel-border p-6 h-full text-center">
-                  <div className="inline-block p-4 bg-papel-sombra rounded-full mb-4">
-                    <span className="text-3xl">👥</span>
-                  </div>
-                  <h3 className="typewriter-bold text-lg mb-3">CONSTRUCCIÓN COLECTIVA</h3>
-                  <p className="texto-oficial text-sm mb-4">
-                    Círculos de estudio, mentorías horizontales y desarrollo de redes de apoyo mutuo
-                  </p>
-                  <div className="pt-3 border-t border-papel-border">
-                    <p className="texto-pequeno font-bold">EDUCACIÓN POPULAR</p>
-                  </div>
-                </div>
-
-                <div className="bg-papel-base border border-papel-border p-6 h-full text-center">
-                  <div className="inline-block p-4 bg-papel-sombra rounded-full mb-4">
-                    <span className="text-3xl">🏆</span>
-                  </div>
-                  <h3 className="typewriter-bold text-lg mb-3">ACREDITACIÓN VERIFICABLE</h3>
-                  <p className="texto-oficial text-sm mb-4">
-                    Certificaciones digitales con blockchain y reconocimiento institucional verificable
-                  </p>
-                  <div className="pt-3 border-t border-papel-border">
-                    <Stamp className="text-xs bg-sello-rojo text-white">CERTIFICADO</Stamp>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Footer */}
-            <div className="academia-card-footer text-center">
-              <p className="texto-pequeno">
-                MARCO PEDAGÓGICO VALIDADO POR: Instituto Ciudadano de Capacitación • {currentDate}
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Convocatoria */}
         <section className="text-center">
           <div className="academia-card-unified max-w-4xl mx-auto">
@@ -330,18 +259,10 @@ export default function AcademiaPage() {
                 </p>
               </div>
 
-              <p className="texto-oficial leading-relaxed max-w-3xl mx-auto mb-6">
+              <p className="texto-oficial leading-relaxed max-w-3xl mx-auto">
                 La resistencia digital comienza con la formación técnica. Únete a nuestra comunidad de
                 aprendizaje y contribuye a construir un ecosistema digital más libre, seguro y soberano.
               </p>
-
-              <div className="flex justify-center mb-6">
-                <Link href="/academia/nivel-1">
-                  <SelloAccion variant="primary" size="lg">
-                    🎓 INICIAR CAPACITACIÓN
-                  </SelloAccion>
-                </Link>
-              </div>
             </div>
 
             {/* Footer */}

@@ -281,11 +281,6 @@ export default function Nivel1Page() {
                 <SelloAccion size="lg" onClick={() => setMostrarCertificado(true)}>
                   📜 DESCARGAR CERTIFICADO
                 </SelloAccion>
-                <Link href="/academia/perfil">
-                  <SelloAccion variant="secondary" size="lg">
-                    👤 VER MI PERFIL
-                  </SelloAccion>
-                </Link>
                 <Link href="/herramientas">
                   <SelloAccion variant="secondary" size="lg">
                     🛠️ PRACTICAR HERRAMIENTAS

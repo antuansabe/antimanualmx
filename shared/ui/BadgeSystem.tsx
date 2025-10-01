@@ -196,7 +196,7 @@ export const badgesIniciales: Badge[] = [
     icono: '🤝',
     color: 'from-yellow-400 to-yellow-600',
     desbloqueado: false,
-    requisitos: 'Compartir certificado o perfil'
+    requisitos: 'Compartir certificado'
   },
   {
     id: 'explorador',
