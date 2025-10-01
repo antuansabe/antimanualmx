@@ -160,7 +160,7 @@ export default function HerramientasPage() {
                     </div>
 
                     {/* Botones de acción */}
-                    <div className="flex flex-col sm:flex-row gap-3">
+                    <div>
                       <Link href={`/herramientas/${protocolo.id}`}>
                         <SelloAccion
                           variant="stamp"
@@ -168,15 +168,6 @@ export default function HerramientasPage() {
                           className="bg-sello-rojo text-white border-2 border-sello-rojo"
                         >
                           EJECUTAR PROTOCOLO
-                        </SelloAccion>
-                      </Link>
-                      <Link href={`/herramientas/${protocolo.id}/tutorial`}>
-                        <SelloAccion
-                          variant="secondary"
-                          size="md"
-                          className="bg-papel-sombra text-tinta-oficial border-2 border-papel-border"
-                        >
-                          MANUAL TÉCNICO
                         </SelloAccion>
                       </Link>
                     </div>
