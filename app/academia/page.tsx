@@ -289,7 +289,7 @@ export default function AcademiaPage() {
         {/* Modal Programa Académico */}
         {mostrarPrograma && (
           <div
-            className="fixed inset-0 bg-tinta-oficial/70 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-papel-oscuro z-50 flex items-center justify-center p-4"
             onClick={() => setMostrarPrograma(false)}
           >
             <div

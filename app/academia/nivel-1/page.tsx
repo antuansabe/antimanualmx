@@ -501,7 +501,7 @@ export default function Nivel1Page() {
       {/* Modal de Recursos */}
       {mostrarRecursos && modulo?.recursos && (
         <div
-          className="fixed inset-0 bg-tinta-oficial/70 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-papel-oscuro z-50 flex items-center justify-center p-4"
           onClick={() => setMostrarRecursos(false)}
         >
           <div
@@ -573,7 +573,7 @@ export default function Nivel1Page() {
       {/* Modal de Programa Académico */}
       {mostrarProgramaAcademico && (
         <div
-          className="fixed inset-0 bg-tinta-oficial/70 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-papel-oscuro z-50 flex items-center justify-center p-4"
           onClick={() => setMostrarProgramaAcademico(false)}
         >
           <div
