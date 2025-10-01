@@ -289,50 +289,65 @@ export default function AcademiaPage() {
         {/* Modal Programa Académico */}
         {mostrarPrograma && (
           <div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
             onClick={() => setMostrarPrograma(false)}
           >
             <div
-              className="bg-papel-base max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl border-4 border-dorado"
+              className="bg-white max-w-4xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl border-2 border-dorado"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="sticky top-0 bg-papel-base border-b-2 border-papel-border p-6 z-10">
+              {/* Header con gradiente */}
+              <div className="bg-gradient-to-r from-sello-rojo to-red-600 text-white p-6 shadow-lg">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h2 className="text-2xl font-bold typewriter mb-2" style={{color: '#B91C1C'}}>
-                      PROGRAMA ACADÉMICO DETALLADO
+                    <h2 className="text-2xl font-bold typewriter mb-2">
+                      📋 PROGRAMA ACADÉMICO DETALLADO
                     </h2>
-                    <p className="text-sm typewriter">NIVEL 1: ACTIVISTA DIGITAL BÁSICO</p>
+                    <p className="text-sm typewriter opacity-90">NIVEL 1: ACTIVISTA DIGITAL BÁSICO</p>
                   </div>
                   <button
                     onClick={() => setMostrarPrograma(false)}
-                    className="text-3xl hover:text-sello-rojo transition-colors"
+                    className="text-4xl hover:scale-110 transition-transform leading-none bg-white/20 hover:bg-white/30 rounded-full w-10 h-10 flex items-center justify-center"
+                    aria-label="Cerrar"
                   >
                     ×
                   </button>
                 </div>
               </div>
 
-              <div className="p-6 space-y-6">
+              {/* Contenido con scroll */}
+              <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(90vh-180px)] bg-papel-base">
                 {/* Información general */}
-                <div className="bg-yellow-50/50 border-l-4 border-yellow-600 p-4">
-                  <h3 className="font-bold typewriter mb-2">📋 INFORMACIÓN GENERAL</h3>
-                  <ul className="text-sm space-y-1">
-                    <li><strong>Duración total:</strong> {cursoNivel1.duracionTotal} minutos (4 horas)</li>
-                    <li><strong>Módulos:</strong> {cursoNivel1.modulos.length}</li>
-                    <li><strong>Modalidad:</strong> Auto-dirigido, progreso guardado en tu navegador</li>
-                    <li><strong>Certificado:</strong> Al completar todos los módulos</li>
+                <div className="bg-gradient-to-r from-yellow-100 to-yellow-50 border-l-4 border-yellow-600 p-5 rounded-r-lg shadow-sm">
+                  <h3 className="font-bold typewriter mb-3 text-gray-900 text-lg">📋 INFORMACIÓN GENERAL</h3>
+                  <ul className="text-sm space-y-2 text-gray-800">
+                    <li className="flex items-center gap-2">
+                      <span className="font-bold min-w-[110px]">Duración total:</span>
+                      <span>{cursoNivel1.duracionTotal} minutos (4 horas)</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="font-bold min-w-[110px]">Módulos:</span>
+                      <span>{cursoNivel1.modulos.length}</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="font-bold min-w-[110px]">Modalidad:</span>
+                      <span>Auto-dirigido, progreso guardado en tu navegador</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <span className="font-bold min-w-[110px]">Certificado:</span>
+                      <span>Al completar todos los módulos</span>
+                    </li>
                   </ul>
                 </div>
 
                 {/* Objetivos */}
-                <div>
-                  <h3 className="font-bold typewriter mb-3 text-lg">🎯 OBJETIVOS DE APRENDIZAJE</h3>
-                  <ul className="space-y-2">
+                <div className="bg-gradient-to-r from-green-100 to-green-50 border-l-4 border-green-600 p-5 rounded-r-lg shadow-sm">
+                  <h3 className="font-bold typewriter mb-3 text-gray-900 text-lg">🎯 OBJETIVOS DE APRENDIZAJE</h3>
+                  <ul className="space-y-2.5 text-sm">
                     {cursoNivel1.objetivos.map((obj, idx) => (
-                      <li key={idx} className="flex items-start gap-2 text-sm">
-                        <span className="text-verde-aprobado mt-1">✓</span>
-                        <span>{obj}</span>
+                      <li key={idx} className="flex items-start gap-3 text-gray-800">
+                        <span className="text-verde-aprobado text-lg mt-0.5 flex-shrink-0">✓</span>
+                        <span className="leading-relaxed">{obj}</span>
                       </li>
                     ))}
                   </ul>
@@ -340,49 +355,51 @@ export default function AcademiaPage() {
 
                 {/* Módulos detallados */}
                 <div>
-                  <h3 className="font-bold typewriter mb-3 text-lg">📚 CONTENIDO POR MÓDULO</h3>
+                  <h3 className="font-bold typewriter mb-4 text-xl text-gray-900">📚 CONTENIDO POR MÓDULO</h3>
                   <div className="space-y-4">
                     {cursoNivel1.modulos.map((modulo, idx) => (
-                      <div key={modulo.id} className="border border-papel-border rounded-lg p-4 bg-white/50">
-                        <div className="flex items-start gap-3 mb-3">
-                          <div className="bg-azul-info text-white rounded-full w-8 h-8 flex items-center justify-center font-bold flex-shrink-0">
+                      <div key={modulo.id} className="border-2 border-gray-200 rounded-xl p-5 bg-white shadow-sm hover:border-gray-300 transition-colors">
+                        <div className="flex items-start gap-4 mb-4">
+                          <div className="bg-azul-info text-white rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 shadow-sm">
                             {idx + 1}
                           </div>
                           <div className="flex-1">
-                            <h4 className="font-bold typewriter text-base mb-1">{modulo.titulo}</h4>
-                            <p className="text-sm text-tinta-clara mb-2">{modulo.descripcion}</p>
-                            <p className="text-xs text-tinta-suave">⏱️ Duración: {modulo.duracion} minutos</p>
+                            <h4 className="font-bold typewriter text-base mb-1 text-gray-900">{modulo.titulo}</h4>
+                            <p className="text-sm text-gray-700 mb-2 leading-relaxed">{modulo.descripcion}</p>
+                            <p className="text-xs text-gray-600 bg-gray-50 inline-block px-2 py-1 rounded border border-gray-200">⏱️ Duración: {modulo.duracion} minutos</p>
                           </div>
                         </div>
 
-                        <div className="ml-11">
-                          <h5 className="text-sm font-bold mb-2">Temas cubiertos:</h5>
-                          <ul className="text-xs space-y-1">
-                            {modulo.contenido.slice(0, 5).map((cont, contIdx) => (
-                              <li key={contIdx} className="flex items-start gap-2">
-                                <span className="text-tinta-clara">•</span>
-                                <span>{cont.titulo || 'Contenido educativo'}</span>
-                              </li>
-                            ))}
-                            {modulo.contenido.length > 5 && (
-                              <li className="text-tinta-suave italic">
-                                + {modulo.contenido.length - 5} temas más...
-                              </li>
-                            )}
-                          </ul>
+                        <div className="ml-14 space-y-3">
+                          <div>
+                            <h5 className="text-sm font-bold mb-2 text-gray-900">Temas cubiertos:</h5>
+                            <ul className="text-xs space-y-1.5">
+                              {modulo.contenido.slice(0, 5).map((cont, contIdx) => (
+                                <li key={contIdx} className="flex items-start gap-2 text-gray-700">
+                                  <span className="text-azul-info font-bold">•</span>
+                                  <span>{cont.titulo || 'Contenido educativo'}</span>
+                                </li>
+                              ))}
+                              {modulo.contenido.length > 5 && (
+                                <li className="text-gray-600 italic pl-4">
+                                  + {modulo.contenido.length - 5} temas más...
+                                </li>
+                              )}
+                            </ul>
+                          </div>
 
                           {modulo.ejercicios && modulo.ejercicios.length > 0 && (
-                            <div className="mt-3 pt-3 border-t border-papel-border">
-                              <p className="text-xs">
-                                <strong>Ejercicios:</strong> {modulo.ejercicios.length} (quiz, prácticas y reflexiones)
+                            <div className="pt-3 border-t border-gray-200">
+                              <p className="text-xs text-gray-700">
+                                <strong className="text-gray-900">✍️ Ejercicios:</strong> {modulo.ejercicios.length} (quiz, prácticas y reflexiones)
                               </p>
                             </div>
                           )}
 
                           {modulo.recursos && modulo.recursos.length > 0 && (
-                            <div className="mt-2">
-                              <p className="text-xs">
-                                <strong>Recursos:</strong> {modulo.recursos.length} herramientas y enlaces
+                            <div className="pt-2">
+                              <p className="text-xs text-gray-700">
+                                <strong className="text-gray-900">🔗 Recursos:</strong> {modulo.recursos.length} herramientas y enlaces
                               </p>
                             </div>
                           )}
@@ -393,8 +410,8 @@ export default function AcademiaPage() {
                 </div>
 
                 {/* Call to action */}
-                <div className="bg-green-50 border-l-4 border-green-600 p-4 text-center">
-                  <p className="text-sm mb-3">
+                <div className="bg-gradient-to-r from-blue-100 to-blue-50 border-l-4 border-azul-info p-5 text-center rounded-r-lg shadow-sm">
+                  <p className="text-sm mb-4 text-gray-800 font-medium">
                     ¿Listo para comenzar tu formación como activista digital?
                   </p>
                   <Link href="/academia/nivel-1">

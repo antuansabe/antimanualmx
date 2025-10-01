@@ -444,24 +444,25 @@ export default function Nivel1Page() {
       {/* Modal de Recursos */}
       {mostrarRecursos && modulo?.recursos && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
           onClick={() => setMostrarRecursos(false)}
         >
           <div
-            className="bg-papel-base max-w-2xl w-full max-h-[80vh] overflow-y-auto rounded-lg shadow-2xl border-4 border-dorado"
+            className="bg-white max-w-2xl w-full max-h-[85vh] overflow-hidden rounded-xl shadow-2xl border-2 border-dorado"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="sticky top-0 bg-papel-base border-b-2 border-papel-border p-6 z-10">
+            {/* Header con mejor contraste */}
+            <div className="bg-gradient-to-r from-sello-rojo to-red-600 text-white p-6 shadow-lg">
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="text-2xl font-bold typewriter text-sello-rojo">
+                  <h2 className="text-2xl font-bold typewriter flex items-center gap-2">
                     📚 RECURSOS DEL MÓDULO
                   </h2>
-                  <p className="text-sm mt-2 typewriter-bold">{modulo.titulo}</p>
+                  <p className="text-sm mt-2 typewriter-bold opacity-90">{modulo.titulo}</p>
                 </div>
                 <button
                   onClick={() => setMostrarRecursos(false)}
-                  className="text-4xl hover:text-sello-rojo transition-colors leading-none"
+                  className="text-4xl hover:scale-110 transition-transform leading-none bg-white/20 hover:bg-white/30 rounded-full w-10 h-10 flex items-center justify-center"
                   aria-label="Cerrar"
                 >
                   ×
@@ -469,24 +470,27 @@ export default function Nivel1Page() {
               </div>
             </div>
 
-            <div className="p-6 space-y-4">
+            {/* Contenido con scroll */}
+            <div className="p-6 space-y-4 overflow-y-auto max-h-[calc(85vh-180px)] bg-papel-base">
               {modulo.recursos.map((recurso, index) => (
                 <div
                   key={index}
-                  className="bg-white border-2 border-papel-border rounded-lg p-4 hover:border-azul-info transition-colors"
+                  className="bg-white border-2 border-gray-200 rounded-lg p-5 hover:border-azul-info hover:shadow-md transition-all"
                 >
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl flex-shrink-0">
-                      {recurso.tipo === 'herramienta' ? '🛠️' : recurso.tipo === 'descarga' ? '📥' : '🔗'}
-                    </span>
+                  <div className="flex items-start gap-4">
+                    <div className="bg-azul-info/10 p-3 rounded-lg flex-shrink-0">
+                      <span className="text-3xl">
+                        {recurso.tipo === 'herramienta' ? '🛠️' : recurso.tipo === 'descarga' ? '📥' : '🔗'}
+                      </span>
+                    </div>
                     <div className="flex-1">
-                      <h3 className="font-bold typewriter text-lg mb-2">{recurso.titulo}</h3>
-                      <p className="text-sm text-tinta-clara mb-3">{recurso.descripcion}</p>
+                      <h3 className="font-bold typewriter text-lg text-gray-900 mb-2">{recurso.titulo}</h3>
+                      <p className="text-sm text-gray-700 mb-4 leading-relaxed">{recurso.descripcion}</p>
                       <a
                         href={recurso.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-block bg-azul-info text-white px-4 py-2 rounded-lg text-sm typewriter hover:bg-blue-700 transition-colors"
+                        className="inline-flex items-center gap-2 bg-azul-info text-white px-5 py-2.5 rounded-lg text-sm typewriter hover:bg-blue-700 hover:shadow-lg transition-all font-medium"
                       >
                         {recurso.tipo === 'herramienta' ? 'USAR HERRAMIENTA' : recurso.tipo === 'descarga' ? 'DESCARGAR' : 'VISITAR SITIO'} →
                       </a>
@@ -496,10 +500,11 @@ export default function Nivel1Page() {
               ))}
             </div>
 
-            <div className="sticky bottom-0 bg-papel-base border-t-2 border-papel-border p-4 text-center">
+            {/* Footer con mejor contraste */}
+            <div className="bg-gray-50 border-t-2 border-gray-200 p-4 text-center shadow-inner">
               <button
                 onClick={() => setMostrarRecursos(false)}
-                className="bg-papel-sombra px-6 py-2 rounded-lg typewriter hover:bg-papel-border transition-colors"
+                className="bg-gray-700 text-white px-8 py-2.5 rounded-lg typewriter hover:bg-gray-800 transition-colors font-medium"
               >
                 CERRAR
               </button>
@@ -511,24 +516,25 @@ export default function Nivel1Page() {
       {/* Modal de Programa Académico */}
       {mostrarProgramaAcademico && (
         <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
           onClick={() => setMostrarProgramaAcademico(false)}
         >
           <div
-            className="bg-papel-base max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl border-4 border-dorado"
+            className="bg-white max-w-4xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl border-2 border-dorado"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="sticky top-0 bg-papel-base border-b-2 border-papel-border p-6 z-10">
+            {/* Header con gradiente */}
+            <div className="bg-gradient-to-r from-azul-info to-blue-700 text-white p-6 shadow-lg">
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="text-2xl font-bold typewriter text-sello-rojo">
-                    PROGRAMA ACADÉMICO COMPLETO
+                  <h2 className="text-2xl font-bold typewriter">
+                    📋 PROGRAMA ACADÉMICO COMPLETO
                   </h2>
-                  <p className="text-sm mt-2 typewriter">NIVEL 1: ACTIVISTA DIGITAL BÁSICO</p>
+                  <p className="text-sm mt-2 typewriter opacity-90">NIVEL 1: ACTIVISTA DIGITAL BÁSICO</p>
                 </div>
                 <button
                   onClick={() => setMostrarProgramaAcademico(false)}
-                  className="text-4xl hover:text-sello-rojo transition-colors leading-none"
+                  className="text-4xl hover:scale-110 transition-transform leading-none bg-white/20 hover:bg-white/30 rounded-full w-10 h-10 flex items-center justify-center"
                   aria-label="Cerrar"
                 >
                   ×
@@ -536,56 +542,71 @@ export default function Nivel1Page() {
               </div>
             </div>
 
-            <div className="p-6 space-y-6">
+            {/* Contenido con scroll */}
+            <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(90vh-180px)] bg-papel-base">
               {/* Información general */}
-              <div className="bg-yellow-50 border-l-4 border-yellow-600 p-4 rounded-r-lg">
-                <h3 className="font-bold typewriter mb-3">📋 INFORMACIÓN GENERAL</h3>
-                <ul className="text-sm space-y-2">
-                  <li><strong>Duración total:</strong> {curso.duracionTotal} minutos ({Math.round(curso.duracionTotal / 60)} horas)</li>
-                  <li><strong>Módulos:</strong> {curso.modulos.length}</li>
-                  <li><strong>Módulo actual:</strong> {moduloActual + 1}/{curso.modulos.length}</li>
-                  <li><strong>Progreso:</strong> {Math.round(progress.progress)}%</li>
+              <div className="bg-gradient-to-r from-yellow-100 to-yellow-50 border-l-4 border-yellow-600 p-5 rounded-r-lg shadow-sm">
+                <h3 className="font-bold typewriter mb-3 text-gray-900 text-lg">📋 INFORMACIÓN GENERAL</h3>
+                <ul className="text-sm space-y-2 text-gray-800">
+                  <li className="flex items-center gap-2">
+                    <span className="font-bold min-w-[130px]">Duración total:</span>
+                    <span>{curso.duracionTotal} minutos ({Math.round(curso.duracionTotal / 60)} horas)</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="font-bold min-w-[130px]">Módulos:</span>
+                    <span>{curso.modulos.length}</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="font-bold min-w-[130px]">Módulo actual:</span>
+                    <span>{moduloActual + 1}/{curso.modulos.length}</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="font-bold min-w-[130px]">Progreso:</span>
+                    <span className="text-azul-info font-bold">{Math.round(progress.progress)}%</span>
+                  </li>
                 </ul>
               </div>
 
               {/* Módulos */}
               <div>
-                <h3 className="font-bold typewriter mb-4 text-lg">📚 CONTENIDO DEL CURSO</h3>
+                <h3 className="font-bold typewriter mb-4 text-xl text-gray-900">📚 CONTENIDO DEL CURSO</h3>
                 <div className="space-y-4">
                   {curso.modulos.map((mod, idx) => (
                     <div
                       key={mod.id}
-                      className={`border-2 rounded-lg p-4 ${
+                      className={`border-2 rounded-xl p-5 shadow-sm transition-all ${
                         idx === moduloActual
-                          ? 'border-azul-info bg-blue-50/30'
+                          ? 'border-azul-info bg-blue-50 shadow-md'
                           : progress.completedModules.includes(mod.id)
-                          ? 'border-verde-aprobado bg-green-50/20'
-                          : 'border-papel-border bg-white'
+                          ? 'border-verde-aprobado bg-green-50'
+                          : 'border-gray-200 bg-white hover:border-gray-300'
                       }`}
                     >
-                      <div className="flex items-start gap-3 mb-3">
+                      <div className="flex items-start gap-4">
                         <div
-                          className={`rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 ${
+                          className={`rounded-full w-12 h-12 flex items-center justify-center font-bold flex-shrink-0 shadow-sm ${
                             idx === moduloActual
                               ? 'bg-azul-info text-white'
                               : progress.completedModules.includes(mod.id)
                               ? 'bg-verde-aprobado text-white'
-                              : 'bg-papel-sombra text-tinta-oficial'
+                              : 'bg-gray-300 text-gray-700'
                           }`}
                         >
                           {progress.completedModules.includes(mod.id) ? '✓' : idx + 1}
                         </div>
                         <div className="flex-1">
-                          <h4 className="font-bold typewriter text-base mb-1">
+                          <h4 className="font-bold typewriter text-base mb-1 text-gray-900">
                             {mod.titulo}
-                            {idx === moduloActual && <span className="ml-2 text-azul-info text-sm">(ACTUAL)</span>}
+                            {idx === moduloActual && (
+                              <span className="ml-2 bg-azul-info text-white px-2 py-0.5 rounded text-xs">ACTUAL</span>
+                            )}
                           </h4>
-                          <p className="text-sm text-tinta-clara mb-2">{mod.descripcion}</p>
-                          <div className="flex gap-4 text-xs text-tinta-suave">
-                            <span>⏱️ {mod.duracion} min</span>
-                            <span>📄 {mod.contenido.length} temas</span>
-                            {mod.ejercicios && <span>✍️ {mod.ejercicios.length} ejercicios</span>}
-                            {mod.recursos && <span>🔗 {mod.recursos.length} recursos</span>}
+                          <p className="text-sm text-gray-700 mb-3 leading-relaxed">{mod.descripcion}</p>
+                          <div className="flex flex-wrap gap-3 text-xs text-gray-600">
+                            <span className="bg-white px-2 py-1 rounded border border-gray-200">⏱️ {mod.duracion} min</span>
+                            <span className="bg-white px-2 py-1 rounded border border-gray-200">📄 {mod.contenido.length} temas</span>
+                            {mod.ejercicios && <span className="bg-white px-2 py-1 rounded border border-gray-200">✍️ {mod.ejercicios.length} ejercicios</span>}
+                            {mod.recursos && <span className="bg-white px-2 py-1 rounded border border-gray-200">🔗 {mod.recursos.length} recursos</span>}
                           </div>
                         </div>
                       </div>
@@ -595,23 +616,24 @@ export default function Nivel1Page() {
               </div>
 
               {/* Objetivos */}
-              <div className="bg-green-50 border-l-4 border-green-600 p-4 rounded-r-lg">
-                <h3 className="font-bold typewriter mb-3">🎯 OBJETIVOS DE APRENDIZAJE</h3>
-                <ul className="space-y-2 text-sm">
+              <div className="bg-gradient-to-r from-green-100 to-green-50 border-l-4 border-green-600 p-5 rounded-r-lg shadow-sm">
+                <h3 className="font-bold typewriter mb-3 text-gray-900 text-lg">🎯 OBJETIVOS DE APRENDIZAJE</h3>
+                <ul className="space-y-2.5 text-sm">
                   {curso.objetivos.map((obj, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <span className="text-verde-aprobado mt-1">✓</span>
-                      <span>{obj}</span>
+                    <li key={idx} className="flex items-start gap-3 text-gray-800">
+                      <span className="text-verde-aprobado text-lg mt-0.5 flex-shrink-0">✓</span>
+                      <span className="leading-relaxed">{obj}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
 
-            <div className="sticky bottom-0 bg-papel-base border-t-2 border-papel-border p-4 text-center">
+            {/* Footer */}
+            <div className="bg-gray-50 border-t-2 border-gray-200 p-5 text-center shadow-inner">
               <button
                 onClick={() => setMostrarProgramaAcademico(false)}
-                className="bg-azul-info text-white px-8 py-3 rounded-lg typewriter hover:bg-blue-700 transition-colors font-bold"
+                className="bg-azul-info text-white px-8 py-3 rounded-lg typewriter hover:bg-blue-700 hover:shadow-lg transition-all font-bold"
               >
                 CONTINUAR APRENDIENDO
               </button>
