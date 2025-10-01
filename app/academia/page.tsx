@@ -289,14 +289,14 @@ export default function AcademiaPage() {
         {/* Modal Programa Académico */}
         {mostrarPrograma && (
           <div
-            className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
             onClick={() => setMostrarPrograma(false)}
           >
             <div
-              className="bg-papel-base max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl"
+              className="bg-papel-base max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl border-4 border-dorado"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="sticky top-0 bg-papel-base border-b-4 border-dorado p-6 z-10">
+              <div className="sticky top-0 bg-papel-base border-b-2 border-papel-border p-6 z-10">
                 <div className="flex justify-between items-start">
                   <div>
                     <h2 className="text-2xl font-bold typewriter mb-2" style={{color: '#B91C1C'}}>
