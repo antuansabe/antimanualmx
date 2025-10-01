@@ -465,7 +465,7 @@ export default function RedPage() {
               </p>
 
               <div className="flex justify-center">
-                <a href="mailto:contacto@antimanual.mx?subject=Solicitud de Registro Organizacional&body=Nombre de la organización:%0D%0ATipo de organización:%0D%0ASitio web:%0D%0ADescripción de actividades:%0D%0AContacto responsable:%0D%0ATeléfono:%0D%0A%0D%0APor favor, proporcione información detallada sobre su organización para iniciar el proceso de verificación.">
+                <a href="mailto:antuansabe@gmail.com?subject=Solicitud de Registro Organizacional&body=Nombre de la organización:%0D%0ATipo de organización:%0D%0ASitio web:%0D%0ADescripción de actividades:%0D%0AContacto responsable:%0D%0ATeléfono:%0D%0A%0D%0APor favor, proporcione información detallada sobre su organización para iniciar el proceso de verificación.">
                   <SelloAccion variant="approved" size="lg">
                     📝 SOLICITAR REGISTRO ORGANIZACIONAL
                   </SelloAccion>
