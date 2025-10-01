@@ -8,13 +8,14 @@ import { cursoNivel1 } from '@/shared/data/cursos';
 import { useCourseProgress } from '@/shared/hooks/useLocalStorage';
 
 export default function Nivel1Page() {
-  const { progress, startCourse, markModuleComplete, updateProgress } = useCourseProgress('nivel-1');
+  const { progress, startCourse, markModuleComplete, updateProgress, resetCourse } = useCourseProgress('nivel-1');
   const [moduloActual, setModuloActual] = useState(0);
   const [contenidoActual, setContenidoActual] = useState(0);
   const [mostrarEjercicios, setMostrarEjercicios] = useState(false);
   const [ejercicioActual, setEjercicioActual] = useState(0);
   const [respuestasUsuario, setRespuestasUsuario] = useState<{[key: string]: string | number}>({});
   const [mostrarCertificado, setMostrarCertificado] = useState(false);
+  const [mostrarProgramaAcademico, setMostrarProgramaAcademico] = useState(false);
 
   const curso = cursoNivel1;
   const modulo = curso.modulos[moduloActual];
@@ -286,6 +287,21 @@ export default function Nivel1Page() {
                     🛠️ PRACTICAR HERRAMIENTAS
                   </SelloAccion>
                 </Link>
+                <SelloAccion
+                  variant="secondary"
+                  size="lg"
+                  onClick={() => {
+                    if (confirm('¿Estás seguro de que quieres reiniciar el curso? Perderás todo tu progreso actual.')) {
+                      resetCourse();
+                      setModuloActual(0);
+                      setContenidoActual(0);
+                      setMostrarEjercicios(false);
+                      setEjercicioActual(0);
+                    }
+                  }}
+                >
+                  🔄 REINICIAR CURSO
+                </SelloAccion>
               </div>
             </div>
           </ExpedienteCard>

@@ -80,12 +80,25 @@ export function useCourseProgress(courseId: string) {
     });
   };
 
+  const resetCourse = () => {
+    setProgress({
+      started: false,
+      completed: false,
+      progress: 0,
+      currentModule: 0,
+      completedModules: [],
+      timeSpent: 0,
+      lastAccessed: null
+    });
+  };
+
   return {
     progress,
     updateProgress,
     markModuleComplete,
     startCourse,
-    completeCourse
+    completeCourse,
+    resetCourse
   };
 }
 
