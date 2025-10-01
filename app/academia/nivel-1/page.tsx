@@ -501,7 +501,7 @@ export default function Nivel1Page() {
       {/* Modal de Recursos */}
       {mostrarRecursos && modulo?.recursos && (
         <div
-          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-tinta-oficial/70 z-50 flex items-center justify-center p-4"
           onClick={() => setMostrarRecursos(false)}
         >
           <div
@@ -573,7 +573,7 @@ export default function Nivel1Page() {
       {/* Modal de Programa Académico */}
       {mostrarProgramaAcademico && (
         <div
-          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-tinta-oficial/70 z-50 flex items-center justify-center p-4"
           onClick={() => setMostrarProgramaAcademico(false)}
         >
           <div
@@ -600,25 +600,25 @@ export default function Nivel1Page() {
             </div>
 
             {/* Contenido con scroll */}
-            <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(90vh-180px)] bg-papel-base">
+            <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(90vh-180px)]">
               {/* Información general */}
-              <div className="bg-gradient-to-r from-yellow-100 to-yellow-50 border-l-4 border-yellow-600 p-5 rounded-r-lg shadow-sm">
-                <h3 className="font-bold typewriter mb-3 text-gray-900 text-lg">📋 INFORMACIÓN GENERAL</h3>
-                <ul className="text-sm space-y-2 text-gray-800">
+              <div className="bg-naranja-pendiente/10 border-l-4 border-naranja-pendiente p-5 rounded-r-lg shadow-sm">
+                <h3 className="font-bold typewriter mb-3 text-tinta-oficial text-lg">📋 INFORMACIÓN GENERAL</h3>
+                <ul className="text-sm space-y-2 text-tinta-suave">
                   <li className="flex items-center gap-2">
-                    <span className="font-bold min-w-[130px]">Duración total:</span>
+                    <span className="font-bold min-w-[130px] text-tinta-oficial">Duración total:</span>
                     <span>{curso.duracionTotal} minutos ({Math.round(curso.duracionTotal / 60)} horas)</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="font-bold min-w-[130px]">Módulos:</span>
+                    <span className="font-bold min-w-[130px] text-tinta-oficial">Módulos:</span>
                     <span>{curso.modulos.length}</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="font-bold min-w-[130px]">Módulo actual:</span>
+                    <span className="font-bold min-w-[130px] text-tinta-oficial">Módulo actual:</span>
                     <span>{moduloActual + 1}/{curso.modulos.length}</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="font-bold min-w-[130px]">Progreso:</span>
+                    <span className="font-bold min-w-[130px] text-tinta-oficial">Progreso:</span>
                     <span className="text-azul-info font-bold">{Math.round(progress.progress)}%</span>
                   </li>
                 </ul>
@@ -626,44 +626,44 @@ export default function Nivel1Page() {
 
               {/* Módulos */}
               <div>
-                <h3 className="font-bold typewriter mb-4 text-xl text-gray-900">📚 CONTENIDO DEL CURSO</h3>
+                <h3 className="font-bold typewriter mb-4 text-xl text-tinta-oficial">📚 CONTENIDO DEL CURSO</h3>
                 <div className="space-y-4">
                   {curso.modulos.map((mod, idx) => (
                     <div
                       key={mod.id}
                       className={`border-2 rounded-xl p-5 shadow-sm transition-all ${
                         idx === moduloActual
-                          ? 'border-azul-info bg-blue-50 shadow-md'
+                          ? 'border-azul-info bg-azul-info/5 shadow-md'
                           : progress.completedModules.includes(mod.id)
-                          ? 'border-verde-aprobado bg-green-50'
-                          : 'border-gray-200 bg-white hover:border-gray-300'
+                          ? 'border-verde-aprobado bg-verde-aprobado/5'
+                          : 'border-papel-border bg-white hover:border-papel-border'
                       }`}
                     >
                       <div className="flex items-start gap-4">
                         <div
                           className={`rounded-full w-12 h-12 flex items-center justify-center font-bold flex-shrink-0 shadow-sm ${
                             idx === moduloActual
-                              ? 'bg-azul-info text-white'
+                              ? 'bg-azul-info text-papel-base'
                               : progress.completedModules.includes(mod.id)
-                              ? 'bg-verde-aprobado text-white'
-                              : 'bg-gray-300 text-gray-700'
+                              ? 'bg-verde-aprobado text-papel-base'
+                              : 'bg-papel-sombra text-tinta-oficial'
                           }`}
                         >
                           {progress.completedModules.includes(mod.id) ? '✓' : idx + 1}
                         </div>
                         <div className="flex-1">
-                          <h4 className="font-bold typewriter text-base mb-1 text-gray-900">
+                          <h4 className="font-bold typewriter text-base mb-1 text-tinta-oficial">
                             {mod.titulo}
                             {idx === moduloActual && (
-                              <span className="ml-2 bg-azul-info text-white px-2 py-0.5 rounded text-xs">ACTUAL</span>
+                              <span className="ml-2 bg-azul-info text-papel-base px-2 py-0.5 rounded text-xs">ACTUAL</span>
                             )}
                           </h4>
-                          <p className="text-sm text-gray-700 mb-3 leading-relaxed">{mod.descripcion}</p>
-                          <div className="flex flex-wrap gap-3 text-xs text-gray-600">
-                            <span className="bg-white px-2 py-1 rounded border border-gray-200">⏱️ {mod.duracion} min</span>
-                            <span className="bg-white px-2 py-1 rounded border border-gray-200">📄 {mod.contenido.length} temas</span>
-                            {mod.ejercicios && <span className="bg-white px-2 py-1 rounded border border-gray-200">✍️ {mod.ejercicios.length} ejercicios</span>}
-                            {mod.recursos && <span className="bg-white px-2 py-1 rounded border border-gray-200">🔗 {mod.recursos.length} recursos</span>}
+                          <p className="text-sm text-tinta-suave mb-3 leading-relaxed">{mod.descripcion}</p>
+                          <div className="flex flex-wrap gap-3 text-xs text-tinta-clara">
+                            <span className="bg-papel-base px-2 py-1 rounded border border-papel-border">⏱️ {mod.duracion} min</span>
+                            <span className="bg-papel-base px-2 py-1 rounded border border-papel-border">📄 {mod.contenido.length} temas</span>
+                            {mod.ejercicios && <span className="bg-papel-base px-2 py-1 rounded border border-papel-border">✍️ {mod.ejercicios.length} ejercicios</span>}
+                            {mod.recursos && <span className="bg-papel-base px-2 py-1 rounded border border-papel-border">🔗 {mod.recursos.length} recursos</span>}
                           </div>
                         </div>
                       </div>
@@ -673,11 +673,11 @@ export default function Nivel1Page() {
               </div>
 
               {/* Objetivos */}
-              <div className="bg-gradient-to-r from-green-100 to-green-50 border-l-4 border-green-600 p-5 rounded-r-lg shadow-sm">
-                <h3 className="font-bold typewriter mb-3 text-gray-900 text-lg">🎯 OBJETIVOS DE APRENDIZAJE</h3>
+              <div className="bg-verde-aprobado/10 border-l-4 border-verde-aprobado p-5 rounded-r-lg shadow-sm">
+                <h3 className="font-bold typewriter mb-3 text-tinta-oficial text-lg">🎯 OBJETIVOS DE APRENDIZAJE</h3>
                 <ul className="space-y-2.5 text-sm">
                   {curso.objetivos.map((obj, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-gray-800">
+                    <li key={idx} className="flex items-start gap-3 text-tinta-suave">
                       <span className="text-verde-aprobado text-lg mt-0.5 flex-shrink-0">✓</span>
                       <span className="leading-relaxed">{obj}</span>
                     </li>
@@ -687,10 +687,10 @@ export default function Nivel1Page() {
             </div>
 
             {/* Footer */}
-            <div className="bg-gray-50 border-t-2 border-gray-200 p-5 text-center shadow-inner">
+            <div className="bg-papel-sombra border-t-2 border-papel-border p-5 text-center">
               <button
                 onClick={() => setMostrarProgramaAcademico(false)}
-                className="bg-azul-info text-white px-8 py-3 rounded-lg typewriter hover:bg-blue-700 hover:shadow-lg transition-all font-bold"
+                className="bg-azul-info text-papel-base px-8 py-3 rounded-lg typewriter hover:bg-blue-700 hover:shadow-lg transition-all font-bold border-2 border-blue-700"
               >
                 CONTINUAR APRENDIENDO
               </button>
