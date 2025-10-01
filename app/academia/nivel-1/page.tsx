@@ -88,13 +88,55 @@ export default function Nivel1Page() {
   const renderContenido = () => {
     if (!contenido) return null;
 
-    // Función para procesar texto con markdown simple
+    // Función para procesar texto con markdown mejorado
     const procesarTexto = (texto: string) => {
       return texto
-        .replace(/\*\*(.*?)\*\*/g, '<strong class="text-tinta-oficial font-bold">$1</strong>') // Negritas
-        .replace(/\*(.*?)\*/g, '<em class="text-tinta-suave italic">$1</em>') // Cursivas
-        .split('\n\n') // Separar párrafos
-        .map(parrafo => `<p class="mb-4 leading-relaxed text-tinta-oficial">${parrafo.replace(/\n/g, '<br/>')}</p>`)
+        .split('\n\n') // Primero separar por bloques
+        .map(bloque => {
+          bloque = bloque.trim();
+          if (!bloque) return '';
+
+          // Detectar citas (comienzan con comillas)
+          if (bloque.match(/^[""]/) || (bloque.match(/^\*\*[""]/) && bloque.length < 200)) {
+            const cita = bloque.replace(/^\*\*[""]/, '"').replace(/[""]?\*\*$/, '"').replace(/^[""]/, '').replace(/[""]$/, '');
+            return `<blockquote class="border-l-4 border-azul-info bg-azul-info/5 pl-6 pr-4 py-4 my-6 italic text-tinta-oficial text-lg">
+              "${cita}"
+            </blockquote>`;
+          }
+
+          // Detectar títulos (comienza con ** y termina con : o **)
+          if (bloque.match(/^\*\*[^*]+(\*\*:|\*\*$)/) && bloque.length < 100) {
+            const titulo = bloque.replace(/^\*\*/, '').replace(/\*\*:?$/, '').trim();
+            return `<h3 class="text-xl font-bold typewriter text-sello-rojo mt-8 mb-4 border-l-4 border-sello-rojo pl-4 py-1">${titulo}</h3>`;
+          }
+
+          // Detectar listas (líneas que empiezan con - o •)
+          if (bloque.match(/^[-•]/m)) {
+            const items = bloque.split('\n')
+              .filter(item => item.trim())
+              .map(item => {
+                const contenido = item.replace(/^[-•]\s*/, '').trim();
+                const procesado = contenido
+                  .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-tinta-oficial">$1</strong>')
+                  .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>');
+                return `<li class="flex items-start gap-3 mb-3">
+                  <span class="text-sello-rojo font-bold text-lg mt-0.5 flex-shrink-0">•</span>
+                  <span class="text-tinta-oficial leading-relaxed flex-1">${procesado}</span>
+                </li>`;
+              })
+              .join('');
+            return `<ul class="my-5 space-y-1 pl-2">${items}</ul>`;
+          }
+
+          // Procesar párrafos normales
+          const procesado = bloque
+            .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-sello-rojo">$1</strong>') // Negritas importantes
+            .replace(/\*(.*?)\*/g, '<em class="italic text-tinta-suave">$1</em>') // Cursivas
+            .replace(/\n/g, '<br/>'); // Saltos de línea simples
+
+          return `<p class="mb-5 leading-relaxed text-tinta-oficial text-base">${procesado}</p>`;
+        })
+        .filter(item => item) // Eliminar strings vacíos
         .join('');
     };
 
