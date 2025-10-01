@@ -289,14 +289,14 @@ export default function ObservatorioPage() {
                         <span className="text-2xl">🔬</span>
                       </div>
                       <h3 className="font-bold typewriter-bold text-lg mb-2">Estudio Especial</h3>
-                      <p className="text-sm text-tinta-clara mb-4">Oct 2024</p>
+                      <p className="text-sm text-tinta-clara mb-4">Sep 2025</p>
                       <p className="texto-oficial text-sm mb-4 leading-relaxed">
                         Investigación especializada sobre tendencias emergentes en vigilancia digital y contramedidas.
                       </p>
                     </div>
                     <div className="mt-auto">
-                      <Link href="#" className="inline-block bg-sello-rojo text-white px-4 py-2 rounded-lg text-sm typewriter hover:bg-red-700 transition-colors">
-                        📄 Ver PDF
+                      <Link href="/observatorio/estudio-especial" className="inline-block bg-sello-rojo text-white px-4 py-2 rounded-lg text-sm typewriter hover:bg-red-700 transition-colors">
+                        📖 Ver Estudio
                       </Link>
                     </div>
                   </div>
