@@ -1,9 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
-import { cursoNivel1 } from '@/shared/data/cursos';
 
 const modulos = [
   {
@@ -70,7 +68,6 @@ const metricas = {
 };
 
 export default function AcademiaPage() {
-  const [mostrarPrograma, setMostrarPrograma] = useState(false);
   const currentDate = new Date().toLocaleDateString('es-MX', {
     year: 'numeric',
     month: 'long',
@@ -88,7 +85,6 @@ export default function AcademiaPage() {
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                   <p className="texto-pequeno mb-1" style={{color: '#A16207'}}>ANTIMANUAL • RESISTENCIA DIGITAL</p>
-                  <p className="texto-pequeno" style={{color: '#A16207'}}>INSTITUTO CIUDADANO DE CAPACITACIÓN</p>
                 </div>
                 <div className="text-right">
                   <Stamp className="text-xs bg-sello-rojo text-white transform -rotate-2 mb-2">CERTIFICADO</Stamp>
@@ -104,11 +100,6 @@ export default function AcademiaPage() {
                 <h1 className="academia-title-main typewriter font-bold" style={{color: '#B91C1C'}}>
                   ACADEMIA ANTIMANUAL
                 </h1>
-                <div className="inline-block border-4 border-double border-sello-rojo px-6 py-2 mb-4 bg-papel-sombra">
-                  <p className="text-lg md:text-xl font-bold tracking-widest typewriter" style={{color: '#B91C1C'}}>
-                    INSTITUTO CIUDADANO DE CAPACITACIÓN
-                  </p>
-                </div>
                 <p className="academia-title-sub texto-pequeno">
                   PROGRAMA DE FORMACIÓN EN ACTIVISMO DIGITAL • VERSIÓN 2024.1
                 </p>
@@ -220,13 +211,14 @@ export default function AcademiaPage() {
                             🎓 ACCEDER AL MÓDULO
                           </SelloAccion>
                         </Link>
-                        <SelloAccion
-                          variant="secondary"
-                          size="lg"
-                          onClick={() => setMostrarPrograma(true)}
-                        >
-                          📋 PROGRAMA ACADÉMICO
-                        </SelloAccion>
+                        <Link href="/academia/programa">
+                          <SelloAccion
+                            variant="secondary"
+                            size="lg"
+                          >
+                            📋 PROGRAMA ACADÉMICO
+                          </SelloAccion>
+                        </Link>
                       </>
                     ) : (
                       <SelloAccion variant="secondary" size="lg" disabled>
@@ -285,145 +277,6 @@ export default function AcademiaPage() {
             </div>
           </div>
         </section>
-
-        {/* Modal Programa Académico */}
-        {mostrarPrograma && (
-          <div
-            className="fixed inset-0 bg-papel-oscuro z-50 flex items-center justify-center p-4"
-            onClick={() => setMostrarPrograma(false)}
-          >
-            <div
-              className="bg-papel-base max-w-4xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl border-4 border-dorado-claro"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Header con colores del tema */}
-              <div className="bg-sello-rojo text-papel-base p-6 shadow-lg border-b-4 border-sello-urgent">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h2 className="text-2xl font-bold typewriter mb-2">
-                      📋 PROGRAMA ACADÉMICO DETALLADO
-                    </h2>
-                    <p className="text-sm typewriter opacity-90">NIVEL 1: ACTIVISTA DIGITAL BÁSICO</p>
-                  </div>
-                  <button
-                    onClick={() => setMostrarPrograma(false)}
-                    className="text-4xl hover:scale-110 transition-transform leading-none bg-papel-base/20 hover:bg-papel-base/30 rounded-full w-10 h-10 flex items-center justify-center"
-                    aria-label="Cerrar"
-                  >
-                    ×
-                  </button>
-                </div>
-              </div>
-
-              {/* Contenido con scroll */}
-              <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(90vh-180px)]">
-                {/* Información general */}
-                <div className="bg-naranja-pendiente/10 border-l-4 border-naranja-pendiente p-5 rounded-r-lg shadow-sm">
-                  <h3 className="font-bold typewriter mb-3 text-tinta-oficial text-lg">📋 INFORMACIÓN GENERAL</h3>
-                  <ul className="text-sm space-y-2 text-tinta-suave">
-                    <li className="flex items-center gap-2">
-                      <span className="font-bold min-w-[110px] text-tinta-oficial">Duración total:</span>
-                      <span>{cursoNivel1.duracionTotal} minutos (4 horas)</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="font-bold min-w-[110px] text-tinta-oficial">Módulos:</span>
-                      <span>{cursoNivel1.modulos.length}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="font-bold min-w-[110px] text-tinta-oficial">Modalidad:</span>
-                      <span>Auto-dirigido, progreso guardado en tu navegador</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="font-bold min-w-[110px] text-tinta-oficial">Certificado:</span>
-                      <span>Al completar todos los módulos</span>
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Objetivos */}
-                <div className="bg-verde-aprobado/10 border-l-4 border-verde-aprobado p-5 rounded-r-lg shadow-sm">
-                  <h3 className="font-bold typewriter mb-3 text-tinta-oficial text-lg">🎯 OBJETIVOS DE APRENDIZAJE</h3>
-                  <ul className="space-y-2.5 text-sm">
-                    {cursoNivel1.objetivos.map((obj, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-tinta-suave">
-                        <span className="text-verde-aprobado text-lg mt-0.5 flex-shrink-0">✓</span>
-                        <span className="leading-relaxed">{obj}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* Módulos detallados */}
-                <div>
-                  <h3 className="font-bold typewriter mb-4 text-xl text-tinta-oficial">📚 CONTENIDO POR MÓDULO</h3>
-                  <div className="space-y-4">
-                    {cursoNivel1.modulos.map((modulo, idx) => (
-                      <div key={modulo.id} className="border-2 border-papel-border rounded-xl p-5 bg-white shadow-sm hover:border-azul-info transition-colors">
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="bg-azul-info text-papel-base rounded-full w-10 h-10 flex items-center justify-center font-bold flex-shrink-0 shadow-sm">
-                            {idx + 1}
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-bold typewriter text-base mb-1 text-tinta-oficial">{modulo.titulo}</h4>
-                            <p className="text-sm text-tinta-suave mb-2 leading-relaxed">{modulo.descripcion}</p>
-                            <p className="text-xs text-tinta-clara bg-papel-sombra inline-block px-2 py-1 rounded border border-papel-border">⏱️ Duración: {modulo.duracion} minutos</p>
-                          </div>
-                        </div>
-
-                        <div className="ml-14 space-y-3">
-                          <div>
-                            <h5 className="text-sm font-bold mb-2 text-tinta-oficial">Temas cubiertos:</h5>
-                            <ul className="text-xs space-y-1.5">
-                              {modulo.contenido.slice(0, 5).map((cont, contIdx) => (
-                                <li key={contIdx} className="flex items-start gap-2 text-tinta-suave">
-                                  <span className="text-azul-info font-bold">•</span>
-                                  <span>{cont.titulo || 'Contenido educativo'}</span>
-                                </li>
-                              ))}
-                              {modulo.contenido.length > 5 && (
-                                <li className="text-tinta-clara italic pl-4">
-                                  + {modulo.contenido.length - 5} temas más...
-                                </li>
-                              )}
-                            </ul>
-                          </div>
-
-                          {modulo.ejercicios && modulo.ejercicios.length > 0 && (
-                            <div className="pt-3 border-t border-papel-border">
-                              <p className="text-xs text-tinta-suave">
-                                <strong className="text-tinta-oficial">✍️ Ejercicios:</strong> {modulo.ejercicios.length} (quiz, prácticas y reflexiones)
-                              </p>
-                            </div>
-                          )}
-
-                          {modulo.recursos && modulo.recursos.length > 0 && (
-                            <div className="pt-2">
-                              <p className="text-xs text-tinta-suave">
-                                <strong className="text-tinta-oficial">🔗 Recursos:</strong> {modulo.recursos.length} herramientas y enlaces
-                              </p>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Call to action */}
-                <div className="bg-azul-info/10 border-l-4 border-azul-info p-5 text-center rounded-r-lg shadow-sm">
-                  <p className="text-sm mb-4 text-tinta-oficial font-medium">
-                    ¿Listo para comenzar tu formación como activista digital?
-                  </p>
-                  <Link href="/academia/nivel-1">
-                    <SelloAccion size="lg" onClick={() => setMostrarPrograma(false)}>
-                      🎓 COMENZAR NIVEL 1
-                    </SelloAccion>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

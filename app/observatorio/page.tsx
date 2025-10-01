@@ -277,9 +277,9 @@ export default function ObservatorioPage() {
                       </p>
                     </div>
                     <div className="mt-auto">
-                      <Link href="#" className="inline-block bg-sello-rojo text-white px-4 py-2 rounded-lg text-sm typewriter hover:bg-red-700 transition-colors">
-                        📄 Ver PDF
-                      </Link>
+                      <button className="inline-block bg-papel-border text-tinta-oficial px-4 py-2 rounded-lg text-sm typewriter cursor-not-allowed opacity-60">
+                        🔒 Próximamente
+                      </button>
                     </div>
                   </div>
 

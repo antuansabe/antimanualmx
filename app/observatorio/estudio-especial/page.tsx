@@ -152,14 +152,14 @@ export default function EstudioEspecialPage() {
                   <div className="expediente-liquid-card">
                     <h3 className="typewriter-bold text-xl mb-3 flex items-center gap-2">
                       <span className="text-2xl">🏙️</span>
-                      3. Sistemas de "Ciudades Seguras" en América Latina
+                      3. Sistemas de &ldquo;Ciudades Seguras&rdquo; en América Latina
                     </h3>
                     <p className="texto-oficial mb-3">
                       Según Carnegie Endowment for International Peace, de 176 países estudiados, <strong>75 ya emplean tecnologías de IA para vigilancia</strong>:
                     </p>
                     <ul className="list-disc list-inside space-y-2 texto-oficial">
                       <li>74 países usan reconocimiento facial</li>
-                      <li>56 han desarrollado sistemas de "ciudades seguras"</li>
+                      <li>56 han desarrollado sistemas de &ldquo;ciudades seguras&rdquo;</li>
                       <li>Buenos Aires y Ciudad de México implementan estos sistemas <strong>sin regulaciones claras de privacidad</strong></li>
                     </ul>
                     <div className="bg-yellow-50 p-3 rounded border border-yellow-200 mt-3">
@@ -342,7 +342,7 @@ export default function EstudioEspecialPage() {
                   <div className="expediente-liquid-card">
                     <p className="font-semibold mb-2">1. ¿Cuál es el verdadero costo de la conveniencia?</p>
                     <p className="text-sm text-tinta-clara">
-                      Cuando usas servicios "gratuitos" que recopilan tus datos, ¿realmente es gratis? ¿O estás pagando con tu privacidad?
+                      Cuando usas servicios &ldquo;gratuitos&rdquo; que recopilan tus datos, ¿realmente es gratis? ¿O estás pagando con tu privacidad?
                     </p>
                   </div>
 

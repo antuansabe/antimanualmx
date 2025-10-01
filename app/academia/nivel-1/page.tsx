@@ -15,7 +15,6 @@ export default function Nivel1Page() {
   const [ejercicioActual, setEjercicioActual] = useState(0);
   const [respuestasUsuario, setRespuestasUsuario] = useState<{[key: string]: string | number}>({});
   const [mostrarCertificado, setMostrarCertificado] = useState(false);
-  const [mostrarProgramaAcademico, setMostrarProgramaAcademico] = useState(false);
   const [mostrarRecursos, setMostrarRecursos] = useState(false);
 
   const curso = cursoNivel1;
@@ -474,13 +473,6 @@ export default function Nivel1Page() {
                     📚 RECURSOS ({modulo.recursos.length})
                   </SelloAccion>
                 )}
-                <SelloAccion
-                  variant="secondary"
-                  size="sm"
-                  onClick={() => setMostrarProgramaAcademico(true)}
-                >
-                  📋 PROGRAMA ACADÉMICO
-                </SelloAccion>
               </div>
 
               <SelloAccion
@@ -570,134 +562,6 @@ export default function Nivel1Page() {
         </div>
       )}
 
-      {/* Modal de Programa Académico */}
-      {mostrarProgramaAcademico && (
-        <div
-          className="fixed inset-0 bg-papel-oscuro z-50 flex items-center justify-center p-4"
-          onClick={() => setMostrarProgramaAcademico(false)}
-        >
-          <div
-            className="bg-papel-base max-w-4xl w-full max-h-[90vh] overflow-hidden rounded-xl shadow-2xl border-4 border-dorado-claro"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Header con colores del tema */}
-            <div className="bg-azul-info text-papel-base p-6 shadow-lg border-b-4 border-blue-700">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h2 className="text-2xl font-bold typewriter">
-                    📋 PROGRAMA ACADÉMICO COMPLETO
-                  </h2>
-                  <p className="text-sm mt-2 typewriter opacity-90">NIVEL 1: ACTIVISTA DIGITAL BÁSICO</p>
-                </div>
-                <button
-                  onClick={() => setMostrarProgramaAcademico(false)}
-                  className="text-4xl hover:scale-110 transition-transform leading-none bg-papel-base/20 hover:bg-papel-base/30 rounded-full w-10 h-10 flex items-center justify-center"
-                  aria-label="Cerrar"
-                >
-                  ×
-                </button>
-              </div>
-            </div>
-
-            {/* Contenido con scroll */}
-            <div className="p-6 space-y-6 overflow-y-auto max-h-[calc(90vh-180px)]">
-              {/* Información general */}
-              <div className="bg-naranja-pendiente/10 border-l-4 border-naranja-pendiente p-5 rounded-r-lg shadow-sm">
-                <h3 className="font-bold typewriter mb-3 text-tinta-oficial text-lg">📋 INFORMACIÓN GENERAL</h3>
-                <ul className="text-sm space-y-2 text-tinta-suave">
-                  <li className="flex items-center gap-2">
-                    <span className="font-bold min-w-[130px] text-tinta-oficial">Duración total:</span>
-                    <span>{curso.duracionTotal} minutos ({Math.round(curso.duracionTotal / 60)} horas)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="font-bold min-w-[130px] text-tinta-oficial">Módulos:</span>
-                    <span>{curso.modulos.length}</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="font-bold min-w-[130px] text-tinta-oficial">Módulo actual:</span>
-                    <span>{moduloActual + 1}/{curso.modulos.length}</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="font-bold min-w-[130px] text-tinta-oficial">Progreso:</span>
-                    <span className="text-azul-info font-bold">{Math.round(progress.progress)}%</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Módulos */}
-              <div>
-                <h3 className="font-bold typewriter mb-4 text-xl text-tinta-oficial">📚 CONTENIDO DEL CURSO</h3>
-                <div className="space-y-4">
-                  {curso.modulos.map((mod, idx) => (
-                    <div
-                      key={mod.id}
-                      className={`border-2 rounded-xl p-5 shadow-sm transition-all ${
-                        idx === moduloActual
-                          ? 'border-azul-info bg-azul-info/5 shadow-md'
-                          : progress.completedModules.includes(mod.id)
-                          ? 'border-verde-aprobado bg-verde-aprobado/5'
-                          : 'border-papel-border bg-white hover:border-papel-border'
-                      }`}
-                    >
-                      <div className="flex items-start gap-4">
-                        <div
-                          className={`rounded-full w-12 h-12 flex items-center justify-center font-bold flex-shrink-0 shadow-sm ${
-                            idx === moduloActual
-                              ? 'bg-azul-info text-papel-base'
-                              : progress.completedModules.includes(mod.id)
-                              ? 'bg-verde-aprobado text-papel-base'
-                              : 'bg-papel-sombra text-tinta-oficial'
-                          }`}
-                        >
-                          {progress.completedModules.includes(mod.id) ? '✓' : idx + 1}
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="font-bold typewriter text-base mb-1 text-tinta-oficial">
-                            {mod.titulo}
-                            {idx === moduloActual && (
-                              <span className="ml-2 bg-azul-info text-papel-base px-2 py-0.5 rounded text-xs">ACTUAL</span>
-                            )}
-                          </h4>
-                          <p className="text-sm text-tinta-suave mb-3 leading-relaxed">{mod.descripcion}</p>
-                          <div className="flex flex-wrap gap-3 text-xs text-tinta-clara">
-                            <span className="bg-papel-base px-2 py-1 rounded border border-papel-border">⏱️ {mod.duracion} min</span>
-                            <span className="bg-papel-base px-2 py-1 rounded border border-papel-border">📄 {mod.contenido.length} temas</span>
-                            {mod.ejercicios && <span className="bg-papel-base px-2 py-1 rounded border border-papel-border">✍️ {mod.ejercicios.length} ejercicios</span>}
-                            {mod.recursos && <span className="bg-papel-base px-2 py-1 rounded border border-papel-border">🔗 {mod.recursos.length} recursos</span>}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Objetivos */}
-              <div className="bg-verde-aprobado/10 border-l-4 border-verde-aprobado p-5 rounded-r-lg shadow-sm">
-                <h3 className="font-bold typewriter mb-3 text-tinta-oficial text-lg">🎯 OBJETIVOS DE APRENDIZAJE</h3>
-                <ul className="space-y-2.5 text-sm">
-                  {curso.objetivos.map((obj, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-tinta-suave">
-                      <span className="text-verde-aprobado text-lg mt-0.5 flex-shrink-0">✓</span>
-                      <span className="leading-relaxed">{obj}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Footer */}
-            <div className="bg-papel-sombra border-t-2 border-papel-border p-5 text-center">
-              <button
-                onClick={() => setMostrarProgramaAcademico(false)}
-                className="bg-azul-info text-papel-base px-8 py-3 rounded-lg typewriter hover:bg-blue-700 hover:shadow-lg transition-all font-bold border-2 border-blue-700"
-              >
-                CONTINUAR APRENDIENDO
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

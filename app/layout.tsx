@@ -13,6 +13,36 @@ const courierPrime = Courier_Prime({
 export const metadata: Metadata = {
   title: "Antimanual MX - Resistencia Digital",
   description: "Guía de seguridad digital y activismo para defensores de derechos humanos en México",
+  keywords: ["seguridad digital", "derechos humanos", "activismo digital", "privacidad", "México", "resistencia digital", "defensa digital"],
+  authors: [{ name: "Antimanual MX" }],
+  creator: "Antimanual MX",
+  publisher: "Antimanual MX",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    title: "Antimanual MX - Resistencia Digital",
+    description: "Guía de seguridad digital y activismo para defensores de derechos humanos en México",
+    url: "https://antimanual.mx",
+    siteName: "Antimanual MX",
+    locale: "es_MX",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Antimanual MX - Resistencia Digital",
+    description: "Guía de seguridad digital y activismo para defensores de derechos humanos en México",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🛡️</text></svg>',
     apple: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🛡️</text></svg>',
