@@ -56,6 +56,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-7Y6JK735QQ"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-7Y6JK735QQ');
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${courierPrime.variable} antialiased`}
       >
