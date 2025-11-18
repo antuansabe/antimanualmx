@@ -1,212 +1,285 @@
-import { SelloAccion, ExpedienteCard, Stamp, TypewriterTitle } from '@/shared/ui';
-import { SelloHero } from '@/shared/ui/SelloHero';
-import { FooterMobile } from '@/shared/ui/FooterMobile';
+/**
+ * Home Page - Playful Harmony Design
+ * Página de inicio con diseño minimalista japonés
+ */
+
+'use client';
+
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Hero } from '@/shared/ui';
+import { H2, H3, Body } from '@/shared/ui';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/shared/ui';
+import { Button } from '@/shared/ui';
+import { Badge } from '@/shared/ui';
+
+const features = [
+  {
+    id: 'herramientas',
+    icon: '🚨',
+    title: 'Herramientas de Emergencia',
+    description: 'Protocolos de respuesta inmediata ante amenazas digitales',
+    href: '/herramientas',
+    color: 'sakura' as const,
+    badge: 'Acceso 24/7',
+  },
+  {
+    id: 'red',
+    icon: '🤝',
+    title: 'Red de Apoyo',
+    description: 'Directorio verificado de 23 organizaciones aliadas',
+    href: '/red',
+    color: 'matcha' as const,
+    badge: '23 Organizaciones',
+  },
+  {
+    id: 'academia',
+    icon: '🎓',
+    title: 'Academia Activista',
+    description: 'Formación certificada en seguridad digital',
+    href: '/academia',
+    color: 'ocean' as const,
+    badge: 'Certificación',
+  },
+  {
+    id: 'observatorio',
+    icon: '📊',
+    title: 'Observatorio',
+    description: 'Métricas públicas del estado de libertades digitales',
+    href: '/observatorio',
+    color: 'lavender' as const,
+    badge: 'Datos Abiertos',
+  },
+];
+
+const manifesto = [
+  'El estado actual de vulnerabilidad digital de la ciudadanía',
+  'El miedo digital paraliza a la ciudadanía mexicana ante amenazas cibernéticas',
+  'La vigilancia gubernamental y corporativa viola sistemáticamente nuestros derechos fundamentales',
+  'El conocimiento técnico se mantiene deliberadamente inaccesible para las mayorías',
+];
+
+const declarations = [
+  'Cada ciudadano tiene derecho irrenunciable a la privacidad digital sin vigilancia ni censura',
+  'Transformaremos el miedo en poder colectivo a través de herramientas prácticas y educación accesible',
+  'Ningún activista digital navegará solo en esta lucha por las libertades digitales fundamentales',
+  'Este conocimiento será siempre libre, gratuito y accesible para todas las personas',
+];
 
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <main className="page-container py-6 md:py-12">
-        {/* Hero Section - Manifiesto */}
-        <section className="mb-16">
-          <ExpedienteCard variant="default" className="max-w-4xl mx-auto relative" clipped>
-            {/* Orificio de perforación decorativo */}
-            <div className="absolute top-3 left-3 w-4 h-4 md:w-5 md:h-5 bg-papel-base rounded-full z-20 shadow-inner" 
-                 style={{
-                   boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.1)',
-                   backgroundColor: 'var(--papel-base)'
-                 }}>
-            </div>
-            
-            <div className="text-center mb-8">
-              {/* Sello Hero Animado */}
-              <SelloHero />
-              
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter tracking-wider">
-                <TypewriterTitle text="ANTIMANUAL" />
-              </h1>
-              <div className="inline-block border-4 border-double border-sello-rojo px-6 py-2 mb-4">
-                <p className="text-lg md:text-xl text-sello-rojo font-bold tracking-widest typewriter">
-                  ACTIVISMO DIGITAL COLECTIVO
-                </p>
-              </div>
-              <p className="texto-pequeno mt-4">
-                MANIFIESTO DE LIBERACIÓN DIGITAL • VERSIÓN 1.0
-              </p>
-              <p className="texto-pequeno text-tinta-suave">
-                INICIATIVA CIUDADANA INDEPENDIENTE
-              </p>
-            </div>
+      {/* Hero Section */}
+      <Hero
+        variant="gradient"
+        size="xl"
+        title="Antimanual MX"
+        description="Manifiesto de Liberación Digital • Activismo Digital Colectivo • Iniciativa Ciudadana Independiente"
+        badge={
+          <Badge color="persimmon" variant="soft" size="lg">
+            🛡️ Resistencia Digital
+          </Badge>
+        }
+        primaryAction={{
+          label: '🚀 Comenzar Ahora',
+          onClick: () => window.location.href = '/academia',
+        }}
+        secondaryAction={{
+          label: 'Ver Herramientas',
+          onClick: () => window.location.href = '/herramientas',
+        }}
+        illustration={
+          <motion.div
+            animate={{
+              rotate: [0, 5, -5, 0],
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="text-9xl"
+          >
+            🛡️
+          </motion.div>
+        }
+      />
 
-            {/* Cuerpo del manifiesto con estilo oficial */}
-            <div className="space-y-4 texto-oficial">
-              <div className="pl-8 border-l-4 border-papel-border space-y-3">
-                <p className="typewriter leading-6">
-                  <span className="typewriter-bold text-sm">CONSIDERANDO</span> el estado actual de vulnerabilidad digital de la ciudadanía;
-                </p>
-                <p className="typewriter leading-6">
-                  <span className="typewriter-bold text-sm">CONSIDERANDO</span> que el miedo digital paraliza a la ciudadanía mexicana ante amenazas cibernéticas;
-                </p>
-                <p className="typewriter leading-6">
-                  <span className="typewriter-bold text-sm">CONSIDERANDO</span> que la vigilancia gubernamental y corporativa viola sistemáticamente nuestros derechos fundamentales;
-                </p>
-                <p className="typewriter leading-6">
-                  <span className="typewriter-bold text-sm">CONSIDERANDO</span> que el conocimiento técnico se mantiene deliberadamente inaccesible para las mayorías;
-                </p>
-              </div>
-
-              <div className="my-8 flex items-center gap-4">
-                <div className="flex-grow border-t-2 border-papel-border"></div>
-                <Stamp className="text-sm">RESOLUTIVOS</Stamp>
-                <div className="flex-grow border-t-2 border-papel-border"></div>
-              </div>
-
-              <div className="space-y-4">
-                <p className="text-center typewriter-bold text-xl mb-6">
-                  POR LO TANTO, DECLARAMOS:
-                </p>
-
-                <div className="space-y-3 pl-8">
-                  <p className="typewriter leading-6">
-                    <span className="inline-block w-12 typewriter-bold text-sello-rojo">I.</span>
-                    Que cada ciudadano tiene derecho irrenunciable a la privacidad digital sin vigilancia ni censura de ningún tipo.
-                  </p>
-
-                  <p className="typewriter leading-6">
-                    <span className="inline-block w-12 typewriter-bold text-sello-rojo">II.</span>
-                    Que transformaremos el miedo en poder colectivo a través de herramientas prácticas, educación accesible y organización comunitaria.
-                  </p>
-
-                  <p className="typewriter leading-6">
-                    <span className="inline-block w-12 typewriter-bold text-sello-rojo">III.</span>
-                    Que ningún activista digital navegará solo en esta lucha por las libertades digitales fundamentales.
-                  </p>
-
-                  <p className="typewriter leading-6">
-                    <span className="inline-block w-12 typewriter-bold text-sello-rojo">IV.</span>
-                    Que este conocimiento será siempre libre, gratuito y accesible para todas las personas.
-                  </p>
-                </div>
-              </div>
-
-              <div className="mt-12 pt-8 border-t-2 border-papel-border">
-                <div className="text-center">
-                  <p className="texto-pequeno mb-2">Dado en el territorio digital de México</p>
-                  <p className="texto-pequeno mb-6">{new Date().toLocaleDateString('es-MX', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}</p>
-                  <p className="margin-note text-base">
-                    &ldquo;Cada línea de código es un acto de resistencia&rdquo;
-                  </p>
-                </div>
-              </div>
+      {/* Manifiesto Section */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="text-center mb-12">
+              <Badge color="gold" variant="soft" size="lg" className="mb-4">
+                Manifiesto v1.0
+              </Badge>
+              <H2 className="mb-4">Considerando</H2>
             </div>
 
-          </ExpedienteCard>
-        </section>
-
-        {/* Sección de características - Expedientes disponibles */}
-        <section className="mb-16">
-          <div className="liquid-card">
-            <div className="liquid-card-header text-center">
-              <h2 className="typewriter-bold text-2xl mb-2">EXPEDIENTES DISPONIBLES</h2>
-              <p className="texto-pequeno">CLASIFICACIÓN: PÚBLICO • ACCESO LIBRE</p>
-            </div>
-
-            <div className="liquid-card-content">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Link href="/herramientas" className="grupo-expediente">
-                  <div className="expediente-liquid-card">
-                    <div className="icono-expediente text-4xl mb-4">🚨</div>
-                    <h3 className="titulo-expediente typewriter-bold text-lg mb-3">HERRAMIENTAS DE EMERGENCIA</h3>
-                    <p className="descripcion-expediente texto-oficial text-sm mb-4">
-                      Protocolos de respuesta inmediata ante amenazas digitales. Acceso sin registro.
-                    </p>
-                    <div className="mt-auto">
-                      <button className="boton-expediente-liquid">ACCESO 24/7</button>
-                      <span className="codigo-expediente-liquid">EXP-51827K</span>
-                    </div>
+            <div className="space-y-6 mb-16">
+              {manifesto.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex gap-4 items-start"
+                >
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-sakura to-matcha flex items-center justify-center text-white font-display font-bold">
+                    {index + 1}
                   </div>
-                </Link>
+                  <Body color="secondary" className="flex-1">
+                    {item}
+                  </Body>
+                </motion.div>
+              ))}
+            </div>
 
-                <Link href="/red" className="grupo-expediente">
-                  <div className="expediente-liquid-card">
-                    <div className="icono-expediente text-4xl mb-4">🤝</div>
-                    <h3 className="titulo-expediente typewriter-bold text-lg mb-3">RED DE APOYO</h3>
-                    <p className="descripcion-expediente texto-oficial text-sm mb-4">
-                      Directorio verificado de organizaciones aliadas. Contacto directo disponible.
-                    </p>
-                    <div className="contador-organizaciones mb-4">
-                      <span className="numero-org text-2xl font-bold text-sello-rojo">23</span>
-                      <span className="texto-org texto-pequeno">ORGANIZACIONES</span>
-                    </div>
-                    <div className="mt-auto">
-                      <button className="boton-expediente-liquid">VER DIRECTORIO</button>
-                      <span className="codigo-expediente-liquid">EXP-O85BV3</span>
-                    </div>
-                  </div>
-                </Link>
-
-                <Link href="/academia" className="grupo-expediente">
-                  <div className="expediente-liquid-card">
-                    <div className="icono-expediente text-4xl mb-4">🎓</div>
-                    <h3 className="titulo-expediente typewriter-bold text-lg mb-3">ACADEMIA ACTIVISTA</h3>
-                    <p className="descripcion-expediente texto-oficial text-sm mb-4">
-                      Formación certificada en seguridad digital. Tres niveles progresivos.
-                    </p>
-                    <div className="mt-auto">
-                      <button className="boton-expediente-liquid">CERTIFICACIÓN</button>
-                      <span className="codigo-expediente-liquid">EXP-A8X66N</span>
-                    </div>
-                  </div>
-                </Link>
-
-                <Link href="/observatorio" className="grupo-expediente">
-                  <div className="expediente-liquid-card">
-                    <div className="icono-expediente text-4xl mb-4">📊</div>
-                    <h3 className="titulo-expediente typewriter-bold text-lg mb-3">OBSERVATORIO</h3>
-                    <p className="descripcion-expediente texto-oficial text-sm mb-4">
-                      Métricas públicas del estado de libertades digitales en tiempo real.
-                    </p>
-                    <div className="mt-auto">
-                      <button className="boton-expediente-liquid">DATOS ABIERTOS</button>
-                      <span className="codigo-expediente-liquid">EXP-3D1G3S</span>
-                    </div>
-                  </div>
-                </Link>
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-4 px-8 py-3 bg-gradient-to-r from-sakura-100 via-matcha-100 to-ocean-100 rounded-2xl">
+                <H3>Por lo tanto, declaramos:</H3>
               </div>
             </div>
+
+            <div className="space-y-6">
+              {declarations.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex gap-4 items-start p-6 bg-gradient-to-br from-washi to-cloud rounded-2xl border border-mist shadow-sm hover:shadow-md transition-all"
+                >
+                  <div className="flex-shrink-0 text-3xl">
+                    {['🔒', '💪', '🤝', '📖'][index]}
+                  </div>
+                  <Body className="flex-1">
+                    <span className="font-display font-bold text-sakura-500">
+                      {['I.', 'II.', 'III.', 'IV.'][index]}
+                    </span>{' '}
+                    {item}
+                  </Body>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="mt-12 text-center"
+            >
+              <Body color="tertiary" className="italic">
+                Dado en el territorio digital de México •{' '}
+                {new Date().toLocaleDateString('es-MX', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </Body>
+              <Body className="mt-4 font-display font-bold text-lg bg-gradient-to-r from-sakura-500 via-matcha-500 to-ocean-500 bg-clip-text text-transparent">
+                "Cada línea de código es un acto de resistencia"
+              </Body>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-cloud via-washi to-sakura-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <Badge color="indigo" variant="soft" size="lg" className="mb-4">
+              Expedientes Disponibles
+            </Badge>
+            <H2>Recursos para la Resistencia</H2>
+            <Body color="secondary" className="mt-4 max-w-2xl mx-auto">
+              Acceso libre y gratuito a herramientas, educación y comunidad
+            </Body>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link href={feature.href}>
+                  <Card variant="elevated" hoverable clickable className="h-full">
+                    <CardHeader>
+                      <div className="text-5xl mb-4">{feature.icon}</div>
+                      <CardTitle>{feature.title}</CardTitle>
+                      <CardDescription>{feature.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Badge color={feature.color} variant="soft">
+                        {feature.badge}
+                      </Badge>
+                    </CardContent>
+                    <CardFooter>
+                      <Button variant="ghost" color={feature.color} fullWidth>
+                        Explorar →
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Call to Action */}
-        <section className="text-center mb-6 md:mb-10">
-          <div className="liquid-card max-w-3xl mx-auto">
-            <div className="liquid-card-content text-center">
-              <h2 className="typewriter-bold text-3xl mb-6" style={{color: '#B91C1C'}}>ÚNETE AL MOVIMIENTO</h2>
-              <p className="texto-oficial text-lg leading-relaxed mb-8">
-                Ya somos <span className="text-2xl font-bold text-sello-rojo">500+ activistas</span> construyendo
-                el futuro digital que merecemos.
-              </p>
-              <div className="mb-6">
-                <Link href="/academia">
-                  <SelloAccion variant="primary" size="lg">
-                    🚀 COMENZAR AHORA
-                  </SelloAccion>
-                </Link>
+      {/* CTA Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-sakura-100 via-matcha-100 to-ocean-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            <Card variant="glass" padding="xl" className="text-center">
+              <H2 className="mb-6">Únete al Movimiento</H2>
+              <Body className="text-xl mb-8">
+                Ya somos{' '}
+                <span className="font-display font-bold text-4xl bg-gradient-to-r from-sakura-500 to-persimmon bg-clip-text text-transparent">
+                  500+
+                </span>{' '}
+                activistas construyendo el futuro digital que merecemos
+              </Body>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Button color="sakura" size="xl" onClick={() => window.location.href = '/academia'}>
+                  🚀 Comenzar Ahora
+                </Button>
+                <Button
+                  variant="outline"
+                  color="matcha"
+                  size="xl"
+                  onClick={() => window.location.href = '/red'}
+                >
+                  Ver Red de Apoyo
+                </Button>
               </div>
-            </div>
-            <div className="liquid-card-footer text-center">
-              <p className="texto-pequeno">EXP-TLC9HE • REGISTRO PERMANENTE</p>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Footer móvil mejorado */}
-      <FooterMobile />
+            </Card>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

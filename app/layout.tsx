@@ -1,14 +1,6 @@
 import type { Metadata } from "next";
-import { Courier_Prime } from "next/font/google";
-import { NavigationAdaptive, SwipeNavigationWrapper } from "@/shared/ui";
+import { Navigation, Footer } from "@/shared/ui";
 import "./globals.css";
-
-const courierPrime = Courier_Prime({
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  variable: "--font-oficial",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Antimanual MX - Resistencia Digital",
@@ -69,15 +61,14 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${courierPrime.variable} antialiased`}
-      >
-        <NavigationAdaptive />
-        <SwipeNavigationWrapper>
-          <main className="min-h-screen">
+      <body className="antialiased">
+        <div className="flex flex-col min-h-screen">
+          <Navigation />
+          <main className="flex-1">
             {children}
           </main>
-        </SwipeNavigationWrapper>
+          <Footer />
+        </div>
       </body>
     </html>
   );

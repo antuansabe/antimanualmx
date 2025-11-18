@@ -1,4 +1,5 @@
-export { Button } from './Button';
+// === Componentes Legados (Estilo Gubernamental) ===
+export { Button as ButtonLegacy } from './Button';
 export { PaperContainer } from './PaperContainer';
 export { Stamp } from './Stamp';
 export { default as FiltrosOrganizaciones } from './FiltrosOrganizaciones';
@@ -17,3 +18,16 @@ export { FooterMobile } from './FooterMobile';
 export { NavigationAdaptive } from './NavigationAdaptive';
 export { default as TypewriterTitle } from './TypewriterTitle';
 export { LiquidCard, LiquidCardHeader, LiquidCardFooter, type LiquidCardProps } from './LiquidCard';
+
+// === Playful Harmony Design System ===
+// Atoms
+export * from './atoms';
+
+// Molecules
+export * from './molecules';
+
+// Organisms
+export * from './organisms';
+
+// Templates
+export * from './templates';
