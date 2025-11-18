@@ -1,78 +1,158 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
-/* Sistema de Diseño Antimanual - Estética Gubernamental Mexicana Subvertida */
+/* Fuentes Google - Playful Harmony Typography */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&display=swap');
+
+/**
+ * Playful Harmony Design System
+ * Sistema de diseño minimalista japonés para Antimanual MX
+ */
+
 :root {
-  /* Colores base - Papel oficial */
-  --papel-base: #FAF8F3;
-  --papel-sombra: #E8E3D8;
-  --papel-oscuro: #F5F2E8;
-  --papel-border: #D6D1C6;
-  
-  /* Tintas oficiales */
-  --tinta-oficial: #1A1A1A;
-  --tinta-suave: #4A4A4A;
-  --tinta-clara: #6B7280;
-  --tinta-muy-clara: #9CA3AF;
-  
-  /* Sellos y stamps */
-  --sello-rojo: #B91C1C;
-  --sello-activo: #DC2626;
-  --sello-hover: #EF4444;
-  --sello-urgent: #991B1B;
-  
-  /* Elementos metálicos */
-  --dorado-metal: #A16207;
-  --dorado-claro: #D97706;
-  --plata-metal: #6B7280;
-  --clip-metal: #4B5563;
-  
-  /* Estados - Paleta estricta */
-  --papel: #FAF8F3;
-  --tinta: #1A1A1A;
-  --dorado: #A16207;
-  
-  /* Efectos */
-  --marca-agua: rgba(26, 26, 26, 0.03);
-  --sombra-papel: rgba(0, 0, 0, 0.1);
-  --sombra-elevada: rgba(0, 0, 0, 0.15);
-  
-  /* Tipografía */
-  --font-oficial-base: var(--font-oficial), 'Courier Prime', monospace;
-  --font-texto: Georgia, serif;
-  --font-sistema: system-ui, sans-serif;
+  /* === Colores Primarios === */
+  /* Sakura (Rosa pastel) */
+  --color-sakura-50: #FFF5F7;
+  --color-sakura-100: #FFE3E9;
+  --color-sakura-200: #FFC7D3;
+  --color-sakura-300: #FFB5C5;
+  --color-sakura: #FFB5C5;
+  --color-sakura-500: #FF7A9D;
+  --color-sakura-600: #E65581;
+
+  /* Matcha (Verde té) */
+  --color-matcha-50: #F0F9F4;
+  --color-matcha-100: #D4EFE0;
+  --color-matcha-300: #A8D5BA;
+  --color-matcha: #A8D5BA;
+  --color-matcha-500: #6FBD8C;
+  --color-matcha-600: #51A36E;
+
+  /* Ocean (Azul cielo) */
+  --color-ocean-50: #F0F8FF;
+  --color-ocean-100: #D6ECFF;
+  --color-ocean-300: #A3D5FF;
+  --color-ocean: #A3D5FF;
+  --color-ocean-500: #52B1FF;
+  --color-ocean-600: #2E8FE6;
+
+  /* Sunset (Naranja suave) */
+  --color-sunset-50: #FFF8F0;
+  --color-sunset-100: #FFE8D6;
+  --color-sunset-300: #FFB88C;
+  --color-sunset: #FFB88C;
+  --color-sunset-500: #FF8F3D;
+
+  /* Lavender (Lavanda) */
+  --color-lavender-50: #F7F5FF;
+  --color-lavender-100: #E8E0FF;
+  --color-lavender-300: #C5A8FF;
+  --color-lavender: #C5A8FF;
+  --color-lavender-500: #9B75FF;
+
+  /* === Neutrales (materiales japoneses) === */
+  --color-washi: #FFFBF5;       /* Papel arroz */
+  --color-cloud: #F5F6FA;       /* Nube */
+  --color-mist: #DFE6E9;        /* Niebla */
+  --color-stone: #B2BEC3;       /* Piedra */
+  --color-charcoal: #636E72;    /* Carbón */
+  --color-sumi: #2D3436;        /* Tinta sumi */
+  --color-ink: #1A1D1E;         /* Tinta negra */
+
+  /* === Acentos === */
+  --color-persimmon: #FF6B6B;
+  --color-bamboo: #51CF66;
+  --color-indigo: #5C7CFA;
+  --color-gold: #FAB005;
+
+  /* === Semánticos === */
+  --color-success: #51CF66;
+  --color-warning: #FAB005;
+  --color-error: #FF6B6B;
+  --color-info: #A3D5FF;
+
+  /* === Backgrounds === */
+  --bg-primary: #FFFBF5;
+  --bg-secondary: #F5F6FA;
+  --bg-tertiary: #FAFAFA;
+  --bg-elevated: #FFFFFF;
+
+  /* === Text === */
+  --text-primary: #2D3436;
+  --text-secondary: #636E72;
+  --text-tertiary: #B2BEC3;
+  --text-inverse: #FFFFFF;
+  --text-accent: #FF7A9D;
+
+  /* === Borders === */
+  --border-light: #DFE6E9;
+  --border: #B2BEC3;
+  --border-dark: #636E72;
+
+  /* === Tipografía === */
+  --font-display: "M PLUS Rounded 1c", "Noto Sans JP", "Rounded Mplus 1c", ui-rounded, "Hiragino Kaku Gothic Pro", "Hiragino Sans", system-ui, -apple-system, sans-serif;
+  --font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Roboto Mono", "Menlo", "Consolas", monospace;
+
+  /* === Sombras === */
+  --shadow-sm: 0 1px 2px 0 rgba(45, 52, 54, 0.05);
+  --shadow: 0 2px 8px 0 rgba(45, 52, 54, 0.08);
+  --shadow-md: 0 4px 12px 0 rgba(45, 52, 54, 0.1);
+  --shadow-lg: 0 8px 24px 0 rgba(45, 52, 54, 0.12);
+  --shadow-xl: 0 16px 48px 0 rgba(45, 52, 54, 0.15);
+
+  /* Sombras de color */
+  --shadow-sakura: 0 4px 16px 0 rgba(255, 122, 157, 0.25);
+  --shadow-matcha: 0 4px 16px 0 rgba(111, 189, 140, 0.25);
+  --shadow-ocean: 0 4px 16px 0 rgba(82, 177, 255, 0.25);
+
+  /* === Transiciones === */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --transition-slow: 350ms;
+  --easing-smooth: cubic-bezier(0.33, 1, 0.68, 1);
+  --easing-gentle: cubic-bezier(0.65, 0, 0.35, 1);
+  --easing-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* === Espaciado === */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
 }
 
 @theme inline {
-  --color-background: var(--papel-base);
-  --color-foreground: var(--tinta-oficial);
-  --font-sans: var(--font-texto);
-  --font-mono: var(--font-oficial-base);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
-/* Base styles - Fondo papel envejecido */
+/**
+ * Base Styles - Minimalismo Japonés
+ * Fondo limpio con textura sutil de washi (papel arroz)
+ */
 html {
-  background-color: var(--papel-base);
-  background-image: 
-    radial-gradient(circle at 20% 50%, var(--marca-agua) 1px, transparent 1px),
-    radial-gradient(circle at 80% 50%, var(--marca-agua) 1px, transparent 1px),
-    linear-gradient(0deg, transparent 24%, var(--marca-agua) 25%, var(--marca-agua) 26%, transparent 27%, transparent 74%, var(--marca-agua) 75%, var(--marca-agua) 76%, transparent 77%, transparent),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 20px,
-      rgba(185, 28, 28, 0.02) 20px,
-      rgba(185, 28, 28, 0.02) 21px
-    );
-  background-size: 120px 120px, 120px 120px, 30px 30px, 100% 20px;
+  background-color: var(--bg-primary);
+  background-image:
+    /* Textura sutil de papel washi */
+    radial-gradient(circle at 20% 30%, rgba(255, 181, 197, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 80% 70%, rgba(168, 213, 186, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(163, 213, 255, 0.02) 1px, transparent 1px);
+  background-size: 180px 180px, 220px 220px, 150px 150px;
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
 body {
-  font-family: var(--font-texto);
-  color: var(--tinta-oficial);
+  font-family: var(--font-body);
+  color: var(--text-primary);
   line-height: 1.6;
   background: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Tipografía sistema oficial */
