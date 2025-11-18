@@ -1,190 +1,250 @@
-import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
-import Link from 'next/link';
+/**
+ * Herramientas Page - Playful Harmony Design
+ * Kit de emergencia digital con protocolos de autodefensa
+ */
 
-const protocolos = [
+'use client';
+
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Hero } from '@/shared/ui';
+import { H2, Body } from '@/shared/ui';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/shared/ui';
+import { Button } from '@/shared/ui';
+import { Badge } from '@/shared/ui';
+
+const herramientas = [
   {
     id: 'boton-panico',
-    codigo: 'PROT-001',
-    nombre: 'PROTOCOLO DE BORRADO INMEDIATO',
+    nombre: 'Botón de Pánico',
     descripcion: 'Procedimiento de emergencia para eliminación de rastros digitales en 60 segundos',
     icono: '🚨',
-    clasificacion: 'URGENTE',
+    color: 'persimmon' as const,
+    urgencia: 'URGENTE',
     tiempo: '1-2 min',
-    autorizado: 'DIR-SEG-001'
-  },
-  {
-    id: 'comunicacion-cifrada',
-    codigo: 'PROT-003',
-    nombre: 'ESTABLECIMIENTO DE CANAL SEGURO',
-    descripcion: 'Manual de configuración e implementación de comunicaciones cifradas',
-    icono: '🔐',
-    clasificacion: 'ALTA',
-    tiempo: '10-15 min',
-    autorizado: 'DIR-COM-003'
+    nivel: 'Crítico',
   },
   {
     id: 'phishing-detector',
-    codigo: 'PROT-004',
-    nombre: 'IDENTIFICACIÓN DE AMENAZAS DIGITALES',
+    nombre: 'Detector de Phishing',
     descripcion: 'Sistema de entrenamiento para detección de ataques de ingeniería social',
     icono: '🎣',
-    clasificacion: 'MEDIA',
+    color: 'ocean' as const,
+    urgencia: 'ALTA',
     tiempo: '5-10 min',
-    autorizado: 'DIR-EDU-004'
-  }
+    nivel: 'Preventivo',
+  },
+  {
+    id: 'comunicacion-cifrada',
+    nombre: 'Comunicación Cifrada',
+    descripcion: 'Manual de configuración e implementación de comunicaciones seguras',
+    icono: '🔐',
+    color: 'matcha' as const,
+    urgencia: 'ALTA',
+    tiempo: '10-15 min',
+    nivel: 'Esencial',
+  },
+  {
+    id: 'borrado-seguro',
+    nombre: 'Borrado Seguro',
+    descripcion: 'Protocolos para eliminación permanente de información sensible',
+    icono: '🗑️',
+    color: 'lavender' as const,
+    urgencia: 'MEDIA',
+    tiempo: '15-20 min',
+    nivel: 'Importante',
+  },
+];
+
+const valorCards = [
+  {
+    icon: '⚡',
+    title: 'Gratuito',
+    description: 'Acceso libre sin registro',
+  },
+  {
+    icon: '🔓',
+    title: 'Open Source',
+    description: 'Código abierto y auditable',
+  },
+  {
+    icon: '✓',
+    title: 'Verificado',
+    description: 'Probado por la comunidad',
+  },
 ];
 
 export default function HerramientasPage() {
-  const currentDate = new Date().toLocaleDateString('es-MX', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
-
   return (
     <div className="min-h-screen">
-      <main className="page-container py-8 md:py-12">
-        {/* Encabezado principal */}
-        <section className="mb-12">
-          <div className="liquid-card relative">
-            {/* Detalles burocráticos */}
-            <div className="absolute top-4 left-4 text-xs opacity-50 typewriter z-10">
-              Expediente: EMG-{new Date().getFullYear()}-001
-            </div>
-            <div className="absolute top-4 right-4 text-xs opacity-50 typewriter z-10">
-              {currentDate}
-            </div>
+      {/* Hero Section */}
+      <Hero
+        variant="gradient"
+        size="lg"
+        title="Kit de Emergencia Digital"
+        description="Protocolos de autodefensa digital para situaciones de riesgo. Herramientas verificadas, gratuitas y de acceso inmediato."
+        badge={
+          <Badge color="persimmon" variant="solid" size="lg">
+            🚨 Emergencia Digital
+          </Badge>
+        }
+        illustration={
+          <motion.div
+            animate={{
+              rotate: [0, -10, 10, -10, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="text-8xl"
+          >
+            🛡️
+          </motion.div>
+        }
+      />
 
-            <div className="liquid-card-header">
-              <div className="text-center">
-                <p className="texto-pequeno mb-1 text-tinta-clara">COLECTIVO CIUDADANO ANTIMANUAL</p>
-                <p className="texto-pequeno text-tinta-clara">HERRAMIENTAS DE AUTODEFENSA DIGITAL</p>
+      {/* Aviso de Seguridad */}
+      <section className="py-8 bg-gradient-to-r from-sunset-50 to-persimmon/10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card variant="filled" padding="lg">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 text-4xl">⚠️</div>
+              <div className="flex-1">
+                <h3 className="font-display font-bold text-lg text-sumi mb-2">
+                  Aviso de Seguridad
+                </h3>
+                <Body color="secondary">
+                  Estas herramientas están diseñadas para situaciones de riesgo real.
+                  Recomendamos realizar pruebas en entorno controlado antes de usar en emergencias.
+                </Body>
               </div>
             </div>
+          </Card>
+        </div>
+      </section>
 
-            <div className="liquid-card-content">
-              <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8">
-                {/* Contenido principal */}
-                <div className="lg:col-span-3">
-                  {/* Título prominente */}
-                  <div className="mb-8">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 typewriter text-tinta-oficial leading-tight">
-                      KIT DE EMERGENCIA<br/>DIGITAL
-                    </h1>
-
-                    {/* Subtítulo en caja simple */}
-                    <div className="inline-block border-2 border-papel-border px-6 py-3 bg-papel-sombra rounded-lg">
-                      <p className="text-lg md:text-xl typewriter-bold text-tinta-oficial">
-                        PROTOCOLOS DE DEFENSA INMEDIATA
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Sellos de valor */}
-                  <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-                    <Stamp className="text-xs bg-sello-rojo text-white px-3 py-1">GRATUITO</Stamp>
-                    <Stamp className="text-xs bg-sello-rojo text-white px-3 py-1">INMEDIATO</Stamp>
-                    <Stamp className="text-xs bg-sello-rojo text-white px-3 py-1">VERIFICADO</Stamp>
-                  </div>
-                </div>
-
-                {/* Aviso de seguridad lateral */}
-                <div className="lg:col-span-1">
-                  <div className="bg-papel-sombra border border-papel-border p-4 rounded-lg h-fit">
-                    <div className="text-center mb-3">
-                      <span className="text-2xl">⚠️</span>
-                    </div>
-                    <p className="typewriter-bold text-sm mb-3 text-center text-tinta-oficial">
-                      AVISO DE SEGURIDAD
-                    </p>
-                    <p className="text-xs texto-oficial leading-relaxed">
-                      Estas herramientas están diseñadas para situaciones de riesgo real.
-                      Recomendamos realizar pruebas en entorno controlado antes de usar
-                      en emergencias.
-                    </p>
-                    <div className="text-center mt-4">
-                      <div className="text-xs opacity-60 typewriter">
-                        FOLIO: {Math.random().toString(36).substr(2, 6).toUpperCase()}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      {/* Valores */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {valorCards.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card variant="outlined" padding="md" className="text-center h-full">
+                  <div className="text-4xl mb-3">{item.icon}</div>
+                  <h3 className="font-display font-bold text-lg text-sumi mb-2">
+                    {item.title}
+                  </h3>
+                  <Body color="secondary" className="text-sm">
+                    {item.description}
+                  </Body>
+                </Card>
+              </motion.div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Protocolos de emergencia */}
-        <section className="mb-12">
-          <div className="liquid-card">
-            <div className="liquid-card-header text-center">
-              <h2 className="typewriter-bold text-2xl mb-2 text-tinta-oficial">PROTOCOLOS DISPONIBLES</h2>
-              <p className="texto-pequeno text-tinta-clara">HERRAMIENTAS VERIFICADAS PARA AUTODEFENSA DIGITAL</p>
-            </div>
+      {/* Herramientas Grid */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-cloud via-washi to-ocean-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <Badge color="sakura" variant="soft" size="lg" className="mb-4">
+              Protocolos Disponibles
+            </Badge>
+            <H2>Herramientas de Autodefensa</H2>
+            <Body color="secondary" className="mt-4 max-w-2xl mx-auto">
+              Acceso inmediato a protocolos verificados por la comunidad
+            </Body>
+          </motion.div>
 
-            <div className="liquid-card-content">
-              <div className="space-y-6">
-                {protocolos.map((protocolo) => (
-                  <div key={protocolo.id} className="expediente-liquid-card relative">
-                    {/* Código de protocolo */}
-                    <div className="absolute top-3 right-4">
-                      <p className="text-xs" style={{fontFamily: 'Georgia, serif', color: '#666'}}>
-                        {protocolo.codigo}
-                      </p>
-                    </div>
-
-                    {/* Contenido principal */}
-                    <div className="pr-16 pb-12">
-                      {/* Título */}
-                      <h3 className="text-xl sm:text-2xl font-bold text-tinta-oficial mb-3 leading-tight" style={{fontFamily: 'Georgia, serif'}}>
-                        {protocolo.nombre}
-                      </h3>
-
-                      {/* Descripción */}
-                      <p className="text-base leading-relaxed mb-4 text-tinta-suave" style={{fontFamily: 'Georgia, serif'}}>
-                        {protocolo.descripcion}
-                      </p>
-
-                      {/* Clasificación */}
-                      <div className="mb-6">
-                        <Stamp className="text-xs bg-sello-rojo text-white px-2 py-1">
-                          {protocolo.clasificacion}
-                        </Stamp>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {herramientas.map((herramienta, index) => (
+              <motion.div
+                key={herramienta.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Link href={`/herramientas/${herramienta.id}`}>
+                  <Card variant="elevated" hoverable clickable className="h-full">
+                    <CardHeader>
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="text-5xl">{herramienta.icono}</div>
+                        <Badge color={herramienta.color} variant="soft" size="sm">
+                          {herramienta.urgencia}
+                        </Badge>
                       </div>
-
-                      {/* Información adicional */}
-                      <div className="mb-4 text-sm" style={{color: '#666', fontFamily: 'Georgia, serif'}}>
-                        <p className="mb-1">Tiempo estimado: {protocolo.tiempo}</p>
-                        <p>Autorización: {protocolo.autorizado}</p>
+                      <CardTitle>{herramienta.nombre}</CardTitle>
+                      <CardDescription>{herramienta.descripcion}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex items-center gap-4 text-sm">
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-charcoal">⏱️</span>
+                          <Body color="secondary" className="text-sm">
+                            {herramienta.tiempo}
+                          </Body>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="text-charcoal">📊</span>
+                          <Body color="secondary" className="text-sm">
+                            {herramienta.nivel}
+                          </Body>
+                        </div>
                       </div>
-                    </div>
-
-                    {/* Botones de acción */}
-                    <div>
-                      <Link href={`/herramientas/${protocolo.id}`}>
-                        <SelloAccion
-                          variant="stamp"
-                          size="md"
-                          className="bg-sello-rojo text-white border-2 border-sello-rojo"
-                        >
-                          EJECUTAR PROTOCOLO
-                        </SelloAccion>
-                      </Link>
-                    </div>
-
-                    {/* Folio */}
-                    <div className="absolute bottom-3 right-4">
-                      <p className="text-xs" style={{fontFamily: 'Georgia, serif', color: '#666'}}>
-                        {protocolo.codigo}-{new Date().getFullYear()}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+                    </CardContent>
+                    <CardFooter>
+                      <Button variant="ghost" color={herramienta.color} fullWidth>
+                        Acceder →
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </Link>
+              </motion.div>
+            ))}
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-gradient-to-br from-sakura-100 to-matcha-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card variant="glass" padding="xl" className="text-center">
+            <H2 className="mb-4">¿Necesitas Ayuda Inmediata?</H2>
+            <Body className="text-lg mb-8">
+              Si estás en una situación de riesgo, contacta con nuestra red de apoyo
+            </Body>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button color="persimmon" size="lg" onClick={() => window.location.href = '/red'}>
+                📞 Red de Apoyo
+              </Button>
+              <Button
+                variant="outline"
+                color="ocean"
+                size="lg"
+                onClick={() => window.location.href = '/academia'}
+              >
+                📚 Aprender Más
+              </Button>
+            </div>
+          </Card>
+        </div>
+      </section>
     </div>
   );
 }
