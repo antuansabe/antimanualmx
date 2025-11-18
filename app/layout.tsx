@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { NavigationAdaptive, SwipeNavigationWrapper } from "@/shared/ui";
+import { Navigation, Footer } from "@/shared/ui";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -62,12 +62,13 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <NavigationAdaptive />
-        <SwipeNavigationWrapper>
-          <main className="min-h-screen">
+        <div className="flex flex-col min-h-screen">
+          <Navigation />
+          <main className="flex-1">
             {children}
           </main>
-        </SwipeNavigationWrapper>
+          <Footer />
+        </div>
       </body>
     </html>
   );
