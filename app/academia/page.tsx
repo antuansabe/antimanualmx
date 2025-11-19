@@ -1,7 +1,17 @@
+/**
+ * Academia Page - Playful Harmony Design
+ * Hub principal de formación en activismo digital
+ */
+
 'use client';
 
-import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Hero } from '@/shared/ui';
+import { H2, H3, Body } from '@/shared/ui';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/shared/ui';
+import { Button } from '@/shared/ui';
+import { Badge } from '@/shared/ui';
 
 const modulos = [
   {
@@ -20,7 +30,9 @@ const modulos = [
     ],
     requisitos: 'Ninguno - Curso de acceso libre',
     habilitado: true,
-    revision: '2024.1'
+    revision: '2024.1',
+    color: 'ocean' as const,
+    icon: '🎓'
   },
   {
     codigo: 'CAP-002',
@@ -38,7 +50,9 @@ const modulos = [
     ],
     requisitos: 'Certificación CAP-001 + Evaluación técnica',
     habilitado: false,
-    revision: '2024.2'
+    revision: '2024.2',
+    color: 'matcha' as const,
+    icon: '🛡️'
   },
   {
     codigo: 'CAP-003',
@@ -56,7 +70,9 @@ const modulos = [
     ],
     requisitos: 'Certificación CAP-002 + 6 meses experiencia práctica',
     habilitado: false,
-    revision: '2024.3'
+    revision: '2024.3',
+    color: 'lavender' as const,
+    icon: '🚀'
   }
 ];
 
@@ -76,208 +92,359 @@ export default function AcademiaPage() {
 
   return (
     <div className="min-h-screen">
-      <div className="academia-page-container py-8 md:py-12">
-        {/* Portada del manual técnico */}
-        <section className="mb-12">
-          <div className="academia-card-unified">
-            {/* Encabezado institucional */}
-            <div className="academia-card-header">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                  <p className="texto-pequeno mb-1" style={{color: '#A16207'}}>ANTIMANUAL • RESISTENCIA DIGITAL</p>
+      {/* Hero Section */}
+      <Hero
+        variant="gradient"
+        size="lg"
+        title="Academia Activista"
+        description="Programa de formación certificada en seguridad digital y activismo tecnológico. Educación libre, gratuita y accesible para defender tus derechos digitales."
+        badge={
+          <Badge color="ocean" variant="solid" size="lg">
+            🎓 Formación Certificada
+          </Badge>
+        }
+        primaryAction={{
+          label: '🚀 Comenzar Nivel 1',
+          onClick: () => window.location.href = '/academia/nivel-1',
+        }}
+        secondaryAction={{
+          label: 'Ver Programa',
+          onClick: () => window.location.href = '/academia/programa',
+        }}
+        illustration={
+          <motion.div
+            animate={{
+              rotate: [0, 10, -10, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="text-8xl"
+          >
+            📚
+          </motion.div>
+        }
+      />
+
+      {/* Métricas de impacto */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <Card variant="outlined" padding="md" className="text-center">
+                <div className="text-4xl font-display font-bold text-ocean-500 mb-2">
+                  {metricas.estudiantes}+
                 </div>
-                <div className="text-right">
-                  <Stamp className="text-xs bg-sello-rojo text-white transform -rotate-2 mb-2">CERTIFICADO</Stamp>
-                  <p className="texto-pequeno">Manual: INCD-{new Date().getFullYear()}-CAP-001</p>
-                  <p className="texto-pequeno">Revisión: {currentDate}</p>
+                <Body color="secondary" className="text-sm">
+                  Estudiantes activos
+                </Body>
+              </Card>
+              <Card variant="outlined" padding="md" className="text-center">
+                <div className="text-4xl font-display font-bold text-matcha-500 mb-2">
+                  {metricas.certificaciones}
                 </div>
-              </div>
+                <Body color="secondary" className="text-sm">
+                  Certificaciones emitidas
+                </Body>
+              </Card>
+              <Card variant="outlined" padding="md" className="text-center">
+                <div className="text-4xl font-display font-bold text-sakura-500 mb-2">
+                  {metricas.organizaciones}
+                </div>
+                <Body color="secondary" className="text-sm">
+                  Organizaciones aliadas
+                </Body>
+              </Card>
+              <Card variant="outlined" padding="md" className="text-center">
+                <div className="text-4xl font-display font-bold text-lavender-500 mb-2">
+                  {metricas.efectividad}%
+                </div>
+                <Body color="secondary" className="text-sm">
+                  Tasa de efectividad
+                </Body>
+              </Card>
             </div>
-            
-            {/* Contenido principal */}
-            <div className="academia-card-content">
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Objetivo de la Academia */}
+      <section className="py-16 bg-gradient-to-br from-cloud via-washi to-ocean-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Card variant="elevated" padding="xl">
               <div className="text-center mb-8">
-                <h1 className="academia-title-main typewriter font-bold" style={{color: '#B91C1C'}}>
-                  ACADEMIA ANTIMANUAL
-                </h1>
-                <p className="academia-title-sub texto-pequeno">
-                  PROGRAMA DE FORMACIÓN EN ACTIVISMO DIGITAL • VERSIÓN 2024.1
-                </p>
+                <Badge color="gold" variant="soft" size="lg" className="mb-4">
+                  Misión
+                </Badge>
+                <H2 className="mb-4">Formación para la Resistencia Digital</H2>
               </div>
 
-              {/* Objetivos del manual */}
-              <div className="space-y-6 texto-oficial leading-relaxed">
-                <div className="pl-8 border-l-4 border-dorado">
-                  <p className="mb-4">
-                    <span className="typewriter-bold text-sm">OBJETIVO GENERAL:</span> Formar activistas digitales capacitados en metodologías de seguridad, organización comunitaria y liderazgo tecnológico para la defensa de derechos humanos.
-                  </p>
-                  <p className="mb-4">
-                    <span className="typewriter-bold text-sm">POBLACIÓN OBJETIVO:</span> Defensores de derechos humanos, periodistas, organizaciones de la sociedad civil y ciudadanía comprometida con la transformación digital.
-                  </p>
-                  <p className="mb-4">
-                    <span className="typewriter-bold text-sm">MODALIDAD:</span> Educación digital auto-dirigida con acompañamiento técnico especializado y certificación verificable.
-                  </p>
+              <div className="space-y-6">
+                <div className="bg-gradient-to-r from-ocean-50 to-cloud rounded-2xl p-6 border border-ocean-100">
+                  <H3 className="text-lg mb-3">
+                    <span className="text-ocean-500 mr-2">•</span>
+                    Objetivo General
+                  </H3>
+                  <Body color="secondary">
+                    Formar activistas digitales capacitados en metodologías de seguridad, organización comunitaria y liderazgo tecnológico para la defensa de derechos humanos.
+                  </Body>
+                </div>
+
+                <div className="bg-gradient-to-r from-matcha-50 to-cloud rounded-2xl p-6 border border-matcha-100">
+                  <H3 className="text-lg mb-3">
+                    <span className="text-matcha-500 mr-2">•</span>
+                    Población Objetivo
+                  </H3>
+                  <Body color="secondary">
+                    Defensores de derechos humanos, periodistas, organizaciones de la sociedad civil y ciudadanía comprometida con la transformación digital.
+                  </Body>
+                </div>
+
+                <div className="bg-gradient-to-r from-sakura-50 to-cloud rounded-2xl p-6 border border-sakura-100">
+                  <H3 className="text-lg mb-3">
+                    <span className="text-sakura-500 mr-2">•</span>
+                    Modalidad
+                  </H3>
+                  <Body color="secondary">
+                    Educación digital auto-dirigida con acompañamiento técnico especializado y certificación verificable.
+                  </Body>
                 </div>
               </div>
-            </div>
 
-            {/* Footer de la card */}
-            <div className="academia-card-footer text-center">
-              <p className="texto-oficial leading-relaxed">
-                Este programa de capacitación está fundamentado en los principios de
-                <span className="highlight font-bold"> educación popular</span>,
-                <span className="highlight font-bold"> tecnología libre</span> y
-                <span className="highlight font-bold"> resistencia colectiva</span>.
-                Cada módulo busca transformar vulnerabilidades individuales en fortalezas comunitarias.
-              </p>
-            </div>
-          </div>
-        </section>
+              <div className="mt-8 text-center">
+                <Body className="italic text-lg">
+                  &ldquo;El conocimiento compartido es poder multiplicado&rdquo;
+                </Body>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Módulos de capacitación */}
-        <section className="mb-12">
-          <div className="text-center mb-8">
-            <h2 className="typewriter-bold text-2xl mb-2">MÓDULOS DE CAPACITACIÓN DISPONIBLES</h2>
-            <p className="texto-pequeno">INSTITUTO CIUDADANO DE CAPACITACIÓN • ICC-CAP</p>
-          </div>
+      {/* Módulos de Capacitación */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <Badge color="indigo" variant="soft" size="lg" className="mb-4">
+              Módulos Disponibles
+            </Badge>
+            <H2>Programa de Formación</H2>
+            <Body color="secondary" className="mt-4 max-w-2xl mx-auto">
+              Ruta de aprendizaje progresiva desde fundamentos hasta especialización avanzada
+            </Body>
+          </motion.div>
 
-          <div className="space-y-6">
-            {modulos.map((modulo) => (
-              <div key={modulo.codigo} className={`academia-card-unified ${!modulo.habilitado ? 'opacity-60' : ''}`}>
-                {/* Encabezado del módulo */}
-                <div className="academia-card-header">
-                  <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-                    <div className="flex items-start gap-6">
-                      <div className="text-center">
-                        <div className="w-16 h-16 bg-papel-sombra border-2 border-dorado rounded-full flex items-center justify-center mb-2">
-                          <span className="text-2xl font-bold typewriter" style={{color: '#A16207'}}>{modulo.nivel}</span>
+          <div className="grid grid-cols-1 gap-6 lg:gap-8">
+            {modulos.map((modulo, index) => (
+              <motion.div
+                key={modulo.codigo}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card
+                  variant="elevated"
+                  hoverable={modulo.habilitado}
+                  clickable={modulo.habilitado}
+                  className={`h-full ${!modulo.habilitado ? 'opacity-60' : ''}`}
+                >
+                  <CardHeader>
+                    <div className="flex flex-col md:flex-row gap-6">
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="text-6xl">{modulo.icon}</div>
+                        <div className={`w-16 h-16 rounded-full flex items-center justify-center border-4 ${
+                          !modulo.habilitado
+                            ? 'border-mist bg-cloud'
+                            : modulo.color === 'ocean'
+                            ? 'border-ocean-500 bg-ocean-50'
+                            : modulo.color === 'matcha'
+                            ? 'border-matcha-500 bg-matcha-50'
+                            : 'border-lavender-500 bg-lavender-50'
+                        }`}>
+                          <span className={`text-3xl font-display font-bold ${
+                            !modulo.habilitado
+                              ? 'text-charcoal'
+                              : modulo.color === 'ocean'
+                              ? 'text-ocean-500'
+                              : modulo.color === 'matcha'
+                              ? 'text-matcha-500'
+                              : 'text-lavender-500'
+                          }`}>
+                            {modulo.nivel}
+                          </span>
                         </div>
-                        <Stamp className={`text-xs transform ${modulo.nivel === 1 ? 'rotate-2' : modulo.nivel === 2 ? '-rotate-1' : 'rotate-3'} ${modulo.habilitado ? 'bg-sello-rojo text-white' : 'bg-papel-border text-tinta-oficial'}`}>
-                          {modulo.habilitado ? 'HABILITADO' : 'EN DESARROLLO'}
-                        </Stamp>
+                        <Badge
+                          color={modulo.habilitado ? modulo.color : 'indigo'}
+                          variant={modulo.habilitado ? 'solid' : 'soft'}
+                          size="sm"
+                        >
+                          {modulo.habilitado ? 'DISPONIBLE' : 'PRÓXIMAMENTE'}
+                        </Badge>
                       </div>
+
+                      <div className="flex-1">
+                        <div className="mb-3">
+                          <Badge color="gold" variant="soft" size="sm" className="mb-2">
+                            {modulo.codigo}
+                          </Badge>
+                          <CardTitle className="mb-2">{modulo.titulo}</CardTitle>
+                          <H3 className="text-base mb-3 font-normal text-charcoal">
+                            {modulo.subtitulo}
+                          </H3>
+                        </div>
+                        <CardDescription>{modulo.descripcion}</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+
+                  <CardContent>
+                    <div className="space-y-4">
+                      {/* Detalles del curso */}
+                      <div className="flex flex-wrap gap-3">
+                        <Badge color="ocean" variant="soft" size="sm">
+                          ⏱️ {modulo.duracion}
+                        </Badge>
+                        <Badge color="matcha" variant="soft" size="sm">
+                          📚 {modulo.unidades} unidades
+                        </Badge>
+                        <Badge color="lavender" variant="soft" size="sm">
+                          Rev. {modulo.revision}
+                        </Badge>
+                      </div>
+
+                      {/* Requisitos */}
+                      <div className="bg-gradient-to-r from-washi to-cloud rounded-xl p-4 border border-mist">
+                        <Body className="text-sm font-display font-bold text-charcoal mb-2">
+                          Requisitos de ingreso:
+                        </Body>
+                        <Body color="secondary" className="text-sm">
+                          {modulo.requisitos}
+                        </Body>
+                      </div>
+
+                      {/* Competencias */}
                       <div>
-                        <p className="texto-pequeno mb-1">MÓDULO {modulo.codigo}</p>
-                        <h3 className="text-xl md:text-2xl font-bold typewriter mb-1" style={{color: '#1A1A1A'}}>
-                          {modulo.titulo}
-                        </h3>
-                        <p className="texto-pequeno mb-2" style={{color: '#1A1A1A'}}>{modulo.subtitulo}</p>
+                        <Body className="text-sm font-display font-bold text-charcoal mb-3">
+                          Competencias técnicas:
+                        </Body>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                          {modulo.competencias.map((competencia, idx) => (
+                            <div key={idx} className="flex items-start gap-2">
+                              <span className={`mt-1 flex-shrink-0 ${
+                                modulo.color === 'ocean'
+                                  ? 'text-ocean-500'
+                                  : modulo.color === 'matcha'
+                                  ? 'text-matcha-500'
+                                  : 'text-lavender-500'
+                              }`}>▶</span>
+                              <Body color="secondary" className="text-sm flex-1">
+                                {competencia}
+                              </Body>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="texto-pequeno">Revisión: {modulo.revision}</p>
-                      <p className="texto-pequeno">Duración: {modulo.duracion}</p>
-                      <p className="texto-pequeno">Unidades: {modulo.unidades}</p>
+                  </CardContent>
+
+                  <CardFooter>
+                    <div className="flex flex-wrap gap-3 w-full">
+                      {modulo.habilitado ? (
+                        <>
+                          <Link href={modulo.nivel === 1 ? '/academia/nivel-1' : '#'} className="flex-1">
+                            <Button
+                              color={modulo.color}
+                              fullWidth
+                              disabled={modulo.nivel !== 1}
+                            >
+                              {modulo.nivel === 1 ? '🎓 Acceder al Módulo' : '🔒 Requiere Nivel Anterior'}
+                            </Button>
+                          </Link>
+                          <Link href="/academia/programa">
+                            <Button variant="outline" color={modulo.color}>
+                              📋 Ver Programa
+                            </Button>
+                          </Link>
+                        </>
+                      ) : (
+                        <Button variant="ghost" color="lavender" fullWidth disabled>
+                          🔒 Próximamente
+                        </Button>
+                      )}
                     </div>
-                  </div>
-                </div>
-
-                {/* Contenido del módulo */}
-                <div className="academia-card-content">
-                  <p className="texto-oficial leading-relaxed mb-4">
-                    {modulo.descripcion}
-                  </p>
-
-                  <div className="bg-papel-sombra border-l-4 border-dorado p-4 mb-4">
-                    <p className="typewriter-bold text-sm mb-2" style={{color: '#A16207'}}>REQUISITOS DE INGRESO:</p>
-                    <p className="texto-pequeno">
-                      {modulo.requisitos}
-                    </p>
-                  </div>
-
-                  {/* Competencias del módulo */}
-                  <div className="mb-6">
-                    <h4 className="typewriter-bold text-sm mb-3" style={{color: '#A16207'}}>COMPETENCIAS TÉCNICAS A DESARROLLAR:</h4>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {modulo.competencias.map((competencia, index) => (
-                        <div key={index} className="flex items-start gap-2 texto-pequeno">
-                          <span style={{color: '#A16207'}} className="mt-1 text-xs">▶</span>
-                          <span>{competencia}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Acciones disponibles */}
-                  <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                    {modulo.habilitado ? (
-                      <>
-                        <Link href={modulo.nivel === 1 ? '/academia/nivel-1' : '#'}>
-                          <SelloAccion
-                            variant="primary"
-                            size="lg"
-                            disabled={modulo.nivel !== 1}
-                          >
-                            🎓 ACCEDER AL MÓDULO
-                          </SelloAccion>
-                        </Link>
-                        <Link href="/academia/programa">
-                          <SelloAccion
-                            variant="secondary"
-                            size="lg"
-                          >
-                            📋 PROGRAMA ACADÉMICO
-                          </SelloAccion>
-                        </Link>
-                      </>
-                    ) : (
-                      <SelloAccion variant="secondary" size="lg" disabled>
-                        🔒 PRÓXIMAMENTE
-                      </SelloAccion>
-                    )}
-                  </div>
-                </div>
-
-                {/* Footer del módulo */}
-                <div className="academia-card-footer text-right">
-                  <p className="text-xs typewriter" style={{color: '#1A1A1A', opacity: 0.6}}>
-                    {modulo.codigo}-{new Date().getFullYear()}
-                  </p>
-                </div>
-              </div>
+                  </CardFooter>
+                </Card>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Convocatoria */}
-        <section className="text-center">
-          <div className="academia-card-unified max-w-4xl mx-auto">
-            {/* Header */}
-            <div className="academia-card-header">
-              <h2 className="text-2xl font-bold typewriter" style={{color: '#B91C1C'}}>
-                CONVOCATORIA ABIERTA
-              </h2>
-              <p className="texto-pequeno mt-2">PROGRAMA DE FORMACIÓN EN ACTIVISMO DIGITAL</p>
-            </div>
+      {/* Convocatoria */}
+      <section className="py-16 bg-gradient-to-br from-sakura-100 via-matcha-100 to-ocean-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            <Card variant="glass" padding="xl" className="text-center">
+              <Badge color="persimmon" variant="solid" size="lg" className="mb-6">
+                Convocatoria Abierta
+              </Badge>
+              <H2 className="mb-4">Únete a la Academia</H2>
+              <Body className="text-lg mb-6">
+                La resistencia digital comienza con la formación técnica. Únete a nuestra comunidad de aprendizaje y contribuye a construir un ecosistema digital más libre, seguro y soberano.
+              </Body>
 
-            {/* Contenido */}
-            <div className="academia-card-content">
-              <div className="bg-papel-sombra border border-dorado p-6 mb-6">
-                <p className="typewriter-bold mb-2" style={{color: '#A16207'}}>DIRIGIDO A:</p>
-                <p className="texto-oficial leading-relaxed">
-                  Defensores de derechos humanos, periodistas, organizaciones de la sociedad civil,
-                  estudiantes y ciudadanía comprometida con la transformación digital de México.
-                </p>
+              <div className="bg-gradient-to-r from-washi to-cloud rounded-2xl p-6 border border-mist mb-8">
+                <H3 className="text-lg mb-3">Dirigido a:</H3>
+                <Body color="secondary">
+                  Defensores de derechos humanos, periodistas, organizaciones de la sociedad civil, estudiantes y ciudadanía comprometida con la transformación digital de México.
+                </Body>
               </div>
 
-              <p className="texto-oficial leading-relaxed max-w-3xl mx-auto">
-                La resistencia digital comienza con la formación técnica. Únete a nuestra comunidad de
-                aprendizaje y contribuye a construir un ecosistema digital más libre, seguro y soberano.
-              </p>
-            </div>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Button color="ocean" size="xl" onClick={() => window.location.href = '/academia/nivel-1'}>
+                  🚀 Comenzar Ahora
+                </Button>
+                <Button
+                  variant="outline"
+                  color="matcha"
+                  size="xl"
+                  onClick={() => window.location.href = '/academia/programa'}
+                >
+                  📋 Ver Programa Completo
+                </Button>
+              </div>
 
-            {/* Footer */}
-            <div className="academia-card-footer text-center">
-              <p className="margin-note" style={{color: '#A16207'}}>
-                &ldquo;El conocimiento compartido es poder multiplicado&rdquo;
-              </p>
-              <p className="texto-pequeno mt-2">
-                CONVOCATORIA PERMANENTE • ACCESO LIBRE Y GRATUITO
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
+              <div className="mt-8 pt-8 border-t border-mist">
+                <Body color="tertiary" className="text-sm">
+                  Convocatoria Permanente • Acceso Libre y Gratuito • {currentDate}
+                </Body>
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
-import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
+import { Hero, H2, H3, Card, Button, Badge, Body } from '@/shared/ui';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -54,115 +55,152 @@ export default function BotonPanicoPage() {
   };
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <div className="flex items-center gap-4">
-          <Link href="/herramientas" className="flex items-center gap-2">
-            <Stamp>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              / HERRAMIENTAS / BOTÓN DE PÁNICO
-            </span>
+    <div className="min-h-screen bg-gradient-to-br from-cloud via-washi to-persimmon-50">
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        {/* Header with back link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
+          <Link href="/herramientas" className="inline-flex items-center gap-2 text-ink-700 hover:text-persimmon-600 transition-colors">
+            <span className="text-2xl">←</span>
+            <Body size="sm">Volver a Herramientas</Body>
           </Link>
-        </div>
-      </header>
+        </motion.div>
 
-      <main className="max-w-4xl mx-auto">
         {!iniciado ? (
           // Vista inicial
-          <section>
-            <ExpedienteCard variant="default">
-              <div className="text-center mb-8">
-                <div className="text-8xl mb-4">🚨</div>
-                <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter text-red-700">
-                  BOTÓN DE PÁNICO
-                </h1>
-                <p className="text-xl mb-6">
-                  Protocolo de emergencia para borrar rastros digitales en 60 segundos
-                </p>
-                <Stamp className="sello-peligro">EMERGENCIAS SOLAMENTE</Stamp>
-              </div>
+          <>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="mb-12"
+            >
+              <Hero
+                variant="minimal"
+                size="md"
+                title="🚨 Botón de Pánico"
+                description="Protocolo de emergencia para borrar rastros digitales en 60 segundos"
+                badge={
+                  <Badge color="persimmon" variant="soft" size="lg">
+                    Emergencias Solamente
+                  </Badge>
+                }
+              />
+            </motion.div>
 
-              <div className="bg-red-50 border-l-4 border-red-500 p-6 mb-8">
-                <div className="flex items-start">
-                  <div className="text-3xl mr-4">⚠️</div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mb-8"
+            >
+              <Card variant="glass" className="bg-persimmon-50/50">
+                <div className="flex items-start gap-4">
+                  <div className="text-3xl">⚠️</div>
                   <div>
-                    <h3 className="font-bold text-red-800 mb-2">ANTES DE CONTINUAR:</h3>
-                    <ul className="text-red-700 space-y-1">
-                      <li>• Este protocolo borrará datos de forma permanente</li>
-                      <li>• Solo úsalo si estás en peligro real</li>
-                      <li>• Ten ubicaciones seguras identificadas con anticipación</li>
-                      <li>• Guarda información importante en lugares seguros</li>
+                    <H3 className="mb-2 text-persimmon-800">Antes de Continuar:</H3>
+                    <ul className="space-y-1">
+                      <li><Body className="text-ink-700">• Este protocolo borrará datos de forma permanente</Body></li>
+                      <li><Body className="text-ink-700">• Solo úsalo si estás en peligro real</Body></li>
+                      <li><Body className="text-ink-700">• Ten ubicaciones seguras identificadas con anticipación</Body></li>
+                      <li><Body className="text-ink-700">• Guarda información importante en lugares seguros</Body></li>
                     </ul>
                   </div>
                 </div>
-              </div>
+              </Card>
+            </motion.div>
 
-              <div className="mb-8">
-                <h3 className="text-xl font-bold mb-4 typewriter">PROTOCOLO COMPLETO:</h3>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="mb-8"
+            >
+              <Card variant="outlined">
+                <H3 className="mb-4">Protocolo Completo:</H3>
                 <div className="grid gap-4">
-                  {pasos.map((paso) => (
-                    <div key={paso.orden} className="flex items-center gap-4 p-4 border rounded-lg">
-                      <div className="text-2xl font-bold text-red-700 min-w-[40px]">
+                  {pasos.map((paso, index) => (
+                    <motion.div
+                      key={paso.orden}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 + index * 0.1 }}
+                      className="flex items-center gap-4 p-4 border border-ink-200 rounded-lg"
+                    >
+                      <div className="text-2xl font-bold text-persimmon-700 min-w-[40px]">
                         {paso.orden}
                       </div>
                       <div className="flex-1">
-                        <h4 className="font-bold">{paso.titulo}</h4>
-                        <p className="text-gray-600 text-sm">{paso.descripcion}</p>
-                        <code className="text-xs bg-gray-100 px-2 py-1 rounded typewriter">
+                        <Body className="font-bold">{paso.titulo}</Body>
+                        <Body size="sm" className="text-ink-600">{paso.descripcion}</Body>
+                        <code className="text-xs bg-washi px-2 py-1 rounded font-mono mt-1 inline-block">
                           {paso.comando}
                         </code>
                       </div>
-                      <div className="text-sm text-gray-500 typewriter">
+                      <Body size="sm" className="text-ink-500 font-mono">
                         {paso.tiempo}
-                      </div>
-                    </div>
+                      </Body>
+                    </motion.div>
                   ))}
                 </div>
-              </div>
+              </Card>
+            </motion.div>
 
-              <div className="text-center">
-                <SelloAccion 
-                  onClick={iniciarProtocolo}
-                  size="lg"
-                  className="sello-peligro hover:sello-peligro"
-                >
-                  🚨 INICIAR PROTOCOLO DE EMERGENCIA
-                </SelloAccion>
-              </div>
-            </ExpedienteCard>
-          </section>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="text-center"
+            >
+              <Button
+                onClick={iniciarProtocolo}
+                color="persimmon"
+                size="lg"
+              >
+                🚨 Iniciar Protocolo de Emergencia
+              </Button>
+            </motion.div>
+          </>
         ) : !completado ? (
           // Vista del protocolo en ejecución
-          <section>
-            <ExpedienteCard variant="urgent" className="border-red-500 border-2">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <Card variant="elevated" className="border-2 border-persimmon-500">
               <div className="text-center mb-8">
-                <div className="text-6xl mb-4 animate-pulse">🚨</div>
-                <h2 className="text-2xl font-bold text-red-700 typewriter">
-                  PROTOCOLO ACTIVO
-                </h2>
-                <p className="text-lg">
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                  className="text-6xl mb-4"
+                >
+                  🚨
+                </motion.div>
+                <H2 className="text-persimmon-700">Protocolo Activo</H2>
+                <Body size="lg">
                   Paso {pasoActual + 1} de {pasos.length}
-                </p>
+                </Body>
               </div>
 
               <div className="mb-8">
-                <div className="w-full bg-gray-200 rounded-full h-4 mb-6">
-                  <div 
-                    className="sello-peligro h-4 rounded-full transition-all duration-300"
+                <div className="w-full bg-washi rounded-full h-4 mb-6">
+                  <div
+                    className="bg-persimmon-500 h-4 rounded-full transition-all duration-300"
                     style={{ width: `${((pasoActual + 1) / pasos.length) * 100}%` }}
                   ></div>
                 </div>
 
                 <div className="text-center mb-8">
                   <div className="text-6xl mb-4">{pasos[pasoActual].orden}</div>
-                  <h3 className="text-3xl font-bold mb-4 typewriter">
-                    {pasos[pasoActual].titulo}
-                  </h3>
-                  <p className="text-xl text-gray-700 mb-4">
+                  <H2 className="mb-4">{pasos[pasoActual].titulo}</H2>
+                  <Body size="lg" className="text-ink-700 mb-4">
                     {pasos[pasoActual].descripcion}
-                  </p>
-                  <div className="bg-gray-100 p-4 rounded-lg inline-block">
-                    <code className="typewriter text-lg">
+                  </Body>
+                  <div className="bg-washi p-4 rounded-lg inline-block">
+                    <code className="font-mono text-lg">
                       {pasos[pasoActual].comando}
                     </code>
                   </div>
@@ -170,56 +208,57 @@ export default function BotonPanicoPage() {
               </div>
 
               <div className="text-center">
-                <SelloAccion 
+                <Button
                   onClick={siguientePaso}
+                  color="matcha"
                   size="lg"
-                  className="bg-green-600 hover:bg-green-700"
                 >
-                  ✅ COMPLETADO - SIGUIENTE PASO
-                </SelloAccion>
+                  ✅ Completado - Siguiente Paso
+                </Button>
               </div>
-            </ExpedienteCard>
-          </section>
+            </Card>
+          </motion.div>
         ) : (
           // Vista de protocolo completado
-          <section>
-            <ExpedienteCard variant="approved" className="border-green-500 border-2">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <Card variant="elevated" className="border-2 border-matcha-500">
               <div className="text-center">
                 <div className="text-8xl mb-4">✅</div>
-                <h2 className="text-3xl font-bold text-green-700 typewriter mb-4">
-                  PROTOCOLO COMPLETADO
-                </h2>
-                <p className="text-xl mb-8">
+                <H2 className="text-matcha-700 mb-4">Protocolo Completado</H2>
+                <Body size="lg" className="mb-8">
                   Has completado exitosamente el protocolo de emergencia
-                </p>
+                </Body>
 
-                <div className="bg-green-50 border-l-4 border-green-500 p-6 mb-8 text-left">
-                  <h3 className="font-bold text-green-800 mb-2">PRÓXIMOS PASOS:</h3>
-                  <ul className="text-green-700 space-y-2">
-                    <li>• Mantente en un lugar seguro</li>
-                    <li>• Contacta a personas de confianza</li>
-                    <li>• Documenta cualquier amenaza recibida</li>
-                    <li>• Considera contactar organizaciones de apoyo</li>
+                <Card variant="glass" className="mb-8 text-left bg-matcha-50/50">
+                  <H3 className="mb-2 text-matcha-800">Próximos Pasos:</H3>
+                  <ul className="space-y-2">
+                    <li><Body className="text-ink-700">• Mantente en un lugar seguro</Body></li>
+                    <li><Body className="text-ink-700">• Contacta a personas de confianza</Body></li>
+                    <li><Body className="text-ink-700">• Documenta cualquier amenaza recibida</Body></li>
+                    <li><Body className="text-ink-700">• Considera contactar organizaciones de apoyo</Body></li>
                   </ul>
-                </div>
+                </Card>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Link href="/red">
-                    <SelloAccion variant="primary" size="lg">
-                      CONTACTAR RED DE APOYO
-                    </SelloAccion>
+                    <Button color="matcha" size="lg">
+                      Contactar Red de Apoyo
+                    </Button>
                   </Link>
                   <Link href="/herramientas">
-                    <SelloAccion variant="secondary" size="lg">
-                      VOLVER A HERRAMIENTAS
-                    </SelloAccion>
+                    <Button variant="outline" color="matcha" size="lg">
+                      Volver a Herramientas
+                    </Button>
                   </Link>
                 </div>
               </div>
-            </ExpedienteCard>
-          </section>
+            </Card>
+          </motion.div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

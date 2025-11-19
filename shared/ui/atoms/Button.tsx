@@ -11,7 +11,7 @@ import { cn } from '@/shared/utils/cn';
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
 type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
-type ButtonColor = 'sakura' | 'matcha' | 'ocean' | 'sunset' | 'lavender' | 'persimmon';
+type ButtonColor = 'sakura' | 'matcha' | 'ocean' | 'sunset' | 'lavender' | 'persimmon' | 'gold' | 'indigo';
 
 interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'color'> {
   variant?: ButtonVariant;
@@ -63,6 +63,16 @@ const colorStyles: Record<ButtonColor, { primary: string; outline: string; ghost
     primary: 'bg-persimmon hover:bg-persimmon/90',
     outline: 'border-persimmon text-persimmon hover:bg-persimmon/10',
     ghost: 'text-persimmon hover:text-persimmon/80',
+  },
+  gold: {
+    primary: 'bg-gold-500 hover:bg-gold-600',
+    outline: 'border-gold text-gold-500 hover:bg-gold-50',
+    ghost: 'text-gold-500 hover:text-gold-600',
+  },
+  indigo: {
+    primary: 'bg-indigo-500 hover:bg-indigo-600',
+    outline: 'border-indigo text-indigo-500 hover:bg-indigo-50',
+    ghost: 'text-indigo-500 hover:text-indigo-600',
   },
 };
 

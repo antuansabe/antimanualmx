@@ -1,6 +1,7 @@
 'use client';
 
-import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
+import { Hero, H2, H3, Card, Button, Badge, Body } from '@/shared/ui';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -85,138 +86,158 @@ export default function BorradoSeguroPage() {
   const porcentajeCompletado = (elementosMarcados.size / totalElementos) * 100;
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <div className="flex items-center gap-4">
-          <Link href="/herramientas" className="flex items-center gap-2">
-            <Stamp>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              / HERRAMIENTAS / BORRADO SEGURO
-            </span>
+    <div className="min-h-screen bg-gradient-to-br from-cloud via-washi to-lavender-50">
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        {/* Header with back link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
+          <Link href="/herramientas" className="inline-flex items-center gap-2 text-ink-700 hover:text-lavender-600 transition-colors">
+            <span className="text-2xl">←</span>
+            <Body size="sm">Volver a Herramientas</Body>
           </Link>
-        </div>
-      </header>
+        </motion.div>
 
-      <main className="max-w-6xl mx-auto">
-        <section className="mb-8">
-          <ExpedienteCard variant="default">
-            <div className="text-center mb-8">
-              <div className="text-8xl mb-4">🗑️</div>
-              <h1 className="text-3xl md:text-5xl font-bold mb-4 typewriter">
-                BORRADO SEGURO
-              </h1>
-              <p className="text-xl mb-6">
-                Elimina archivos, historiales y metadatos de forma permanente
-              </p>
-              <div className="flex justify-center gap-4">
-                <Stamp className="bg-orange-500">LIMPIEZA PROFUNDA</Stamp>
-                <Stamp className="text-xs">{elementosMarcados.size}/{totalElementos} ELEMENTOS</Stamp>
-              </div>
-            </div>
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="mb-12"
+        >
+          <Hero
+            variant="minimal"
+            size="md"
+            title="🗑️ Borrado Seguro"
+            description="Elimina archivos, historiales y metadatos de forma permanente"
+            badge={
+              <Badge color="lavender" variant="soft" size="lg">
+                Limpieza Profunda
+              </Badge>
+            }
+          />
+        </motion.div>
 
-            <div className="bg-orange-50 border-l-4 border-orange-500 p-4 mb-8">
-              <div className="flex items-start">
-                <div className="text-2xl mr-3">⚠️</div>
-                <div>
-                  <p className="font-bold text-orange-800">IMPORTANTE:</p>
-                  <p className="text-orange-700 text-sm">
-                    Los datos borrados con estos métodos no se pueden recuperar. 
-                    Asegúrate de tener respaldos de información importante.
-                  </p>
-                </div>
+        {/* Warning and Progress Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mb-8"
+        >
+          <Card variant="glass" className="bg-gold-50/50">
+            <div className="flex items-start gap-4 mb-6">
+              <div className="text-3xl">⚠️</div>
+              <div>
+                <H3 className="mb-2 text-gold-800">Importante</H3>
+                <Body className="text-ink-600">
+                  Los datos borrados con estos métodos no se pueden recuperar.
+                  Asegúrate de tener respaldos de información importante.
+                </Body>
               </div>
             </div>
 
             <div className="mb-6">
-              <div className="w-full bg-gray-200 rounded-full h-4 mb-2">
-                <div 
-                  className="bg-green-600 h-4 rounded-full transition-all duration-300"
+              <div className="flex items-center justify-between mb-2">
+                <Body className="font-bold">Progreso</Body>
+                <Badge color="lavender">{elementosMarcados.size}/{totalElementos} Elementos</Badge>
+              </div>
+              <div className="w-full bg-washi rounded-full h-4">
+                <div
+                  className="bg-lavender-500 h-4 rounded-full transition-all duration-300"
                   style={{ width: `${porcentajeCompletado}%` }}
                 ></div>
               </div>
-              <p className="text-center text-sm text-gray-600">
+              <Body size="sm" className="text-center mt-2 text-ink-600">
                 {porcentajeCompletado.toFixed(0)}% completado
-              </p>
+              </Body>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <SelloAccion 
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button
                 onClick={marcarTodosAlta}
-                variant="secondary"
-                size="sm"
+                variant="outline"
+                color="lavender"
               >
-                🎯 MARCAR PRIORIDAD ALTA
-              </SelloAccion>
-              <SelloAccion 
+                🎯 Marcar Prioridad Alta
+              </Button>
+              <Button
                 onClick={() => setModoPanico(!modoPanico)}
-                variant={modoPanico ? 'primary' : 'secondary'}
-                size="sm"
-                className={modoPanico ? 'sello-peligro hover:sello-peligro' : ''}
+                variant={modoPanico ? 'solid' : 'outline'}
+                color={modoPanico ? 'persimmon' : 'lavender'}
               >
-                🚨 MODO PÁNICO {modoPanico ? 'ON' : 'OFF'}
-              </SelloAccion>
+                🚨 Modo Pánico {modoPanico ? 'ON' : 'OFF'}
+              </Button>
             </div>
-          </ExpedienteCard>
-        </section>
+          </Card>
+        </motion.div>
 
-        <section className="grid md:grid-cols-4 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="grid md:grid-cols-4 gap-6"
+        >
           <div className="md:col-span-1">
-            <ExpedienteCard>
-              <h3 className="font-bold mb-4 typewriter">CATEGORÍAS</h3>
+            <Card variant="outlined">
+              <H3 className="mb-4">Categorías</H3>
               <div className="space-y-2">
-                {categorias.map((categoria) => {
-                  const completados = categoria.elementos.filter(el => 
+                {categorias.map((categoria, index) => {
+                  const completados = categoria.elementos.filter(el =>
                     elementosMarcados.has(`${categoria.id}-${el.nombre}`)
                   ).length;
-                  
+
                   return (
-                    <button
+                    <motion.button
                       key={categoria.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.4 + index * 0.1 }}
                       onClick={() => setCategoriaActiva(categoria.id)}
                       className={`w-full text-left p-3 rounded-lg transition-colors ${
                         categoriaActiva === categoria.id
-                          ? 'bg-red-100 border-l-4 border-red-600'
-                          : 'hover:bg-gray-100'
+                          ? 'bg-lavender-100 border-l-4 border-lavender-600'
+                          : 'hover:bg-washi'
                       }`}
                     >
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
                           <span className="text-2xl">{categoria.icono}</span>
-                          <span className="font-medium text-sm">{categoria.nombre}</span>
+                          <Body className="font-medium">{categoria.nombre}</Body>
                         </div>
-                        <span className="text-xs text-gray-500">
+                        <Body size="sm" className="text-ink-500">
                           {completados}/{categoria.elementos.length}
-                        </span>
+                        </Body>
                       </div>
-                    </button>
+                    </motion.button>
                   );
                 })}
               </div>
-            </ExpedienteCard>
+            </Card>
           </div>
 
           <div className="md:col-span-3">
-            <ExpedienteCard>
+            <Card variant="elevated">
               {categoriaSeleccionada && (
                 <>
                   <div className="flex items-center gap-3 mb-6">
                     <span className="text-4xl">{categoriaSeleccionada.icono}</span>
-                    <h2 className="text-2xl font-bold typewriter">
-                      {categoriaSeleccionada.nombre}
-                    </h2>
+                    <H2>{categoriaSeleccionada.nombre}</H2>
                   </div>
 
                   <div className="space-y-3">
                     {categoriaSeleccionada.elementos.map((elemento) => {
                       const elementoId = `${categoriaSeleccionada.id}-${elemento.nombre}`;
                       const marcado = elementosMarcados.has(elementoId);
-                      
+
                       return (
                         <div
                           key={elemento.nombre}
                           className={`border rounded-lg p-4 transition-all ${
-                            marcado ? 'bg-green-50 border-green-500' : 'hover:border-gray-400'
-                          } ${modoPanico && elemento.prioridad === 'alta' ? 'ring-2 ring-red-500' : ''}`}
+                            marcado ? 'bg-lavender-50 border-lavender-500' : 'border-ink-200 hover:border-ink-400'
+                          } ${modoPanico && elemento.prioridad === 'alta' ? 'ring-2 ring-persimmon-500' : ''}`}
                         >
                           <div className="flex items-start gap-3">
                             <button
@@ -224,9 +245,9 @@ export default function BorradoSeguroPage() {
                               className="mt-1"
                             >
                               <div className={`w-5 h-5 border-2 rounded transition-colors ${
-                                marcado 
-                                  ? 'bg-green-600 border-green-600' 
-                                  : 'border-gray-400 hover:border-gray-600'
+                                marcado
+                                  ? 'bg-lavender-600 border-lavender-600'
+                                  : 'border-ink-400 hover:border-ink-600'
                               }`}>
                                 {marcado && (
                                   <svg className="w-full h-full text-white" viewBox="0 0 20 20" fill="currentColor">
@@ -235,19 +256,22 @@ export default function BorradoSeguroPage() {
                                 )}
                               </div>
                             </button>
-                            
+
                             <div className="flex-1">
                               <div className="flex items-center gap-2 mb-1">
-                                <h4 className="font-bold">{elemento.nombre}</h4>
-                                <Stamp className={`text-xs ${
-                                  elemento.prioridad === 'alta' ? 'sello-peligro' :
-                                  elemento.prioridad === 'media' ? 'bg-orange-500' :
-                                  'bg-gray-500'
-                                }`}>
+                                <Body className="font-bold">{elemento.nombre}</Body>
+                                <Badge
+                                  color={
+                                    elemento.prioridad === 'alta' ? 'persimmon' :
+                                    elemento.prioridad === 'media' ? 'gold' :
+                                    'ocean'
+                                  }
+                                  size="sm"
+                                >
                                   {elemento.prioridad.toUpperCase()}
-                                </Stamp>
+                                </Badge>
                               </div>
-                              <code className="text-sm bg-gray-100 px-2 py-1 rounded typewriter">
+                              <code className="text-sm bg-washi px-2 py-1 rounded font-mono">
                                 {elemento.comando}
                               </code>
                             </div>
@@ -258,54 +282,55 @@ export default function BorradoSeguroPage() {
                   </div>
                 </>
               )}
-            </ExpedienteCard>
+            </Card>
           </div>
-        </section>
+        </motion.div>
 
-        <section className="mt-12">
-          <ExpedienteCard>
-            <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4 typewriter">
-                HERRAMIENTAS RECOMENDADAS
-              </h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="text-3xl mb-2">🧹</div>
-                  <h4 className="font-bold mb-1">BleachBit</h4>
-                  <p className="text-sm text-gray-600">
-                    Limpiador de código abierto para Windows/Linux
-                  </p>
-                  <a href="https://www.bleachbit.org/" className="text-blue-600 underline text-sm">
-                    bleachbit.org
-                  </a>
-                </div>
-                
-                <div className="text-center">
-                  <div className="text-3xl mb-2">🔐</div>
-                  <h4 className="font-bold mb-1">DBAN</h4>
-                  <p className="text-sm text-gray-600">
-                    Borrado seguro de discos completos
-                  </p>
-                  <a href="https://dban.org/" className="text-blue-600 underline text-sm">
-                    dban.org
-                  </a>
-                </div>
-                
-                <div className="text-center">
-                  <div className="text-3xl mb-2">📸</div>
-                  <h4 className="font-bold mb-1">ExifCleaner</h4>
-                  <p className="text-sm text-gray-600">
-                    Elimina metadatos de imágenes
-                  </p>
-                  <a href="https://exifcleaner.com/" className="text-blue-600 underline text-sm">
-                    exifcleaner.com
-                  </a>
-                </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mt-12"
+        >
+          <Card variant="outlined">
+            <H2 className="mb-6 text-center">Herramientas Recomendadas</H2>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="text-center">
+                <div className="text-3xl mb-2">🧹</div>
+                <H3 className="mb-1">BleachBit</H3>
+                <Body size="sm" className="text-ink-600 mb-2">
+                  Limpiador de código abierto para Windows/Linux
+                </Body>
+                <a href="https://www.bleachbit.org/" className="text-lavender-600 hover:text-lavender-700 underline text-sm">
+                  bleachbit.org
+                </a>
+              </div>
+
+              <div className="text-center">
+                <div className="text-3xl mb-2">🔐</div>
+                <H3 className="mb-1">DBAN</H3>
+                <Body size="sm" className="text-ink-600 mb-2">
+                  Borrado seguro de discos completos
+                </Body>
+                <a href="https://dban.org/" className="text-lavender-600 hover:text-lavender-700 underline text-sm">
+                  dban.org
+                </a>
+              </div>
+
+              <div className="text-center">
+                <div className="text-3xl mb-2">📸</div>
+                <H3 className="mb-1">ExifCleaner</H3>
+                <Body size="sm" className="text-ink-600 mb-2">
+                  Elimina metadatos de imágenes
+                </Body>
+                <a href="https://exifcleaner.com/" className="text-lavender-600 hover:text-lavender-700 underline text-sm">
+                  exifcleaner.com
+                </a>
               </div>
             </div>
-          </ExpedienteCard>
-        </section>
-      </main>
+          </Card>
+        </motion.div>
+      </div>
     </div>
   );
 }

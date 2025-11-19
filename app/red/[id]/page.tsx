@@ -1,5 +1,11 @@
+/**
+ * Perfil Organización Page - Playful Harmony Design
+ * Página detallada de organización aliada con diseño moderno
+ */
+
 import { notFound } from 'next/navigation';
-import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
+import { motion } from 'framer-motion';
+import { Hero, H2, H3, Card, Button, Badge, Body } from '@/shared/ui';
 import MapaInteractivo from '@/shared/ui/MapaInteractivo';
 import Link from 'next/link';
 import { organizaciones } from '@/shared/data/organizaciones';
@@ -27,286 +33,390 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
   };
 
   const coloresPorTipo = {
-    ong: 'bg-blue-100 text-blue-800',
-    colectivo: 'bg-purple-100 text-purple-800',
-    academia: 'bg-green-100 text-green-800',
-    periodismo: 'bg-orange-100 text-orange-800',
-    legal: 'bg-red-100 text-red-800'
+    ong: 'ocean' as const,
+    colectivo: 'lavender' as const,
+    academia: 'matcha' as const,
+    periodismo: 'sunset' as const,
+    legal: 'persimmon' as const
   };
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <div className="flex items-center gap-4">
-          <Link href="/red" className="flex items-center gap-2">
-            <Stamp>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              / RED DE APOYO / {organizacion.nombreCorto}
-            </span>
+    <div className="min-h-screen">
+      {/* Breadcrumb */}
+      <section className="py-6 bg-white border-b border-mist">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/red" className="inline-flex items-center gap-2 text-charcoal hover:text-sumi transition-colors">
+            <span>←</span>
+            <Body className="font-display font-medium">Volver al Directorio</Body>
           </Link>
+          <Body color="tertiary" className="mt-1 text-sm">
+            Red de Apoyo / {organizacion.nombreCorto}
+          </Body>
         </div>
-      </header>
+      </section>
 
-      <main className="max-w-6xl mx-auto">
-        {/* Header de la organización */}
-        <section className="mb-12">
-          <ExpedienteCard variant="default">
-            <div className="flex flex-col md:flex-row gap-8">
-              <div className="md:w-1/3 text-center">
-                <div className="text-8xl mb-4">{iconosPorTipo[organizacion.tipo]}</div>
-                <div className="space-y-2">
-                  <Stamp className={`text-xs ${organizacion.verificada ? 'bg-green-600' : 'bg-yellow-600'}`}>
-                    {organizacion.verificada ? '✅ VERIFICADA' : '⏳ PENDIENTE'}
-                  </Stamp>
-                  <div className={`px-3 py-1 rounded-full text-xs font-bold ${coloresPorTipo[organizacion.tipo]}`}>
-                    {organizacion.tipo.toUpperCase()}
-                  </div>
-                </div>
+      {/* Hero Section */}
+      <section className="py-16 md:py-20 bg-gradient-to-br from-cloud via-washi to-cloud">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row gap-8 items-start">
+            {/* Icono y badges */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="flex-shrink-0 text-center md:w-1/4"
+            >
+              <div className="text-8xl mb-4">{iconosPorTipo[organizacion.tipo]}</div>
+              <div className="space-y-2">
+                <Badge
+                  color={organizacion.verificada ? 'matcha' : 'gold'}
+                  variant="soft"
+                  size="md"
+                >
+                  {organizacion.verificada ? '✓ Verificada' : '⏳ En proceso'}
+                </Badge>
+                <br />
+                <Badge color={coloresPorTipo[organizacion.tipo]} variant="soft" size="md">
+                  {organizacion.tipo.toUpperCase()}
+                </Badge>
               </div>
-              
-              <div className="md:w-2/3">
-                <h1 className="text-3xl md:text-4xl font-bold mb-2 typewriter">
-                  {organizacion.nombre}
-                </h1>
-                <p className="text-xl text-red-700 font-bold mb-4">
-                  {organizacion.nombreCorto}
-                </p>
-                
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 text-sm">
-                  <div>
-                    <strong>Fundación:</strong><br />
-                    {organizacion.fechaFundacion}
-                  </div>
-                  <div>
-                    <strong>Alcance:</strong><br />
-                    {organizacion.alcance}
-                  </div>
-                  <div>
-                    <strong>Ubicación:</strong><br />
-                    {organizacion.ubicacion.ciudad}
-                  </div>
-                  <div>
-                    <strong>Estado:</strong><br />
-                    <span className="text-green-600 font-bold">{organizacion.estado}</span>
-                  </div>
-                </div>
-                
-                <p className="text-lg text-gray-700 mb-6">
-                  {organizacion.descripcion}
-                </p>
-                
-                <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
-                  <h3 className="font-bold text-blue-800 mb-2">MISIÓN</h3>
-                  <p className="text-blue-700 italic">
-                    {organizacion.mision}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ExpedienteCard>
-        </section>
+            </motion.div>
 
+            {/* Información principal */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex-1"
+            >
+              <Body color="tertiary" className="text-xs mb-2">
+                ORG-{organizacion.id.toUpperCase()}
+              </Body>
+              <h1 className="text-3xl md:text-5xl font-display font-bold mb-2 text-sumi">
+                {organizacion.nombre}
+              </h1>
+              <H3 className="mb-6 text-sakura-500">{organizacion.nombreCorto}</H3>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                {[
+                  { label: 'Fundación', value: organizacion.fechaFundacion, icon: '🗓️' },
+                  { label: 'Alcance', value: organizacion.alcance, icon: '📡' },
+                  { label: 'Ubicación', value: organizacion.ubicacion.ciudad, icon: '📍' },
+                  { label: 'Estado', value: organizacion.estado, icon: '✓' },
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <Body color="tertiary" className="text-xs mb-1">
+                      {item.icon} {item.label}
+                    </Body>
+                    <Body className="font-display font-bold">{item.value}</Body>
+                  </motion.div>
+                ))}
+              </div>
+
+              <Body className="text-lg mb-6 leading-relaxed">
+                {organizacion.descripcion}
+              </Body>
+
+              <Card variant="filled" padding="md" className="bg-gradient-to-r from-ocean-50 to-matcha-50">
+                <Body className="font-display font-bold text-sm mb-2">Misión</Body>
+                <Body className="italic">{organizacion.mision}</Body>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <main className="py-12 md:py-16">
         {/* Especialidades y Servicios */}
-        <section className="grid md:grid-cols-2 gap-8 mb-12">
-          <ExpedienteCard>
-            <h2 className="text-xl font-bold mb-4 typewriter">
-              🎯 ESPECIALIDADES
-            </h2>
-            <div className="space-y-2">
-              {organizacion.especialidades.map((esp, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-red-600 rounded-full"></span>
-                  <span>{esp}</span>
-                </div>
-              ))}
-            </div>
-          </ExpedienteCard>
+        <section className="py-12 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <Card variant="elevated" padding="lg">
+                  <H3 className="mb-4">🎯 Especialidades</H3>
+                  <div className="space-y-3">
+                    {organizacion.especialidades.map((esp, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        className="flex items-center gap-3"
+                      >
+                        <div className="w-2 h-2 bg-persimmon-500 rounded-full flex-shrink-0"></div>
+                        <Body>{esp}</Body>
+                      </motion.div>
+                    ))}
+                  </div>
+                </Card>
+              </motion.div>
 
-          <ExpedienteCard>
-            <h2 className="text-xl font-bold mb-4 typewriter">
-              🛠️ SERVICIOS
-            </h2>
-            <div className="space-y-2">
-              {organizacion.servicios.map((servicio, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
-                  <span>{servicio}</span>
-                </div>
-              ))}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <Card variant="elevated" padding="lg">
+                  <H3 className="mb-4">🛠️ Servicios</H3>
+                  <div className="space-y-3">
+                    {organizacion.servicios.map((servicio, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: 10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        className="flex items-center gap-3"
+                      >
+                        <div className="w-2 h-2 bg-ocean-500 rounded-full flex-shrink-0"></div>
+                        <Body>{servicio}</Body>
+                      </motion.div>
+                    ))}
+                  </div>
+                </Card>
+              </motion.div>
             </div>
-          </ExpedienteCard>
+          </div>
         </section>
 
         {/* Logros y Colaboraciones */}
-        <section className="grid md:grid-cols-2 gap-8 mb-12">
-          <ExpedienteCard>
-            <h2 className="text-xl font-bold mb-4 typewriter">
-              🏆 LOGROS PRINCIPALES
-            </h2>
-            <div className="space-y-3">
-              {organizacion.logros.map((logro, index) => (
-                <div key={index} className="p-3 bg-green-50 border-l-4 border-green-500">
-                  <p className="text-green-800">{logro}</p>
-                </div>
-              ))}
-            </div>
-          </ExpedienteCard>
+        <section className="py-12 bg-gradient-to-br from-cloud to-washi">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <Card variant="elevated" padding="lg">
+                  <H3 className="mb-4">🏆 Logros Principales</H3>
+                  <div className="space-y-3">
+                    {organizacion.logros.map((logro, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.1 }}
+                        className="p-4 bg-gradient-to-r from-matcha-50 to-matcha-100 border-l-4 border-matcha-500 rounded-lg"
+                      >
+                        <Body className="text-matcha-900">{logro}</Body>
+                      </motion.div>
+                    ))}
+                  </div>
+                </Card>
+              </motion.div>
 
-          <ExpedienteCard>
-            <h2 className="text-xl font-bold mb-4 typewriter">
-              🤝 COLABORACIONES
-            </h2>
-            <div className="space-y-2">
-              {organizacion.colaboraciones.map((colab, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-purple-600 rounded-full"></span>
-                  <span>{colab}</span>
-                </div>
-              ))}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <Card variant="elevated" padding="lg">
+                  <H3 className="mb-4">🤝 Colaboraciones</H3>
+                  <div className="space-y-3">
+                    {organizacion.colaboraciones.map((colab, index) => (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.05 }}
+                        className="flex items-center gap-3"
+                      >
+                        <div className="w-2 h-2 bg-lavender-500 rounded-full flex-shrink-0"></div>
+                        <Body>{colab}</Body>
+                      </motion.div>
+                    ))}
+                  </div>
+                </Card>
+              </motion.div>
             </div>
-          </ExpedienteCard>
+          </div>
         </section>
 
         {/* Mapa de Ubicación */}
-        <section className="mb-12">
-          <ExpedienteCard>
-            <h2 className="text-xl font-bold mb-4 typewriter text-center">
-              📍 UBICACIÓN
-            </h2>
-            <div className="mb-4 text-center">
-              <p className="text-gray-700">
-                {organizacion.ubicacion.ciudad}, {organizacion.ubicacion.estado}
-              </p>
-            </div>
-            <MapaInteractivo
-              organizaciones={[organizacion]}
-              altura="300px"
-            />
-          </ExpedienteCard>
+        <section className="py-12 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-center mb-8">
+                <Badge color="ocean" variant="soft" size="lg" className="mb-4">
+                  Ubicación
+                </Badge>
+                <H2 className="mb-2">📍 Localización</H2>
+                <Body color="secondary">
+                  {organizacion.ubicacion.ciudad}, {organizacion.ubicacion.estado}
+                </Body>
+              </div>
+
+              <Card variant="elevated" padding="lg">
+                <MapaInteractivo
+                  organizaciones={[organizacion]}
+                  altura="300px"
+                />
+              </Card>
+            </motion.div>
+          </div>
         </section>
 
         {/* Contacto */}
-        <section className="mb-12">
-          <ExpedienteCard>
-            <h2 className="text-xl font-bold mb-6 typewriter text-center">
-              📞 INFORMACIÓN DE CONTACTO
-            </h2>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="font-bold mb-3">CONTACTO DIRECTO</h3>
-                <div className="space-y-3">
-                  <a 
-                    href={organizacion.contacto.sitioWeb}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 border rounded hover:bg-gray-50 transition-colors"
-                  >
-                    <span className="text-xl">🌐</span>
-                    <div>
-                      <div className="font-bold">Sitio Web</div>
-                      <div className="text-sm text-gray-600">{organizacion.contacto.sitioWeb}</div>
+        <section className="py-12 bg-gradient-to-br from-cloud via-washi to-sakura-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-center mb-8">
+                <Badge color="sakura" variant="soft" size="lg" className="mb-4">
+                  Contacto
+                </Badge>
+                <H2>📞 Información de Contacto</H2>
+              </div>
+
+              <Card variant="elevated" padding="lg">
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Contacto Directo */}
+                  <div>
+                    <H3 className="mb-4">Contacto Directo</H3>
+                    <div className="space-y-3">
+                      <a
+                        href={organizacion.contacto.sitioWeb}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-4 p-4 rounded-xl border border-mist hover:border-ocean-300 hover:bg-ocean-50 transition-all group"
+                      >
+                        <span className="text-3xl group-hover:scale-110 transition-transform">🌐</span>
+                        <div className="flex-1">
+                          <Body className="font-display font-bold mb-1">Sitio Web</Body>
+                          <Body color="secondary" className="text-sm break-all">
+                            {organizacion.contacto.sitioWeb}
+                          </Body>
+                        </div>
+                      </a>
+
+                      {organizacion.contacto.email && (
+                        <a
+                          href={`mailto:${organizacion.contacto.email}`}
+                          className="flex items-center gap-4 p-4 rounded-xl border border-mist hover:border-sakura-300 hover:bg-sakura-50 transition-all group"
+                        >
+                          <span className="text-3xl group-hover:scale-110 transition-transform">✉️</span>
+                          <div className="flex-1">
+                            <Body className="font-display font-bold mb-1">Email</Body>
+                            <Body color="secondary" className="text-sm break-all">
+                              {organizacion.contacto.email}
+                            </Body>
+                          </div>
+                        </a>
+                      )}
                     </div>
-                  </a>
-                  
-                  {organizacion.contacto.email && (
-                    <a 
-                      href={`mailto:${organizacion.contacto.email}`}
-                      className="flex items-center gap-3 p-3 border rounded hover:bg-gray-50 transition-colors"
-                    >
-                      <span className="text-xl">✉️</span>
-                      <div>
-                        <div className="font-bold">Email</div>
-                        <div className="text-sm text-gray-600">{organizacion.contacto.email}</div>
-                      </div>
-                    </a>
-                  )}
+                  </div>
+
+                  {/* Redes Sociales */}
+                  <div>
+                    <H3 className="mb-4">Redes Sociales</H3>
+                    <div className="space-y-3">
+                      {organizacion.contacto.twitter && (
+                        <a
+                          href={`https://twitter.com/${organizacion.contacto.twitter.replace('@', '')}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-4 p-4 rounded-xl border border-mist hover:border-ocean-300 hover:bg-ocean-50 transition-all group"
+                        >
+                          <span className="text-3xl group-hover:scale-110 transition-transform">🐦</span>
+                          <div className="flex-1">
+                            <Body className="font-display font-bold mb-1">Twitter</Body>
+                            <Body color="secondary" className="text-sm">
+                              {organizacion.contacto.twitter}
+                            </Body>
+                          </div>
+                        </a>
+                      )}
+
+                      {organizacion.contacto.facebook && (
+                        <a
+                          href={`https://facebook.com/${organizacion.contacto.facebook}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-4 p-4 rounded-xl border border-mist hover:border-lavender-300 hover:bg-lavender-50 transition-all group"
+                        >
+                          <span className="text-3xl group-hover:scale-110 transition-transform">📘</span>
+                          <div className="flex-1">
+                            <Body className="font-display font-bold mb-1">Facebook</Body>
+                            <Body color="secondary" className="text-sm">
+                              {organizacion.contacto.facebook}
+                            </Body>
+                          </div>
+                        </a>
+                      )}
+
+                      {organizacion.contacto.telegram && (
+                        <a
+                          href={`https://t.me/${organizacion.contacto.telegram.replace('@', '')}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-4 p-4 rounded-xl border border-mist hover:border-matcha-300 hover:bg-matcha-50 transition-all group"
+                        >
+                          <span className="text-3xl group-hover:scale-110 transition-transform">✈️</span>
+                          <div className="flex-1">
+                            <Body className="font-display font-bold mb-1">Telegram</Body>
+                            <Body color="secondary" className="text-sm">
+                              {organizacion.contacto.telegram}
+                            </Body>
+                          </div>
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-              
-              <div>
-                <h3 className="font-bold mb-3">REDES SOCIALES</h3>
-                <div className="space-y-3">
-                  {organizacion.contacto.twitter && (
-                    <a 
-                      href={`https://twitter.com/${organizacion.contacto.twitter.replace('@', '')}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-3 border rounded hover:bg-gray-50 transition-colors"
-                    >
-                      <span className="text-xl">🐦</span>
-                      <div>
-                        <div className="font-bold">Twitter</div>
-                        <div className="text-sm text-gray-600">{organizacion.contacto.twitter}</div>
-                      </div>
-                    </a>
-                  )}
-                  
-                  {organizacion.contacto.facebook && (
-                    <a 
-                      href={`https://facebook.com/${organizacion.contacto.facebook}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-3 border rounded hover:bg-gray-50 transition-colors"
-                    >
-                      <span className="text-xl">📘</span>
-                      <div>
-                        <div className="font-bold">Facebook</div>
-                        <div className="text-sm text-gray-600">{organizacion.contacto.facebook}</div>
-                      </div>
-                    </a>
-                  )}
-                  
-                  {organizacion.contacto.telegram && (
-                    <a 
-                      href={`https://t.me/${organizacion.contacto.telegram.replace('@', '')}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-3 border rounded hover:bg-gray-50 transition-colors"
-                    >
-                      <span className="text-xl">✈️</span>
-                      <div>
-                        <div className="font-bold">Telegram</div>
-                        <div className="text-sm text-gray-600">{organizacion.contacto.telegram}</div>
-                      </div>
-                    </a>
-                  )}
+
+                {/* CTAs */}
+                <div className="mt-8 pt-8 border-t border-mist text-center">
+                  <div className="flex flex-wrap gap-4 justify-center">
+                    <Button color="matcha" size="lg">
+                      🤝 Solicitar Colaboración
+                    </Button>
+                    <Button variant="outline" color="sakura" size="lg">
+                      📋 Reportar Información
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </div>
-            
-            <div className="mt-8 text-center">
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <SelloAccion size="lg">
-                  🤝 SOLICITAR COLABORACIÓN
-                </SelloAccion>
-                <SelloAccion variant="secondary" size="lg">
-                  📋 REPORTAR INFORMACIÓN
-                </SelloAccion>
-              </div>
-            </div>
-          </ExpedienteCard>
+              </Card>
+            </motion.div>
+          </div>
         </section>
 
         {/* Navegación */}
-        <section className="text-center">
-          <ExpedienteCard>
-            <h3 className="font-bold mb-4 typewriter">
-              EXPLORAR MÁS ORGANIZACIONES
-            </h3>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/red">
-                <SelloAccion variant="secondary" size="lg">
-                  ← VOLVER AL DIRECTORIO
-                </SelloAccion>
-              </Link>
-              <Link href="/red?vista=mapa">
-                <SelloAccion variant="secondary" size="lg">
-                  🗺️ VER EN MAPA
-                </SelloAccion>
-              </Link>
-            </div>
-          </ExpedienteCard>
+        <section className="py-12 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Card variant="outlined" padding="lg" className="text-center">
+              <H3 className="mb-6">Explorar Más Organizaciones</H3>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Link href="/red">
+                  <Button color="matcha" variant="outline" size="lg">
+                    ← Volver al Directorio
+                  </Button>
+                </Link>
+                <Link href="/red?vista=mapa">
+                  <Button color="ocean" variant="outline" size="lg">
+                    🗺️ Ver en Mapa
+                  </Button>
+                </Link>
+              </div>
+            </Card>
+          </div>
         </section>
       </main>
     </div>
