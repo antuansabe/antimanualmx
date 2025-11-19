@@ -1,7 +1,17 @@
+/**
+ * Programa Académico Page - Playful Harmony Design
+ * Descripción detallada del programa de formación Nivel 1
+ */
+
 'use client';
 
-import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Hero } from '@/shared/ui';
+import { H2, H3, Body } from '@/shared/ui';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/shared/ui';
+import { Button } from '@/shared/ui';
+import { Badge } from '@/shared/ui';
 import { cursoNivel1 } from '@/shared/data/cursos';
 import { useCourseProgress } from '@/shared/hooks/useLocalStorage';
 
@@ -10,210 +20,340 @@ export default function ProgramaAcademicoPage() {
   const curso = cursoNivel1;
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <Link href="/academia" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
-          <Stamp>ANTIMANUAL</Stamp>
-          <span className="typewriter text-sm text-tinta-suave">
-            / ACADEMIA / PROGRAMA ACADÉMICO
-          </span>
-        </Link>
-      </header>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <Hero
+        variant="gradient"
+        size="md"
+        title="Programa Académico Completo"
+        description="Nivel 1: Activista Digital Básico - Formación integral en seguridad digital y defensa de derechos digitales"
+        badge={
+          <Badge color="ocean" variant="solid" size="lg">
+            📋 Programa Oficial
+          </Badge>
+        }
+      />
 
-      <main className="max-w-5xl mx-auto">
-        {/* Encabezado principal */}
-        <section className="mb-12">
-          <ExpedienteCard variant="default">
-            <div className="border-b-2 border-papel-border pb-6 mb-6">
-              <div className="flex items-center justify-between mb-4">
-                <Stamp className="text-xs bg-sello-rojo text-white">OFICIAL</Stamp>
-                <p className="texto-pequeno">DNA-2024-PROG-001</p>
-              </div>
-              <h1 className="text-4xl font-bold typewriter text-sello-rojo mb-4">
-                📋 PROGRAMA ACADÉMICO COMPLETO
-              </h1>
-              <p className="text-xl typewriter mb-2">NIVEL 1: ACTIVISTA DIGITAL BÁSICO</p>
-              <p className="texto-oficial">
-                Programa de formación integral en seguridad digital y defensa de derechos digitales
-              </p>
-            </div>
+      {/* Navegación */}
+      <section className="py-6 bg-white border-b border-mist">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link href="/academia">
+            <Button variant="ghost" color="ocean" size="sm">
+              ← Volver a Academia
+            </Button>
+          </Link>
+        </div>
+      </section>
 
-            {/* Información general */}
-            <div className="bg-naranja-pendiente/10 border-l-4 border-naranja-pendiente p-6 rounded-r-lg mb-6">
-              <h2 className="font-bold typewriter mb-4 text-tinta-oficial text-xl">📋 INFORMACIÓN GENERAL</h2>
-              <div className="grid md:grid-cols-2 gap-4 text-tinta-suave">
-                <div>
-                  <p className="font-bold text-tinta-oficial mb-1">Duración total:</p>
-                  <p>{curso.duracionTotal} minutos ({Math.round(curso.duracionTotal / 60)} horas)</p>
-                </div>
-                <div>
-                  <p className="font-bold text-tinta-oficial mb-1">Módulos:</p>
-                  <p>{curso.modulos.length}</p>
-                </div>
-                <div>
-                  <p className="font-bold text-tinta-oficial mb-1">Modalidad:</p>
-                  <p>Auto-dirigido, progreso guardado localmente</p>
-                </div>
-                <div>
-                  <p className="font-bold text-tinta-oficial mb-1">Certificado:</p>
-                  <p>Al completar todos los módulos</p>
-                </div>
+      {/* Información General */}
+      <section className="py-12 bg-gradient-to-br from-cloud via-washi to-ocean-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Card variant="elevated" padding="xl">
+              <div className="text-center mb-8">
+                <Badge color="gold" variant="soft" size="lg" className="mb-4">
+                  {curso.nivel}
+                </Badge>
+                <H2 className="mb-2">{curso.titulo}</H2>
+                <Body color="secondary" className="text-lg">
+                  {curso.descripcion}
+                </Body>
               </div>
 
+              {/* Stats del programa */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="bg-gradient-to-br from-ocean-50 to-cloud rounded-xl p-4 border border-ocean-100 text-center">
+                  <div className="text-3xl font-display font-bold text-ocean-500 mb-1">
+                    {curso.duracionTotal}
+                  </div>
+                  <Body color="secondary" className="text-xs">
+                    minutos totales
+                  </Body>
+                </div>
+                <div className="bg-gradient-to-br from-matcha-50 to-cloud rounded-xl p-4 border border-matcha-100 text-center">
+                  <div className="text-3xl font-display font-bold text-matcha-500 mb-1">
+                    {Math.round(curso.duracionTotal / 60)}
+                  </div>
+                  <Body color="secondary" className="text-xs">
+                    horas aprox.
+                  </Body>
+                </div>
+                <div className="bg-gradient-to-br from-sakura-50 to-cloud rounded-xl p-4 border border-sakura-100 text-center">
+                  <div className="text-3xl font-display font-bold text-sakura-500 mb-1">
+                    {curso.modulos.length}
+                  </div>
+                  <Body color="secondary" className="text-xs">
+                    módulos
+                  </Body>
+                </div>
+                <div className="bg-gradient-to-br from-lavender-50 to-cloud rounded-xl p-4 border border-lavender-100 text-center">
+                  <div className="text-3xl font-display font-bold text-lavender-500 mb-1">
+                    ✓
+                  </div>
+                  <Body color="secondary" className="text-xs">
+                    Certificado
+                  </Body>
+                </div>
+              </div>
+
+              {/* Detalles adicionales */}
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-gradient-to-r from-washi to-cloud rounded-xl p-5 border border-mist">
+                  <H3 className="text-base mb-3">Modalidad</H3>
+                  <Body color="secondary" className="text-sm">
+                    Auto-dirigido, progreso guardado localmente
+                  </Body>
+                </div>
+                <div className="bg-gradient-to-r from-washi to-cloud rounded-xl p-5 border border-mist">
+                  <H3 className="text-base mb-3">Certificado</H3>
+                  <Body color="secondary" className="text-sm">
+                    Al completar todos los módulos
+                  </Body>
+                </div>
+              </div>
+
+              {/* Progreso del usuario */}
               {progress.started && (
-                <div className="mt-4 pt-4 border-t border-naranja-pendiente">
-                  <p className="font-bold text-tinta-oficial mb-1">Tu progreso actual:</p>
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-8 pt-8 border-t border-mist"
+                >
+                  <H3 className="text-lg mb-4">Tu Progreso Actual</H3>
                   <div className="flex items-center gap-4">
                     <div className="flex-1">
-                      <div className="w-full bg-papel-sombra rounded-full h-3">
+                      <div className="w-full bg-cloud rounded-full h-4 overflow-hidden border border-mist">
                         <div
-                          className="bg-azul-info h-3 rounded-full transition-all"
+                          className="bg-gradient-to-r from-ocean-500 to-ocean-400 h-4 rounded-full transition-all duration-500"
                           style={{ width: `${progress.progress}%` }}
                         />
                       </div>
                     </div>
-                    <span className="text-azul-info font-bold">{Math.round(progress.progress)}%</span>
+                    <Badge color="ocean" variant="solid" size="lg">
+                      {Math.round(progress.progress)}%
+                    </Badge>
                   </div>
-                </div>
+                  <Body color="secondary" className="text-sm mt-3">
+                    Has completado {progress.completedModules.length} de {curso.modulos.length} módulos
+                  </Body>
+                </motion.div>
               )}
-            </div>
-          </ExpedienteCard>
-        </section>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Contenido del curso */}
-        <section className="mb-12">
-          <ExpedienteCard variant="default">
-            <h2 className="font-bold typewriter mb-6 text-2xl text-tinta-oficial border-b-2 border-papel-border pb-4">
-              📚 CONTENIDO DEL CURSO
-            </h2>
+      {/* Contenido del Curso */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <Badge color="indigo" variant="soft" size="lg" className="mb-4">
+              Contenido
+            </Badge>
+            <H2>Módulos del Programa</H2>
+            <Body color="secondary" className="mt-4 max-w-2xl mx-auto">
+              Ruta de aprendizaje estructurada para desarrollar competencias en activismo digital
+            </Body>
+          </motion.div>
 
-            <div className="space-y-6">
-              {curso.modulos.map((modulo, idx) => (
-                <div
+          <div className="space-y-6">
+            {curso.modulos.map((modulo, idx) => {
+              const isCompleted = progress.completedModules.includes(modulo.id);
+              const isCurrent = progress.currentModule === idx;
+              const isLocked = !progress.started && idx > 0;
+
+              return (
+                <motion.div
                   key={modulo.id}
-                  className={`border-2 rounded-xl p-6 transition-all ${
-                    progress.currentModule === idx
-                      ? 'border-azul-info bg-azul-info/5 shadow-md'
-                      : progress.completedModules.includes(modulo.id)
-                      ? 'border-verde-aprobado bg-verde-aprobado/5'
-                      : 'border-papel-border bg-white hover:border-papel-border hover:shadow-sm'
-                  }`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
                 >
-                  <div className="flex items-start gap-4 mb-4">
-                    <div
-                      className={`rounded-full w-14 h-14 flex items-center justify-center font-bold flex-shrink-0 shadow-sm text-lg ${
-                        progress.currentModule === idx
-                          ? 'bg-azul-info text-papel-base'
-                          : progress.completedModules.includes(modulo.id)
-                          ? 'bg-verde-aprobado text-papel-base'
-                          : 'bg-papel-sombra text-tinta-oficial'
-                      }`}
-                    >
-                      {progress.completedModules.includes(modulo.id) ? '✓' : idx + 1}
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-bold typewriter text-xl mb-2 text-tinta-oficial">
-                        {modulo.titulo}
-                        {progress.currentModule === idx && (
-                          <span className="ml-3 bg-azul-info text-papel-base px-3 py-1 rounded text-sm">EN CURSO</span>
-                        )}
-                        {progress.completedModules.includes(modulo.id) && (
-                          <span className="ml-3 bg-verde-aprobado text-papel-base px-3 py-1 rounded text-sm">COMPLETADO</span>
-                        )}
-                      </h3>
-                      <p className="text-tinta-suave mb-3 leading-relaxed">{modulo.descripcion}</p>
-                      <div className="flex flex-wrap gap-3 text-sm">
-                        <span className="bg-papel-base px-3 py-1 rounded border border-papel-border text-tinta-clara">
-                          ⏱️ {modulo.duracion} minutos
-                        </span>
-                        <span className="bg-papel-base px-3 py-1 rounded border border-papel-border text-tinta-clara">
-                          📄 {modulo.contenido.length} temas
-                        </span>
-                        {modulo.ejercicios && (
-                          <span className="bg-papel-base px-3 py-1 rounded border border-papel-border text-tinta-clara">
-                            ✍️ {modulo.ejercicios.length} ejercicios
-                          </span>
-                        )}
-                        {modulo.recursos && (
-                          <span className="bg-papel-base px-3 py-1 rounded border border-papel-border text-tinta-clara">
-                            🔗 {modulo.recursos.length} recursos
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Temas del módulo */}
-                  <div className="ml-18 pl-6 border-l-2 border-papel-border">
-                    <p className="font-bold text-tinta-oficial mb-3 text-sm">Temas cubiertos:</p>
-                    <ul className="space-y-2">
-                      {modulo.contenido.slice(0, 5).map((contenido, contIdx) => (
-                        <li key={contIdx} className="flex items-start gap-2 text-sm text-tinta-suave">
-                          <span className="text-azul-info mt-1">•</span>
-                          <span>{contenido.titulo || 'Contenido educativo'}</span>
-                        </li>
-                      ))}
-                      {modulo.contenido.length > 5 && (
-                        <li className="text-tinta-clara italic text-sm pl-4">
-                          + {modulo.contenido.length - 5} temas más...
-                        </li>
-                      )}
-                    </ul>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </ExpedienteCard>
-        </section>
-
-        {/* Objetivos de aprendizaje */}
-        <section className="mb-12">
-          <ExpedienteCard variant="default">
-            <div className="bg-verde-aprobado/10 border-l-4 border-verde-aprobado p-6 rounded-r-lg">
-              <h2 className="font-bold typewriter mb-4 text-tinta-oficial text-xl">🎯 OBJETIVOS DE APRENDIZAJE</h2>
-              <ul className="space-y-3">
-                {curso.objetivos.map((objetivo, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-tinta-suave">
-                    <span className="text-verde-aprobado text-xl mt-0.5 flex-shrink-0">✓</span>
-                    <span className="leading-relaxed">{objetivo}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </ExpedienteCard>
-        </section>
-
-        {/* Acciones */}
-        <section className="mb-12">
-          <ExpedienteCard variant="default">
-            <div className="text-center py-6">
-              <p className="text-tinta-oficial mb-6 text-lg">
-                ¿Listo para comenzar tu formación como activista digital?
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/academia/nivel-1">
-                  <SelloAccion
-                    variant="stamp"
-                    size="lg"
-                    className="bg-sello-rojo text-white border-2 border-sello-rojo"
+                  <Card
+                    variant={isCurrent ? 'elevated' : 'outlined'}
+                    hoverable={!isLocked}
+                    className={`${
+                      isCurrent ? 'border-ocean-500 shadow-lg' : ''
+                    } ${
+                      isCompleted ? 'bg-gradient-to-r from-matcha-50 to-cloud border-matcha-200' : ''
+                    } ${
+                      isLocked ? 'opacity-60' : ''
+                    }`}
                   >
-                    🎓 {progress.started ? 'CONTINUAR CURSO' : 'COMENZAR NIVEL 1'}
-                  </SelloAccion>
+                    <CardHeader>
+                      <div className="flex items-start gap-6">
+                        {/* Número del módulo */}
+                        <div className="flex flex-col items-center gap-2">
+                          <div
+                            className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-display font-bold border-4 ${
+                              isCurrent
+                                ? 'bg-ocean-500 text-white border-ocean-600 shadow-lg'
+                                : isCompleted
+                                ? 'bg-matcha-500 text-white border-matcha-600'
+                                : 'bg-cloud text-charcoal border-mist'
+                            }`}
+                          >
+                            {isCompleted ? '✓' : idx + 1}
+                          </div>
+                          {isCurrent && (
+                            <Badge color="ocean" variant="solid" size="sm">
+                              En curso
+                            </Badge>
+                          )}
+                          {isCompleted && (
+                            <Badge color="matcha" variant="solid" size="sm">
+                              Completado
+                            </Badge>
+                          )}
+                          {isLocked && (
+                            <Badge color="indigo" variant="soft" size="sm">
+                              Bloqueado
+                            </Badge>
+                          )}
+                        </div>
+
+                        {/* Contenido del módulo */}
+                        <div className="flex-1">
+                          <CardTitle className="mb-2">{modulo.titulo}</CardTitle>
+                          <CardDescription className="mb-4">
+                            {modulo.descripcion}
+                          </CardDescription>
+
+                          {/* Metadata */}
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            <Badge color="ocean" variant="soft" size="sm">
+                              ⏱️ {modulo.duracion} min
+                            </Badge>
+                            <Badge color="matcha" variant="soft" size="sm">
+                              📄 {modulo.contenido.length} temas
+                            </Badge>
+                            {modulo.ejercicios && (
+                              <Badge color="sakura" variant="soft" size="sm">
+                                ✍️ {modulo.ejercicios.length} ejercicios
+                              </Badge>
+                            )}
+                            {modulo.recursos && (
+                              <Badge color="lavender" variant="soft" size="sm">
+                                🔗 {modulo.recursos.length} recursos
+                              </Badge>
+                            )}
+                          </div>
+
+                          {/* Temas del módulo */}
+                          <div className="bg-gradient-to-r from-washi to-cloud rounded-xl p-4 border border-mist">
+                            <Body className="text-sm font-display font-bold text-charcoal mb-3">
+                              Temas cubiertos:
+                            </Body>
+                            <ul className="space-y-2">
+                              {modulo.contenido.slice(0, 5).map((contenido, contIdx) => (
+                                <li key={contIdx} className="flex items-start gap-2">
+                                  <span className="text-ocean-500 mt-1 text-xs flex-shrink-0">▶</span>
+                                  <Body color="secondary" className="text-sm flex-1">
+                                    {contenido.titulo || 'Contenido educativo'}
+                                  </Body>
+                                </li>
+                              ))}
+                              {modulo.contenido.length > 5 && (
+                                <li className="pl-4">
+                                  <Body color="tertiary" className="text-xs italic">
+                                    + {modulo.contenido.length - 5} temas más...
+                                  </Body>
+                                </li>
+                              )}
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </CardHeader>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Objetivos de Aprendizaje */}
+      <section className="py-16 bg-gradient-to-br from-matcha-50 via-cloud to-washi">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Card variant="elevated" padding="xl">
+              <div className="text-center mb-8">
+                <Badge color="matcha" variant="solid" size="lg" className="mb-4">
+                  🎯 Objetivos
+                </Badge>
+                <H2>Objetivos de Aprendizaje</H2>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4">
+                {curso.objetivos.map((objetivo, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex items-start gap-3 bg-gradient-to-r from-washi to-cloud rounded-xl p-4 border border-mist"
+                  >
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-matcha-500 to-bamboo flex items-center justify-center text-white font-display font-bold text-sm">
+                      ✓
+                    </div>
+                    <Body className="flex-1">{objetivo}</Body>
+                  </motion.div>
+                ))}
+              </div>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 bg-gradient-to-br from-ocean-100 via-sakura-100 to-matcha-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            <Card variant="glass" padding="xl" className="text-center">
+              <H2 className="mb-4">
+                {progress.started ? '¿Listo para continuar?' : '¿Listo para comenzar?'}
+              </H2>
+              <Body className="text-lg mb-8">
+                {progress.started
+                  ? 'Continúa tu formación como activista digital'
+                  : 'Inicia tu formación como activista digital'}
+              </Body>
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Link href="/academia/nivel-1">
+                  <Button color="ocean" size="xl">
+                    {progress.started ? '🎓 Continuar Curso' : '🚀 Comenzar Nivel 1'}
+                  </Button>
                 </Link>
                 <Link href="/academia">
-                  <SelloAccion
-                    variant="secondary"
-                    size="lg"
-                    className="bg-papel-sombra text-tinta-oficial border-2 border-papel-border"
-                  >
-                    ← VOLVER A ACADEMIA
-                  </SelloAccion>
+                  <Button variant="outline" color="matcha" size="xl">
+                    ← Volver a Academia
+                  </Button>
                 </Link>
               </div>
-            </div>
-          </ExpedienteCard>
-        </section>
-      </main>
+            </Card>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
-import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
+import { Hero, H2, H3, Card, Button, Badge, Body } from '@/shared/ui';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -106,116 +107,151 @@ export default function PhishingDetectorPage() {
 
   if (completado) {
     const porcentaje = Math.round((puntuacion / correosPrueba.length) * 100);
-    
+
     return (
-      <div className="min-h-screen p-4 md:p-8">
-        <header className="max-w-7xl mx-auto mb-12">
-          <Link href="/herramientas" className="flex items-center gap-4">
-            <Stamp>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              / DETECTOR DE PHISHING / RESULTADOS
-            </span>
-          </Link>
-        </header>
+      <div className="min-h-screen bg-gradient-to-br from-cloud via-washi to-ocean-50">
+        <div className="max-w-5xl mx-auto px-4 py-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-8"
+          >
+            <Link href="/herramientas" className="inline-flex items-center gap-2 text-ink-700 hover:text-ocean-600 transition-colors">
+              <span className="text-2xl">←</span>
+              <Body size="sm">Volver a Herramientas</Body>
+            </Link>
+          </motion.div>
 
-        <main className="max-w-4xl mx-auto">
-          <ExpedienteCard variant="default">
-            <div className="text-center">
-              <div className="text-8xl mb-6">
-                {porcentaje >= 80 ? '🏆' : porcentaje >= 60 ? '👍' : '⚠️'}
-              </div>
-              <h1 className="text-3xl font-bold typewriter mb-4">
-                SIMULACIÓN COMPLETADA
-              </h1>
-              
-              <div className="text-6xl font-bold text-red-700 mb-2">
-                {puntuacion}/{correosPrueba.length}
-              </div>
-              <p className="text-xl mb-6">
-                Precisión: {porcentaje}%
-              </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            <Card variant="elevated">
+              <div className="text-center">
+                <div className="text-8xl mb-6">
+                  {porcentaje >= 80 ? '🏆' : porcentaje >= 60 ? '👍' : '⚠️'}
+                </div>
+                <H2 className="mb-4">Simulación Completada</H2>
 
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8 text-left">
-                <h3 className="font-bold text-blue-800 mb-4">EVALUACIÓN:</h3>
-                {porcentaje >= 80 ? (
-                  <div className="text-green-700">
-                    <p className="font-bold">¡Excelente! 🎉</p>
-                    <p>Tienes muy buen ojo para detectar phishing. Mantén esta vigilancia siempre activa.</p>
-                  </div>
-                ) : porcentaje >= 60 ? (
-                  <div className="text-orange-700">
-                    <p className="font-bold">Bien, pero puedes mejorar 📚</p>
-                    <p>Considera repasar las técnicas de phishing más comunes y practica regularmente.</p>
-                  </div>
-                ) : (
-                  <div className="text-red-700">
-                    <p className="font-bold">Necesitas más práctica ⚠️</p>
-                    <p>Te recomendamos tomar el curso completo en nuestra Academia y practicar más.</p>
-                  </div>
-                )}
-              </div>
+                <div className="text-6xl font-bold text-ocean-600 mb-2">
+                  {puntuacion}/{correosPrueba.length}
+                </div>
+                <Body size="lg" className="mb-6">
+                  Precisión: {porcentaje}%
+                </Body>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <SelloAccion onClick={() => window.location.reload()} size="lg">
-                  PRACTICAR DE NUEVO
-                </SelloAccion>
-                <Link href="/academia">
-                  <SelloAccion variant="secondary" size="lg">
-                    IR A LA ACADEMIA
-                  </SelloAccion>
-                </Link>
+                <Card variant="glass" className="mb-8 text-left bg-ocean-50/50">
+                  <H3 className="mb-4 text-ocean-800">Evaluación</H3>
+                  {porcentaje >= 80 ? (
+                    <div>
+                      <Body className="font-bold text-matcha-700 mb-2">¡Excelente! 🎉</Body>
+                      <Body className="text-ink-600">Tienes muy buen ojo para detectar phishing. Mantén esta vigilancia siempre activa.</Body>
+                    </div>
+                  ) : porcentaje >= 60 ? (
+                    <div>
+                      <Body className="font-bold text-gold-700 mb-2">Bien, pero puedes mejorar 📚</Body>
+                      <Body className="text-ink-600">Considera repasar las técnicas de phishing más comunes y practica regularmente.</Body>
+                    </div>
+                  ) : (
+                    <div>
+                      <Body className="font-bold text-persimmon-700 mb-2">Necesitas más práctica ⚠️</Body>
+                      <Body className="text-ink-600">Te recomendamos tomar el curso completo en nuestra Academia y practicar más.</Body>
+                    </div>
+                  )}
+                </Card>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button onClick={() => window.location.reload()} color="ocean" size="lg">
+                    Practicar de Nuevo
+                  </Button>
+                  <Link href="/academia">
+                    <Button variant="outline" color="ocean" size="lg">
+                      Ir a la Academia
+                    </Button>
+                  </Link>
+                </div>
               </div>
-            </div>
-          </ExpedienteCard>
-        </main>
+            </Card>
+          </motion.div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <Link href="/herramientas" className="flex items-center gap-4">
-          <Stamp>ANTIMANUAL</Stamp>
-          <span className="typewriter text-sm text-gray-600">
-            / DETECTOR DE PHISHING
-          </span>
-        </Link>
-      </header>
+    <div className="min-h-screen bg-gradient-to-br from-cloud via-washi to-ocean-50">
+      <div className="max-w-5xl mx-auto px-4 py-12">
+        {/* Header with back link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
+          <Link href="/herramientas" className="inline-flex items-center gap-2 text-ink-700 hover:text-ocean-600 transition-colors">
+            <span className="text-2xl">←</span>
+            <Body size="sm">Volver a Herramientas</Body>
+          </Link>
+        </motion.div>
 
-      <main className="max-w-4xl mx-auto">
-        <section className="mb-8">
-          <ExpedienteCard>
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="mb-12"
+        >
+          <Hero
+            variant="minimal"
+            size="md"
+            title="🎯 Detector de Phishing"
+            description="Aprende a identificar correos fraudulentos con este simulador interactivo"
+            badge={
+              <Badge color="ocean" variant="soft" size="lg">
+                Seguridad Digital
+              </Badge>
+            }
+          />
+        </motion.div>
+
+        {/* Progress Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mb-8"
+        >
+          <Card variant="outlined">
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-2xl font-bold typewriter">
-                🎯 SIMULADOR DE PHISHING
-              </h1>
-              <div className="text-right">
-                <div className="text-sm text-gray-600">
+              <div>
+                <Body size="sm" className="text-ink-600">
                   Correo {correoActual + 1} de {correosPrueba.length}
-                </div>
-                <div className="text-sm text-gray-600">
-                  Puntuación: {puntuacion}/{correoActual}
-                </div>
+                </Body>
+                <Body size="sm" className="text-ink-600">
+                  Puntuación: {puntuacion}/{correoActual === 0 && puntuacion === 0 ? 0 : correoActual}
+                </Body>
               </div>
+              <Badge color="ocean">{Math.round(((correoActual + 1) / correosPrueba.length) * 100)}% Completado</Badge>
             </div>
-            
-            <div className="w-full bg-gray-200 rounded-full h-2 mb-6">
-              <div 
-                className="sello-peligro h-2 rounded-full transition-all duration-300"
+
+            <div className="w-full bg-washi rounded-full h-3">
+              <div
+                className="bg-ocean-500 h-3 rounded-full transition-all duration-300"
                 style={{ width: `${((correoActual + 1) / correosPrueba.length) * 100}%` }}
               ></div>
             </div>
+          </Card>
+        </motion.div>
 
-            <p className="text-gray-600 mb-4">
-              Analiza el siguiente correo electrónico y determina si es legítimo o phishing:
-            </p>
-          </ExpedienteCard>
-        </section>
-
-        <section className="mb-8">
-          <ExpedienteCard variant="default" className="font-mono text-sm">
-            <div className="border-b border-gray-300 pb-4 mb-4">
+        {/* Email Display */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mb-8"
+        >
+          <Card variant="glass" className="font-mono text-sm">
+            <div className="border-b border-ink-200 pb-4 mb-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <strong>De:</strong> {correo.remitente}
@@ -228,79 +264,85 @@ export default function PhishingDetectorPage() {
                 <strong>Asunto:</strong> {correo.asunto}
               </div>
             </div>
-            
-            <div className="whitespace-pre-line">
+
+            <div className="whitespace-pre-line text-ink-700">
               {correo.contenido}
             </div>
-          </ExpedienteCard>
-        </section>
+          </Card>
+        </motion.div>
 
+        {/* Quiz or Result Section */}
         {!mostrarResultado ? (
-          <section>
-            <ExpedienteCard>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <Card variant="elevated">
               <div className="text-center">
-                <h3 className="text-xl font-bold mb-6 typewriter">
-                  ¿QUÉ TIPO DE CORREO ES?
-                </h3>
-                
+                <H3 className="mb-6">¿Qué tipo de correo es?</H3>
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <SelloAccion 
+                  <Button
                     onClick={() => responder('legitimo')}
-                    variant="primary" 
+                    color="matcha"
                     size="lg"
-                    className="bg-green-600 hover:bg-green-700"
                   >
-                    ✅ LEGÍTIMO
-                  </SelloAccion>
-                  <SelloAccion 
+                    ✅ Legítimo
+                  </Button>
+                  <Button
                     onClick={() => responder('phishing')}
+                    color="persimmon"
                     size="lg"
-                    className="sello-peligro hover:sello-peligro"
                   >
-                    🚨 PHISHING
-                  </SelloAccion>
+                    🚨 Phishing
+                  </Button>
                 </div>
               </div>
-            </ExpedienteCard>
-          </section>
+            </Card>
+          </motion.div>
         ) : (
-          <section>
-            <ExpedienteCard className={`border-2 ${
-              respuesta === correo.tipo ? 'border-green-500' : 'border-red-500'
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.1 }}
+          >
+            <Card variant="elevated" className={`border-2 ${
+              respuesta === correo.tipo ? 'border-matcha-500' : 'border-persimmon-500'
             }`}>
               <div className="text-center mb-6">
                 <div className="text-6xl mb-4">
                   {respuesta === correo.tipo ? '✅' : '❌'}
                 </div>
-                <h3 className="text-2xl font-bold typewriter mb-2">
-                  {respuesta === correo.tipo ? '¡CORRECTO!' : 'INCORRECTO'}
-                </h3>
-                <p className="text-lg">
+                <H2 className="mb-2">
+                  {respuesta === correo.tipo ? '¡Correcto!' : 'Incorrecto'}
+                </H2>
+                <Body size="lg">
                   Este correo es <strong>{correo.tipo === 'phishing' ? 'PHISHING' : 'LEGÍTIMO'}</strong>
-                </p>
+                </Body>
               </div>
 
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-6 mb-6 text-left">
-                <h4 className="font-bold text-blue-800 mb-3">PISTAS CLAVE:</h4>
+              <Card variant="glass" className="mb-6 text-left bg-ocean-50/50">
+                <H3 className="mb-3 text-ocean-800">Pistas Clave</H3>
                 <ul className="space-y-2">
                   {correo.pistas.map((pista, index) => (
                     <li key={index} className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1">•</span>
-                      <span>{pista}</span>
+                      <span className="text-ocean-600 mt-1">•</span>
+                      <Body size="sm">{pista}</Body>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Card>
 
               <div className="text-center">
-                <SelloAccion onClick={siguienteCorreo} size="lg">
-                  {correoActual < correosPrueba.length - 1 ? 'SIGUIENTE CORREO' : 'VER RESULTADOS'}
-                </SelloAccion>
+                <Button onClick={siguienteCorreo} color="ocean" size="lg">
+                  {correoActual < correosPrueba.length - 1 ? 'Siguiente Correo' : 'Ver Resultados'}
+                </Button>
               </div>
-            </ExpedienteCard>
-          </section>
+            </Card>
+          </motion.div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

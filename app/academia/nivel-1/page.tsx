@@ -1,9 +1,19 @@
+/**
+ * Nivel 1 Page - Playful Harmony Design
+ * Curso interactivo con certificado - Activista Digital Básico
+ */
+
 'use client';
 
 import { useState, useEffect } from 'react';
-import { SelloAccion, ExpedienteCard, Stamp } from '@/shared/ui';
-import { CertificadoGenerator } from '@/shared/ui/CertificadoGenerator';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Hero } from '@/shared/ui';
+import { H2, H3, Body } from '@/shared/ui';
+import { Card, CardHeader, CardTitle, CardContent } from '@/shared/ui';
+import { Button } from '@/shared/ui';
+import { Badge } from '@/shared/ui';
+import { CertificadoGenerator } from '@/shared/ui/CertificadoGenerator';
 import { cursoNivel1 } from '@/shared/data/cursos';
 import { useCourseProgress } from '@/shared/hooks/useLocalStorage';
 
@@ -65,7 +75,7 @@ export default function Nivel1Page() {
 
   const completarModulo = () => {
     markModuleComplete(modulo.id);
-    
+
     if (moduloActual < curso.modulos.length - 1) {
       setModuloActual(moduloActual + 1);
       setContenidoActual(0);
@@ -90,37 +100,37 @@ export default function Nivel1Page() {
     // Función para procesar texto con markdown mejorado
     const procesarTexto = (texto: string) => {
       return texto
-        .split('\n\n') // Primero separar por bloques
+        .split('\n\n')
         .map(bloque => {
           bloque = bloque.trim();
           if (!bloque) return '';
 
-          // Detectar citas (comienzan con comillas)
+          // Detectar citas
           if (bloque.match(/^[""]/) || (bloque.match(/^\*\*[""]/) && bloque.length < 200)) {
             const cita = bloque.replace(/^\*\*[""]/, '"').replace(/[""]?\*\*$/, '"').replace(/^[""]/, '').replace(/[""]$/, '');
-            return `<blockquote class="border-l-4 border-azul-info bg-azul-info/5 pl-6 pr-4 py-4 my-6 italic text-tinta-oficial text-lg">
+            return `<blockquote class="border-l-4 border-ocean-500 bg-ocean-50 pl-6 pr-4 py-4 my-6 italic text-charcoal text-lg rounded-r-xl">
               "${cita}"
             </blockquote>`;
           }
 
-          // Detectar títulos (comienza con ** y termina con : o **)
+          // Detectar títulos
           if (bloque.match(/^\*\*[^*]+(\*\*:|\*\*$)/) && bloque.length < 100) {
             const titulo = bloque.replace(/^\*\*/, '').replace(/\*\*:?$/, '').trim();
-            return `<h3 class="text-xl font-bold typewriter text-sello-rojo mt-8 mb-4 border-l-4 border-sello-rojo pl-4 py-1">${titulo}</h3>`;
+            return `<h3 class="text-xl font-display font-bold text-ocean-500 mt-8 mb-4 border-l-4 border-ocean-500 pl-4 py-1">${titulo}</h3>`;
           }
 
-          // Detectar listas (líneas que empiezan con - o •)
+          // Detectar listas
           if (bloque.match(/^[-•]/m)) {
             const items = bloque.split('\n')
               .filter(item => item.trim())
               .map(item => {
                 const contenido = item.replace(/^[-•]\s*/, '').trim();
                 const procesado = contenido
-                  .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-tinta-oficial">$1</strong>')
+                  .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-sumi">$1</strong>')
                   .replace(/\*(.*?)\*/g, '<em class="italic">$1</em>');
                 return `<li class="flex items-start gap-3 mb-3">
-                  <span class="text-sello-rojo font-bold text-lg mt-0.5 flex-shrink-0">•</span>
-                  <span class="text-tinta-oficial leading-relaxed flex-1">${procesado}</span>
+                  <span class="text-ocean-500 font-bold text-lg mt-0.5 flex-shrink-0">•</span>
+                  <span class="text-charcoal leading-relaxed flex-1">${procesado}</span>
                 </li>`;
               })
               .join('');
@@ -129,13 +139,13 @@ export default function Nivel1Page() {
 
           // Procesar párrafos normales
           const procesado = bloque
-            .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-sello-rojo">$1</strong>') // Negritas importantes
-            .replace(/\*(.*?)\*/g, '<em class="italic text-tinta-suave">$1</em>') // Cursivas
-            .replace(/\n/g, '<br/>'); // Saltos de línea simples
+            .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-ocean-500">$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em class="italic text-charcoal">$1</em>')
+            .replace(/\n/g, '<br/>');
 
-          return `<p class="mb-5 leading-relaxed text-tinta-oficial text-base">${procesado}</p>`;
+          return `<p class="mb-5 leading-relaxed text-charcoal text-base">${procesado}</p>`;
         })
-        .filter(item => item) // Eliminar strings vacíos
+        .filter(item => item)
         .join('');
     };
 
@@ -144,9 +154,9 @@ export default function Nivel1Page() {
         return (
           <div className="prose prose-lg max-w-none">
             {contenido.titulo && (
-              <h2 className="text-2xl font-bold mb-6 typewriter text-sello-rojo border-b-2 border-papel-border pb-3">
+              <H2 className="mb-6 pb-3 border-b-2 border-mist">
                 {contenido.titulo}
-              </h2>
+              </H2>
             )}
             <div
               className="text-base"
@@ -157,13 +167,13 @@ export default function Nivel1Page() {
 
       case 'alerta':
         return (
-          <div className="bg-gradient-to-r from-red-50 to-red-100/30 border-l-4 border-sello-rojo p-6 my-6 rounded-r-lg shadow-sm">
+          <div className="bg-gradient-to-r from-persimmon-50 to-sunset-50 border-l-4 border-persimmon p-6 my-6 rounded-r-xl shadow-sm">
             <div className="flex items-start gap-4">
               <div className="text-3xl flex-shrink-0">⚠️</div>
               <div className="flex-1">
-                <p className="font-bold text-sello-rojo mb-3 text-lg typewriter">IMPORTANTE:</p>
+                <H3 className="text-lg mb-3 text-persimmon">IMPORTANTE:</H3>
                 <div
-                  className="text-tinta-oficial leading-relaxed"
+                  className="text-charcoal leading-relaxed"
                   dangerouslySetInnerHTML={{ __html: procesarTexto(contenido.contenido) }}
                 />
               </div>
@@ -175,12 +185,12 @@ export default function Nivel1Page() {
         return (
           <div className="my-6">
             {contenido.titulo && (
-              <h3 className="text-xl font-bold mb-4 typewriter text-tinta-oficial border-l-4 border-sello-rojo pl-4">{contenido.titulo}</h3>
+              <H3 className="mb-4 border-l-4 border-ocean-500 pl-4">{contenido.titulo}</H3>
             )}
             <ul className="space-y-3">
               {contenido.contenido.split('\n').filter((item: string) => item.trim()).map((item: string, idx: number) => (
-                <li key={idx} className="flex items-start gap-3 text-tinta-oficial leading-relaxed">
-                  <span className="text-sello-rojo font-bold text-lg mt-0.5 flex-shrink-0">•</span>
+                <li key={idx} className="flex items-start gap-3 text-charcoal leading-relaxed">
+                  <span className="text-ocean-500 font-bold text-lg mt-0.5 flex-shrink-0">•</span>
                   <span dangerouslySetInnerHTML={{ __html: procesarTexto(item.replace(/^[•\-]\s*/, '')) }} />
                 </li>
               ))}
@@ -192,16 +202,16 @@ export default function Nivel1Page() {
         return (
           <div className="my-6">
             {contenido.titulo && (
-              <h3 className="text-xl font-bold mb-4 typewriter text-tinta-oficial border-l-4 border-azul-info pl-4">{contenido.titulo}</h3>
+              <H3 className="mb-4 border-l-4 border-matcha-500 pl-4">{contenido.titulo}</H3>
             )}
-            <div className="bg-papel-base border-2 border-papel-border rounded-lg p-5 font-mono text-sm overflow-x-auto shadow-sm">
-              <pre className="whitespace-pre-wrap text-tinta-oficial leading-relaxed">{contenido.contenido}</pre>
+            <div className="bg-washi border-2 border-mist rounded-xl p-5 font-mono text-sm overflow-x-auto shadow-sm">
+              <pre className="whitespace-pre-wrap text-sumi leading-relaxed">{contenido.contenido}</pre>
             </div>
           </div>
         );
 
       default:
-        return <p className="text-gray-700">{contenido.contenido}</p>;
+        return <Body color="secondary">{contenido.contenido}</Body>;
     }
   };
 
@@ -214,36 +224,38 @@ export default function Nivel1Page() {
       case 'quiz':
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-bold typewriter mb-4">📝 PREGUNTA DE REVISIÓN</h3>
-            <p className="text-lg font-medium">{ejercicio.pregunta}</p>
-            
+            <H3 className="text-xl">📝 Pregunta de Revisión</H3>
+            <Body className="text-lg">{ejercicio.pregunta}</Body>
+
             <div className="space-y-3">
               {ejercicio.opciones?.map((opcion, index) => (
                 <button
                   key={index}
                   onClick={() => responderEjercicio(index)}
-                  className={`w-full text-left p-4 border rounded-lg transition-colors ${
-                    respuestaUsuario === index 
-                      ? 'bg-blue-100 border-blue-500' 
-                      : 'hover:bg-gray-50 border-gray-300'
+                  className={`w-full text-left p-4 border-2 rounded-xl transition-all ${
+                    respuestaUsuario === index
+                      ? 'bg-ocean-50 border-ocean-500 shadow-md'
+                      : 'hover:bg-cloud border-mist hover:border-ocean-300'
                   }`}
                 >
-                  <span className="font-bold mr-2">{String.fromCharCode(65 + index)}.</span>
-                  {opcion}
+                  <Body>
+                    <span className="font-bold mr-2">{String.fromCharCode(65 + index)}.</span>
+                    {opcion}
+                  </Body>
                 </button>
               ))}
             </div>
 
             {respuestaUsuario !== undefined && (
-              <div className={`p-4 rounded-lg border-l-4 ${
+              <div className={`p-4 rounded-xl border-l-4 ${
                 respuestaUsuario === ejercicio.respuestaCorrecta
-                  ? 'bg-green-50 border-green-500'
-                  : 'bg-red-50 border-red-500'
+                  ? 'bg-matcha-50 border-matcha-500'
+                  : 'bg-persimmon-50 border-persimmon'
               }`}>
-                <p className="font-bold mb-2">
+                <Body className="font-bold mb-2">
                   {respuestaUsuario === ejercicio.respuestaCorrecta ? '✅ ¡Correcto!' : '❌ Incorrecto'}
-                </p>
-                <p className="text-sm">{ejercicio.explicacion}</p>
+                </Body>
+                <Body color="secondary" className="text-sm">{ejercicio.explicacion}</Body>
               </div>
             )}
           </div>
@@ -252,18 +264,18 @@ export default function Nivel1Page() {
       case 'practica':
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-bold typewriter mb-4">🛠️ EJERCICIO PRÁCTICO</h3>
-            <p className="text-lg font-medium">{ejercicio.pregunta}</p>
-            
+            <H3 className="text-xl">🛠️ Ejercicio Práctico</H3>
+            <Body className="text-lg">{ejercicio.pregunta}</Body>
+
             <textarea
-              className="w-full h-32 p-4 border rounded-lg"
+              className="w-full h-32 p-4 border-2 border-mist rounded-xl focus:border-ocean-500 focus:ring-2 focus:ring-ocean-200 transition-all"
               placeholder="Escribe tu respuesta aquí..."
               onChange={(e) => responderEjercicio(e.target.value)}
             />
 
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-4">
-              <p className="font-bold text-blue-800 mb-2">💡 Sugerencia:</p>
-              <p className="text-blue-700 text-sm">{ejercicio.explicacion}</p>
+            <div className="bg-ocean-50 border-l-4 border-ocean-500 p-4 rounded-r-xl">
+              <Body className="font-bold text-ocean-700 mb-2">💡 Sugerencia:</Body>
+              <Body color="secondary" className="text-sm">{ejercicio.explicacion}</Body>
             </div>
           </div>
         );
@@ -271,18 +283,18 @@ export default function Nivel1Page() {
       case 'reflexion':
         return (
           <div className="space-y-6">
-            <h3 className="text-xl font-bold typewriter mb-4">🤔 REFLEXIÓN</h3>
-            <p className="text-lg font-medium">{ejercicio.pregunta}</p>
-            
+            <H3 className="text-xl">🤔 Reflexión</H3>
+            <Body className="text-lg">{ejercicio.pregunta}</Body>
+
             <textarea
-              className="w-full h-40 p-4 border rounded-lg"
+              className="w-full h-40 p-4 border-2 border-mist rounded-xl focus:border-matcha-500 focus:ring-2 focus:ring-matcha-200 transition-all"
               placeholder="Comparte tu reflexión..."
               onChange={(e) => responderEjercicio(e.target.value)}
             />
 
-            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4">
-              <p className="font-bold text-yellow-800 mb-2">📝 Guía de reflexión:</p>
-              <p className="text-yellow-700 text-sm">{ejercicio.explicacion}</p>
+            <div className="bg-gold-50 border-l-4 border-gold p-4 rounded-r-xl">
+              <Body className="font-bold text-gold mb-2">📝 Guía de reflexión:</Body>
+              <Body color="secondary" className="text-sm">{ejercicio.explicacion}</Body>
             </div>
           </div>
         );
@@ -291,79 +303,111 @@ export default function Nivel1Page() {
 
   if (progress.completed) {
     return (
-      <div className="min-h-screen p-4 md:p-8">
-        <header className="max-w-7xl mx-auto mb-12">
-          <Link href="/academia" className="flex items-center gap-4">
-            <Stamp>ANTIMANUAL</Stamp>
-            <span className="typewriter text-sm text-gray-600">
-              / ACADEMIA / NIVEL 1 / COMPLETADO
-            </span>
-          </Link>
-        </header>
+      <div className="min-h-screen">
+        {/* Hero de Completado */}
+        <Hero
+          variant="gradient"
+          size="md"
+          title="¡Curso Completado!"
+          description="Has completado exitosamente el Nivel 1: Activista Digital Básico"
+          badge={
+            <Badge color="matcha" variant="solid" size="lg">
+              🎓 Certificado Disponible
+            </Badge>
+          }
+        />
 
-        <main className="max-w-4xl mx-auto">
-          <ExpedienteCard variant="default">
-            <div className="text-center">
-              <div className="text-8xl mb-6">🎓</div>
-              <h1 className="text-3xl font-bold typewriter mb-4">
-                ¡CURSO COMPLETADO!
-              </h1>
-              <p className="text-xl text-red-700 font-bold mb-6">
-                Activista Digital Básico - Nivel 1
-              </p>
+        {/* Navegación */}
+        <section className="py-6 bg-white border-b border-mist">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Link href="/academia">
+              <Button variant="ghost" color="ocean" size="sm">
+                ← Volver a Academia
+              </Button>
+            </Link>
+          </div>
+        </section>
 
-              <div className="bg-green-50 border-l-4 border-green-500 p-6 mb-8 text-left">
-                <h3 className="font-bold text-green-800 mb-4">🏆 LOGROS DESBLOQUEADOS:</h3>
-                <ul className="space-y-2 text-green-700">
-                  <li>✅ Conocimiento básico de derechos digitales</li>
-                  <li>✅ Herramientas fundamentales de seguridad</li>
-                  <li>✅ Red de organizaciones de apoyo</li>
-                  <li>✅ Fundamentos de autodefensa digital</li>
-                </ul>
-              </div>
+        {/* Contenido de completado */}
+        <section className="py-16 bg-gradient-to-br from-matcha-50 via-cloud to-washi">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+            >
+              <Card variant="elevated" padding="xl" className="text-center">
+                <div className="text-8xl mb-6">🎓</div>
+                <H2 className="mb-4">¡Felicitaciones!</H2>
+                <Body className="text-xl mb-8">
+                  Has completado el {curso.titulo}
+                </Body>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">⏱️</div>
-                  <p className="font-bold">Tiempo invertido</p>
-                  <p className="text-gray-600">{Math.round(progress.timeSpent)} minutos</p>
+                <div className="bg-gradient-to-r from-matcha-50 to-cloud rounded-2xl p-6 border border-matcha-100 mb-8">
+                  <H3 className="mb-4">🏆 Logros Desbloqueados</H3>
+                  <ul className="space-y-2 text-left max-w-md mx-auto">
+                    <li className="flex items-start gap-2">
+                      <span className="text-matcha-500">✅</span>
+                      <Body color="secondary">Conocimiento básico de derechos digitales</Body>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-matcha-500">✅</span>
+                      <Body color="secondary">Herramientas fundamentales de seguridad</Body>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-matcha-500">✅</span>
+                      <Body color="secondary">Red de organizaciones de apoyo</Body>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-matcha-500">✅</span>
+                      <Body color="secondary">Fundamentos de autodefensa digital</Body>
+                    </li>
+                  </ul>
                 </div>
-                <div className="text-center">
-                  <div className="text-4xl mb-2">📚</div>
-                  <p className="font-bold">Módulos completados</p>
-                  <p className="text-gray-600">{progress.completedModules.length}/{curso.modulos.length}</p>
-                </div>
-              </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <SelloAccion size="lg" onClick={() => setMostrarCertificado(true)}>
-                  📜 DESCARGAR CERTIFICADO
-                </SelloAccion>
-                <Link href="/herramientas">
-                  <SelloAccion variant="secondary" size="lg">
-                    🛠️ PRACTICAR HERRAMIENTAS
-                  </SelloAccion>
-                </Link>
-                <SelloAccion
-                  variant="secondary"
-                  size="lg"
-                  onClick={() => {
-                    if (confirm('¿Estás seguro de que quieres reiniciar el curso? Perderás todo tu progreso actual.')) {
-                      resetCourse();
-                      setModuloActual(0);
-                      setContenidoActual(0);
-                      setMostrarEjercicios(false);
-                      setEjercicioActual(0);
-                    }
-                  }}
-                >
-                  🔄 REINICIAR CURSO
-                </SelloAccion>
-              </div>
-            </div>
-          </ExpedienteCard>
-        </main>
-        
+                <div className="grid md:grid-cols-2 gap-6 mb-8">
+                  <div className="text-center bg-gradient-to-br from-ocean-50 to-cloud rounded-xl p-6 border border-ocean-100">
+                    <div className="text-4xl mb-2">⏱️</div>
+                    <Body className="font-bold mb-1">Tiempo invertido</Body>
+                    <Body color="secondary">{Math.round(progress.timeSpent)} minutos</Body>
+                  </div>
+                  <div className="text-center bg-gradient-to-br from-sakura-50 to-cloud rounded-xl p-6 border border-sakura-100">
+                    <div className="text-4xl mb-2">📚</div>
+                    <Body className="font-bold mb-1">Módulos completados</Body>
+                    <Body color="secondary">{progress.completedModules.length}/{curso.modulos.length}</Body>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <Button color="matcha" size="lg" onClick={() => setMostrarCertificado(true)}>
+                    📜 Descargar Certificado
+                  </Button>
+                  <Link href="/herramientas">
+                    <Button variant="outline" color="ocean" size="lg">
+                      🛠️ Practicar Herramientas
+                    </Button>
+                  </Link>
+                  <Button
+                    variant="outline"
+                    color="lavender"
+                    size="lg"
+                    onClick={() => {
+                      if (confirm('¿Estás seguro de que quieres reiniciar el curso? Perderás todo tu progreso actual.')) {
+                        resetCourse();
+                        setModuloActual(0);
+                        setContenidoActual(0);
+                        setMostrarEjercicios(false);
+                        setEjercicioActual(0);
+                      }
+                    }}
+                  >
+                    🔄 Reiniciar Curso
+                  </Button>
+                </div>
+              </Card>
+            </motion.div>
+          </div>
+        </section>
+
         {mostrarCertificado && (
           <CertificadoGenerator
             nombreUsuario={`Activista Digital`}
@@ -378,140 +422,159 @@ export default function Nivel1Page() {
   }
 
   return (
-    <div className="min-h-screen p-4 md:p-8">
-      <header className="max-w-7xl mx-auto mb-12">
-        <Link href="/academia" className="flex items-center gap-4">
-          <Stamp>ANTIMANUAL</Stamp>
-          <span className="typewriter text-sm text-gray-600">
-            / ACADEMIA / NIVEL 1 / {modulo?.titulo.toUpperCase()}
-          </span>
-        </Link>
-      </header>
+    <div className="min-h-screen">
+      {/* Navegación */}
+      <section className="py-6 bg-white border-b border-mist">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between">
+            <Link href="/academia">
+              <Button variant="ghost" color="ocean" size="sm">
+                ← Volver a Academia
+              </Button>
+            </Link>
+            <Badge color="ocean" variant="soft">
+              {modulo?.titulo?.toUpperCase()}
+            </Badge>
+          </div>
+        </div>
+      </section>
 
-      <main className="max-w-4xl mx-auto">
-        {/* Barra de progreso */}
-        <section className="mb-8">
-          <ExpedienteCard>
+      {/* Barra de progreso */}
+      <section className="py-8 bg-gradient-to-br from-cloud to-washi">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card variant="outlined" padding="lg">
             <div className="flex justify-between items-center mb-4">
-              <h1 className="text-2xl font-bold typewriter">
-                {curso.titulo}
-              </h1>
-              <div className="text-right text-sm">
-                <div>Módulo {moduloActual + 1} de {curso.modulos.length}</div>
-                <div className="text-gray-600">
+              <H2 className="text-xl">{curso.titulo}</H2>
+              <div className="text-right">
+                <Body className="font-bold">Módulo {moduloActual + 1} de {curso.modulos.length}</Body>
+                <Body color="secondary" className="text-sm">
                   {mostrarEjercicios ? 'Ejercicios' : `Contenido ${contenidoActual + 1}/${modulo?.contenido.length}`}
-                </div>
+                </Body>
               </div>
             </div>
-            
-            <div className="w-full bg-gray-200 rounded-full h-3 mb-4">
-              <div 
-                className="bg-red-600 h-3 rounded-full transition-all duration-300"
+
+            <div className="w-full bg-cloud rounded-full h-4 mb-4 overflow-hidden border border-mist">
+              <div
+                className="bg-gradient-to-r from-ocean-500 to-ocean-400 h-4 rounded-full transition-all duration-300"
                 style={{ width: `${progress.progress}%` }}
               ></div>
             </div>
 
-            <div className="flex justify-between text-sm text-gray-600">
-              <span>Progreso: {Math.round(progress.progress)}%</span>
-              <span>Tiempo estimado restante: {curso.duracionTotal - progress.timeSpent} min</span>
+            <div className="flex justify-between">
+              <Body color="secondary" className="text-sm">Progreso: {Math.round(progress.progress)}%</Body>
+              <Body color="secondary" className="text-sm">
+                Tiempo estimado restante: {curso.duracionTotal - progress.timeSpent} min
+              </Body>
             </div>
-          </ExpedienteCard>
-        </section>
+          </Card>
+        </div>
+      </section>
 
-        {/* Contenido del módulo */}
-        <section className="mb-8">
-          <ExpedienteCard variant="default">
-            {!mostrarEjercicios ? (
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="text-4xl">📖</div>
-                  <div>
-                    <h2 className="text-2xl font-bold typewriter">{modulo?.titulo}</h2>
-                    <p className="text-gray-600">{modulo?.descripcion}</p>
+      {/* Contenido del módulo */}
+      <section className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <Card variant="elevated" padding="xl">
+              {!mostrarEjercicios ? (
+                <div>
+                  <div className="flex items-center gap-3 mb-6 pb-6 border-b border-mist">
+                    <div className="text-4xl">📖</div>
+                    <div>
+                      <H2 className="text-xl">{modulo?.titulo}</H2>
+                      <Body color="secondary">{modulo?.descripcion}</Body>
+                    </div>
                   </div>
-                </div>
-                
-                {renderContenido()}
-              </div>
-            ) : (
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="text-4xl">✏️</div>
-                  <div>
-                    <h2 className="text-2xl font-bold typewriter">Ejercicios - {modulo?.titulo}</h2>
-                    <p className="text-gray-600">
-                      Ejercicio {ejercicioActual + 1} de {modulo?.ejercicios?.length}
-                    </p>
-                  </div>
-                </div>
-                
-                {renderEjercicio()}
-              </div>
-            )}
-          </ExpedienteCard>
-        </section>
 
-        {/* Navegación */}
-        <section>
-          <ExpedienteCard>
+                  {renderContenido()}
+                </div>
+              ) : (
+                <div>
+                  <div className="flex items-center gap-3 mb-6 pb-6 border-b border-mist">
+                    <div className="text-4xl">✏️</div>
+                    <div>
+                      <H2 className="text-xl">Ejercicios - {modulo?.titulo}</H2>
+                      <Body color="secondary">
+                        Ejercicio {ejercicioActual + 1} de {modulo?.ejercicios?.length}
+                      </Body>
+                    </div>
+                  </div>
+
+                  {renderEjercicio()}
+                </div>
+              )}
+            </Card>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Navegación y recursos */}
+      <section className="py-8 bg-gradient-to-br from-cloud to-washi">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Card variant="outlined" padding="lg">
             <div className="flex justify-between items-center">
-              <SelloAccion
+              <Button
                 onClick={anteriorContenido}
-                variant="secondary"
+                variant="outline"
+                color="ocean"
                 disabled={moduloActual === 0 && contenidoActual === 0 && !mostrarEjercicios}
               >
                 ← Anterior
-              </SelloAccion>
+              </Button>
 
               <div className="flex gap-4">
                 {modulo?.recursos && modulo.recursos.length > 0 && (
-                  <SelloAccion
-                    variant="secondary"
+                  <Button
+                    variant="outline"
+                    color="matcha"
                     size="sm"
                     onClick={() => setMostrarRecursos(true)}
                   >
-                    📚 RECURSOS ({modulo.recursos.length})
-                  </SelloAccion>
+                    📚 Recursos ({modulo.recursos.length})
+                  </Button>
                 )}
               </div>
 
-              <SelloAccion
+              <Button
                 onClick={mostrarEjercicios ? siguienteEjercicio : siguienteContenido}
+                color="ocean"
                 disabled={mostrarEjercicios && ejercicio?.tipo === 'quiz' && respuestasUsuario[ejercicio.id] === undefined}
               >
-                {moduloActual === curso.modulos.length - 1 && 
+                {moduloActual === curso.modulos.length - 1 &&
                  (mostrarEjercicios ? ejercicioActual === (modulo?.ejercicios?.length || 1) - 1 : contenidoActual === modulo.contenido.length - 1)
                   ? 'Completar Curso'
                   : 'Siguiente →'
                 }
-              </SelloAccion>
+              </Button>
             </div>
-          </ExpedienteCard>
-        </section>
-      </main>
+          </Card>
+        </div>
+      </section>
 
       {/* Modal de Recursos */}
       {mostrarRecursos && modulo?.recursos && (
         <div
-          className="fixed inset-0 bg-papel-oscuro z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-sumi/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={() => setMostrarRecursos(false)}
         >
-          <div
-            className="bg-papel-base max-w-2xl w-full max-h-[85vh] overflow-hidden rounded-xl shadow-2xl border-4 border-dorado-claro"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white max-w-2xl w-full max-h-[85vh] overflow-hidden rounded-2xl shadow-2xl border-4 border-ocean-500"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header con colores del tema */}
-            <div className="bg-sello-rojo text-papel-base p-6 shadow-lg border-b-4 border-sello-urgent">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-ocean-500 to-ocean-400 text-white p-6 shadow-lg">
               <div className="flex justify-between items-start">
                 <div>
-                  <h2 className="text-2xl font-bold typewriter flex items-center gap-2">
-                    📚 RECURSOS DEL MÓDULO
-                  </h2>
-                  <p className="text-sm mt-2 typewriter opacity-90">{modulo.titulo}</p>
+                  <H2 className="text-white mb-2">📚 Recursos del Módulo</H2>
+                  <Body className="text-white/90">{modulo.titulo}</Body>
                 </div>
                 <button
                   onClick={() => setMostrarRecursos(false)}
-                  className="text-4xl hover:scale-110 transition-transform leading-none bg-papel-base/20 hover:bg-papel-base/30 rounded-full w-10 h-10 flex items-center justify-center"
+                  className="text-4xl hover:scale-110 transition-transform leading-none bg-white/20 hover:bg-white/30 rounded-full w-10 h-10 flex items-center justify-center"
                   aria-label="Cerrar"
                 >
                   ×
@@ -519,49 +582,49 @@ export default function Nivel1Page() {
               </div>
             </div>
 
-            {/* Contenido con scroll */}
+            {/* Contenido */}
             <div className="p-6 space-y-4 overflow-y-auto max-h-[calc(85vh-180px)]">
               {modulo.recursos.map((recurso, index) => (
-                <div
-                  key={index}
-                  className="bg-white border-2 border-papel-border rounded-lg p-5 hover:border-azul-info hover:shadow-md transition-all"
-                >
+                <Card key={index} variant="outlined" padding="md" hoverable>
                   <div className="flex items-start gap-4">
-                    <div className="bg-azul-info/10 p-3 rounded-lg flex-shrink-0 border-2 border-azul-info/20">
+                    <div className="bg-ocean-50 p-3 rounded-xl flex-shrink-0 border-2 border-ocean-100">
                       <span className="text-3xl">
                         {recurso.tipo === 'herramienta' ? '🛠️' : recurso.tipo === 'descarga' ? '📥' : '🔗'}
                       </span>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-bold typewriter text-lg text-tinta-oficial mb-2">{recurso.titulo}</h3>
-                      <p className="text-sm text-tinta-suave mb-4 leading-relaxed">{recurso.descripcion}</p>
+                      <H3 className="text-lg mb-2">{recurso.titulo}</H3>
+                      <Body color="secondary" className="text-sm mb-4 leading-relaxed">
+                        {recurso.descripcion}
+                      </Body>
                       <a
                         href={recurso.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 bg-azul-info text-papel-base px-5 py-2.5 rounded-lg text-sm typewriter hover:bg-blue-700 hover:shadow-lg transition-all font-bold border-2 border-blue-700"
                       >
-                        {recurso.tipo === 'herramienta' ? 'USAR HERRAMIENTA' : recurso.tipo === 'descarga' ? 'DESCARGAR' : 'VISITAR SITIO'} →
+                        <Button color="ocean" size="sm">
+                          {recurso.tipo === 'herramienta' ? 'Usar Herramienta' : recurso.tipo === 'descarga' ? 'Descargar' : 'Visitar Sitio'} →
+                        </Button>
                       </a>
                     </div>
                   </div>
-                </div>
+                </Card>
               ))}
             </div>
 
-            {/* Footer con colores del tema */}
-            <div className="bg-papel-sombra border-t-2 border-papel-border p-4 text-center">
-              <button
+            {/* Footer */}
+            <div className="bg-cloud border-t-2 border-mist p-4 text-center">
+              <Button
+                variant="outline"
+                color="ocean"
                 onClick={() => setMostrarRecursos(false)}
-                className="bg-tinta-oficial text-papel-base px-8 py-2.5 rounded-lg typewriter hover:bg-tinta-suave transition-colors font-bold border-2 border-tinta-oficial"
               >
-                CERRAR
-              </button>
+                Cerrar
+              </Button>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
-
     </div>
   );
 }

@@ -12,6 +12,9 @@ export type { } from './Badge';
 export { Input } from './Input';
 export type { } from './Input';
 
+export { Icon } from './Icon';
+export type { } from './Icon';
+
 export {
   Typography,
   H1,

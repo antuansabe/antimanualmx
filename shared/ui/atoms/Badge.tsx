@@ -3,6 +3,8 @@
  * Badges y tags con colores vibrantes y bordes redondeados
  */
 
+'use client';
+
 import React from 'react';
 import { cn } from '@/shared/utils/cn';
 

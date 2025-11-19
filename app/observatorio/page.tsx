@@ -3,15 +3,15 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ExpedienteCard, Stamp, Button } from '@/shared/ui';
+import { Hero, H2, H3, Card, Button, Badge } from '@/shared/ui';
 import Barometro from '@/components/observatorio/Barometro';
 
 // Tipos centralizados importados
-import type { 
-  MetricasResumen, 
-  TendenciasData, 
-  EstadoData, 
-  ObservatorioState 
+import type {
+  MetricasResumen,
+  TendenciasData,
+  EstadoData,
+  ObservatorioState
 } from '@/shared/types/observatorio';
 
 // SEO metadata se maneja en layout.tsx o mediante generateMetadata
@@ -95,18 +95,14 @@ export default function ObservatorioPage() {
 
   // Loading Skeleton Component
   const LoadingSkeleton = () => (
-    <div className="min-h-screen bg-amber-50 text-amber-900/80 p-2 md:p-4 lg:p-6 max-w-7xl mx-auto animate-pulse">
-      <div className="h-8 bg-amber-200 rounded w-1/2 mb-6 mx-auto"></div> {/* Header title */}
-      <div className="space-y-4">
-        {/* Top section skeleton */}
-        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4">
-          {/* Barometer Skeleton */}
-          <div className="xl:col-span-3 h-80 bg-amber-200 rounded-sm"></div>
-          {/* Alerts Skeleton */}
-          <div className="xl:col-span-1 h-80 bg-amber-200 rounded-sm"></div>
+    <div className="min-h-screen animate-pulse">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="h-32 bg-cloud rounded-2xl mb-8"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 h-96 bg-cloud rounded-2xl"></div>
+          <div className="lg:col-span-1 h-96 bg-cloud rounded-2xl"></div>
         </div>
-        {/* Reports Skeleton */}
-        <div className="w-full h-48 bg-amber-200 rounded-sm"></div>
+        <div className="mt-8 h-64 bg-cloud rounded-2xl"></div>
       </div>
     </div>
   );
@@ -117,17 +113,20 @@ export default function ObservatorioPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-amber-50 text-amber-900/80 p-2 md:p-4 lg:p-6 max-w-7xl mx-auto">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Error al cargar el observatorio</h1>
-          <p className="text-red-600 mb-4">{error}</p>
-          <Button 
-            onClick={() => window.location.reload()} 
-            variant="primary"
-            size="md"
-          >
-            Reintentar
-          </Button>
+      <div className="min-h-screen">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <Card variant="outlined" padding="xl" className="text-center">
+            <div className="text-6xl mb-6">⚠️</div>
+            <H2 className="mb-4">Error al cargar el observatorio</H2>
+            <p className="text-persimmon mb-6">{error}</p>
+            <Button
+              onClick={() => window.location.reload()}
+              color="sakura"
+              size="lg"
+            >
+              Reintentar
+            </Button>
+          </Card>
         </div>
       </div>
     );
@@ -135,194 +134,200 @@ export default function ObservatorioPage() {
 
   return (
     <div className="min-h-screen">
-      <main className="page-container py-8 md:py-12">
-        {/* Breadcrumbs */}
-        <nav className="text-sm mb-3">
-          <ol className="list-none p-0 inline-flex">
-            <li className="flex items-center">
-              <Link href="/" className="text-blue-600 hover:underline">Inicio</Link>
-              <span className="mx-2">/</span>
-            </li>
-            <li className="flex items-center">
-              <Link href="/observatorio" className="text-blue-600 hover:underline">Observatorio</Link>
-            </li>
-          </ol>
-        </nav>
+      {/* Hero Section */}
+      <Hero
+        variant="gradient"
+        size="lg"
+        title="Observatorio Digital"
+        description="Monitoreo continuo del estado de libertades digitales en México"
+        badge={
+          <Badge color="lavender" variant="soft" size="lg">
+            📊 Datos Abiertos
+          </Badge>
+        }
+        illustration={
+          <motion.div
+            animate={{
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: 'linear',
+            }}
+            className="text-8xl"
+          >
+            📡
+          </motion.div>
+        }
+      />
 
-        {/* Header Section */}
-        <motion.header
-          className="mb-6"
-          variants={itemVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <ExpedienteCard variant="classified" clipped>
-            <div className="text-center">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold typewriter mb-2"> {/* Smaller font for mobile */}
-                OBSERVATORIO DIGITAL
-              </h1>
-              <p className="text-base md:text-lg lg:text-xl typewriter-bold"> {/* Smaller font for mobile */}
-                Monitoreo de libertades digitales en México
-              </p>
-            </div>
-          </ExpedienteCard>
-        </motion.header>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-        {/* Main Grid Structure - Optimized Layout */}
-        <motion.main
-          className="space-y-4"
+        {/* Main Grid Structure */}
+        <motion.div
+          className="space-y-8"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* Top Section: Barómetro prominente con Noticias relevantes al lado */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Barómetro de Libertad (Prominente - Ocupa más espacio) */}
+          {/* Top Section: Barómetro y Noticias */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Barómetro de Libertad */}
             <motion.section className="lg:col-span-2" variants={itemVariants}>
               <Barometro />
             </motion.section>
 
-            {/* Noticias Relevantes (Sidebar) */}
+            {/* Noticias Relevantes */}
             <motion.section className="lg:col-span-1" variants={itemVariants}>
-              <div className="liquid-card h-full">
-                <div className="liquid-card-header">
-                  <h2 className="text-base md:text-lg typewriter-bold text-center">NOTICIAS RELEVANTES</h2>
-                  <p className="texto-pequeno text-center mt-1">De nuestros aliados</p>
-                </div>
-                <div className="liquid-card-content flex-1 overflow-hidden">
-                  <div className="space-y-3">
-                    <article className="bg-papel-sombra border border-papel-border rounded-lg p-3 hover:bg-papel-base transition-colors">
-                      <div className="flex items-start gap-2">
-                        <span className="text-sm">📊</span>
+              <Card variant="elevated" className="h-full">
+                <div className="p-6">
+                  <div className="mb-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Badge color="ocean" variant="soft">📰 Noticias</Badge>
+                    </div>
+                    <H3>Noticias Relevantes</H3>
+                    <p className="text-sm text-charcoal mt-1">De nuestros aliados</p>
+                  </div>
+
+                  <div className="space-y-4">
+                    <article className="p-4 bg-gradient-to-br from-washi to-cloud rounded-xl border border-mist hover:shadow-md transition-all">
+                      <div className="flex items-start gap-3">
+                        <span className="text-xl">📊</span>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm font-bold typewriter leading-tight mb-1">
+                          <h4 className="text-sm font-display font-bold text-sumi leading-tight mb-2">
                             Vigilancia y censura: evaluación de libertades en Internet
-                          </h3>
-                          <p className="text-xs text-tinta-clara mb-2 line-clamp-2">
+                          </h4>
+                          <p className="text-xs text-charcoal mb-3 line-clamp-2">
                             Freedom House documenta casos de vigilancia, espionaje y censura en México 2023-2024...
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-tinta-suave">R3D</span>
-                            <a href="https://r3d.mx/2024/11/04/vigilancia-espionaje-y-censura-freedom-house-evalua-las-libertades-de-internet-en-mexico-en-2024/" target="_blank" rel="noopener noreferrer" className="text-xs text-sello-rojo hover:underline">Leer más</a>
+                            <Badge color="sakura" variant="soft" size="sm">R3D</Badge>
+                            <a href="https://r3d.mx/2024/11/04/vigilancia-espionaje-y-censura-freedom-house-evalua-las-libertades-de-internet-en-mexico-en-2024/" target="_blank" rel="noopener noreferrer" className="text-xs text-ocean hover:underline">Leer más →</a>
                           </div>
                         </div>
                       </div>
                     </article>
 
-                    <article className="bg-papel-sombra border border-papel-border rounded-lg p-3 hover:bg-papel-base transition-colors">
-                      <div className="flex items-start gap-2">
-                        <span className="text-sm">📰</span>
+                    <article className="p-4 bg-gradient-to-br from-washi to-cloud rounded-xl border border-mist hover:shadow-md transition-all">
+                      <div className="flex items-start gap-3">
+                        <span className="text-xl">📰</span>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm font-bold typewriter leading-tight mb-1">
+                          <h4 className="text-sm font-display font-bold text-sumi leading-tight mb-2">
                             Barreras informativas: desafíos para la prensa
-                          </h3>
-                          <p className="text-xs text-tinta-clara mb-2 line-clamp-2">
+                          </h4>
+                          <p className="text-xs text-charcoal mb-3 line-clamp-2">
                             Informe 2024 documenta 639 agresiones contra periodistas, incremento del 13.9%...
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-tinta-suave">Artículo 19</span>
-                            <a href="https://articulo19.org/barrerasinformativas/" target="_blank" rel="noopener noreferrer" className="text-xs text-sello-rojo hover:underline">Leer más</a>
+                            <Badge color="sakura" variant="soft" size="sm">Artículo 19</Badge>
+                            <a href="https://articulo19.org/barrerasinformativas/" target="_blank" rel="noopener noreferrer" className="text-xs text-ocean hover:underline">Leer más →</a>
                           </div>
                         </div>
                       </div>
                     </article>
 
-                    <article className="bg-papel-sombra border border-papel-border rounded-lg p-3 hover:bg-papel-base transition-colors">
-                      <div className="flex items-start gap-2">
-                        <span className="text-sm">🔒</span>
+                    <article className="p-4 bg-gradient-to-br from-washi to-cloud rounded-xl border border-mist hover:shadow-md transition-all">
+                      <div className="flex items-start gap-3">
+                        <span className="text-xl">🔒</span>
                         <div className="flex-1 min-w-0">
-                          <h3 className="text-sm font-bold typewriter leading-tight mb-1">
+                          <h4 className="text-sm font-display font-bold text-sumi leading-tight mb-2">
                             Comunicaciones seguras: guía práctica
-                          </h3>
-                          <p className="text-xs text-tinta-clara mb-2 line-clamp-2">
+                          </h4>
+                          <p className="text-xs text-charcoal mb-3 line-clamp-2">
                             SocialTIC presenta herramientas para mantener comunicaciones seguras en línea...
                           </p>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-tinta-suave">SocialTIC</span>
-                            <a href="https://socialtic.org/blog/comunicaciones-seguras-facil-y-rapido-que-mas/" target="_blank" rel="noopener noreferrer" className="text-xs text-sello-rojo hover:underline">Leer más</a>
+                            <Badge color="sakura" variant="soft" size="sm">SocialTIC</Badge>
+                            <a href="https://socialtic.org/blog/comunicaciones-seguras-facil-y-rapido-que-mas/" target="_blank" rel="noopener noreferrer" className="text-xs text-ocean hover:underline">Leer más →</a>
                           </div>
                         </div>
                       </div>
                     </article>
                   </div>
+
+                  <div className="mt-6">
+                    <Link href="/observatorio/noticias">
+                      <Button variant="outline" color="ocean" fullWidth>
+                        Ver más noticias →
+                      </Button>
+                    </Link>
+                  </div>
                 </div>
-                <div className="liquid-card-footer">
-                  <Link href="/observatorio/noticias">
-                    <Button variant="secondary" size="sm" className="w-full text-xs">
-                      Ver más noticias
-                    </Button>
-                  </Link>
-                </div>
-              </div>
+              </Card>
             </motion.section>
           </div>
 
-          {/* Bottom Section: Reportes Recientes (Ancho completo) */}
+          {/* Reportes Recientes */}
           <motion.section className="w-full" variants={itemVariants}>
-            <div className="liquid-card">
-              <div className="liquid-card-header">
-                <h2 className="text-xl md:text-2xl typewriter-bold text-center">REPORTES RECIENTES</h2>
-              </div>
-              <div className="liquid-card-content">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div className="expediente-liquid-card text-center h-full flex flex-col">
-                    <div className="mb-4">
-                      <div className="w-16 h-16 bg-papel-sombra rounded-full flex items-center justify-center mx-auto mb-3">
-                        <span className="text-2xl">📊</span>
-                      </div>
-                      <h3 className="font-bold typewriter-bold text-lg mb-2">Análisis Trimestral</h3>
-                      <p className="text-sm text-tinta-clara mb-4">Q3 2024</p>
-                      <p className="texto-oficial text-sm mb-4 leading-relaxed">
-                        Evaluación comprehensiva del estado de libertades digitales durante el tercer trimestre del año.
-                      </p>
-                    </div>
-                    <div className="mt-auto">
-                      <button className="inline-block bg-papel-border text-tinta-oficial px-4 py-2 rounded-lg text-sm typewriter cursor-not-allowed opacity-60">
-                        🔒 Próximamente
-                      </button>
-                    </div>
-                  </div>
+            <div className="mb-8 text-center">
+              <Badge color="matcha" variant="soft" size="lg" className="mb-4">
+                📚 Reportes
+              </Badge>
+              <H2>Reportes Recientes</H2>
+            </div>
 
-                  <div className="expediente-liquid-card text-center h-full flex flex-col">
-                    <div className="mb-4">
-                      <div className="w-16 h-16 bg-papel-sombra rounded-full flex items-center justify-center mx-auto mb-3">
-                        <span className="text-2xl">🔬</span>
-                      </div>
-                      <h3 className="font-bold typewriter-bold text-lg mb-2">Estudio Especial</h3>
-                      <p className="text-sm text-tinta-clara mb-4">Sep 2025</p>
-                      <p className="texto-oficial text-sm mb-4 leading-relaxed">
-                        Investigación especializada sobre tendencias emergentes en vigilancia digital y contramedidas.
-                      </p>
-                    </div>
-                    <div className="mt-auto">
-                      <Link href="/observatorio/estudio-especial" className="inline-block bg-sello-rojo text-white px-4 py-2 rounded-lg text-sm typewriter hover:bg-red-700 transition-colors">
-                        📖 Ver Estudio
-                      </Link>
-                    </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card variant="outlined" hoverable className="text-center">
+                <div className="p-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-lavender-100 to-lavender-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl">📊</span>
                   </div>
-
-                  <div className="expediente-liquid-card text-center h-full flex flex-col">
-                    <div className="mb-4">
-                      <div className="w-16 h-16 bg-papel-sombra rounded-full flex items-center justify-center mx-auto mb-3">
-                        <span className="text-2xl">⚙️</span>
-                      </div>
-                      <h3 className="font-bold typewriter-bold text-lg mb-2">Metodología</h3>
-                      <p className="text-sm text-tinta-clara mb-4">2024</p>
-                      <p className="texto-oficial text-sm mb-4 leading-relaxed">
-                        Marco metodológico y criterios técnicos utilizados para la evaluación y monitoreo continuo.
-                      </p>
-                    </div>
-                    <div className="mt-auto">
-                      <Link href="/metodologia" className="inline-block bg-sello-rojo text-white px-4 py-2 rounded-lg text-sm typewriter hover:bg-red-700 transition-colors">
-                        📖 Ver Documento
-                      </Link>
-                    </div>
-                  </div>
+                  <H3 className="mb-2">Análisis Trimestral</H3>
+                  <Badge color="gold" variant="soft" size="sm" className="mb-4">
+                    Q3 2024
+                  </Badge>
+                  <p className="text-sm text-charcoal mb-6 leading-relaxed">
+                    Evaluación comprehensiva del estado de libertades digitales durante el tercer trimestre del año.
+                  </p>
+                  <Button variant="ghost" disabled fullWidth>
+                    🔒 Próximamente
+                  </Button>
                 </div>
-              </div>
+              </Card>
+
+              <Card variant="elevated" hoverable clickable>
+                <Link href="/observatorio/estudio-especial">
+                  <div className="p-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-ocean-100 to-ocean-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-3xl">🔬</span>
+                    </div>
+                    <H3 className="mb-2">Estudio Especial</H3>
+                    <Badge color="ocean" variant="soft" size="sm" className="mb-4">
+                      Sep 2025
+                    </Badge>
+                    <p className="text-sm text-charcoal mb-6 leading-relaxed">
+                      Investigación especializada sobre tendencias emergentes en vigilancia digital y contramedidas.
+                    </p>
+                    <Button color="ocean" fullWidth>
+                      Ver Estudio →
+                    </Button>
+                  </div>
+                </Link>
+              </Card>
+
+              <Card variant="elevated" hoverable clickable>
+                <Link href="/metodologia">
+                  <div className="p-6">
+                    <div className="w-16 h-16 bg-gradient-to-br from-matcha-100 to-matcha-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <span className="text-3xl">⚙️</span>
+                    </div>
+                    <H3 className="mb-2">Metodología</H3>
+                    <Badge color="matcha" variant="soft" size="sm" className="mb-4">
+                      2024
+                    </Badge>
+                    <p className="text-sm text-charcoal mb-6 leading-relaxed">
+                      Marco metodológico y criterios técnicos utilizados para la evaluación y monitoreo continuo.
+                    </p>
+                    <Button color="matcha" fullWidth>
+                      Ver Documento →
+                    </Button>
+                  </div>
+                </Link>
+              </Card>
             </div>
           </motion.section>
-        </motion.main>
+        </motion.div>
       </main>
     </div>
   );

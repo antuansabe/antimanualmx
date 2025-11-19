@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { ExpedienteCard, Button } from '@/shared/ui';
+import { Hero, H2, H3, Card, Button, Badge } from '@/shared/ui';
 
 // Datos de noticias reales de aliados (últimos 2 años)
 const noticias = [
@@ -144,41 +144,35 @@ export default function NoticiasPage() {
 
   return (
     <div className="min-h-screen">
-      <main className="page-container py-8 md:py-12">
-        {/* Breadcrumbs */}
-        <nav className="text-sm mb-6">
-          <ol className="list-none p-0 inline-flex">
-            <li className="flex items-center">
-              <Link href="/" className="text-blue-600 hover:underline">Inicio</Link>
-              <span className="mx-2">/</span>
-            </li>
-            <li className="flex items-center">
-              <Link href="/observatorio" className="text-blue-600 hover:underline">Observatorio</Link>
-              <span className="mx-2">/</span>
-            </li>
-            <li className="flex items-center text-gray-600">
-              Noticias
-            </li>
-          </ol>
-        </nav>
+      {/* Hero Section */}
+      <Hero
+        variant="gradient"
+        size="lg"
+        title="Noticias de Aliados"
+        description="Últimas actualizaciones de organizaciones aliadas en defensa de libertades digitales"
+        badge={
+          <Badge color="ocean" variant="soft" size="lg">
+            📰 Noticias
+          </Badge>
+        }
+        illustration={
+          <motion.div
+            animate={{
+              y: [0, -10, 0],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="text-8xl"
+          >
+            📡
+          </motion.div>
+        }
+      />
 
-        {/* Header */}
-        <motion.header
-          className="mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <ExpedienteCard variant="classified" clipped>
-            <div className="text-center">
-              <h1 className="text-3xl md:text-4xl font-bold typewriter mb-2">
-                NOTICIAS DE ALIADOS
-              </h1>
-              <p className="text-lg typewriter-bold">
-                Últimas actualizaciones de organizaciones aliadas
-              </p>
-            </div>
-          </ExpedienteCard>
-        </motion.header>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         {/* Noticias Grid */}
         <motion.div
@@ -191,65 +185,66 @@ export default function NoticiasPage() {
             <motion.article
               key={noticia.id}
               variants={itemVariants}
-              className="liquid-card h-full flex flex-col"
             >
-              <div className="liquid-card-header">
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="text-3xl">{noticia.emoji}</span>
-                  <div className="flex-1">
-                    <h2 className="text-base typewriter-bold leading-tight">
-                      {noticia.titulo}
-                    </h2>
+              <Card variant="elevated" hoverable className="h-full flex flex-col">
+                <div className="p-6 flex-1 flex flex-col">
+                  <div className="flex items-start gap-3 mb-4">
+                    <span className="text-4xl">{noticia.emoji}</span>
+                    <div className="flex-1">
+                      <H3 className="text-lg mb-2 leading-tight">
+                        {noticia.titulo}
+                      </H3>
+                      <div className="flex items-center gap-2 text-xs">
+                        <Badge color="sakura" variant="soft" size="sm">
+                          {noticia.organizacion}
+                        </Badge>
+                        <span className="text-charcoal">{noticia.fecha}</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-sello-rojo font-bold">{noticia.organizacion}</span>
-                  <span className="text-tinta-suave">{noticia.fecha}</span>
-                </div>
-              </div>
 
-              <div className="liquid-card-content flex-1">
-                <p className="texto-oficial text-sm mb-4 leading-relaxed">
-                  {noticia.descripcion}
-                </p>
+                  <p className="text-sm text-charcoal mb-4 leading-relaxed flex-1">
+                    {noticia.descripcion}
+                  </p>
 
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {noticia.tags.map((tag, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2 py-1 bg-papel-sombra text-xs rounded-md border border-papel-border"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {noticia.tags.map((tag, idx) => (
+                      <Badge
+                        key={idx}
+                        color="lavender"
+                        variant="outlined"
+                        size="sm"
+                      >
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  <a
+                    href={noticia.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
+                  >
+                    <Button color="ocean" fullWidth>
+                      Leer más →
+                    </Button>
+                  </a>
                 </div>
-              </div>
-
-              <div className="liquid-card-footer">
-                <a
-                  href={noticia.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full"
-                >
-                  <Button variant="primary" size="sm" className="w-full">
-                    Leer noticia completa →
-                  </Button>
-                </a>
-              </div>
+              </Card>
             </motion.article>
           ))}
         </motion.div>
 
         {/* Back button */}
         <motion.div
-          className="mt-8 text-center"
+          className="mt-12 text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
           <Link href="/observatorio">
-            <Button variant="secondary" size="md">
+            <Button variant="outline" color="matcha" size="lg">
               ← Volver al Observatorio
             </Button>
           </Link>
