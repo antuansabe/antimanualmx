@@ -8,7 +8,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Hero } from '@/shared/ui';
-import { H2, Body } from '@/shared/ui';
+import { H2, H3, Body } from '@/shared/ui';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/shared/ui';
 import { Button } from '@/shared/ui';
 import { Badge } from '@/shared/ui';
@@ -107,15 +107,15 @@ export default function HerramientasPage() {
       />
 
       {/* Aviso de Seguridad */}
-      <section className="py-8 bg-gradient-to-r from-sunset-50 to-persimmon/10">
+      <section className="py-16 md:py-24 bg-gradient-to-r from-sunset-50 to-persimmon/10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card variant="filled" padding="lg">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 text-4xl">⚠️</div>
               <div className="flex-1">
-                <h3 className="font-display font-bold text-lg text-sumi mb-2">
+                <H3 className="mb-2">
                   Aviso de Seguridad
-                </h3>
+                </H3>
                 <Body color="secondary">
                   Estas herramientas están diseñadas para situaciones de riesgo real.
                   Recomendamos realizar pruebas en entorno controlado antes de usar en emergencias.
@@ -127,9 +127,9 @@ export default function HerramientasPage() {
       </section>
 
       {/* Valores */}
-      <section className="py-12 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {valorCards.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -137,12 +137,13 @@ export default function HerramientasPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
+                className="h-full"
               >
                 <Card variant="outlined" padding="md" className="text-center h-full">
                   <div className="text-4xl mb-3">{item.icon}</div>
-                  <h3 className="font-display font-bold text-lg text-sumi mb-2">
+                  <H3 className="mb-2">
                     {item.title}
-                  </h3>
+                  </H3>
                   <Body color="secondary" className="text-sm">
                     {item.description}
                   </Body>
@@ -154,7 +155,7 @@ export default function HerramientasPage() {
       </section>
 
       {/* Herramientas Grid */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-cloud via-washi to-ocean-50">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-cloud via-washi to-ocean-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -179,8 +180,9 @@ export default function HerramientasPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
+                className="h-full"
               >
-                <Link href={`/herramientas/${herramienta.id}`}>
+                <Link href={`/herramientas/${herramienta.id}`} className="h-full block">
                   <Card variant="elevated" hoverable clickable className="h-full">
                     <CardHeader>
                       <div className="flex items-start justify-between mb-4">
@@ -222,7 +224,7 @@ export default function HerramientasPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-sakura-100 to-matcha-100">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-sakura-100 to-matcha-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Card variant="glass" padding="xl" className="text-center">
             <H2 className="mb-4">¿Necesitas Ayuda Inmediata?</H2>

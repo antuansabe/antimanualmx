@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Navigation, Footer } from "@/shared/ui";
+import { Navigation, Footer, ScrollToTop } from "@/shared/ui";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -68,6 +68,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <ScrollToTop />
         </div>
       </body>
     </html>

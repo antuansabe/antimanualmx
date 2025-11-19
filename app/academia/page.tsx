@@ -130,14 +130,14 @@ export default function AcademiaPage() {
       />
 
       {/* Métricas de impacto */}
-      <section className="py-12 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
               <Card variant="outlined" padding="md" className="text-center">
                 <div className="text-4xl font-display font-bold text-ocean-500 mb-2">
                   {metricas.estudiantes}+
@@ -176,7 +176,7 @@ export default function AcademiaPage() {
       </section>
 
       {/* Objetivo de la Academia */}
-      <section className="py-16 bg-gradient-to-br from-cloud via-washi to-ocean-50">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-cloud via-washi to-ocean-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -234,7 +234,7 @@ export default function AcademiaPage() {
       </section>
 
       {/* Módulos de Capacitación */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -399,7 +399,7 @@ export default function AcademiaPage() {
       </section>
 
       {/* Convocatoria */}
-      <section className="py-16 bg-gradient-to-br from-sakura-100 via-matcha-100 to-ocean-100">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-sakura-100 via-matcha-100 to-ocean-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

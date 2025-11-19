@@ -31,3 +31,6 @@ export {
   Overline,
 } from './Typography';
 export type { } from './Typography';
+
+export { Skeleton, SkeletonCard, SkeletonText } from './Skeleton';
+export type { } from './Skeleton';

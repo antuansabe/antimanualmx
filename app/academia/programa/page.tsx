@@ -46,7 +46,7 @@ export default function ProgramaAcademicoPage() {
       </section>
 
       {/* Información General */}
-      <section className="py-12 bg-gradient-to-br from-cloud via-washi to-ocean-50">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-cloud via-washi to-ocean-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -65,7 +65,7 @@ export default function ProgramaAcademicoPage() {
               </div>
 
               {/* Stats del programa */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 mb-8">
                 <div className="bg-gradient-to-br from-ocean-50 to-cloud rounded-xl p-4 border border-ocean-100 text-center">
                   <div className="text-3xl font-display font-bold text-ocean-500 mb-1">
                     {curso.duracionTotal}
@@ -101,7 +101,7 @@ export default function ProgramaAcademicoPage() {
               </div>
 
               {/* Detalles adicionales */}
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                 <div className="bg-gradient-to-r from-washi to-cloud rounded-xl p-5 border border-mist">
                   <H3 className="text-base mb-3">Modalidad</H3>
                   <Body color="secondary" className="text-sm">
@@ -148,7 +148,7 @@ export default function ProgramaAcademicoPage() {
       </section>
 
       {/* Contenido del Curso */}
-      <section className="py-16 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -284,7 +284,7 @@ export default function ProgramaAcademicoPage() {
       </section>
 
       {/* Objetivos de Aprendizaje */}
-      <section className="py-16 bg-gradient-to-br from-matcha-50 via-cloud to-washi">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-matcha-50 via-cloud to-washi">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -299,7 +299,7 @@ export default function ProgramaAcademicoPage() {
                 <H2>Objetivos de Aprendizaje</H2>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                 {curso.objetivos.map((objetivo, idx) => (
                   <motion.div
                     key={idx}
@@ -322,7 +322,7 @@ export default function ProgramaAcademicoPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gradient-to-br from-ocean-100 via-sakura-100 to-matcha-100">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-ocean-100 via-sakura-100 to-matcha-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}

@@ -39,7 +39,7 @@ const colorStyles: Record<BadgeColor, Record<BadgeVariant, string>> = {
     outline: 'border-2 border-ocean-300 text-ocean-600',
   },
   sunset: {
-    solid: 'bg-sunset-500 text-white',
+    solid: 'bg-sunset-500 text-sumi',
     soft: 'bg-sunset-100 text-sunset-500',
     outline: 'border-2 border-sunset-300 text-sunset-500',
   },
@@ -59,9 +59,9 @@ const colorStyles: Record<BadgeColor, Record<BadgeVariant, string>> = {
     outline: 'border-2 border-bamboo text-bamboo',
   },
   gold: {
-    solid: 'bg-gold text-white',
-    soft: 'bg-gold/10 text-gold',
-    outline: 'border-2 border-gold text-gold',
+    solid: 'bg-gold text-sumi',
+    soft: 'bg-gold/10 text-gold-dark',
+    outline: 'border-2 border-gold text-gold-dark',
   },
   indigo: {
     solid: 'bg-indigo text-white',

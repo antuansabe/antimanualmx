@@ -63,6 +63,7 @@ export function Card({
         // Base styles
         'rounded-2xl',
         'transition-all duration-normal ease-smooth',
+        'flex flex-col', // Añadido para mejor layout
 
         // Variant styles
         variantStyles[variant],
@@ -133,7 +134,7 @@ export function CardContent({
   className?: string;
 }) {
   return (
-    <div className={cn('', className)}>
+    <div className={cn('flex-1', className)}>
       {children}
     </div>
   );
