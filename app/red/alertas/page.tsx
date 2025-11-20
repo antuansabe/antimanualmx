@@ -114,9 +114,9 @@ export default function AlertasPage() {
 
       <main className="py-12 md:py-16">
         {/* Estadísticas */}
-        <section className="py-12 bg-white">
+        <section className="py-16 md:py-24 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
               {[
                 { label: 'Activas', value: estadisticas.total, icon: '🚨', color: 'persimmon' as const },
                 { label: 'Críticas', value: estadisticas.criticas, icon: '⚠️', color: 'sunset' as const },
@@ -146,7 +146,7 @@ export default function AlertasPage() {
         </section>
 
         {/* Filtros */}
-        <section className="py-12 bg-gradient-to-br from-cloud via-washi to-persimmon-50">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-cloud via-washi to-persimmon-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -161,7 +161,7 @@ export default function AlertasPage() {
               </div>
 
               <Card variant="elevated" padding="lg">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                   <div>
                     <label className="block font-display font-bold text-sm mb-2 text-sumi">
                       Severidad
@@ -236,7 +236,7 @@ export default function AlertasPage() {
         </section>
 
         {/* Lista de Alertas */}
-        <section className="py-12 bg-gradient-to-br from-washi via-cloud to-sunset-50">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-washi via-cloud to-sunset-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -409,7 +409,7 @@ export default function AlertasPage() {
         </section>
 
         {/* Call to Action */}
-        <section className="py-16 bg-gradient-to-br from-persimmon-100 to-sunset-100">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-persimmon-100 to-sunset-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

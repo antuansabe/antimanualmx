@@ -6,7 +6,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Hero, H2, H3, Card, Button, Badge } from '@/shared/ui';
+import { Hero, H2, H3, Body, Card, Button, Badge } from '@/shared/ui';
 
 const factoresEvaluacion = [
   {
@@ -88,28 +88,28 @@ export default function MetodologiaPage() {
         badge={<Badge color="gold" variant="soft">📊 Observatorio</Badge>}
       />
 
-      <section className="py-16 bg-white">
+      <section className="py-16 md:py-24 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Introducción */}
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <Card variant="outlined" padding="lg">
               <H2 className="mb-4">Introducción</H2>
-              <p className="text-charcoal font-body leading-relaxed mb-4">
+              <Body className="mb-4">
                 El Índice de Libertad Digital es una medida compuesta que evalúa el estado de las libertades
                 digitales en México. Se basa en una escala de 0 a 100 puntos, donde 100 representa el nivel
                 más alto de libertad digital.
-              </p>
-              <p className="text-charcoal font-body leading-relaxed">
+              </Body>
+              <Body>
                 Este índice combina indicadores cuantitativos y cualitativos de múltiples fuentes para
                 proporcionar una evaluación integral del ecosistema digital mexicano.
-              </p>
+              </Body>
             </Card>
           </motion.div>
 
           {/* Criterios */}
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <H2 className="mb-6 text-center">Criterios de Evaluación</H2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {factoresEvaluacion.map((factor, index) => (
                 <motion.div
                   key={index}
@@ -117,6 +117,7 @@ export default function MetodologiaPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
+                  className="h-full"
                 >
                   <Card variant="elevated" padding="md" className="h-full">
                     <div className="flex justify-between items-start mb-4">
@@ -125,9 +126,9 @@ export default function MetodologiaPage() {
                     </div>
                     <ul className="space-y-2">
                       {factor.criterios.map((criterio, idx) => (
-                        <li key={idx} className="flex items-start text-sm text-charcoal font-body">
+                        <li key={idx} className="flex items-start">
                           <span className="mr-2">•</span>
-                          {criterio}
+                          <Body className="text-sm">{criterio}</Body>
                         </li>
                       ))}
                     </ul>
@@ -140,27 +141,27 @@ export default function MetodologiaPage() {
           {/* Escala */}
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <H2 className="mb-6 text-center">Escala de Valoración</H2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card variant="outlined" padding="lg" className="text-center border-2 border-persimmon">
-                <h3 className="font-display font-bold text-persimmon mb-2 text-xl">CRÍTICO</h3>
-                <p className="text-5xl font-display font-bold text-persimmon mb-3">0-40</p>
-                <p className="text-sm text-charcoal font-body">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              <Card variant="outlined" padding="lg" className="text-center border-2 border-persimmon h-full">
+                <H3 className="text-persimmon mb-2">CRÍTICO</H3>
+                <Body className="text-5xl font-display font-bold text-persimmon mb-3">0-40</Body>
+                <Body className="text-sm">
                   Restricciones severas a las libertades digitales
-                </p>
+                </Body>
               </Card>
-              <Card variant="outlined" padding="lg" className="text-center border-2 border-gold">
-                <h3 className="font-display font-bold text-gold mb-2 text-xl">LIMITADO</h3>
-                <p className="text-5xl font-display font-bold text-gold mb-3">41-70</p>
-                <p className="text-sm text-charcoal font-body">
+              <Card variant="outlined" padding="lg" className="text-center border-2 border-gold h-full">
+                <H3 className="text-gold mb-2">LIMITADO</H3>
+                <Body className="text-5xl font-display font-bold text-gold mb-3">41-70</Body>
+                <Body className="text-sm">
                   Algunas limitaciones significativas presentes
-                </p>
+                </Body>
               </Card>
-              <Card variant="outlined" padding="lg" className="text-center border-2 border-bamboo">
-                <h3 className="font-display font-bold text-bamboo mb-2 text-xl">LIBRE</h3>
-                <p className="text-5xl font-display font-bold text-bamboo mb-3">71-100</p>
-                <p className="text-sm text-charcoal font-body">
+              <Card variant="outlined" padding="lg" className="text-center border-2 border-bamboo h-full">
+                <H3 className="text-bamboo mb-2">LIBRE</H3>
+                <Body className="text-5xl font-display font-bold text-bamboo mb-3">71-100</Body>
+                <Body className="text-sm">
                   Alto nivel de libertades digitales garantizadas
-                </p>
+                </Body>
               </Card>
             </div>
           </motion.div>

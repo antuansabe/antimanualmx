@@ -26,7 +26,7 @@ interface ButtonProps extends Omit<HTMLMotionProps<'button'>, 'color'> {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'text-white shadow-md hover:shadow-lg active:shadow-sm',
+  primary: 'shadow-md hover:shadow-lg active:shadow-sm',
   secondary: 'text-sumi bg-cloud hover:bg-mist shadow-sm hover:shadow-md',
   outline: 'bg-transparent border-2 shadow-sm hover:shadow-md',
   ghost: 'bg-transparent hover:bg-cloud/50',
@@ -35,42 +35,42 @@ const variantStyles: Record<ButtonVariant, string> = {
 
 const colorStyles: Record<ButtonColor, { primary: string; outline: string; ghost: string }> = {
   sakura: {
-    primary: 'bg-sakura-500 hover:bg-sakura-600',
+    primary: 'bg-sakura-500 hover:bg-sakura-600 text-white',
     outline: 'border-sakura text-sakura-500 hover:bg-sakura-50',
     ghost: 'text-sakura-500 hover:text-sakura-600',
   },
   matcha: {
-    primary: 'bg-matcha-500 hover:bg-matcha-600',
+    primary: 'bg-matcha-500 hover:bg-matcha-600 text-white',
     outline: 'border-matcha text-matcha-500 hover:bg-matcha-50',
     ghost: 'text-matcha-500 hover:text-matcha-600',
   },
   ocean: {
-    primary: 'bg-ocean-500 hover:bg-ocean-600',
+    primary: 'bg-ocean-500 hover:bg-ocean-600 text-white',
     outline: 'border-ocean text-ocean-500 hover:bg-ocean-50',
     ghost: 'text-ocean-500 hover:text-ocean-600',
   },
   sunset: {
-    primary: 'bg-sunset-500 hover:bg-sunset/90',
+    primary: 'bg-sunset-500 hover:bg-sunset-600 text-sumi',
     outline: 'border-sunset text-sunset-500 hover:bg-sunset-50',
     ghost: 'text-sunset-500 hover:text-sunset/80',
   },
   lavender: {
-    primary: 'bg-lavender-500 hover:bg-lavender/90',
+    primary: 'bg-lavender-500 hover:bg-lavender-600 text-white',
     outline: 'border-lavender text-lavender-500 hover:bg-lavender-50',
     ghost: 'text-lavender-500 hover:text-lavender/80',
   },
   persimmon: {
-    primary: 'bg-persimmon hover:bg-persimmon/90',
+    primary: 'bg-persimmon hover:bg-persimmon/90 text-white',
     outline: 'border-persimmon text-persimmon hover:bg-persimmon/10',
     ghost: 'text-persimmon hover:text-persimmon/80',
   },
   gold: {
-    primary: 'bg-gold-500 hover:bg-gold-600',
+    primary: 'bg-gold-500 hover:bg-gold-600 text-sumi',
     outline: 'border-gold text-gold-500 hover:bg-gold-50',
     ghost: 'text-gold-500 hover:text-gold-600',
   },
   indigo: {
-    primary: 'bg-indigo-500 hover:bg-indigo-600',
+    primary: 'bg-indigo-500 hover:bg-indigo-600 text-white',
     outline: 'border-indigo text-indigo-500 hover:bg-indigo-50',
     ghost: 'text-indigo-500 hover:text-indigo-600',
   },

@@ -220,8 +220,9 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
+                className="h-full"
               >
-                <Link href={feature.href}>
+                <Link href={feature.href} className="h-full block">
                   <Card variant="elevated" hoverable clickable className="h-full">
                     <CardHeader>
                       <div className="text-5xl mb-4">{feature.icon}</div>

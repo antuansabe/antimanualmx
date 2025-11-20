@@ -12,3 +12,6 @@ export {
   CardFooter,
 } from './Card';
 export type { } from './Card';
+
+export { ScrollToTop } from './ScrollToTop';
+export type { } from './ScrollToTop';

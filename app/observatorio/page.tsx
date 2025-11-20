@@ -172,7 +172,7 @@ export default function ObservatorioPage() {
           animate="visible"
         >
           {/* Top Section: Barómetro y Noticias */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Barómetro de Libertad */}
             <motion.section className="lg:col-span-2" variants={itemVariants}>
               <Barometro />

@@ -100,7 +100,7 @@ export default function RedPage() {
 
       <main className="py-12 md:py-16">
         {/* Estadísticas */}
-        <section className="py-12 bg-white">
+        <section className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -117,7 +117,7 @@ export default function RedPage() {
               </Body>
             </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
               {[
                 { label: 'Organizaciones', value: organizaciones.length, icon: '🏛️', color: 'sakura' as const },
                 { label: 'Entidades', value: 32, icon: '📍', color: 'ocean' as const },
@@ -147,7 +147,7 @@ export default function RedPage() {
         </section>
 
         {/* Filtros de búsqueda */}
-        <section className="py-12 bg-gradient-to-br from-cloud via-washi to-matcha-50">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-cloud via-washi to-matcha-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -198,7 +198,7 @@ export default function RedPage() {
 
         {/* Vista cartográfica */}
         {vistaActual === 'mapa' && (
-          <section className="py-12 bg-gradient-to-br from-ocean-50 to-cloud">
+          <section className="py-16 md:py-24 bg-gradient-to-br from-ocean-50 to-cloud">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -249,7 +249,7 @@ export default function RedPage() {
 
         {/* Vista de lista */}
         {vistaActual === 'lista' && (
-          <section className="py-12 bg-gradient-to-br from-washi via-cloud to-lavender-50">
+          <section className="py-16 md:py-24 bg-gradient-to-br from-washi via-cloud to-lavender-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -401,7 +401,7 @@ export default function RedPage() {
         )}
 
         {/* CTA Registro */}
-        <section className="py-16 bg-gradient-to-br from-matcha-100 to-ocean-100">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-matcha-100 to-ocean-100">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

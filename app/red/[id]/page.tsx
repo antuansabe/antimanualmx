@@ -56,7 +56,7 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
       </section>
 
       {/* Hero Section */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-cloud via-washi to-cloud">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-cloud via-washi to-cloud">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-8 items-start">
             {/* Icono y badges */}
@@ -95,7 +95,7 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
               </h1>
               <H3 className="mb-6 text-sakura-500">{organizacion.nombreCorto}</H3>
 
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8 mb-6">
                 {[
                   { label: 'Fundación', value: organizacion.fechaFundacion, icon: '🗓️' },
                   { label: 'Alcance', value: organizacion.alcance, icon: '📡' },
@@ -131,9 +131,9 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
 
       <main className="py-12 md:py-16">
         {/* Especialidades y Servicios */}
-        <section className="py-12 bg-white">
+        <section className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -188,9 +188,9 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
         </section>
 
         {/* Logros y Colaboraciones */}
-        <section className="py-12 bg-gradient-to-br from-cloud to-washi">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-cloud to-washi">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -244,7 +244,7 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
         </section>
 
         {/* Mapa de Ubicación */}
-        <section className="py-12 bg-white">
+        <section className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -272,7 +272,7 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
         </section>
 
         {/* Contacto */}
-        <section className="py-12 bg-gradient-to-br from-cloud via-washi to-sakura-50">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-cloud via-washi to-sakura-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -287,7 +287,7 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
               </div>
 
               <Card variant="elevated" padding="lg">
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                   {/* Contacto Directo */}
                   <div>
                     <H3 className="mb-4">Contacto Directo</H3>
@@ -399,7 +399,7 @@ export default async function PerfilOrganizacionPage({ params }: PageProps) {
         </section>
 
         {/* Navegación */}
-        <section className="py-12 bg-white">
+        <section className="py-16 md:py-24 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <Card variant="outlined" padding="lg" className="text-center">
               <H3 className="mb-6">Explorar Más Organizaciones</H3>
